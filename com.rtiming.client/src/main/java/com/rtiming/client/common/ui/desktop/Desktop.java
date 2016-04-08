@@ -1,6 +1,5 @@
 package com.rtiming.client.common.ui.desktop;
 
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -66,10 +65,9 @@ public class Desktop extends AbstractDesktop implements IDesktop {
   public Desktop() {
   }
 
-  @SuppressWarnings("unchecked")
   @Override
   protected List<Class<? extends IOutline>> getConfiguredOutlines() {
-    return Arrays.asList(new Class[]{EventsOutline.class, RegistrationOutline.class, ResultsOutline.class, SettingsOutline.class});
+    return CollectionUtility.<Class<? extends IOutline>> arrayList(EventsOutline.class, RegistrationOutline.class, ResultsOutline.class, SettingsOutline.class);
   }
 
   @Order(10.0f)
