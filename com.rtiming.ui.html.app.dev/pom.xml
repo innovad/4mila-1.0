@@ -13,7 +13,7 @@
   <artifactId>com.rtiming.ui.html.app.dev</artifactId>
   <packaging>war</packaging>
 
-  <name>My Application HTML UI Server Development</name>
+  <name>4mila Client Dev</name>
 
   <dependencies>
     <dependency>
