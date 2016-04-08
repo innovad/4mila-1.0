@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.service.IService;
+import org.eclipse.scout.rt.shared.TunnelToServer;
 
 import com.rtiming.shared.dao.RtMap;
 import com.rtiming.shared.dao.RtMapKey;
 
+@TunnelToServer
 public interface IMapProcessService extends IService {
 
   String SERVER_MAP_DIR = "maps";

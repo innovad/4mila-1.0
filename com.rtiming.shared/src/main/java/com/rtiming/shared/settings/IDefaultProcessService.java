@@ -2,7 +2,9 @@ package com.rtiming.shared.settings;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.service.IService;
+import org.eclipse.scout.rt.shared.TunnelToServer;
 
+@TunnelToServer
 public interface IDefaultProcessService extends IService {
 
   DefaultFormData prepareCreate(DefaultFormData formData) throws ProcessingException;

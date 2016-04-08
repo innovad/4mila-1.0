@@ -2,9 +2,11 @@ package com.rtiming.shared.entry.payment;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.service.IService;
+import org.eclipse.scout.rt.shared.TunnelToServer;
 
 import com.rtiming.shared.common.database.sql.PaymentBean;
 
+@TunnelToServer
 public interface IPaymentProcessService extends IService {
 
   PaymentBean prepareCreate(PaymentBean bean) throws ProcessingException;

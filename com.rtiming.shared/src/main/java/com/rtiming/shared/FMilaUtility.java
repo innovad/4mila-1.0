@@ -309,19 +309,7 @@ public final class FMilaUtility {
   }
 
   public static URL findFileLocation(String path, String bundleSymbolicName) throws ProcessingException {
-    // TODO MIG
-    return null;
-//    Bundle bundle = Platform.getBundle(bundleSymbolicName);
-//    URL[] subreportDirs = FileLocator.findEntries(bundle, new Path(path));
-//    if (subreportDirs.length != 1) {
-//      throw new ProcessingException("Cannot find " + path);
-//    }
-//    try {
-//      return FileLocator.toFileURL(subreportDirs[0]);
-//    }
-//    catch (IOException e) {
-//      throw new ProcessingException("Could not read file: " + e.getMessage());
-//    }
+    return Thread.currentThread().getContextClassLoader().getResource(path);
   }
 
   public static String getCodeText(Class<? extends ICodeType> codeTypeClass, Long codeUid) throws ProcessingException {

@@ -2,10 +2,12 @@ package com.rtiming.shared.common.report.template;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.service.IService;
+import org.eclipse.scout.rt.shared.TunnelToServer;
 
 import com.rtiming.shared.dao.RtReportTemplate;
 import com.rtiming.shared.dao.RtReportTemplateKey;
 
+@TunnelToServer
 public interface IReportTemplateProcessService extends IService {
 
   String SERVER_MAP_DIR = "reports";

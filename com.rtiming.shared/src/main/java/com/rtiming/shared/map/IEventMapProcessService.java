@@ -2,9 +2,11 @@ package com.rtiming.shared.map;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.service.IService;
+import org.eclipse.scout.rt.shared.TunnelToServer;
 
 import com.rtiming.shared.event.EventMapFormData;
 
+@TunnelToServer
 public interface IEventMapProcessService extends IService {
 
   EventMapFormData prepareCreate(EventMapFormData formData) throws ProcessingException;

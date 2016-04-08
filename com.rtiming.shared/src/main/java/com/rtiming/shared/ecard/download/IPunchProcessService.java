@@ -2,7 +2,9 @@ package com.rtiming.shared.ecard.download;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.service.IService;
+import org.eclipse.scout.rt.shared.TunnelToServer;
 
+@TunnelToServer
 public interface IPunchProcessService extends IService {
 
   PunchFormData prepareCreate(PunchFormData formData) throws ProcessingException;

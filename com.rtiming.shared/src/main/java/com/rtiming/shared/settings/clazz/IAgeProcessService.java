@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.service.IService;
+import org.eclipse.scout.rt.shared.TunnelToServer;
 
 import com.rtiming.shared.dao.RtClassAge;
 import com.rtiming.shared.dao.RtClassAgeKey;
 
+@TunnelToServer
 public interface IAgeProcessService extends IService {
 
   RtClassAge prepareCreate(RtClassAge bean) throws ProcessingException;

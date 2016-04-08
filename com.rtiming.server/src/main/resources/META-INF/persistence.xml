@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+
+	<persistence-unit name="4mila">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+		<class>com.rtiming.shared.dao.RtAccount</class>
+		<class>com.rtiming.shared.dao.RtAccountClient</class>
+		<class>com.rtiming.shared.dao.RtAccountClientKey</class>
+		<class>com.rtiming.shared.dao.RtAdditionalInformationDef</class>
+		<class>com.rtiming.shared.dao.RtAdditionalInformationDefKey</class>
+		<class>com.rtiming.shared.dao.RtAddress</class>
+		<class>com.rtiming.shared.dao.RtAddressKey</class>
+		<class>com.rtiming.shared.dao.RtCity</class>
+		<class>com.rtiming.shared.dao.RtCityKey</class>
+		<class>com.rtiming.shared.dao.RtClassAge</class>
+		<class>com.rtiming.shared.dao.RtClassAgeKey</class>
+		<class>com.rtiming.shared.dao.RtClient</class>
+		<class>com.rtiming.shared.dao.RtClub</class>
+		<class>com.rtiming.shared.dao.RtClubKey</class>
+		<class>com.rtiming.shared.dao.RtControl</class>
+		<class>com.rtiming.shared.dao.RtControlKey</class>
+		<class>com.rtiming.shared.dao.RtControlReplacement</class>
+		<class>com.rtiming.shared.dao.RtControlReplacementKey</class>
+		<class>com.rtiming.shared.dao.RtCountry</class>
+		<class>com.rtiming.shared.dao.RtCountryKey</class>
+		<class>com.rtiming.shared.dao.RtCourse</class>
+		<class>com.rtiming.shared.dao.RtCourseKey</class>
+		<class>com.rtiming.shared.dao.RtCourseControl</class>
+		<class>com.rtiming.shared.dao.RtCourseControlKey</class>
+		<class>com.rtiming.shared.dao.RtCurrency</class>
+		<class>com.rtiming.shared.dao.RtCurrencyKey</class>
+		<class>com.rtiming.shared.dao.RtDefault</class>
+		<class>com.rtiming.shared.dao.RtDefaultKey</class>
+		<class>com.rtiming.shared.dao.RtEcard</class>
+		<class>com.rtiming.shared.dao.RtEcardKey</class>
+		<class>com.rtiming.shared.dao.RtEcardStation</class>
+		<class>com.rtiming.shared.dao.RtEcardStationKey</class>
+		<class>com.rtiming.shared.dao.RtEntry</class>
+		<class>com.rtiming.shared.dao.RtEntryKey</class>
+		<class>com.rtiming.shared.dao.RtEvent</class>
+		<class>com.rtiming.shared.dao.RtEventKey</class>
+		<class>com.rtiming.shared.dao.RtEventAdditionalInformation</class>
+		<class>com.rtiming.shared.dao.RtEventAdditionalInformationKey</class>
+		<class>com.rtiming.shared.dao.RtEventClass</class>
+		<class>com.rtiming.shared.dao.RtEventClassKey</class>
+		<class>com.rtiming.shared.dao.RtEventMap</class>
+		<class>com.rtiming.shared.dao.RtEventMapKey</class>
+		<class>com.rtiming.shared.dao.RtEventStartblock</class>
+		<class>com.rtiming.shared.dao.RtEventStartblockKey</class>
+		<class>com.rtiming.shared.dao.RtFee</class>
+		<class>com.rtiming.shared.dao.RtFeeKey</class>
+		<class>com.rtiming.shared.dao.RtFeeGroup</class>
+		<class>com.rtiming.shared.dao.RtFeeGroupKey</class>
+		<class>com.rtiming.shared.dao.RtKey</class>
+		<class>com.rtiming.shared.dao.RtMap</class>
+		<class>com.rtiming.shared.dao.RtMapKey</class>
+		<class>com.rtiming.shared.dao.RtParticipation</class>
+		<class>com.rtiming.shared.dao.RtParticipationKey</class>
+		<class>com.rtiming.shared.dao.RtPayment</class>
+		<class>com.rtiming.shared.dao.RtPaymentKey</class>
+		<class>com.rtiming.shared.dao.RtPosition</class>
+		<class>com.rtiming.shared.dao.RtPunch</class>
+		<class>com.rtiming.shared.dao.RtPunchKey</class>
+		<class>com.rtiming.shared.dao.RtPunchSession</class>
+		<class>com.rtiming.shared.dao.RtPunchSessionKey</class>
+		<class>com.rtiming.shared.dao.RtRace</class>
+		<class>com.rtiming.shared.dao.RtRaceKey</class>
+		<class>com.rtiming.shared.dao.RtRaceControl</class>
+		<class>com.rtiming.shared.dao.RtRaceControlKey</class>
+		<class>com.rtiming.shared.dao.RtRanking</class>
+		<class>com.rtiming.shared.dao.RtRankingKey</class>
+		<class>com.rtiming.shared.dao.RtRankingEvent</class>
+		<class>com.rtiming.shared.dao.RtRankingEventKey</class>
+		<class>com.rtiming.shared.dao.RtRegistration</class>
+		<class>com.rtiming.shared.dao.RtRegistrationKey</class>
+		<class>com.rtiming.shared.dao.RtReportTemplate</class>
+		<class>com.rtiming.shared.dao.RtReportTemplateKey</class>
+		<class>com.rtiming.shared.dao.RtReportTemplateFile</class>
+		<class>com.rtiming.shared.dao.RtReportTemplateFileKey</class>
+		<class>com.rtiming.shared.dao.RtRunner</class>
+		<class>com.rtiming.shared.dao.RtRunnerKey</class>
+		<class>com.rtiming.shared.dao.RtStartlistSetting</class>
+		<class>com.rtiming.shared.dao.RtStartlistSettingKey</class>
+		<class>com.rtiming.shared.dao.RtStartlistSettingOption</class>
+		<class>com.rtiming.shared.dao.RtStartlistSettingOptionKey</class>
+		<class>com.rtiming.shared.dao.RtStartlistSettingVacant</class>
+		<class>com.rtiming.shared.dao.RtStartlistSettingVacantKey</class>
+		<class>com.rtiming.shared.dao.RtUc</class>
+		<class>com.rtiming.shared.dao.RtUcKey</class>
+		<class>com.rtiming.shared.dao.RtUcl</class>
+		<class>com.rtiming.shared.dao.RtUclKey</class>
+		<class>com.rtiming.shared.dao.RtUser</class>
+		<class>com.rtiming.shared.dao.RtUserKey</class>
+		<class>com.rtiming.shared.dao.RtUserRole</class>
+		<class>com.rtiming.shared.dao.RtUserRoleKey</class>
+		<class>com.rtiming.shared.dao.RtWebSession</class>
+
+		<properties>
+
+			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:h2:~/dev" />
+			<property name="javax.persistence.jdbc.user" value="fmila" />
+			<property name="javax.persistence.jdbc.password" value="" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+			<property name="hibernate.hbm2ddl.auto" value="validate" />
+			<property name="hibernate.show_sql" value="true" />
+
+		</properties>
+	</persistence-unit>
+</persistence>

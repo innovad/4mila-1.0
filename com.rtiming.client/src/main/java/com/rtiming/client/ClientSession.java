@@ -69,7 +69,7 @@ public class ClientSession extends AbstractClientSession {
     BEANS.get(IAccountProcessService.class).loadClientNr();
 
     // Load code types
-    CODES.getAllCodeTypes(null); // TODO MIG
+    CODES.getAllCodeTypes("com.rtiming");
 
     setDesktop(new Desktop());
 

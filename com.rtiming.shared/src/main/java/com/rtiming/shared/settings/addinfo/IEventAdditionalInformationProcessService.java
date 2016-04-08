@@ -4,8 +4,9 @@ import java.util.HashMap;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.service.IService;
+import org.eclipse.scout.rt.shared.TunnelToServer;
 
-
+@TunnelToServer
 public interface IEventAdditionalInformationProcessService extends IService {
 
   EventAdditionalInformationFormData prepareCreate(EventAdditionalInformationFormData formData) throws ProcessingException;

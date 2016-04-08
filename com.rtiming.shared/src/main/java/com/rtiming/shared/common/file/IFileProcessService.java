@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.service.IService;
+import org.eclipse.scout.rt.shared.TunnelToServer;
 
+@TunnelToServer
 public interface IFileProcessService extends IService {
 
   String writeDataToFile(Long pkNr, Long clientNr, String format, byte[] imageData, String path) throws ProcessingException;

@@ -7,6 +7,7 @@ import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.server.AbstractServerSession;
+import org.eclipse.scout.rt.server.session.ServerSessionProvider;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
 
 import com.rtiming.shared.settings.account.IAccountProcessService;
@@ -26,7 +27,7 @@ public class ServerSession extends AbstractServerSession {
    * @return session in current ThreadContext
    */
   public static ServerSession get() {
-    return null; // TODO MIG return ServerJob.getCurrentSession(ServerSession.class);
+    return (ServerSession) ServerSessionProvider.currentSession();
   }
 
   @Override

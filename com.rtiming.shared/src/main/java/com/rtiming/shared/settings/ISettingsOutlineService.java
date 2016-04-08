@@ -5,12 +5,14 @@ import java.util.Map;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.service.IService;
+import org.eclipse.scout.rt.shared.TunnelToServer;
 
 import com.rtiming.shared.common.AbstractSqlCodeType;
 import com.rtiming.shared.dao.RtClassAge;
 import com.rtiming.shared.dao.RtReportTemplate;
 import com.rtiming.shared.settings.city.CitySearchFormData;
 
+@TunnelToServer
 public interface ISettingsOutlineService extends IService {
 
   Object[][] getCityTableData(CitySearchFormData formData) throws ProcessingException;

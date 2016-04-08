@@ -2,9 +2,11 @@ package com.rtiming.shared.runner;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.service.IService;
+import org.eclipse.scout.rt.shared.TunnelToServer;
 
 import com.rtiming.shared.common.database.sql.RunnerBean;
 
+@TunnelToServer
 public interface IRunnerProcessService extends IService {
 
   RunnerBean prepareCreate(RunnerBean bean) throws ProcessingException;

@@ -2,9 +2,11 @@ package com.rtiming.shared.settings;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.service.IService;
+import org.eclipse.scout.rt.shared.TunnelToServer;
 
 import com.rtiming.shared.common.AbstractCodeBoxData;
 
+@TunnelToServer
 public interface ICodeProcessService extends IService {
 
   AbstractCodeBoxData prepareCreateCodeBox(AbstractCodeBoxData codeBox) throws ProcessingException;

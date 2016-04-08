@@ -2,7 +2,9 @@ package com.rtiming.shared.entry.startlist;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.service.IService;
+import org.eclipse.scout.rt.shared.TunnelToServer;
 
+@TunnelToServer
 public interface IStartlistSettingProcessService extends IService {
 
   StartlistSettingFormData prepareCreate(StartlistSettingFormData formData) throws ProcessingException;

@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.service.IService;
+import org.eclipse.scout.rt.shared.TunnelToServer;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 
 import com.rtiming.shared.dao.RtEcardStation;
 import com.rtiming.shared.ecard.download.DownloadedECards;
 import com.rtiming.shared.ecard.download.DownloadedECardsSearchFormData;
 
+@TunnelToServer
 public interface IResultsOutlineService extends IService {
 
   List<ResultRowData> getResultTableData(Long clientNr, Long classUid, Long courseNr, Long clubNr, SearchFilter filter) throws ProcessingException;

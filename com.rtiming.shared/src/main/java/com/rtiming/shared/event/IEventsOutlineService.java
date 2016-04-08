@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.service.IService;
+import org.eclipse.scout.rt.shared.TunnelToServer;
 
 import com.rtiming.shared.club.ClubRowData;
 import com.rtiming.shared.club.ClubsSearchFormData;
@@ -16,6 +17,7 @@ import com.rtiming.shared.event.course.ReplacementControlRowData;
 import com.rtiming.shared.runner.RunnerRowData;
 import com.rtiming.shared.runner.RunnersSearchFormData;
 
+@TunnelToServer
 public interface IEventsOutlineService extends IService {
 
   List<RtEcard> getECardTableData(ECardsSearchFormData formData) throws ProcessingException;

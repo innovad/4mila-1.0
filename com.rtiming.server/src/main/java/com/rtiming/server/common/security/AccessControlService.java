@@ -5,15 +5,17 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.scout.rt.platform.Replace;
 import org.eclipse.scout.rt.shared.security.BasicHierarchyPermission;
-import org.eclipse.scout.rt.shared.services.common.security.AbstractAccessControlService;
+import org.eclipse.scout.rt.shared.services.common.security.UserIdAccessControlService;
 
 import com.rtiming.server.ServerSession;
 
-public class AccessControlService extends AbstractAccessControlService {
+@Replace
+public class AccessControlService extends UserIdAccessControlService {
 
   @Override
-  protected Permissions execLoadPermissions(Object object) {
+  protected Permissions execLoadPermissions(String userId) {
     // Idee: Alle Permissions zusammenbauen
     // Davon je nach Rolle einige Permissions abziehen
     // AccessControlUtility
@@ -43,11 +45,6 @@ public class AccessControlService extends AbstractAccessControlService {
       r++;
     }
     return permissionData;
-  }
-
-  @Override
-  protected Object getCurrentUserCacheKey() {
-    return null; // TODO MIG
   }
 
 }

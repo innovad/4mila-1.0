@@ -2,8 +2,9 @@ package com.rtiming.shared.race;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.service.IService;
+import org.eclipse.scout.rt.shared.TunnelToServer;
 
-
+@TunnelToServer
 public interface IRaceControlProcessService extends IService {
 
   RaceControlFormData prepareCreate(RaceControlFormData formData) throws ProcessingException;
