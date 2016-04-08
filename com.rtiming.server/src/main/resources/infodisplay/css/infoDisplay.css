@@ -1,0 +1,35 @@
+body,html{
+  	height:100%; 
+  	margin: 0;
+	padding: 0;
+	font-family: Verdana, sans-serif;
+	font-weight: bold;
+	overflow: hidden;
+}
+
+body{
+	background: #fefcea; /* Old browsers */
+	background: -moz-linear-gradient(-45deg,  #fefcea 0%, #f1da36 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#fefcea), color-stop(100%,#f1da36)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(-45deg,  #fefcea 0%,#f1da36 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(-45deg,  #fefcea 0%,#f1da36 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(-45deg,  #fefcea 0%,#f1da36 100%); /* IE10+ */
+	background: linear-gradient(135deg,  #fefcea 0%,#f1da36 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefcea', endColorstr='#f1da36',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */	
+}
+
+@media (max-width: 300px) {
+    html { font-size: 70%; }
+}
+
+@media (min-width: 500px) {
+    html { font-size: 80%; }
+}
+
+@media (min-width: 700px) {
+    html { font-size: 120%; }
+}
+
+@media (min-width: 1200px) {
+    html { font-size: 200%; }
+}

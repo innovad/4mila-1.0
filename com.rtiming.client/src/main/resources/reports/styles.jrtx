@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperTemplate PUBLIC "-//JasperReports//DTD Template//EN" "http://jasperreports.sourceforge.net/dtds/jaspertemplate.dtd">
+
+<jasperTemplate>
+	<style name="table.left" fontSize="10" hAlign="Left" />
+	<style name="table.right" fontSize="10" hAlign="Right" />
+</jasperTemplate>

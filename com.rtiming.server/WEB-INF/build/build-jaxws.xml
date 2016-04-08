@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webservices>
+  <servlet-bundle name="com.rtiming.server"/>
+  <consumer name="OnlineServiceClient" wsdl="WEB-INF/wsdl/consumer/online.wsdl"/>
+  <provider name="onlineService">
+    <property name="b" value="WEB-INF/build/onlineService-bindings.xml"/>
+    <property name="verbose"/>
+    <property name="target" value="2.0"/>
+    <property name="Xdebug"/>
+    <property name="keep"/>
+  </provider>
+</webservices>

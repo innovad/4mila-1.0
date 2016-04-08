@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.eclipse.scout</groupId>
+		<artifactId>maven_rt_plugin_config-master</artifactId>
+		<version>2.0.1</version>
+		<relativePath></relativePath>
+	</parent>
+
+	<groupId>com.4mila</groupId>
+	<artifactId>com.4mila.parent</artifactId>
+	<version>2.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<jdk.source.version>1.8</jdk.source.version>
+		<org.eclipse.scout.rt_version>5.2.0.M5</org.eclipse.scout.rt_version>
+	</properties>
+
+	<modules>
+		<!-- 4mila -->
+		<module>../com.rtiming.client</module>
+		<module>../com.rtiming.shared.dao</module>
+		<module>../com.rtiming.server</module>
+		<module>../com.rtiming.shared</module>
+		<module>../jp.co.epson.pos</module>
+		<module>../org.gnu.rxtx</module>
+	</modules>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.5</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.5.1</version>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+					</configuration>
+				</plugin>
+
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Scout Dependencies -->
+			<dependency>
+				<groupId>org.eclipse.scout.rt</groupId>
+				<artifactId>org.eclipse.scout.rt</artifactId>
+				<version>5.2.0.M5</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+</project>

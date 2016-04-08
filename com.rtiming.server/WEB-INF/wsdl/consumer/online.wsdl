@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.4mila.com/4mila/jaxws/online" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.4mila.com/4mila/jaxws/online">
+	<types>
+		<s:schema elementFormDefault="qualified"
+			targetNamespace="http://www.4mila.com/4mila/jaxws/online">
+			<s:element name="createAccount">
+
+				<s:complexType>
+					<s:sequence>
+						<s:element name="accountData" type="tns:Account" maxOccurs="1" minOccurs="1"></s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="upload">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1"
+							name="username" type="s:string" />
+						<s:element minOccurs="1" maxOccurs="1"
+							name="password" type="s:string" />
+						<s:element minOccurs="1" maxOccurs="1"
+							name="clientNr" type="s:long" />
+						<s:element name="eventNr" type="s:long" maxOccurs="1" minOccurs="1"></s:element>
+						<s:element minOccurs="1" maxOccurs="1"
+							name="data" type="tns:TableDataList" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="uploadResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="upload"
+							type="tns:Result" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:complexType name="TableData">
+				<s:sequence>
+					<s:element minOccurs="1" maxOccurs="1"
+						name="columns" type="tns:StringList" />
+					<s:element minOccurs="1" maxOccurs="1" name="data"
+						type="tns:RowData" />
+
+					<s:element name="tableName" type="s:string"></s:element>
+					<s:element name="forceCleanup" type="s:boolean"></s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="TableDataList">
+				<s:sequence>
+					<s:element minOccurs="0" maxOccurs="unbounded"
+						name="tables" type="tns:TableData" />
+					<s:element name="files" type="tns:FileData" maxOccurs="unbounded" minOccurs="0"></s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="StringList">
+				<s:sequence>
+					<s:element minOccurs="0" maxOccurs="unbounded" name="strings"
+						type="s:string" />
+				</s:sequence>
+			</s:complexType>
+
+			<s:complexType name="ObjectList">
+				<s:sequence>
+					<s:element name="objects"
+						type="s:anySimpleType" maxOccurs="unbounded" minOccurs="0">
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:complexType name="RowData">
+				<s:sequence>
+					<s:element name="rows" type="tns:ObjectList" maxOccurs="unbounded" minOccurs="0"></s:element>
+				</s:sequence>
+			</s:complexType>
+		
+			<s:complexType name="Result">
+				<s:sequence>
+					<s:element name="statusNr" type="s:long"></s:element>
+					<s:element name="statusMessage" type="s:token"></s:element>
+				</s:sequence>
+			</s:complexType>
+		
+			<s:complexType name="Account">
+				<s:sequence>
+					<s:element name="username" type="s:string"
+						maxOccurs="1" minOccurs="0">
+					</s:element>
+
+
+
+
+
+					<s:element name="password" type="s:string"
+						maxOccurs="1" minOccurs="0">
+					</s:element>
+					<s:element name="email" type="s:string"
+						maxOccurs="1" minOccurs="0">
+					</s:element>
+					<s:element name="clientNr" type="s:long"
+						maxOccurs="1" minOccurs="0">
+					</s:element>
+					<s:element name="accountNr" type="s:long"
+						maxOccurs="1" minOccurs="0">
+					</s:element>
+					<s:element name="lastName" type="s:token" maxOccurs="1" minOccurs="0"></s:element>
+					<s:element name="firstName" type="s:token" maxOccurs="1" minOccurs="0"></s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:element name="loginAccount">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="accountData" type="tns:Account" maxOccurs="1" minOccurs="1"></s:element>
+					</s:sequence>
+				</s:complexType></s:element>
+			<s:element name="loginAccountResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="accountData" type="tns:Account" maxOccurs="1" minOccurs="1"></s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="uploadAccountResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="accountData" type="tns:Account" maxOccurs="1" minOccurs="1"></s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			
+        
+			<s:complexType name="FileData">
+				<s:sequence>
+					<s:element name="pkNr" type="s:long" maxOccurs="1" minOccurs="1"></s:element>
+					<s:element name="clientNr" type="s:long" maxOccurs="1" minOccurs="1"></s:element>
+					<s:element name="format" type="s:string" maxOccurs="1" minOccurs="1"></s:element>
+					<s:element name="path" type="s:string" maxOccurs="1" minOccurs="1"></s:element>
+					<s:element name="content" type="s:base64Binary" maxOccurs="1" minOccurs="1"></s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:element name="checkForUpdate">
+				<s:complexType>
+					<s:sequence>
+
+						<s:element name="versionToBeChecked" type="s:string" maxOccurs="1" minOccurs="1"></s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="checkForUpdateResponse">
+				<s:complexType>
+					<s:sequence>
+
+						<s:element name="downloadURL" type="s:string" maxOccurs="unbounded" minOccurs="0"></s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+		</s:schema>
+	</types>
+	<message name="loginAccountOnlineRequest">
+		<part name="parameters" element="tns:loginAccount" />
+	</message>
+	<message name="loginAccountOnlineResponse">
+		<part name="parameters" element="tns:loginAccountResponse" />
+	</message>
+	<message name="uploadRequest">
+		<part name="parameters" element="tns:upload" />
+	</message>
+	<message name="uploadResponse">
+		<part name="parameters" element="tns:uploadResponse" />
+	</message>
+	<message name="createAccountOnlineRequest">
+		<part name="parameters" element="tns:createAccount"></part>
+	</message>
+	<message name="createAccountOnlineResponse">
+		<part name="parameters" element="tns:uploadAccountResponse"></part>
+	</message>
+	<message name="checkForUpdateRequest">
+		<part name="parameters" element="tns:checkForUpdate"></part>
+	</message>
+	<message name="checkForUpdateResponse">
+		<part name="parameters" element="tns:checkForUpdateResponse"></part>
+	</message>
+	<portType name="onlineServiceSoap">
+		<operation name="loginAccountOnline">
+			<input message="tns:loginAccountOnlineRequest" />
+			<output message="tns:loginAccountOnlineResponse" />
+		</operation>
+		<operation name="upload">
+			<input message="tns:uploadRequest" />
+			<output message="tns:uploadResponse" />
+		</operation>
+		<operation name="createAccountOnline">
+			<input message="tns:createAccountOnlineRequest"></input>
+			<output message="tns:createAccountOnlineResponse"></output>
+		</operation>
+		<operation name="checkForUpdate">
+			<input message="tns:checkForUpdateRequest"></input>
+			<output message="tns:checkForUpdateResponse"></output>
+		</operation>
+	</portType>
+	<binding name="onlineServiceSoap" type="tns:onlineServiceSoap">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http"
+			style="document" />
+		<operation name="loginAccountOnline">
+			<soap:operation
+				soapAction="http://www.4mila.com/4mila/jaxws/online/requestClientNr"
+				style="document" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="upload">
+			<soap:operation
+				soapAction="http://www.4mila.com/4mila/jaxws/online/upload"
+				style="document" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="createAccountOnline">
+			<soap:operation
+				soapAction="http://www.4mila.com/4mila/jaxws/online/createAccountOnline" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="checkForUpdate">
+			<soap:operation
+				soapAction="http://www.4mila.com/4mila/jaxws/online/checkForUpdate" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+	</binding>
+	<service name="onlineService">
+		<port name="onlineServiceSoap" binding="tns:onlineServiceSoap">
+			<soap:address location="###SERVER_ADDRESS###onlineService" />
+		</port>
+	</service>
+</definitions>

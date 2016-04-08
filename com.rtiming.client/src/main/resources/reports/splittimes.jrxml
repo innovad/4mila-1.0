@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version last-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resultsEvent" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7b8fa54f-076a-4c56-b3b3-1a45e43f7311">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="Event.Name" class="java.lang.String"/>
+	<parameter name="Event.Map" class="java.lang.String"/>
+	<parameter name="Event.Location" class="java.lang.String"/>
+	<parameter name="Event.Date" class="java.util.Date"/>
+	<parameter name="General.Page" class="java.lang.String"/>
+	<parameter name="Logo.Path" class="java.lang.String"/>
+	<field name="tables" class="java.util.Collection"/>
+	<field name="parameters" class="java.util.Map"/>
+	<detail>
+		<band height="20">
+			<subreport>
+				<reportElement uuid="2974da5d-9bc7-422e-a34e-a81a81513ee1" x="-20" y="-20" width="595" height="40"/>
+				<parametersMapExpression><![CDATA[$F{parameters}]]></parametersMapExpression>
+				<subreportParameter name="Logo.Path">
+					<subreportParameterExpression><![CDATA[$P{Logo.Path}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRMapCollectionDataSource($F{tables})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "splittimesTable.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

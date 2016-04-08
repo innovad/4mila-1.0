@@ -10,3 +10,50 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# Maven
+/target/
+
+# Temporary until migration finished
+com.4mila.client.feature
+com.4mila.client.test
+com.4mila.client.test.fragment
+com.4mila.global.feature
+com.4mila.global.test.product
+com.4mila.global.test.product.war
+com.4mila.server.feature
+com.4mila.server.product
+com.4mila.server.test
+com.4mila.server.test.fragment
+com.4mila.server.test.product
+com.4mila.server.test.product.war
+com.4mila.shared.test
+com.4mila.shared.test.fragment
+com.4mila.standalone.product
+com.4mila.target
+com.4mila.test.parent
+com.4mila.ui.rap
+com.4mila.ui.rap.product
+com.4mila.ui.swing.product
+com.4mila.web.product
+com.4mila.web.test.fragment
+com.gargoylesoftware.htmlunit
+com.mchange.c3p0.lib.fragment
+com.nitrous.gwt.earth
+com.restfb
+com.rtiming.ui.swing
+com.rtiming.ui.swt
+com.rtiming.web
+com.smartgwt.mobile
+database
+de.micromata.opengis.kml
+javax.mail
+javax.media.jai
+net.auroris.colorpicker
+net.java.jaxb
+net.sf.jasperreports
+org.apache.poi
+org.h2.database.fragment
+org.hibernate4.lib.fragment
+org.hibernate4.osgi
+org.mozilla.universalchardet

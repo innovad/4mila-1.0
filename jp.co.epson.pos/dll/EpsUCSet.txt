@@ -1,0 +1,18 @@
+;
+;	Unicode Conversion Module Setting file
+;
+;	Copyright (c) 2009 SEIKO EPSON Corp. All Rights reserved.
+;
+;	Revision history:
+;	2009-10-30	new
+;
+;
+
+[Settings]
+EncodeTypeDefault=0
+MissingCharacterCode=63
+DeviceInfoPath=C:\Program Files (x86)\Common Files\EPSON\EpsUCCvt
+MaximumHandle=100
+OutputBufferBlockSize=65536
+OutputBufferBlockMax=32
+OutputBufferBlockMax=32

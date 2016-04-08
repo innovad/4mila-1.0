@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.4mila</groupId>
+		<artifactId>com.4mila.parent</artifactId>
+		<version>2.0.0-SNAPSHOT</version>
+		<relativePath>../com.4mila.parent/</relativePath>
+	</parent>
+	<artifactId>com.rtiming.shared</artifactId>
+
+	<dependencies>
+		<dependency>
+			<artifactId>org.eclipse.scout.rt.shared</artifactId>
+			<groupId>org.eclipse.scout.rt</groupId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.scout.rt</groupId>
+			<artifactId>org.eclipse.scout.commons</artifactId>
+			<version>5.2.0.M3</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+			<version>1.5.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.4mila</groupId>
+			<artifactId>com.rtiming.shared.dao</artifactId>
+			<version>2.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jul-to-slf4j</artifactId>
+		</dependency>
+	</dependencies>
+
+</project>

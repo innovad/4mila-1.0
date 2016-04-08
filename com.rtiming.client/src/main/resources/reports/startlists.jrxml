@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version last-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="startListEvent" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f92d85ca-18f3-4341-a8c1-99b2f0806117">
+	<import value="static net.sf.jasperreports.functions.standard.DateTimeFunctions.*"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="Event.Name" class="java.lang.String"/>
+	<parameter name="Event.Map" class="java.lang.String"/>
+	<parameter name="Event.Location" class="java.lang.String"/>
+	<parameter name="Event.Date" class="java.util.Date"/>
+	<parameter name="General.Page" class="java.lang.String"/>
+	<parameter name="Logo.Path" class="java.lang.String"/>
+	<parameter name="Application.Name" class="java.lang.String"/>
+	<field name="tables" class="java.util.Collection"/>
+	<field name="parameters" class="java.util.Map"/>
+	<pageHeader>
+		<band height="58">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="cb89c46e-37d3-40f1-8b37-f4a1310c8142" x="-1" y="0" width="164" height="15"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Event.Name} + ", " + DATEFORMAT($P{Event.Date},"d.M.yyyy")]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement uuid="e784716d-9c35-4583-941c-97b8e65cf91c" x="484" y="0" width="71" height="45"/>
+				<imageExpression><![CDATA[$P{Logo.Path}]]></imageExpression>
+			</image>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="5835b2ed-f86c-4872-9685-81df640cfee9" x="-1" y="30" width="121" height="15"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Event.Location}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="45eed63b-190a-4df3-82a0-c4ebce19c776" x="-1" y="15" width="121" height="15"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Event.Map}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="25">
+			<subreport>
+				<reportElement uuid="2974da5d-9bc7-422e-a34e-a81a81513ee1" x="0" y="0" width="555" height="25"/>
+				<parametersMapExpression><![CDATA[$F{parameters}]]></parametersMapExpression>
+				<subreportParameter name="logo.path">
+					<subreportParameterExpression><![CDATA[$P{Logo.Path}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRMapCollectionDataSource($F{tables})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "startlistsTable.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<textField pattern="d.M.yyyy H:mm:ss">
+				<reportElement uuid="49734af2-b69a-404e-ba6b-ecc78f457d65" x="0" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="b157ce36-45aa-473f-a9fb-72297a747221" x="148" y="0" width="132" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{General.Page}+" "+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" evaluationTime="Report" isBlankWhenNull="true">
+				<reportElement uuid="f8b8bfee-facb-4a35-98eb-2ca0acb900ec" x="280" y="0" width="22" height="20" isPrintWhenDetailOverflows="true"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" / " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement uuid="50f1858b-5a6a-4049-bc9b-4703b9e6fbd0" x="455" y="0" width="100" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{Application.Name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

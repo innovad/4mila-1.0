@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jws:endpoints version="2.0" xmlns:jws="http://java.sun.com/xml/ns/jax-ws/ri/runtime">
+  <jws:endpoint name="onlineService" implementation="com.rtiming.server.common.web.OnlineServiceWebService" service="{http://www.4mila.com/4mila/jaxws/online}onlineService" port="{http://www.4mila.com/4mila/jaxws/online}onlineServiceSoap" url-pattern="/jaxws/onlineService" wsdl="WEB-INF/wsdl/provider/online.wsdl"/>
+</jws:endpoints>

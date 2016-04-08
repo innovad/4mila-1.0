@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version last-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resultsSubreport" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e37e18b8-41d5-48ea-8708-83d16f8a7286">
+	<property name="net.sf.jasperreports.text.truncate.at.char" value="true"/>
+	<property name="net.sf.jasperreports.text.truncate.suffix" value="..."/>
+	<parameter name="Event.Name" class="java.lang.String"/>
+	<parameter name="Event.Map" class="java.lang.String"/>
+	<parameter name="Event.Location" class="java.lang.String"/>
+	<parameter name="Event.Date" class="java.util.Date"/>
+	<parameter name="General.Page" class="java.lang.String"/>
+	<parameter name="General.Count" class="java.lang.String"/>
+	<parameter name="Logo.Path" class="java.lang.String"/>
+	<parameter name="Application.Name" class="java.lang.String"/>
+	<parameter name="Table.IsClassReport" class="java.lang.Boolean"/>
+	<parameter name="Table.IsCourseReport" class="java.lang.Boolean"/>
+	<parameter name="Table.IsClubReport" class="java.lang.Boolean"/>
+	<parameter name="Table.CourseInfo" class="java.lang.String"/>
+	<parameter name="Table.RunnerFinished" class="java.lang.String"/>
+	<parameter name="Table.RunnerTotal" class="java.lang.String"/>
+	<parameter name="ColumnHeader.Area" class="java.lang.String"/>
+	<parameter name="ColumnHeader.BibNumber" class="java.lang.String"/>
+	<parameter name="ColumnHeader.Birthdate" class="java.lang.String"/>
+	<parameter name="ColumnHeader.City" class="java.lang.String"/>
+	<parameter name="ColumnHeader.ClassName" class="java.lang.String"/>
+	<parameter name="ColumnHeader.ClassShortcut" class="java.lang.String"/>
+	<parameter name="ColumnHeader.Club" class="java.lang.String"/>
+	<parameter name="ColumnHeader.ClubExtKey" class="java.lang.String"/>
+	<parameter name="ColumnHeader.ClubShortcut" class="java.lang.String"/>
+	<parameter name="ColumnHeader.Country" class="java.lang.String"/>
+	<parameter name="ColumnHeader.CourseShortcut" class="java.lang.String"/>
+	<parameter name="ColumnHeader.ECard" class="java.lang.String"/>
+	<parameter name="ColumnHeader.EMail" class="java.lang.String"/>
+	<parameter name="ColumnHeader.ExtKey" class="java.lang.String"/>
+	<parameter name="ColumnHeader.Fax" class="java.lang.String"/>
+	<parameter name="ColumnHeader.FirstName" class="java.lang.String"/>
+	<parameter name="ColumnHeader.LastName" class="java.lang.String"/>
+	<parameter name="ColumnHeader.MobilePhone" class="java.lang.String"/>
+	<parameter name="ColumnHeader.Nation" class="java.lang.String"/>
+	<parameter name="ColumnHeader.Percent" class="java.lang.String"/>
+	<parameter name="ColumnHeader.Phone" class="java.lang.String"/>
+	<parameter name="ColumnHeader.RaceStatus" class="java.lang.String"/>
+	<parameter name="ColumnHeader.Rank" class="java.lang.String"/>
+	<parameter name="ColumnHeader.Region" class="java.lang.String"/>
+	<parameter name="ColumnHeader.RentalCard" class="java.lang.String"/>
+	<parameter name="ColumnHeader.Runner" class="java.lang.String"/>
+	<parameter name="ColumnHeader.Sex" class="java.lang.String"/>
+	<parameter name="ColumnHeader.Street" class="java.lang.String"/>
+	<parameter name="ColumnHeader.Time" class="java.lang.String"/>
+	<parameter name="ColumnHeader.TimeBehind" class="java.lang.String"/>
+	<parameter name="ColumnHeader.URL" class="java.lang.String"/>
+	<parameter name="ColumnHeader.Year" class="java.lang.String"/>
+	<parameter name="ColumnHeader.Zip" class="java.lang.String"/>
+	<field name="Detail.Area" class="java.lang.String"/>
+	<field name="Detail.BibNumber" class="java.lang.String"/>
+	<field name="Detail.Birthdate" class="java.lang.String"/>
+	<field name="Detail.City" class="java.lang.String"/>
+	<field name="Detail.ClassName" class="java.lang.String"/>
+	<field name="Detail.ClassShortcut" class="java.lang.String"/>
+	<field name="Detail.Club" class="java.lang.String"/>
+	<field name="Detail.ClubExtKey" class="java.lang.String"/>
+	<field name="Detail.ClubShortcut" class="java.lang.String"/>
+	<field name="Detail.Country" class="java.lang.String"/>
+	<field name="Detail.CourseShortcut" class="java.lang.String"/>
+	<field name="Detail.ECard" class="java.lang.String"/>
+	<field name="Detail.EMail" class="java.lang.String"/>
+	<field name="Detail.ExtKey" class="java.lang.String"/>
+	<field name="Detail.Fax" class="java.lang.String"/>
+	<field name="Detail.FirstName" class="java.lang.String"/>
+	<field name="Detail.LastName" class="java.lang.String"/>
+	<field name="Detail.MobilePhone" class="java.lang.String"/>
+	<field name="Detail.Nation" class="java.lang.String"/>
+	<field name="Detail.Percent" class="java.lang.String"/>
+	<field name="Detail.Phone" class="java.lang.String"/>
+	<field name="Detail.RaceStatus" class="java.lang.String"/>
+	<field name="Detail.Rank" class="java.lang.String"/>
+	<field name="Detail.Region" class="java.lang.String"/>
+	<field name="Detail.RentalCard" class="java.lang.String"/>
+	<field name="Detail.Runner" class="java.lang.String"/>
+	<field name="Detail.Sex" class="java.lang.String"/>
+	<field name="Detail.Street" class="java.lang.String"/>
+	<field name="Detail.Time" class="java.lang.String"/>
+	<field name="Detail.TimeBehind" class="java.lang.String"/>
+	<field name="Detail.URL" class="java.lang.String"/>
+	<field name="Detail.Year" class="java.lang.String"/>
+	<field name="Detail.Zip" class="java.lang.String"/>
+	<pageHeader>
+		<band height="56">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="21676cdb-cfd5-4708-984c-11116192c05a" x="0" y="0" width="330" height="55"/>
+				<textElement>
+					<font size="42" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Table.IsClassReport} ? $F{Detail.ClassShortcut} : ($P{Table.IsCourseReport} ? $F{Detail.CourseShortcut} : $F{Detail.Club})]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="c176232c-e659-4b51-bcfb-4e9103e25d12" x="340" y="10" width="212" height="15"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Table.IsClassReport} ? $F{Detail.ClassName} : ""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="82c32a92-d76f-4405-8963-69207a844ef2" x="340" y="40" width="212" height="15">
+					<printWhenExpression><![CDATA[$P{Table.IsClassReport} || $P{Table.IsCourseReport}]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Table.CourseInfo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="94d459b5-a610-4eda-b938-2b1366822ca7" x="340" y="25" width="212" height="15">
+					<printWhenExpression><![CDATA[$P{Table.IsClassReport} || $P{Table.IsCourseReport}]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{General.Count} + " " + $P{Table.RunnerFinished} + "/"+ $P{Table.RunnerTotal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="692452f4-8b12-4004-a330-1e119e9128d5" x="0" y="0" width="32" height="15"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ColumnHeader.Rank}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="1060735a-8f6e-44c1-b98f-83fc29c9ad04" x="32" y="0" width="159" height="15"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ColumnHeader.Runner}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="14ef0f24-db7d-4a72-9e17-e727499ce970" x="191" y="0" width="111" height="15"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ColumnHeader.City}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="9309a96b-52b7-40bc-8808-90fe2edefbee" x="302" y="0" width="101" height="15"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ColumnHeader.Club}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="98d00f69-142c-4620-80f7-2f577039ffb5" x="497" y="0" width="58" height="15"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ColumnHeader.Time}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="a7d59860-f3ce-4e83-b1c4-333dcc62df85" x="403" y="0" width="52" height="15"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ColumnHeader.TimeBehind}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="ebafc6d5-f326-4f46-a372-2fff48540078" x="455" y="0" width="42" height="15"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ColumnHeader.Percent}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="a8d8b3d4-89f5-4022-a48f-cf0e469b22cd" x="32" y="0" width="159" height="15"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Detail.Runner}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="2f9d8428-0f91-4146-8712-31ce97a6e2a4" x="0" y="0" width="32" height="15"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Detail.Rank}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="fd769e70-6463-4612-81be-f5e76e6bc0e9" x="191" y="1" width="111" height="15"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Detail.City}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="d406211a-2f25-470a-a96c-16e9aef197b3" x="302" y="0" width="101" height="15"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Detail.Club}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="87879b69-fec3-442c-9f7a-617b8a29d310" x="455" y="0" width="100" height="15"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Detail.Time}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="2ee27115-872c-4304-bfc6-a37d8dae0ffe" x="455" y="0" width="42" height="15"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Detail.Percent}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="c2ced028-296d-4e7d-889e-ffbbf5445d8f" x="403" y="0" width="52" height="15"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Detail.TimeBehind}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="25" splitType="Prevent"/>
+	</columnFooter>
+	<summary>
+		<band height="1" splitType="Immediate">
+			<break>
+				<reportElement uuid="064757d9-803a-4769-bf4d-8586d57504f7" x="0" y="0" width="554" height="1" isRemoveLineWhenBlank="true"/>
+			</break>
+		</band>
+	</summary>
+</jasperReport>
