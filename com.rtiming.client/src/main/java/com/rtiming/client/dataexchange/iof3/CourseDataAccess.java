@@ -1,7 +1,7 @@
 package com.rtiming.client.dataexchange.iof3;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 import com.rtiming.shared.common.database.sql.BeanUtility;
 import com.rtiming.shared.common.database.sql.EventBean;

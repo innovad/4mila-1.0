@@ -2,11 +2,11 @@ package com.rtiming.client.ecard.download;
 
 import java.io.IOException;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.logger.IScoutLogger;
-import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.IClientSession;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.shared.TEXTS;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.rtiming.client.ecard.download.job.StatusUpdaterJob;
 import com.rtiming.client.ecard.download.util.ByteUtility;
@@ -17,7 +17,7 @@ public final class SIStationSerialPortHandler extends AbstractSISerialPortHandle
 
   private final Object lock;
   private boolean isInitialized = false;
-  private static IScoutLogger logger = ScoutLogManager.getLogger(SIStationSerialPortHandler.class);
+  private static Logger logger = LoggerFactory.getLogger(SIStationSerialPortHandler.class);
 
   public SIStationSerialPortHandler(IClientSession session, Object lock, FMilaSerialPort port) {
     super(session, port);

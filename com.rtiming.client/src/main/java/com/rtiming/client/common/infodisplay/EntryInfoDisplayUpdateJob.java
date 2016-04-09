@@ -1,8 +1,8 @@
 package com.rtiming.client.common.infodisplay;
 
-import org.eclipse.scout.commons.StringUtility;
-import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.IClientSession;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
 
 import com.rtiming.client.entry.EntryForm;

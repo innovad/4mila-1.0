@@ -6,7 +6,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 import com.rtiming.server.common.AbstractJPASearchFormDataStatementBuilder;
 import com.rtiming.server.common.database.jpa.JPA;

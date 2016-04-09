@@ -12,9 +12,9 @@ import java.util.Locale;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-import org.eclipse.scout.commons.StringUtility;
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.util.NumberUtility;
+import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.csv.CsvHelper;
 import org.eclipse.scout.rt.shared.csv.IDataConsumer;

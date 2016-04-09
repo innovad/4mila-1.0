@@ -3,9 +3,9 @@ package com.rtiming.server.entry.startblock;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import org.eclipse.scout.commons.BooleanUtility;
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.exception.VetoException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.VetoException;
+import org.eclipse.scout.rt.platform.util.BooleanUtility;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
 
 import com.rtiming.server.ServerSession;

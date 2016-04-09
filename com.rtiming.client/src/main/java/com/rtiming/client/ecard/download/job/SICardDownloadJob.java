@@ -3,15 +3,15 @@ package com.rtiming.client.ecard.download.job;
 import java.io.IOException;
 import java.util.Date;
 
-import org.eclipse.scout.commons.CompareUtility;
-import org.eclipse.scout.commons.StringUtility;
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.logger.IScoutLogger;
-import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.IClientSession;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.util.CompareUtility;
+import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.shared.TEXTS;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.rtiming.client.FMilaClientSyncJob;
 import com.rtiming.client.FMilaClientUtility;
@@ -44,7 +44,7 @@ import com.rtiming.shared.runner.IRunnerProcessService;
 
 public class SICardDownloadJob extends FMilaClientSyncJob {
 
-  private static IScoutLogger logger = ScoutLogManager.getLogger(Desktop.class);
+  private static Logger logger = LoggerFactory.getLogger(Desktop.class);
 
   private final AbstractSICardProcessor processor;
   private final ECardStationFormData station;

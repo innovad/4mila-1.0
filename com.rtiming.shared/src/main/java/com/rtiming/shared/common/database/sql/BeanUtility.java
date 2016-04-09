@@ -2,11 +2,11 @@ package com.rtiming.shared.common.database.sql;
 
 import java.util.Date;
 
-import org.eclipse.scout.commons.BooleanUtility;
-import org.eclipse.scout.commons.CompareUtility;
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.holders.ITableHolder;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.holders.ITableHolder;
+import org.eclipse.scout.rt.platform.util.BooleanUtility;
+import org.eclipse.scout.rt.platform.util.CompareUtility;
 
 import com.rtiming.shared.FMilaUtility;
 import com.rtiming.shared.club.ClubFormData;

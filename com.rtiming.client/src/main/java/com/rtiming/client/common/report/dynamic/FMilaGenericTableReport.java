@@ -2,7 +2,7 @@ package com.rtiming.client.common.report.dynamic;
 
 import java.util.List;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 import com.rtiming.client.common.report.FMilaReport;
 

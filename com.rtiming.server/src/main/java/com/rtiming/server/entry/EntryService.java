@@ -2,8 +2,8 @@ package com.rtiming.server.entry;
 
 import java.util.List;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 import com.rtiming.server.ServerSession;
 import com.rtiming.server.common.database.jpa.FMilaTypedQuery;

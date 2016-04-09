@@ -1,10 +1,10 @@
 package com.rtiming.server.common.security;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.exception.VetoException;
-import org.eclipse.scout.commons.logger.IScoutLogger;
-import org.eclipse.scout.commons.logger.ScoutLogManager;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.VetoException;
 import org.eclipse.scout.rt.shared.TEXTS;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.rtiming.server.ServerSession;
 import com.rtiming.server.common.database.jpa.JPA;
@@ -14,7 +14,7 @@ import com.rtiming.shared.settings.account.AccountFormData;
 
 public class LocalAccountService implements ILocalAccountService {
 
-  private static final IScoutLogger LOG = ScoutLogManager.getLogger(LocalAccountService.class);
+  private static final Logger LOG = LoggerFactory.getLogger(LocalAccountService.class);
 
   @Override
   public AccountFormData loginOnline(AccountFormData formData) throws ProcessingException {

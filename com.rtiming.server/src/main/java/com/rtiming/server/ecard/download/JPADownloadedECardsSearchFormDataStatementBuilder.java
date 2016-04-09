@@ -3,7 +3,7 @@ package com.rtiming.server.ecard.download;
 import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Path;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 import com.rtiming.server.common.AbstractJPASearchFormDataStatementBuilder;
 import com.rtiming.server.common.database.jpa.JPACriteriaUtility;

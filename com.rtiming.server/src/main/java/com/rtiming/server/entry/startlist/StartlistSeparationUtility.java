@@ -3,21 +3,19 @@ package com.rtiming.server.entry.startlist;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.eclipse.scout.commons.CompareUtility;
-import org.eclipse.scout.commons.logger.IScoutLogger;
-import org.eclipse.scout.commons.logger.ScoutLogManager;
+import org.eclipse.scout.rt.platform.util.CompareUtility;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public final class StartlistSeparationUtility {
 
-  private static IScoutLogger logger = ScoutLogManager.getLogger(StartlistSeparationUtility.class);
+  private static Logger logger = LoggerFactory.getLogger(StartlistSeparationUtility.class);
 
   private StartlistSeparationUtility() {
   }
 
   public enum Separation {
-    CLUB,
-    NATION,
-    CLUB_AND_NATION
+    CLUB, NATION, CLUB_AND_NATION
   }
 
   private static boolean isSimilar(StartlistParticipationBean bean1, StartlistParticipationBean bean2, Separation type) {
@@ -156,9 +154,7 @@ public final class StartlistSeparationUtility {
   }
 
   private static boolean isCandidate(StartlistParticipationBean bad, StartlistParticipationBean candidate, StartlistParticipationBean bean1, StartlistParticipationBean bean2, Separation type) {
-    return candidate != null &&
-        !StartlistSeparationUtility.isSimilar(candidate, bad, type) &&
-        !StartlistSeparationUtility.isSimilar(bean1, bean2, type);
+    return candidate != null && !StartlistSeparationUtility.isSimilar(candidate, bad, type) && !StartlistSeparationUtility.isSimilar(bean1, bean2, type);
   }
 
 }

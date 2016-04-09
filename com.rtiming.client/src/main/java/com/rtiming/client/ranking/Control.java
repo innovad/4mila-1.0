@@ -1,6 +1,6 @@
 package com.rtiming.client.ranking;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 public class Control {
 

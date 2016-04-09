@@ -14,13 +14,13 @@ import javax.persistence.Query;
 import javax.persistence.metamodel.Attribute;
 import javax.persistence.metamodel.EntityType;
 
-import org.eclipse.scout.commons.StringUtility;
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.logger.IScoutLogger;
-import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.util.CollectionUtility;
+import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.server.services.common.file.RemoteFileService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.rtiming.server.ServerSession;
 import com.rtiming.server.common.database.jpa.JPA;
@@ -36,7 +36,7 @@ import com.rtiming.shared.settings.IDefaultProcessService;
 
 public class DatabaseService implements IDatabaseService {
 
-  private static final IScoutLogger LOG = ScoutLogManager.getLogger(DatabaseService.class);
+  private static final Logger LOG = LoggerFactory.getLogger(DatabaseService.class);
 
   @Override
   public List<String> getTables() throws ProcessingException {

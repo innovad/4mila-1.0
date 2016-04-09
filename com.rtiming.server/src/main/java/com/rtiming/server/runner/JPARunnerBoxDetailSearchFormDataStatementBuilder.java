@@ -2,7 +2,7 @@ package com.rtiming.server.runner;
 
 import javax.persistence.criteria.Path;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 import com.rtiming.server.common.AbstractJPASearchFormDataStatementBuilder;
 import com.rtiming.shared.dao.RtRunner;

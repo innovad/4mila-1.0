@@ -2,15 +2,15 @@ package com.rtiming.client.common.ui.desktop;
 
 import java.util.Date;
 
-import org.eclipse.scout.commons.StringUtility;
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.logger.IScoutLogger;
-import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.ui.messagebox.IMessageBox;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.platform.util.date.DateUtility;
 import org.eclipse.scout.rt.shared.TEXTS;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.rtiming.client.ClientSession;
 import com.rtiming.client.FMilaClientUtility;
@@ -21,7 +21,7 @@ import com.rtiming.shared.settings.account.IAccountProcessService;
 
 public class ExpirationManager {
 
-  private static IScoutLogger logger = ScoutLogManager.getLogger(ExpirationManager.class);
+  private static Logger logger = LoggerFactory.getLogger(ExpirationManager.class);
 
   public void checkExpiration() throws ProcessingException {
     if (FMilaUtility.isRichClient() && isExpired()) {

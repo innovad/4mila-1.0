@@ -2,7 +2,7 @@ package com.rtiming.client.dataexchange.iof;
 
 import java.util.ArrayList;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.shared.TEXTS;
 
 import com.rtiming.client.dataexchange.AbstractXMLInterface;

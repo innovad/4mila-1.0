@@ -1,9 +1,9 @@
 package com.rtiming.client.setup;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.form.IForm;
 import org.eclipse.scout.rt.client.ui.wizard.DefaultWizardContainerForm;
 import org.eclipse.scout.rt.client.ui.wizard.IWizard;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 import com.rtiming.client.setup.SetupWizard.FinalizationStep;
 

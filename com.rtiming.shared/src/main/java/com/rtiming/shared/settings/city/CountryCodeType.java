@@ -1,6 +1,6 @@
 package com.rtiming.shared.settings.city;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 import com.rtiming.shared.Icons;
 import com.rtiming.shared.Texts;

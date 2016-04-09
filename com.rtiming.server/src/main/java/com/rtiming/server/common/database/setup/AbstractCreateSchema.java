@@ -10,17 +10,17 @@ import java.sql.SQLException;
 
 import javax.persistence.Table;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.logger.IScoutLogger;
-import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.platform.Platform;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.rtiming.shared.FMilaUtility;
 import com.rtiming.shared.dao.RtEvent;
 
 public abstract class AbstractCreateSchema {
 
-  private static IScoutLogger logger = ScoutLogManager.getLogger(AbstractCreateSchema.class);
+  private static Logger logger = LoggerFactory.getLogger(AbstractCreateSchema.class);
 
   private final JPASetup setup;
   private final boolean recreate;

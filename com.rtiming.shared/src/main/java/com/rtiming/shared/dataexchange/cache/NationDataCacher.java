@@ -1,7 +1,7 @@
 package com.rtiming.shared.dataexchange.cache;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 import com.rtiming.shared.settings.city.CountryFormData;
 import com.rtiming.shared.settings.city.ICountryProcessService;
@@ -32,7 +32,7 @@ public class NationDataCacher extends AbstractImportDataCacher<CountryFormData, 
   protected void createNewData(CountryFormData formData, String value) {
     formData.getNation().setValue(value);
     for (int k = 0; k < formData.getCodeBox().getLanguage().getRowCount(); k++) {
-      formData.getCodeBox().getLanguage().setTranslation(k, value);
+      formData.getCodeBox().getLanguage().rowAt(k).setTranslation(value);
     }
   }
 

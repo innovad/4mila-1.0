@@ -2,7 +2,7 @@ package com.rtiming.shared.dataexchange.cache;
 
 import java.util.HashMap;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.shared.data.form.AbstractFormData;
 
 public abstract class AbstractDataCacher<T extends AbstractFormData, K extends Object> {

@@ -1,8 +1,8 @@
 package com.rtiming.client.result.split;
 
-import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.IColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.customizer.AbstractTableCustomizer;
+import org.eclipse.scout.rt.platform.Order;
 import org.eclipse.scout.rt.platform.util.collection.OrderedCollection;
 
 import com.rtiming.client.result.AbstractControlColumn;

@@ -3,7 +3,7 @@ package com.rtiming.server.common.web;
 import java.util.Date;
 import java.util.UUID;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 import com.rtiming.server.ServerSession;
 import com.rtiming.server.common.database.jpa.FMilaTypedQuery;

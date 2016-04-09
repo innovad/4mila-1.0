@@ -29,7 +29,10 @@
 		<dependency>
 			<groupId>org.eclipse.scout.rt</groupId>
 			<artifactId>org.eclipse.scout.rt.server</artifactId>
-			<version>5.2.0.M5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.scout.rt</groupId>
+			<artifactId>org.eclipse.scout.rt.server.jdbc</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>de.micromata.jak</groupId>

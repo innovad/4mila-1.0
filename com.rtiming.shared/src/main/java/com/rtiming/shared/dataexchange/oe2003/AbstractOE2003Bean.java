@@ -3,8 +3,8 @@ package com.rtiming.shared.dataexchange.oe2003;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.scout.commons.StringUtility;
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.util.StringUtility;
 
 import com.rtiming.shared.dataexchange.AbstractCSVDataBean;
 import com.rtiming.shared.dataexchange.CSVElement;

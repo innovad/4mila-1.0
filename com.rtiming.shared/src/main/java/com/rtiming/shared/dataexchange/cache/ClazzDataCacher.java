@@ -1,7 +1,7 @@
 package com.rtiming.shared.dataexchange.cache;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 import com.rtiming.shared.event.course.ClassCodeType;
 import com.rtiming.shared.settings.CodeFormData;
@@ -34,7 +34,7 @@ public class ClazzDataCacher extends AbstractImportDataCacher<CodeFormData, Stri
     formData.setCodeType(ClassCodeType.ID);
     formData.getMainBox().getShortcut().setValue(value);
     for (int k = 0; k < formData.getMainBox().getLanguage().getRowCount(); k++) {
-      formData.getMainBox().getLanguage().setTranslation(k, value);
+      formData.getMainBox().getLanguage().rowAt(k).setTranslation(value);
     }
   }
 

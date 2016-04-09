@@ -2,7 +2,7 @@ package com.rtiming.shared.settings.addinfo;
 
 import java.util.HashMap;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.service.IService;
 import org.eclipse.scout.rt.shared.TunnelToServer;
 

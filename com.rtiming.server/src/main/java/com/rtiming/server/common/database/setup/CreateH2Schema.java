@@ -4,8 +4,8 @@ import java.io.File;
 import java.nio.charset.Charset;
 import java.sql.SQLException;
 
-import org.eclipse.scout.commons.IOUtility;
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.util.IOUtility;
 import org.h2.tools.DeleteDbFiles;
 import org.h2.tools.Restore;
 import org.h2.tools.RunScript;

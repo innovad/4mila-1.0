@@ -3,7 +3,7 @@ package com.rtiming.shared.common.database;
 import java.util.Date;
 import java.util.List;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.service.IService;
 import org.eclipse.scout.rt.shared.TunnelToServer;
 

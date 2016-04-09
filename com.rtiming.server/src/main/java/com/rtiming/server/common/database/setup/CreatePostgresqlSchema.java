@@ -1,7 +1,7 @@
 package com.rtiming.server.common.database.setup;
 
-import org.eclipse.scout.commons.StringUtility;
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.util.StringUtility;
 
 import com.rtiming.server.common.database.PostgresUtility;
 

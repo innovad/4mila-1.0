@@ -11,14 +11,14 @@ import javax.persistence.criteria.Join;
 import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Root;
 
-import org.eclipse.scout.commons.CompareUtility;
-import org.eclipse.scout.commons.StringUtility;
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.exception.VetoException;
-import org.eclipse.scout.commons.holders.LongHolder;
-import org.eclipse.scout.commons.holders.NVPair;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.VetoException;
+import org.eclipse.scout.rt.platform.holders.LongHolder;
+import org.eclipse.scout.rt.platform.holders.NVPair;
+import org.eclipse.scout.rt.platform.util.CompareUtility;
 import org.eclipse.scout.rt.platform.util.NumberUtility;
+import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.platform.util.date.DateUtility;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
 
@@ -48,7 +48,7 @@ import com.rtiming.shared.race.IRaceProcessService;
 import com.rtiming.shared.race.IRaceService;
 import com.rtiming.shared.runner.IAddressProcessService;
 
-public class RaceProcessService  implements IRaceProcessService {
+public class RaceProcessService implements IRaceProcessService {
 
   @Override
   public RaceBean prepareCreate(RaceBean formData) throws ProcessingException {
@@ -89,42 +89,7 @@ public class RaceProcessService  implements IRaceProcessService {
     }
 
     LongHolder addressNr = new LongHolder();
-    JPAUtility.select("SELECT " +
-        "addressNr, " +
-        "id.clientNr, " +
-        "entryNr, " +
-        "legTime, " +
-        "legStartTime, " +
-        "eventNr, " +
-        "runnerNr, " +
-        "eCardNr, " +
-        "legClassUid, " +
-        "statusUid, " +
-        "COALESCE(manualStatus,FALSE), " +
-        "bibNo, " +
-        "nationUid," +
-        "clubNr " +
-        "FROM RtRace R " +
-        "WHERE R.id.raceNr = :raceNr " +
-        "AND R.id.clientNr = COALESCE(:clientNr, :sessionClientNr) " +
-        "INTO " +
-        ":addressNr, " +
-        ":clientNr, " +
-        ":entryNr, " +
-        ":legTime, " +
-        ":legStartTime," +
-        ":eventNr, " +
-        ":runnerNr, " +
-        ":eCardNr, " +
-        ":legClassUid,  " +
-        ":statusUid, " +
-        ":manualStatus, " +
-        ":bibNo, " +
-        ":nationUid, " +
-        ":clubNr "
-        , bean
-        , new NVPair("addressNr", addressNr)
-        );
+    JPAUtility.select("SELECT " + "addressNr, " + "id.clientNr, " + "entryNr, " + "legTime, " + "legStartTime, " + "eventNr, " + "runnerNr, " + "eCardNr, " + "legClassUid, " + "statusUid, " + "COALESCE(manualStatus,FALSE), " + "bibNo, " + "nationUid," + "clubNr " + "FROM RtRace R " + "WHERE R.id.raceNr = :raceNr " + "AND R.id.clientNr = COALESCE(:clientNr, :sessionClientNr) " + "INTO " + ":addressNr, " + ":clientNr, " + ":entryNr, " + ":legTime, " + ":legStartTime," + ":eventNr, " + ":runnerNr, " + ":eCardNr, " + ":legClassUid,  " + ":statusUid, " + ":manualStatus, " + ":bibNo, " + ":nationUid, " + ":clubNr ", bean, new NVPair("addressNr", addressNr));
 
     bean.getAddress().setAddressNr(addressNr.getValue());
     BEANS.get(IAddressProcessService.class).load(bean.getAddress());
@@ -138,22 +103,7 @@ public class RaceProcessService  implements IRaceProcessService {
       throw new VetoException(Texts.get("AuthorizationFailed"));
     }
 
-    String queryString = "UPDATE RtRace SET " +
-        "eventNr = :eventNr, " +
-        "entryNr = :entryNr, " +
-        "runnerNr = :runnerNr," +
-        "eCardNr = :ECardNr," +
-        "legStartTime = :start," +
-        "legTime = :time," +
-        "legClassUid = :legClassUid," +
-        "bibNo = :bibNo, " +
-        "nationUid = :nationUid, " +
-        "clubNr = :clubNr, " +
-        "addressNr = :addressNr, " +
-        (bean.getStatusUid() != null ? "statusUid = :statusUid, " : "") +
-        "manualStatus = :manualStatus " +
-        "WHERE id.raceNr = :raceNr " +
-        "AND id.clientNr = :sessionClientNr ";
+    String queryString = "UPDATE RtRace SET " + "eventNr = :eventNr, " + "entryNr = :entryNr, " + "runnerNr = :runnerNr," + "eCardNr = :ECardNr," + "legStartTime = :start," + "legTime = :time," + "legClassUid = :legClassUid," + "bibNo = :bibNo, " + "nationUid = :nationUid, " + "clubNr = :clubNr, " + "addressNr = :addressNr, " + (bean.getStatusUid() != null ? "statusUid = :statusUid, " : "") + "manualStatus = :manualStatus " + "WHERE id.raceNr = :raceNr " + "AND id.clientNr = :sessionClientNr ";
     FMilaQuery query = JPA.createQuery(queryString);
     query.setParameter("start", bean.getLegStartTime());
     query.setParameter("time", bean.getLegTime());
@@ -177,13 +127,8 @@ public class RaceProcessService  implements IRaceProcessService {
     }
     eCardNo = StringUtility.uppercase(eCardNo).trim();
 
-    String queryString = "SELECT MAX(RA.id.raceNr) FROM RtRace RA " +
-        "INNER JOIN RA.rtEcard E " +
-        "LEFT JOIN RA.rtPunchSessions PS " +
-        "WHERE UPPER(E.ecardNo) = :eCardNo " +
-        "AND PS.id.punchSessionNr IS NULL " + // only races without punch session
-        "AND RA.eventNr = :eventNr " +
-        "AND RA.id.clientNr = :clientNr";
+    String queryString = "SELECT MAX(RA.id.raceNr) FROM RtRace RA " + "INNER JOIN RA.rtEcard E " + "LEFT JOIN RA.rtPunchSessions PS " + "WHERE UPPER(E.ecardNo) = :eCardNo " + "AND PS.id.punchSessionNr IS NULL " + // only races without punch session
+        "AND RA.eventNr = :eventNr " + "AND RA.id.clientNr = :clientNr";
 
     FMilaTypedQuery<Long> query = JPA.createQuery(queryString, Long.class);
     query.setParameter("eventNr", eventNr);
@@ -212,18 +157,13 @@ public class RaceProcessService  implements IRaceProcessService {
     CriteriaQuery<RtRace> selectQuery = b.createQuery(RtRace.class);
     Root<RtRace> race = selectQuery.from(RtRace.class);
     Join<RtRace, RtRunner> joinRunner = race.join(RtRace_.rtRunner, JoinType.INNER);
-    selectQuery.where(
-        b.and(
-            accountNr == null ? b.conjunction() : b.equal(joinRunner.get(RtRunner_.accountNr), accountNr)
-            )
-        ).orderBy(b.asc(JPACriteriaUtility.runnerNameJPA(joinRunner)));
+    selectQuery.where(b.and(accountNr == null ? b.conjunction() : b.equal(joinRunner.get(RtRunner_.accountNr), accountNr))).orderBy(b.asc(JPACriteriaUtility.runnerNameJPA(joinRunner)));
 
     List<RtRace> raceList = JPA.createQuery(selectQuery).getResultList();
     List<RtRace> filteredRaceList = new ArrayList<>();
     for (RtRace raceBean : raceList) {
       for (EventRowData event : events) {
-        if (CompareUtility.equals(event.getEventNr(), raceBean.getEventNr()) &&
-            CompareUtility.equals(event.getClientNr(), raceBean.getId().getClientNr())) {
+        if (CompareUtility.equals(event.getEventNr(), raceBean.getEventNr()) && CompareUtility.equals(event.getClientNr(), raceBean.getId().getClientNr())) {
           filteredRaceList.add(raceBean);
         }
       }
@@ -244,28 +184,21 @@ public class RaceProcessService  implements IRaceProcessService {
   @Override
   public void delete(Long... raceNrs) throws ProcessingException {
     if (raceNrs != null && raceNrs.length > 0) {
-      String queryString = "UPDATE RtPunchSession PS " +
-          "SET PS.raceNr = NULL " +
-          "WHERE PS.raceNr IN :raceNrs " +
-          "AND PS.id.clientNr = :sessionClientNr";
+      String queryString = "UPDATE RtPunchSession PS " + "SET PS.raceNr = NULL " + "WHERE PS.raceNr IN :raceNrs " + "AND PS.id.clientNr = :sessionClientNr";
 
       FMilaQuery query = JPA.createQuery(queryString);
       query.setParameter("raceNrs", Arrays.asList(raceNrs));
       query.setParameter("sessionClientNr", ServerSession.get().getSessionClientNr());
       query.executeUpdate();
 
-      queryString = "DELETE FROM RtRaceControl RC " +
-          "WHERE RC.raceNr = :raceNrs " +
-          "AND RC.id.clientNr = :sessionClientNr ";
+      queryString = "DELETE FROM RtRaceControl RC " + "WHERE RC.raceNr = :raceNrs " + "AND RC.id.clientNr = :sessionClientNr ";
 
       query = JPA.createQuery(queryString);
       query.setParameter("raceNrs", Arrays.asList(raceNrs));
       query.setParameter("sessionClientNr", ServerSession.get().getSessionClientNr());
       query.executeUpdate();
 
-      queryString = "DELETE FROM RtRace R " +
-          "WHERE R.id.raceNr = :raceNrs " +
-          "AND R.id.clientNr = :sessionClientNr ";
+      queryString = "DELETE FROM RtRace R " + "WHERE R.id.raceNr = :raceNrs " + "AND R.id.clientNr = :sessionClientNr ";
 
       query = JPA.createQuery(queryString);
       query.setParameter("raceNrs", Arrays.asList(raceNrs));

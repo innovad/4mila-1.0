@@ -1,18 +1,18 @@
 package com.rtiming.client;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.logger.IScoutLogger;
-import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.session.ClientSessionProvider;
 import org.eclipse.scout.rt.client.ui.desktop.OpenUriAction;
 import org.eclipse.scout.rt.client.ui.messagebox.IMessageBox;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBoxes;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.rtiming.shared.Texts;
 
 public final class FMilaClientUtility {
 
-  private static final IScoutLogger LOG = ScoutLogManager.getLogger(FMilaClientUtility.class);
+  private static final Logger LOG = LoggerFactory.getLogger(FMilaClientUtility.class);
 
   private FMilaClientUtility() {
   }

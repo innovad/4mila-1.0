@@ -3,12 +3,12 @@ package com.rtiming.server.settings.account;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
-import org.eclipse.scout.commons.Base64Utility;
-import org.eclipse.scout.commons.EncryptionUtility;
-import org.eclipse.scout.commons.StringUtility;
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.exception.VetoException;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.VetoException;
+import org.eclipse.scout.rt.platform.security.EncryptionUtility;
+import org.eclipse.scout.rt.platform.util.Base64Utility;
+import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.shared.TEXTS;
 
 import com.rtiming.server.ServerSession;
@@ -25,7 +25,7 @@ import com.rtiming.shared.runner.IRunnerProcessService;
 import com.rtiming.shared.settings.account.AccountFormData;
 import com.rtiming.shared.settings.account.IAccountProcessService;
 
-public class AccountProcessService  implements IAccountProcessService {
+public class AccountProcessService implements IAccountProcessService {
 
   @Override
   public AccountFormData prepareCreate(AccountFormData formData) throws ProcessingException {
@@ -59,8 +59,7 @@ public class AccountProcessService  implements IAccountProcessService {
     String username = StringUtility.emptyIfNull(usernameString).toLowerCase();
     String email = StringUtility.emptyIfNull(emailString).toLowerCase();
 
-    String queryString = "SELECT COUNT(A.accountNr) FROM RtAccount A " +
-        "WHERE (LOWER(email) = :email OR LOWER(username) = :username) ";
+    String queryString = "SELECT COUNT(A.accountNr) FROM RtAccount A " + "WHERE (LOWER(email) = :email OR LOWER(username) = :username) ";
     FMilaTypedQuery<Long> query = JPA.createQuery(queryString, Long.class);
     query.setParameter("email", email);
     query.setParameter("username", username);
@@ -72,10 +71,7 @@ public class AccountProcessService  implements IAccountProcessService {
   @Override
   public AccountFormData load(AccountFormData formData) throws ProcessingException {
 
-    JPAUtility.select("SELECT username, password, password, firstName, lastName, email " +
-        "FROM RtAccount " +
-        "WHERE accountNr = :accountNr " +
-        "INTO :username, :password, :repeatPassword, :firstName, :lastName, :eMail ", formData);
+    JPAUtility.select("SELECT username, password, password, firstName, lastName, email " + "FROM RtAccount " + "WHERE accountNr = :accountNr " + "INTO :username, :password, :repeatPassword, :firstName, :lastName, :eMail ", formData);
 
     return formData;
   }
@@ -93,13 +89,7 @@ public class AccountProcessService  implements IAccountProcessService {
       }
     }
 
-    String queryString = "UPDATE RtAccount " +
-        "SET username = :usernameLowercase, " +
-        "password = :passwordEncrypted, " +
-        "firstName = :firstName, " +
-        "lastName = :lastName, " +
-        "email = :eMail " +
-        "WHERE accountNr = :accountNr";
+    String queryString = "UPDATE RtAccount " + "SET username = :usernameLowercase, " + "password = :passwordEncrypted, " + "firstName = :firstName, " + "lastName = :lastName, " + "email = :eMail " + "WHERE accountNr = :accountNr";
     FMilaQuery query = JPA.createQuery(queryString);
     query.setParameter("usernameLowercase", formData.getUsername().getValue() == null ? "" : formData.getUsername().getValue().toLowerCase());
     query.setParameter("passwordEncrypted", passwordEncrypted);
@@ -136,17 +126,13 @@ public class AccountProcessService  implements IAccountProcessService {
   public Long loadClientNr() throws ProcessingException {
 
     // select the one and only client nr on an event database
-    String queryString = "SELECT MAX(id.clientNr) " +
-        "FROM RtClient " +
-        "WHERE 1 = (SELECT COUNT(id.clientNr) FROM RtClient) ";
+    String queryString = "SELECT MAX(id.clientNr) " + "FROM RtClient " + "WHERE 1 = (SELECT COUNT(id.clientNr) FROM RtClient) ";
     FMilaTypedQuery<Long> query = JPA.createQuery(queryString, Long.class);
     Long sessionClientNr = query.getSingleResult();
 
     // select the account's global client nr on global database running 4mila manager
     if (sessionClientNr == null) {
-      queryString = "SELECT rtClient.clientNr " +
-          "FROM RtAccount " +
-          "WHERE username = :userId ";
+      queryString = "SELECT rtClient.clientNr " + "FROM RtAccount " + "WHERE username = :userId ";
       query = JPA.createQuery(queryString, Long.class);
       query.setParameter("userId", ServerSession.get().getUserId());
       sessionClientNr = query.getSingleResult();
@@ -174,10 +160,7 @@ public class AccountProcessService  implements IAccountProcessService {
     String username = StringUtility.emptyIfNull(StringUtility.nvl(formData.getUsername().getValue(), formData.getEMail().getValue())).toLowerCase();
     String email = StringUtility.emptyIfNull(StringUtility.nvl(formData.getEMail().getValue(), formData.getUsername().getValue())).toLowerCase();
 
-    String queryString = "SELECT MAX(id.accountNr) " +
-        "FROM RtAccount " +
-        "WHERE (LOWER(username) = :username OR LOWER(email) = :email) " +
-        "AND password = :passwordEncrypted ";
+    String queryString = "SELECT MAX(id.accountNr) " + "FROM RtAccount " + "WHERE (LOWER(username) = :username OR LOWER(email) = :email) " + "AND password = :passwordEncrypted ";
     FMilaTypedQuery<Long> query = JPA.createQuery(queryString, Long.class);
     query.setParameter("username", username);
     query.setParameter("email", email);
@@ -202,9 +185,7 @@ public class AccountProcessService  implements IAccountProcessService {
   @Override
   public AccountFormData find(String email) throws ProcessingException {
     AccountFormData result = new AccountFormData();
-    String queryString = "SELECT MAX(id.accountNr) " +
-        "FROM RtAccount " +
-        "WHERE LOWER(email) = :email ";
+    String queryString = "SELECT MAX(id.accountNr) " + "FROM RtAccount " + "WHERE LOWER(email) = :email ";
     FMilaTypedQuery<Long> query = JPA.createQuery(queryString, Long.class);
     query.setParameter("email", email);
     Long accountNr = query.getSingleResult();

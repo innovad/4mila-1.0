@@ -1,6 +1,6 @@
 package com.rtiming.server.entry.startlist;
 
-import org.eclipse.scout.commons.CompareUtility;
+import org.eclipse.scout.rt.platform.util.CompareUtility;
 import org.eclipse.scout.rt.platform.util.NumberUtility;
 
 import com.rtiming.shared.entry.startlist.BibNoOrderCodeType;

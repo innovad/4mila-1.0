@@ -3,7 +3,7 @@ package com.rtiming.shared.dataexchange;
 import java.io.Serializable;
 import java.util.List;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 public abstract class AbstractDataBean implements Serializable {
 

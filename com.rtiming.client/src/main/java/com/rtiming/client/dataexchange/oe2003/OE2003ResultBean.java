@@ -3,9 +3,9 @@ package com.rtiming.client.dataexchange.oe2003;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.scout.commons.CompareUtility;
-import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.util.CompareUtility;
 
 import com.rtiming.client.race.RaceControlsTablePage;
 import com.rtiming.client.result.ResultsTablePage;
@@ -49,7 +49,7 @@ public class OE2003ResultBean extends AbstractOE2003ListBean {
   // Text2
   // Text3
   // Adr. Name
-  // Straße
+  // Straï¿½e
   // Zeile2
   // PLZ
   // Ort
@@ -142,8 +142,8 @@ public class OE2003ResultBean extends AbstractOE2003ListBean {
 
     String clazzStr = "";
     for (int t = 0; t < clazzCode.getMainBox().getLanguage().getRowCount(); t++) {
-      if (CompareUtility.equals(clazzCode.getMainBox().getLanguage().getLanguage(t), languageUid)) {
-        clazzStr = clazzCode.getMainBox().getLanguage().getTranslation(t);
+      if (CompareUtility.equals(clazzCode.getMainBox().getLanguage().rowAt(t).getLanguage(), languageUid)) {
+        clazzStr = clazzCode.getMainBox().getLanguage().rowAt(t).getTranslation();
       }
     }
 

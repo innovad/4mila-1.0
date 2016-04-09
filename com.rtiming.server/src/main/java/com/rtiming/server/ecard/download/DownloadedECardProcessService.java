@@ -5,11 +5,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.exception.VetoException;
-import org.eclipse.scout.commons.holders.LongHolder;
-import org.eclipse.scout.commons.holders.NVPair;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.VetoException;
+import org.eclipse.scout.rt.platform.holders.LongHolder;
+import org.eclipse.scout.rt.platform.holders.NVPair;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
 
 import com.rtiming.server.ServerSession;
@@ -36,7 +36,7 @@ import com.rtiming.shared.event.course.ICourseControlProcessService;
 import com.rtiming.shared.race.IRaceService;
 import com.rtiming.shared.settings.IDefaultProcessService;
 
-public class DownloadedECardProcessService  implements IDownloadedECardProcessService {
+public class DownloadedECardProcessService implements IDownloadedECardProcessService {
 
   @Override
   public DownloadedECardFormData prepareCreate(DownloadedECardFormData formData) throws ProcessingException {
@@ -78,39 +78,7 @@ public class DownloadedECardProcessService  implements IDownloadedECardProcessSe
     LongHolder diffStart = new LongHolder();
     LongHolder diffFinish = new LongHolder();
 
-    JPAUtility.select("SELECT " +
-        "PS.eventNr, " +
-        "PS.eCardNr, " +
-        "PS.stationNr, " +
-        "PS.raceNr, " +
-        "PS.evtDownload, " +
-        "PS.ecardClear, " +
-        "PS.ecardCheck, " +
-        "PS.start, " +
-        "PS.finish, " +
-        "PS.rawData " +
-        "FROM RtPunchSession PS " +
-        "INNER JOIN PS.rtEvent " +
-        "WHERE PS.id.punchSessionNr = :punchSessionNr " +
-        "AND PS.id.clientNr = :sessionClientNr " +
-        "INTO " +
-        ":event, " +
-        ":eCard, " +
-        ":eCardStation, " +
-        ":race, " +
-        ":evtDownload, " +
-        ":diffClear, " +
-        ":diffCheck, " +
-        ":diffStart, " +
-        ":diffFinish," +
-        ":rawData "
-        , formData
-        , new NVPair("diffClear", diffClear)
-        , new NVPair("diffCheck", diffCheck)
-        , new NVPair("diffStart", diffStart)
-        , new NVPair("diffFinish", diffFinish)
-        , formData
-        );
+    JPAUtility.select("SELECT " + "PS.eventNr, " + "PS.eCardNr, " + "PS.stationNr, " + "PS.raceNr, " + "PS.evtDownload, " + "PS.ecardClear, " + "PS.ecardCheck, " + "PS.start, " + "PS.finish, " + "PS.rawData " + "FROM RtPunchSession PS " + "INNER JOIN PS.rtEvent " + "WHERE PS.id.punchSessionNr = :punchSessionNr " + "AND PS.id.clientNr = :sessionClientNr " + "INTO " + ":event, " + ":eCard, " + ":eCardStation, " + ":race, " + ":evtDownload, " + ":diffClear, " + ":diffCheck, " + ":diffStart, " + ":diffFinish," + ":rawData ", formData, new NVPair("diffClear", diffClear), new NVPair("diffCheck", diffCheck), new NVPair("diffStart", diffStart), new NVPair("diffFinish", diffFinish), formData);
 
     Date evtZero = BEANS.get(IEventProcessService.class).getZeroTime(formData.getEvent().getValue());
     formData.getClear().setValue(FMilaUtility.addMilliSeconds(evtZero, diffClear.getValue()));
@@ -154,19 +122,7 @@ public class DownloadedECardProcessService  implements IDownloadedECardProcessSe
       diffFinish = FMilaUtility.getDateDifferenceInMilliSeconds(zeroTime, formData.getFinish().getValue());
     }
 
-    String queryString = "UPDATE RtPunchSession PS " +
-        "SET eventNr = :event, " +
-        "eCardNr = :eCardNr, " +
-        "stationNr = :stationNr, " +
-        "raceNr = :race, " +
-        "evtDownload = :evtDownload, " +
-        "ecardClear = :diffClear, " +
-        "ecardCheck = :diffCheck, " +
-        "start = :diffStart, " +
-        "finish = :diffFinish, " +
-        "rawData = :rawData " +
-        "WHERE id.punchSessionNr = :punchSessionNr " +
-        "AND id.clientNr = :sessionClientNr ";
+    String queryString = "UPDATE RtPunchSession PS " + "SET eventNr = :event, " + "eCardNr = :eCardNr, " + "stationNr = :stationNr, " + "raceNr = :race, " + "evtDownload = :evtDownload, " + "ecardClear = :diffClear, " + "ecardCheck = :diffCheck, " + "start = :diffStart, " + "finish = :diffFinish, " + "rawData = :rawData " + "WHERE id.punchSessionNr = :punchSessionNr " + "AND id.clientNr = :sessionClientNr ";
     FMilaQuery query = JPA.createQuery(queryString);
     JPAUtility.setAutoParameters(query, queryString, formData);
     query.setParameter("sessionClientNr", ServerSession.get().getSessionClientNr());

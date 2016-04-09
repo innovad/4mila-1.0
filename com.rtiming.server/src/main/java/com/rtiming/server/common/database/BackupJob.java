@@ -1,6 +1,6 @@
 package com.rtiming.server.common.database;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.server.scheduler.AbstractSchedulerJobWithFormula;
 import org.eclipse.scout.rt.server.scheduler.IScheduler;
 import org.eclipse.scout.rt.server.scheduler.TickSignal;

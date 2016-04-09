@@ -1,9 +1,9 @@
 package com.rtiming.client.common.ui.columns;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.basic.cell.Cell;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 import com.rtiming.client.common.ui.TimeDifferenceUtility;
 

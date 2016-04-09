@@ -8,12 +8,12 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.Map;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.logger.IScoutLogger;
-import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.util.date.DateUtility;
 import org.eclipse.scout.rt.server.services.common.file.RemoteFileService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.rtiming.server.common.database.jpa.JPA;
 import com.rtiming.server.common.database.setup.JPASetup;
@@ -26,7 +26,7 @@ public final class ServerInfoUtility {
   }
 
   private static final String NEW_LINE = FMilaUtility.LINE_SEPARATOR;
-  private static final IScoutLogger LOG = ScoutLogManager.getLogger(ServerInfoUtility.class);
+  private static final Logger LOG = LoggerFactory.getLogger(ServerInfoUtility.class);
 
   public static String buildInstallationInfo(Map<String, String> plainTextPasswords) throws ProcessingException {
     StringBuilder info = new StringBuilder();

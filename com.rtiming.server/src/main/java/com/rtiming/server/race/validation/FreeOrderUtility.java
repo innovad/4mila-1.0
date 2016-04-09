@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import org.eclipse.scout.commons.CompareUtility;
+import org.eclipse.scout.rt.platform.util.CompareUtility;
 
 import com.rtiming.server.race.RaceControlBean;
 import com.rtiming.shared.event.course.ControlStatusCodeType;

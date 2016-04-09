@@ -6,7 +6,7 @@ import java.util.List;
 import javax.print.PrintService;
 import javax.print.PrintServiceLookup;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.shared.services.lookup.LocalLookupCall;
 import org.eclipse.scout.rt.shared.services.lookup.LookupRow;
 

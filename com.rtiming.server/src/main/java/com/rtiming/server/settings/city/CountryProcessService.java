@@ -1,10 +1,10 @@
 package com.rtiming.server.settings.city;
 
-import org.eclipse.scout.commons.StringUtility;
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.exception.VetoException;
-import org.eclipse.scout.commons.holders.ITableHolder;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.VetoException;
+import org.eclipse.scout.rt.platform.holders.ITableHolder;
+import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
@@ -15,6 +15,7 @@ import com.rtiming.server.common.database.jpa.JPA;
 import com.rtiming.server.common.database.jpa.JPAUtility;
 import com.rtiming.shared.Texts;
 import com.rtiming.shared.common.AbstractCodeBoxData;
+import com.rtiming.shared.common.AbstractCodeBoxData.Language.LanguageRowData;
 import com.rtiming.shared.common.security.permission.CreateCountryPermission;
 import com.rtiming.shared.common.security.permission.DeleteCountryPermission;
 import com.rtiming.shared.common.security.permission.ReadCountryPermission;
@@ -27,7 +28,7 @@ import com.rtiming.shared.settings.city.CountryFormData;
 import com.rtiming.shared.settings.city.ICountryProcessService;
 import com.rtiming.shared.settings.user.LanguageCodeType;
 
-public class CountryProcessService  implements ICountryProcessService {
+public class CountryProcessService implements ICountryProcessService {
 
   @Override
   public CountryFormData prepareCreate(CountryFormData formData) throws ProcessingException {
@@ -61,10 +62,7 @@ public class CountryProcessService  implements ICountryProcessService {
       throw new VetoException(Texts.get("AuthorizationFailed"));
     }
 
-    JPAUtility.select("SELECT C.countryCode, C.nation " +
-        "FROM RtCountry C " +
-        "WHERE C.id.countryUid = :countryUid " +
-        "INTO :countryCode, :nation", formData);
+    JPAUtility.select("SELECT C.countryCode, C.nation " + "FROM RtCountry C " + "WHERE C.id.countryUid = :countryUid " + "INTO :countryCode, :nation", formData);
 
     formData.getCodeBox().getCodeUid().setValue(formData.getCountryUid());
     BEANS.get(ICodeProcessService.class).loadCodeBox(formData.getCodeBox());
@@ -107,18 +105,9 @@ public class CountryProcessService  implements ICountryProcessService {
     }
 
     Long countryUid = null;
-    if (!StringUtility.isNullOrEmpty(nameUppercase) ||
-        !StringUtility.isNullOrEmpty(code) ||
-        !StringUtility.isNullOrEmpty(nation)) {
+    if (!StringUtility.isNullOrEmpty(nameUppercase) || !StringUtility.isNullOrEmpty(code) || !StringUtility.isNullOrEmpty(nation)) {
 
-      String queryString = "SELECT MAX(C.id.countryUid) " +
-          "FROM RtCountry C " +
-          "INNER JOIN C.rtUc U " +
-          "INNER JOIN U.rtUcls L " +
-          (nameUppercase == null ? "WHERE 1=1 " : "WHERE UPPER(L.codeName) = COALESCE(:nameUppercase,UPPER(L.codeName)) ") +
-          (code == null ? "" : "AND UPPER(C.countryCode) = COALESCE(:code,UPPER(C.countryCode)) ") +
-          (nation == null ? "" : "AND UPPER(C.nation) = COALESCE(:nation,UPPER(C.nation)) ") +
-          "AND C.id.clientNr = :sessionClientNr ";
+      String queryString = "SELECT MAX(C.id.countryUid) " + "FROM RtCountry C " + "INNER JOIN C.rtUc U " + "INNER JOIN U.rtUcls L " + (nameUppercase == null ? "WHERE 1=1 " : "WHERE UPPER(L.codeName) = COALESCE(:nameUppercase,UPPER(L.codeName)) ") + (code == null ? "" : "AND UPPER(C.countryCode) = COALESCE(:code,UPPER(C.countryCode)) ") + (nation == null ? "" : "AND UPPER(C.nation) = COALESCE(:nation,UPPER(C.nation)) ") + "AND C.id.clientNr = :sessionClientNr ";
       FMilaTypedQuery<Long> query = JPA.createQuery(queryString, Long.class);
       if (nameUppercase != null) {
         query.setParameter("nameUppercase", nameUppercase);
@@ -169,11 +158,10 @@ public class CountryProcessService  implements ICountryProcessService {
 
       // loop through available languages
       for (ICode<?> c : CODES.getCodeType(LanguageCodeType.class).getCodes()) {
-        int newRow = country.getCodeBox().getLanguage().addRow();
-        country.getCodeBox().getLanguage().setTranslation(newRow, name);
-        country.getCodeBox().getLanguage().setLanguage(newRow, (Long) c.getId());
+        LanguageRowData newRow = country.getCodeBox().getLanguage().addRow(ITableHolder.STATUS_INSERTED);
+        newRow.setTranslation(name);
+        newRow.setLanguage((Long) c.getId());
       }
-      country.getCodeBox().getLanguage().setRowStates(ITableHolder.STATUS_INSERTED);
       country.getNation().setValue(nation);
       country.getCountryCode().setValue(code);
       country.getCodeBox().getActive().setValue(true);

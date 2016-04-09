@@ -2,9 +2,9 @@ package com.rtiming.client.result;
 
 import java.util.List;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.desktop.outline.AbstractOutline;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 import com.rtiming.client.ecard.download.DownloadedECardsNodePage;
 import com.rtiming.client.ecard.download.ECardStationsTablePage;

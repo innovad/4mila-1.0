@@ -3,7 +3,7 @@ package com.rtiming.server.common.web;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.scout.commons.StringUtility;
+import org.eclipse.scout.rt.platform.util.StringUtility;
 
 public abstract class AbstractDatabaseDefinition {
 

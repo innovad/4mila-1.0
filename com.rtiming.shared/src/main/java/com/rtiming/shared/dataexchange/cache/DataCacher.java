@@ -2,7 +2,7 @@ package com.rtiming.shared.dataexchange.cache;
 
 import java.util.HashMap;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 public final class DataCacher implements IDataCacher {
 

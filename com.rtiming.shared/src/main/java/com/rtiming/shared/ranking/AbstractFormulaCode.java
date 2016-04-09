@@ -1,6 +1,6 @@
 package com.rtiming.shared.ranking;
 
-import org.eclipse.scout.commons.annotations.ConfigProperty;
+import org.eclipse.scout.rt.platform.annotations.ConfigProperty;
 import org.eclipse.scout.rt.shared.services.common.code.AbstractCode;
 
 public abstract class AbstractFormulaCode extends AbstractCode<Long> {

@@ -14,7 +14,7 @@
 //@ScoutWebServiceClient(authenticationHandler = IAuthenticationHandler.NONE.class)
 //public class OnlineServiceClient extends AbstractWebServiceClient<OnlineService, OnlineServiceSoap> {
 //
-//  private static IScoutLogger logger = ScoutLogManager.getLogger(OnlineServiceClient.class);
+//  private static Logger logger = LoggerFactory.getLogger(OnlineServiceClient.class);
 //
 //  @Override
 //  public URL getConfiguredWsdlLocation() {

@@ -2,8 +2,8 @@ package com.rtiming.shared;
 
 import java.util.Locale;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
 
@@ -37,9 +37,9 @@ public final class AdditionalInformationUtility {
       ai = new AdditionalInformationAdministrationFormData();
       ai = BEANS.get(IAdditionalInformationAdministrationProcessService.class).prepareCreate(ai);
       for (int i = 0; i < ai.getCodeBox().getLanguage().getRowCount(); i++) {
-        String language = CODES.getCodeType(LanguageCodeType.class).getCode(ai.getCodeBox().getLanguage().getLanguage(i)).getExtKey();
+        String language = CODES.getCodeType(LanguageCodeType.class).getCode(ai.getCodeBox().getLanguage().rowAt(i).getLanguage()).getExtKey();
         Locale locale = new Locale(language);
-        ai.getCodeBox().getLanguage().setTranslation(i, TEXTS.get(locale, textKey));
+        ai.getCodeBox().getLanguage().rowAt(i).setTranslation(TEXTS.get(locale, textKey));
       }
       ai.getEntity().setValue(entityUid);
       ai.getSmartfield().setValue(parentUid);

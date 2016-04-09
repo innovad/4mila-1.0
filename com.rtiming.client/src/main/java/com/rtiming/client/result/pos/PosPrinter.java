@@ -1,6 +1,6 @@
 package com.rtiming.client.result.pos;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 import jpos.JposException;
 import jpos.POSPrinterConst;

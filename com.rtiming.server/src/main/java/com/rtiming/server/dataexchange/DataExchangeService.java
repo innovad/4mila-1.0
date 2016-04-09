@@ -3,11 +3,11 @@ package com.rtiming.server.dataexchange;
 import java.util.Date;
 import java.util.List;
 
-import org.eclipse.scout.commons.StringUtility;
-import org.eclipse.scout.commons.exception.IProcessingStatus;
-import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.exception.IProcessingStatus;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.util.NumberUtility;
+import org.eclipse.scout.rt.platform.util.StringUtility;
 
 import com.rtiming.server.ServerSession;
 import com.rtiming.shared.FMilaUtility;
@@ -56,7 +56,7 @@ import com.rtiming.shared.settings.city.CityFormData;
 import com.rtiming.shared.settings.city.ICityProcessService;
 import com.rtiming.shared.settings.currency.CurrencyFormData;
 
-public class DataExchangeService  implements IDataExchangeService {
+public class DataExchangeService implements IDataExchangeService {
 
   @Override
   public void clearCaches() {
@@ -158,7 +158,7 @@ public class DataExchangeService  implements IDataExchangeService {
       CodeFormData clazz = clazzCache.get(bean.getClazzCode());
       if (clazz.getCodeUid() == null) {
         for (int k = 0; k < clazz.getMainBox().getLanguage().getRowCount(); k++) {
-          clazz.getMainBox().getLanguage().setTranslation(k, bean.getClazzCode());
+          clazz.getMainBox().getLanguage().rowAt(k).setTranslation(bean.getClazzCode());
         }
         clazz = clazzCache.put(bean.getClazzCode(), clazz);
       }
@@ -210,9 +210,7 @@ public class DataExchangeService  implements IDataExchangeService {
     RtEcard eCard = ImportUtility.importECard(eCardNoStr, rentalCard);
 
     // Club
-    String clubStr = StringUtility.emptyIfNull(bean.getAbk()) +
-        (StringUtility.isNullOrEmpty(bean.getAbk()) ? "" : " ") +
-        StringUtility.emptyIfNull(bean.getOrt());
+    String clubStr = StringUtility.emptyIfNull(bean.getAbk()) + (StringUtility.isNullOrEmpty(bean.getAbk()) ? "" : " ") + StringUtility.emptyIfNull(bean.getOrt());
     ClubFormData club = null;
     if (!StringUtility.isNullOrEmpty(clubStr)) {
       club = ImportUtility.importClub(clubStr, clubCache);

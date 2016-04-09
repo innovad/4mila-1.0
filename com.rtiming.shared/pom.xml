@@ -17,11 +17,6 @@
 			<groupId>org.eclipse.scout.rt</groupId>
 		</dependency>
 		<dependency>
-			<groupId>org.eclipse.scout.rt</groupId>
-			<artifactId>org.eclipse.scout.commons</artifactId>
-			<version>5.2.0.M3</version>
-		</dependency>
-		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>javax.mail-api</artifactId>
 			<version>1.5.5</version>

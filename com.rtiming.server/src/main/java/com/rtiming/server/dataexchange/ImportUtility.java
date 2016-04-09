@@ -1,10 +1,10 @@
 package com.rtiming.server.dataexchange;
 
-import org.eclipse.scout.commons.BooleanUtility;
-import org.eclipse.scout.commons.CompareUtility;
-import org.eclipse.scout.commons.StringUtility;
-import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.util.BooleanUtility;
+import org.eclipse.scout.rt.platform.util.CompareUtility;
+import org.eclipse.scout.rt.platform.util.StringUtility;
 
 import com.rtiming.shared.FMilaUtility;
 import com.rtiming.shared.club.ClubFormData;
@@ -84,7 +84,7 @@ public final class ImportUtility {
         currency.getExchangeRate().setValue(1.0d);
         currency.getCodeBox().getShortcut().setValue(currencyStr);
         for (int k = 0; k < currency.getCodeBox().getLanguage().getRowCount(); k++) {
-          currency.getCodeBox().getLanguage().setTranslation(k, currencyStr);
+          currency.getCodeBox().getLanguage().rowAt(k).setTranslation(currencyStr);
         }
         currency = currencyCache.put(currencyStr, currency);
       }
@@ -108,7 +108,7 @@ public final class ImportUtility {
     CodeFormData clazz = clazzCache.get(kurz);
     if (clazz.getCodeUid() == null) {
       for (int k = 0; k < clazz.getMainBox().getLanguage().getRowCount(); k++) {
-        clazz.getMainBox().getLanguage().setTranslation(k, lang);
+        clazz.getMainBox().getLanguage().rowAt(k).setTranslation(lang);
       }
       clazz = clazzCache.put(kurz, clazz);
     }

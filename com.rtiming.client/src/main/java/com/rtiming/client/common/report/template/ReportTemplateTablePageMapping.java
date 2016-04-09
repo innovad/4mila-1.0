@@ -2,8 +2,8 @@ package com.rtiming.client.common.report.template;
 
 import java.util.HashMap;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPageWithTable;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 import com.rtiming.client.ClientSession;
 import com.rtiming.client.entry.EntriesTablePage;

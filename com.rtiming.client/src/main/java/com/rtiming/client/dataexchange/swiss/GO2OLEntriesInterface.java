@@ -2,7 +2,7 @@ package com.rtiming.client.dataexchange.swiss;
 
 import java.util.List;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 import com.rtiming.client.dataexchange.AbstractCSVInterface;
 import com.rtiming.shared.AdditionalInformationUtility;

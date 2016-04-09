@@ -1,9 +1,9 @@
 package com.rtiming.client.settings.addinfo.columns;
 
-import org.eclipse.scout.commons.annotations.Order;
-import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.basic.table.HeaderCell;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
+import org.eclipse.scout.rt.platform.Order;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 @Order(value = Double.MAX_VALUE)
 public class AdditionalLongColumn extends AbstractLongColumn implements IAdditionalColumn {

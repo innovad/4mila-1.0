@@ -7,7 +7,7 @@ import java.util.List;
 
 import javax.persistence.Query;
 
-import org.eclipse.scout.commons.TypeCastUtility;
+import org.eclipse.scout.rt.platform.util.TypeCastUtility;
 
 import com.rtiming.server.common.database.jpa.JPA;
 

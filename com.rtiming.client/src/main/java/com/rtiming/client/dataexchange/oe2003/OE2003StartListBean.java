@@ -1,8 +1,8 @@
 package com.rtiming.client.dataexchange.oe2003;
 
-import org.eclipse.scout.commons.CompareUtility;
-import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.util.CompareUtility;
 
 import com.rtiming.client.entry.AbstractEntriesTablePage;
 import com.rtiming.shared.FMilaUtility;
@@ -31,8 +31,8 @@ public class OE2003StartListBean extends AbstractOE2003ListBean {
 
     String clazzStr = "";
     for (int t = 0; t < info.getClazzCode().getMainBox().getLanguage().getRowCount(); t++) {
-      if (CompareUtility.equals(info.getClazzCode().getMainBox().getLanguage().getLanguage(t), info.getLanguageUid())) {
-        clazzStr = info.getClazzCode().getMainBox().getLanguage().getTranslation(t);
+      if (CompareUtility.equals(info.getClazzCode().getMainBox().getLanguage().rowAt(t).getLanguage(), info.getLanguageUid())) {
+        clazzStr = info.getClazzCode().getMainBox().getLanguage().rowAt(t).getTranslation();
       }
     }
 

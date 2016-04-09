@@ -3,8 +3,8 @@ package com.rtiming.client.ranking;
 import java.util.HashMap;
 import java.util.List;
 
-import org.eclipse.scout.commons.CompareUtility;
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.util.CompareUtility;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
 
 import com.rtiming.shared.event.course.ControlStatusCodeType;

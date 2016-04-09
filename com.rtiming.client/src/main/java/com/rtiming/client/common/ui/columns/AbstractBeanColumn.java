@@ -1,8 +1,8 @@
 package com.rtiming.client.common.ui.columns;
 
-import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractColumn;
+import org.eclipse.scout.rt.platform.util.StringUtility;
 
 public abstract class AbstractBeanColumn<T extends Object> extends AbstractColumn<T> {
 

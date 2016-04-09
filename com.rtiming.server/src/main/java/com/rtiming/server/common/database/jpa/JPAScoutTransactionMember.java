@@ -2,11 +2,11 @@ package com.rtiming.server.common.database.jpa;
 
 import javax.persistence.EntityManager;
 
-import org.eclipse.scout.commons.logger.IScoutLogger;
-import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.server.transaction.AbstractTransactionMember;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The scout framework handles transactions osgi based using a {@link ServerJob}.
@@ -17,7 +17,7 @@ import org.hibernate.Session;
  */
 public class JPAScoutTransactionMember extends AbstractTransactionMember {
   public static final String TRANSACTION_MEMBER_ID = JPAScoutTransactionMember.class.getName();
-  private static final IScoutLogger LOG = ScoutLogManager.getLogger(JPAScoutTransactionMember.class);
+  private static final Logger LOG = LoggerFactory.getLogger(JPAScoutTransactionMember.class);
 
   private final EntityManager m_session;
 

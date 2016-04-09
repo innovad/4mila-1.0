@@ -6,7 +6,7 @@
 //import org.eclipse.scout.commons.logger.ScoutLogManager;
 //
 //public class FMilaErrorHandler extends ErrorHandler {
-//  private static final IScoutLogger LOG = ScoutLogManager.getLogger(FMilaErrorHandler.class);
+//  private static final Logger LOG = LoggerFactory.getLogger(FMilaErrorHandler.class);
 //  private final Throwable throwable;
 //
 //  public FMilaErrorHandler(Throwable throwable) {

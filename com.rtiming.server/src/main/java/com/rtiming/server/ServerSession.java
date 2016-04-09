@@ -2,13 +2,13 @@ package com.rtiming.server;
 
 import java.util.Locale;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.logger.IScoutLogger;
-import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.server.AbstractServerSession;
 import org.eclipse.scout.rt.server.session.ServerSessionProvider;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.rtiming.shared.settings.account.IAccountProcessService;
 import com.rtiming.shared.settings.user.IUserProcessService;
@@ -16,7 +16,7 @@ import com.rtiming.shared.settings.user.LanguageCodeType;
 import com.rtiming.shared.settings.user.UserFormData;
 
 public class ServerSession extends AbstractServerSession {
-  private static IScoutLogger logger = ScoutLogManager.getLogger(ServerSession.class);
+  private static Logger logger = LoggerFactory.getLogger(ServerSession.class);
   private Long[] roleUids;
 
   public ServerSession() {

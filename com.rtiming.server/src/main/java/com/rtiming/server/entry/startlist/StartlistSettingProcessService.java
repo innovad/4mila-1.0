@@ -1,13 +1,14 @@
 package com.rtiming.server.entry.startlist;
 
-import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-import org.eclipse.scout.commons.CompareUtility;
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.exception.VetoException;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.VetoException;
+import org.eclipse.scout.rt.platform.util.CompareUtility;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
 
@@ -37,7 +38,7 @@ import com.rtiming.shared.event.EventClassFormData;
 import com.rtiming.shared.event.IEventClassProcessService;
 import com.rtiming.shared.event.IEventProcessService;
 
-public class StartlistSettingProcessService  implements IStartlistSettingProcessService {
+public class StartlistSettingProcessService implements IStartlistSettingProcessService {
 
   @Override
   public StartlistSettingFormData prepareCreate(StartlistSettingFormData formData) throws ProcessingException {
@@ -108,16 +109,12 @@ public class StartlistSettingProcessService  implements IStartlistSettingProcess
     Date evtZero = BEANS.get(IEventProcessService.class).getZeroTime(setting.getEventNr());
     formData.getFirstStart().setValue(FMilaUtility.addMilliSeconds(evtZero, setting.getFirstStarttime()));
 
-    String queryString = "SELECT " +
-        "id.optionUid " +
-        "FROM RtStartlistSettingOption STO " +
-        "WHERE STO.id.startlistSettingNr = :startlistSettingNr " +
-        "AND STO.id.clientNr = :sessionClientNr ";
+    String queryString = "SELECT " + "id.optionUid " + "FROM RtStartlistSettingOption STO " + "WHERE STO.id.startlistSettingNr = :startlistSettingNr " + "AND STO.id.clientNr = :sessionClientNr ";
     FMilaTypedQuery<Long> query = JPA.createQuery(queryString, Long.class);
     query.setParameter("startlistSettingNr", formData.getStartlistSettingNr());
     query.setParameter("sessionClientNr", ServerSession.get().getSessionClientNr());
     List<Long> options = query.getResultList();
-    formData.getOptions().setValue(options.toArray(new Long[options.size()]));
+    formData.getOptions().setValue(new HashSet<>(options));
 
     return formData;
   }
@@ -130,9 +127,8 @@ public class StartlistSettingProcessService  implements IStartlistSettingProcess
 
     // check
     if (formData.getOptions().getValue() != null) {
-      List<Long> values = Arrays.asList(formData.getOptions().getValue());
-      if (values.contains(StartlistSettingOptionCodeType.SeparateClubsCode.ID) &&
-          values.contains(StartlistSettingOptionCodeType.SeparateNationsCode.ID)) {
+      Set<Long> values = formData.getOptions().getValue();
+      if (values.contains(StartlistSettingOptionCodeType.SeparateClubsCode.ID) && values.contains(StartlistSettingOptionCodeType.SeparateNationsCode.ID)) {
         throw new VetoException(TEXTS.get("StartlistOptionsSeparationOnlyOneAttributeWarning"));
       }
     }
@@ -140,18 +136,7 @@ public class StartlistSettingProcessService  implements IStartlistSettingProcess
     Date evtZero = BEANS.get(IEventProcessService.class).getZeroTime(formData.getEventNr());
     Long firstStartDiff = FMilaUtility.getDateDifferenceInMilliSeconds(evtZero, formData.getFirstStart().getValue());
 
-    String queryString = "UPDATE RtStartlistSetting " +
-        "SET typeUid = :typeUid, " +
-        "eventNr = :eventNr, " +
-        "firstStarttime = :firstStartDiff, " +
-        "startInterval = :startInterval, " +
-        "vacantPercent = :vacantPercent, " +
-        "vacantAbsolute = :vacantAbsolute, " +
-        "vacantPositionUid = :vacantPositionGroup, " +
-        "bibNoFrom = :bibNoFrom, " +
-        "bibNoOrderUid = :bibNoOrderUid " +
-        "WHERE id.startlistSettingNr = :startlistSettingNr " +
-        "AND id.clientNr = :sessionClientNr";
+    String queryString = "UPDATE RtStartlistSetting " + "SET typeUid = :typeUid, " + "eventNr = :eventNr, " + "firstStarttime = :firstStartDiff, " + "startInterval = :startInterval, " + "vacantPercent = :vacantPercent, " + "vacantAbsolute = :vacantAbsolute, " + "vacantPositionUid = :vacantPositionGroup, " + "bibNoFrom = :bibNoFrom, " + "bibNoOrderUid = :bibNoOrderUid " + "WHERE id.startlistSettingNr = :startlistSettingNr " + "AND id.clientNr = :sessionClientNr";
     FMilaQuery query = JPA.createQuery(queryString);
     JPAUtility.setAutoParameters(query, queryString, formData);
     query.setParameter("firstStartDiff", firstStartDiff);
@@ -181,9 +166,7 @@ public class StartlistSettingProcessService  implements IStartlistSettingProcess
   }
 
   private void deleteOptions(Long startlistSettingNr) throws ProcessingException {
-    String queryString = "DELETE FROM RtStartlistSettingOption " +
-        "WHERE id.startlistSettingNr = :startlistSettingNr " +
-        "AND id.clientNr = :sessionClientNr";
+    String queryString = "DELETE FROM RtStartlistSettingOption " + "WHERE id.startlistSettingNr = :startlistSettingNr " + "AND id.clientNr = :sessionClientNr";
     FMilaQuery query = JPA.createQuery(queryString);
     query.setParameter("startlistSettingNr", startlistSettingNr);
     query.setParameter("sessionClientNr", ServerSession.get().getSessionClientNr());
@@ -196,11 +179,7 @@ public class StartlistSettingProcessService  implements IStartlistSettingProcess
       return formData;
     }
 
-    String queryString = "UPDATE RtEventClass " +
-        "SET startlistSettingNr = NULL " +
-        "WHERE startlistSettingNr = :startlistSettingNr " +
-        "AND :startlistSettingNr IS NOT NULL " +
-        "AND id.clientNr = :sessionClientNr";
+    String queryString = "UPDATE RtEventClass " + "SET startlistSettingNr = NULL " + "WHERE startlistSettingNr = :startlistSettingNr " + "AND :startlistSettingNr IS NOT NULL " + "AND id.clientNr = :sessionClientNr";
     FMilaQuery query = JPA.createQuery(queryString);
     query.setParameter("startlistSettingNr", formData.getStartlistSettingNr());
     query.setParameter("sessionClientNr", ServerSession.get().getSessionClientNr());
@@ -210,9 +189,7 @@ public class StartlistSettingProcessService  implements IStartlistSettingProcess
 
     StartlistVacantUtility.removeVacants(formData.getStartlistSettingNr());
 
-    queryString = "DELETE FROM RtStartlistSetting " +
-        "WHERE id.startlistSettingNr = :startlistSettingNr " +
-        "AND id.clientNr = :sessionClientNr";
+    queryString = "DELETE FROM RtStartlistSetting " + "WHERE id.startlistSettingNr = :startlistSettingNr " + "AND id.clientNr = :sessionClientNr";
     query = JPA.createQuery(queryString);
     query.setParameter("startlistSettingNr", formData.getStartlistSettingNr());
     query.setParameter("sessionClientNr", ServerSession.get().getSessionClientNr());

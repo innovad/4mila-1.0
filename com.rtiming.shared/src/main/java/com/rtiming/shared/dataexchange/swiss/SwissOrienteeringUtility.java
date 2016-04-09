@@ -1,6 +1,6 @@
 package com.rtiming.shared.dataexchange.swiss;
 
-import org.eclipse.scout.commons.StringUtility;
+import org.eclipse.scout.rt.platform.util.StringUtility;
 
 public final class SwissOrienteeringUtility {
 

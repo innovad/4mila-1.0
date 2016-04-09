@@ -3,7 +3,7 @@ package com.rtiming.client.dataexchange.oe2003;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.eclipse.scout.commons.CompareUtility;
+import org.eclipse.scout.rt.platform.util.CompareUtility;
 import org.eclipse.scout.rt.platform.util.date.DateUtility;
 
 import com.rtiming.shared.FMilaUtility;

@@ -3,8 +3,8 @@ package com.rtiming.client.entry;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.scout.commons.CompareUtility;
 import org.eclipse.scout.rt.client.ui.form.fields.radiobuttongroup.AbstractRadioButtonGroup;
+import org.eclipse.scout.rt.platform.util.CompareUtility;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;

@@ -2,7 +2,7 @@ package com.rtiming.server.result;
 
 import java.util.List;
 
-import org.eclipse.scout.commons.CompareUtility;
+import org.eclipse.scout.rt.platform.util.CompareUtility;
 
 import com.rtiming.shared.race.RaceStatusCodeType;
 import com.rtiming.shared.results.ResultRowData;

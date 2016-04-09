@@ -8,17 +8,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
 
-import org.eclipse.scout.commons.CompareUtility;
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.logger.IScoutLogger;
-import org.eclipse.scout.commons.logger.ScoutLogManager;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.util.CompareUtility;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.rtiming.shared.entry.startlist.StartlistSettingOptionCodeType;
 import com.rtiming.shared.entry.startlist.StartlistSettingUtility;
 
 public final class StartlistRegistrationGroupingUtility {
 
-  private static final IScoutLogger LOG = ScoutLogManager.getLogger(StartlistRegistrationGroupingUtility.class);
+  private static final Logger LOG = LoggerFactory.getLogger(StartlistRegistrationGroupingUtility.class);
 
   private StartlistRegistrationGroupingUtility() {
   }
@@ -45,9 +45,7 @@ public final class StartlistRegistrationGroupingUtility {
     Map<Long, RegistrationBean> map = new HashMap<Long, RegistrationBean>();
     for (StartlistParticipationBean bean : allParticipations) {
       List<Long> options = StartlistSettingUtility.getStartlistOptions(settingsMap.get(bean.getStartlistSettingNr()).getSettings().getOptions());
-      if (bean.getStartTimeWish() == null &&
-          CompareUtility.equals(bean.getRegistrationStartlistSettingOptionUid(), ruleUid) &&
-          options.contains(ruleUid)) {
+      if (bean.getStartTimeWish() == null && CompareUtility.equals(bean.getRegistrationStartlistSettingOptionUid(), ruleUid) && options.contains(ruleUid)) {
         // add participation to registration map
         RegistrationBean registration = null;
         if (!map.containsKey(bean.getRegistrationNr())) {
@@ -114,7 +112,7 @@ public final class StartlistRegistrationGroupingUtility {
     else if (avg < from) {
       targetTime = latestFirstStart;
     }
-    else /* to <= avg */{
+    else /* to <= avg */ {
       targetTime = earliestLastStart;
     }
 

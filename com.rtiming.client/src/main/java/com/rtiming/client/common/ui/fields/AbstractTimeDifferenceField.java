@@ -1,7 +1,7 @@
 package com.rtiming.client.common.ui.fields;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.form.fields.longfield.AbstractLongField;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.shared.TEXTS;
 
 import com.rtiming.client.common.ui.TimeDifferenceUtility;

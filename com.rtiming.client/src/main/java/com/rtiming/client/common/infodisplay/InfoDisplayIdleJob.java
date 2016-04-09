@@ -1,8 +1,8 @@
 package com.rtiming.client.common.infodisplay;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.IClientSession;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 import com.rtiming.shared.common.database.sql.EventBean;
 import com.rtiming.shared.event.IEventProcessService;

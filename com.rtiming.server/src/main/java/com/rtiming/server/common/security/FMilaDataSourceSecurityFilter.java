@@ -10,17 +10,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.eclipse.scout.commons.logger.IScoutLogger;
-import org.eclipse.scout.commons.logger.ScoutLogManager;
-import org.eclipse.scout.commons.security.SimplePrincipal;
+import org.eclipse.scout.rt.platform.security.SimplePrincipal;
 import org.eclipse.scout.rt.server.commons.servlet.filter.authentication.DataSourceSecurityFilter;
 import org.eclipse.scout.rt.server.commons.servlet.filter.authentication.PrincipalHolder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.rtiming.shared.FMilaUtility;
 
 public class FMilaDataSourceSecurityFilter extends DataSourceSecurityFilter {
 
-  private static final IScoutLogger LOG = ScoutLogManager.getLogger(DataSourceSecurityFilter.class);
+  private static final Logger LOG = LoggerFactory.getLogger(DataSourceSecurityFilter.class);
 
   @Override
   protected int negotiate(HttpServletRequest req, HttpServletResponse resp, PrincipalHolder holder) throws IOException, ServletException {

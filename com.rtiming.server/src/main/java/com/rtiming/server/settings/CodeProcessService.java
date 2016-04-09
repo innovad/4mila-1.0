@@ -6,12 +6,12 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import org.eclipse.scout.commons.StringUtility;
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.exception.VetoException;
-import org.eclipse.scout.commons.holders.ITableHolder;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.VetoException;
+import org.eclipse.scout.rt.platform.holders.ITableHolder;
 import org.eclipse.scout.rt.platform.util.NumberUtility;
+import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
@@ -25,6 +25,7 @@ import com.rtiming.server.common.database.jpa.JPA;
 import com.rtiming.server.common.database.jpa.JPAUtility;
 import com.rtiming.shared.Texts;
 import com.rtiming.shared.common.AbstractCodeBoxData;
+import com.rtiming.shared.common.AbstractCodeBoxData.Language.LanguageRowData;
 import com.rtiming.shared.common.AbstractSqlCodeType;
 import com.rtiming.shared.common.security.permission.CreateCodePermission;
 import com.rtiming.shared.common.security.permission.DeleteCodePermission;
@@ -40,7 +41,7 @@ import com.rtiming.shared.settings.CodeFormData;
 import com.rtiming.shared.settings.ICodeProcessService;
 import com.rtiming.shared.settings.user.LanguageCodeType;
 
-public class CodeProcessService  implements ICodeProcessService {
+public class CodeProcessService implements ICodeProcessService {
 
   @Override
   public CodeFormData prepareCreate(CodeFormData formData) throws ProcessingException {
@@ -87,7 +88,7 @@ public class CodeProcessService  implements ICodeProcessService {
     int k = 0;
     for (ICode code : CODES.getCodeType(LanguageCodeType.class).getCodes()) {
       codeBox.getLanguage().addRow();
-      codeBox.getLanguage().setLanguage(k, (Long) code.getId());
+      codeBox.getLanguage().rowAt(k).setLanguage((Long) code.getId());
       k++;
     }
 
@@ -131,25 +132,17 @@ public class CodeProcessService  implements ICodeProcessService {
       throw new VetoException(Texts.get("AuthorizationFailed"));
     }
 
-    JPAUtility.select("SELECT U.active, U.shortcut, U.codeType " +
-        "FROM RtUc U " +
-        "WHERE U.id.ucUid = :codeUid " +
-        "AND U.id.clientNr = :sessionClientNr " +
-        "INTO :active, :shortcut, :codeTypeUid ", formData);
+    JPAUtility.select("SELECT U.active, U.shortcut, U.codeType " + "FROM RtUc U " + "WHERE U.id.ucUid = :codeUid " + "AND U.id.clientNr = :sessionClientNr " + "INTO :active, :shortcut, :codeTypeUid ", formData);
 
     CriteriaBuilder b = JPA.getCriteriaBuilder();
     CriteriaQuery<RtUcl> select = b.createQuery(RtUcl.class);
     Root<RtUcl> rtecard = select.from(RtUcl.class);
-    select.where(
-        b.and(
-            b.equal(rtecard.get(RtUcl_.id).get(RtUclKey_.ucUid), formData.getCodeUid().getValue()),
-            b.equal(rtecard.get(RtUcl_.id).get(RtUclKey_.clientNr), ServerSession.get().getSessionClientNr()))
-        );
+    select.where(b.and(b.equal(rtecard.get(RtUcl_.id).get(RtUclKey_.ucUid), formData.getCodeUid().getValue()), b.equal(rtecard.get(RtUcl_.id).get(RtUclKey_.clientNr), ServerSession.get().getSessionClientNr())));
     List<RtUcl> result = JPA.createQuery(select).getResultList();
     for (RtUcl ucl : result) {
-      int rowId = formData.getLanguage().addRow();
-      formData.getLanguage().setTranslation(rowId, ucl.getCodeName());
-      formData.getLanguage().setLanguage(rowId, ucl.getId().getLanguageUid());
+      LanguageRowData rowId = formData.getLanguage().addRow(ITableHolder.STATUS_INSERTED);
+      rowId.setTranslation(ucl.getCodeName());
+      rowId.setLanguage(ucl.getId().getLanguageUid());
     }
 
     return formData;
@@ -161,28 +154,23 @@ public class CodeProcessService  implements ICodeProcessService {
       throw new VetoException(Texts.get("AuthorizationFailed"));
     }
 
-    String queryString = "UPDATE RtUc " +
-        "SET active = :active," +
-        "shortcut = :shortcut, " +
-        "codeType = :codeTypeUid " +
-        "WHERE id.ucUid = :codeUid " +
-        "AND id.clientNr = :sessionClientNr";
+    String queryString = "UPDATE RtUc " + "SET active = :active," + "shortcut = :shortcut, " + "codeType = :codeTypeUid " + "WHERE id.ucUid = :codeUid " + "AND id.clientNr = :sessionClientNr";
     FMilaQuery query = JPA.createQuery(queryString);
     JPAUtility.setAutoParameters(query, queryString, formData);
     query.executeUpdate();
 
     for (int i = 0; i < formData.getLanguage().getRowCount(); i++) {
-      if (StringUtility.isNullOrEmpty(formData.getLanguage().getTranslation(i))) {
+      if (StringUtility.isNullOrEmpty(formData.getLanguage().rowAt(i).getTranslation())) {
         throw new VetoException(Texts.get("CodeTranslationRequiredForEachLanguageMessage"));
       }
 
       RtUclKey key = new RtUclKey();
       key.setClientNr(ServerSession.get().getSessionClientNr());
-      key.setLanguageUid(formData.getLanguage().getLanguage(i));
+      key.setLanguageUid(formData.getLanguage().rowAt(i).getLanguage());
       key.setUcUid(formData.getCodeUid().getValue());
       RtUcl ucl = new RtUcl();
       ucl.setId(key);
-      ucl.setCodeName(formData.getLanguage().getTranslation(i));
+      ucl.setCodeName(formData.getLanguage().rowAt(i).getTranslation());
       JPA.merge(ucl);
     }
 
@@ -199,11 +187,7 @@ public class CodeProcessService  implements ICodeProcessService {
 
   @Override
   public String getTranslation(Long codeUid, Long clientNr) throws ProcessingException {
-    String queryString = "SELECT MAX(codeName) " +
-        "FROM RtUcl " +
-        "WHERE id.ucUid = :codeUid " +
-        "AND id.clientNr = :clientNr) " +
-        "AND id.languageUid = " + ServerSession.get().getLanguageUid();
+    String queryString = "SELECT MAX(codeName) " + "FROM RtUcl " + "WHERE id.ucUid = :codeUid " + "AND id.clientNr = :clientNr) " + "AND id.languageUid = " + ServerSession.get().getLanguageUid();
     FMilaTypedQuery<String> query = JPA.createQuery(queryString, String.class);
     query.setParameter("codeUid", codeUid);
     query.setParameter("clientNr", NumberUtility.nvl(clientNr, ServerSession.get().getSessionClientNr()));
@@ -217,11 +201,7 @@ public class CodeProcessService  implements ICodeProcessService {
     shortcut = StringUtility.trim(shortcut);
     String shortcutUppercase = StringUtility.uppercase(shortcut);
 
-    String queryString = "SELECT MAX(id.ucUid) " +
-        "FROM RtUc " +
-        "WHERE UPPER(shortcut) = :shortcut " +
-        "AND codeType = :codeType " +
-        "AND id.clientNr = :sessionClientNr ";
+    String queryString = "SELECT MAX(id.ucUid) " + "FROM RtUc " + "WHERE UPPER(shortcut) = :shortcut " + "AND codeType = :codeType " + "AND id.clientNr = :sessionClientNr ";
     FMilaTypedQuery<Long> query = JPA.createQuery(queryString, Long.class);
     query.setParameter("shortcut", shortcutUppercase);
     query.setParameter("codeType", codeType);
@@ -241,11 +221,10 @@ public class CodeProcessService  implements ICodeProcessService {
 
       // loop through available languages
       for (ICode<?> c : CODES.getCodeType(LanguageCodeType.class).getCodes()) {
-        int newRow = code.getMainBox().getLanguage().addRow();
-        code.getMainBox().getLanguage().setTranslation(newRow, shortcut);
-        code.getMainBox().getLanguage().setLanguage(newRow, (Long) c.getId());
+        LanguageRowData newRow = code.getMainBox().getLanguage().addRow(ITableHolder.STATUS_INSERTED);
+        newRow.setTranslation(shortcut);
+        newRow.setLanguage((Long) c.getId());
       }
-      code.getMainBox().getLanguage().setRowStates(ITableHolder.STATUS_INSERTED);
     }
 
     return code;
@@ -260,17 +239,13 @@ public class CodeProcessService  implements ICodeProcessService {
       return;
     }
 
-    String queryString = "DELETE FROM RtUcl " +
-        "WHERE id.clientNr = :sessionClientNr " +
-        "AND id.ucUid = :codeUid";
+    String queryString = "DELETE FROM RtUcl " + "WHERE id.clientNr = :sessionClientNr " + "AND id.ucUid = :codeUid";
     FMilaQuery query = JPA.createQuery(queryString);
     query.setParameter("sessionClientNr", ServerSession.get().getSessionClientNr());
     query.setParameter("codeUid", formData.getCodeUid().getValue());
     query.executeUpdate();
 
-    queryString = "DELETE FROM RtUc " +
-        "WHERE id.clientNr = :sessionClientNr " +
-        "AND id.ucUid = :codeUid";
+    queryString = "DELETE FROM RtUc " + "WHERE id.clientNr = :sessionClientNr " + "AND id.ucUid = :codeUid";
     query = JPA.createQuery(queryString);
     query.setParameter("sessionClientNr", ServerSession.get().getSessionClientNr());
     query.setParameter("codeUid", formData.getCodeUid().getValue());

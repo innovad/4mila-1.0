@@ -6,10 +6,10 @@ import java.util.ListIterator;
 
 import javax.jws.WebService;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.logger.IScoutLogger;
-import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com._4mila._4mila.jaxws.online.Account;
 import com._4mila._4mila.jaxws.online.CreateAccount;
@@ -33,7 +33,7 @@ import com.rtiming.shared.settings.account.IAccountProcessService;
 @WebService(endpointInterface = "com._4mila._4mila.jaxws.online.OnlineServiceSoap")
 public class OnlineServiceWebService implements OnlineServiceSoap {
 
-  private static IScoutLogger logger = ScoutLogManager.getLogger(OnlineServiceWebService.class);
+  private static Logger logger = LoggerFactory.getLogger(OnlineServiceWebService.class);
 
   @Override
   public Result upload(String username, String password, long clientNr, long eventNr, TableDataList data) {

@@ -3,9 +3,9 @@ package com.rtiming.client.ecard.download.processor;
 import java.util.ArrayList;
 import java.util.Date;
 
-import org.eclipse.scout.commons.CompareUtility;
-import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.IClientSession;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.util.CompareUtility;
 
 import com.rtiming.client.ecard.download.util.ByteUtility;
 import com.rtiming.client.ecard.download.util.SICardUtility;

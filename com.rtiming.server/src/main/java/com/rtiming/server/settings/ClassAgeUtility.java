@@ -3,8 +3,8 @@ package com.rtiming.server.settings;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.scout.commons.CompareUtility;
-import org.eclipse.scout.commons.StringUtility;
+import org.eclipse.scout.rt.platform.util.CompareUtility;
+import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.shared.TEXTS;
 
 import com.rtiming.shared.dao.RtClassAge;

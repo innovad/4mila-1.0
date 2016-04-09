@@ -1,6 +1,6 @@
 package com.rtiming.shared.ranking;
 
-import org.eclipse.scout.commons.CompareUtility;
+import org.eclipse.scout.rt.platform.util.CompareUtility;
 
 import com.rtiming.shared.race.TimePrecisionCodeType;
 

@@ -3,9 +3,9 @@ package com.rtiming.client.common.ui.fields;
 import java.awt.Desktop;
 import java.net.URI;
 
-import org.eclipse.scout.commons.StringUtility;
-import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.util.StringUtility;
 
 import com.rtiming.shared.Texts;
 

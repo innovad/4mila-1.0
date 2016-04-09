@@ -1,6 +1,5 @@
 package com.rtiming.shared.settings.clazz;
 
-import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupService;
 import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 
@@ -18,52 +17,42 @@ public class ClazzLookupCall extends LookupCall<Long> {
     return IClazzLookupService.class;
   }
 
-  @FormData
   public Long getEventNr() {
     return m_eventNr;
   }
 
-  @FormData
   public void setEventNr(Long eventNr) {
     m_eventNr = eventNr;
   }
 
-  @FormData
   public Long getClassNr() {
     return m_classNr;
   }
 
-  @FormData
   public void setClassNr(Long classNr) {
     m_classNr = classNr;
   }
 
-  @FormData
   public boolean isShowShortcutOnly() {
     return m_showShortcutOnly;
   }
 
-  @FormData
   public void setShowShortcutOnly(boolean showShortcutOnly) {
     m_showShortcutOnly = showShortcutOnly;
   }
 
-  @FormData
   public boolean isShowLegsOnly() {
     return m_showLegsOnly;
   }
 
-  @FormData
   public void setShowLegsOnly(boolean showLegsOnly) {
     m_showLegsOnly = showLegsOnly;
   }
 
-  @FormData
   public boolean isShowClassesOnly() {
     return m_showClassesOnly;
   }
 
-  @FormData
   public void setShowClassesOnly(boolean showClassesOnly) {
     m_showClassesOnly = showClassesOnly;
   }

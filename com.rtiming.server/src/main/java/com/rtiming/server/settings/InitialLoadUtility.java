@@ -10,11 +10,11 @@ import javax.persistence.criteria.Join;
 import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Root;
 
-import org.eclipse.scout.commons.CompareUtility;
-import org.eclipse.scout.commons.StringUtility;
-import org.eclipse.scout.commons.TypeCastUtility;
-import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.util.CompareUtility;
+import org.eclipse.scout.rt.platform.util.StringUtility;
+import org.eclipse.scout.rt.platform.util.TypeCastUtility;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
 
@@ -536,16 +536,7 @@ public final class InitialLoadUtility {
     Root<RtUc> uc = selectQuery.from(RtUc.class);
     Join<RtUc, RtUcl> joinUcl = uc.join(RtUc_.rtUcls, JoinType.INNER);
 
-    selectQuery.select(b.array(
-        uc.get(RtUc_.id).get(RtUcKey_.ucUid),
-        joinUcl.get(RtUcl_.codeName)
-        ))
-        .where(
-            b.and(
-                b.equal(uc.get(RtUc_.id).get(RtUcKey_.clientNr), ServerSession.get().getSessionClientNr()),
-                b.equal(joinUcl.get(RtUcl_.id).get(RtUclKey_.languageUid), languageUid)
-                )
-        );
+    selectQuery.select(b.array(uc.get(RtUc_.id).get(RtUcKey_.ucUid), joinUcl.get(RtUcl_.codeName))).where(b.and(b.equal(uc.get(RtUc_.id).get(RtUcKey_.clientNr), ServerSession.get().getSessionClientNr()), b.equal(joinUcl.get(RtUcl_.id).get(RtUclKey_.languageUid), languageUid)));
     List<Object[]> result = JPA.createQuery(selectQuery).getResultList();
     Map<Long, String> map = new HashMap<Long, String>();
     for (Object[] row : result) {
@@ -571,7 +562,7 @@ public final class InitialLoadUtility {
     currency.getCodeBox().getActive().setValue(true);
     currency.getExchangeRate().setValue(1d);
     for (int i = 0; i < currency.getCodeBox().getLanguage().getRowCount(); i++) {
-      currency.getCodeBox().getLanguage().setTranslation(i, text);
+      currency.getCodeBox().getLanguage().rowAt(i).setTranslation(text);
     }
     if (codeFormData.getCodeUid() == null) {
       currencyService.create(currency);
@@ -585,11 +576,11 @@ public final class InitialLoadUtility {
     // Class
     CodeFormData clazz = BEANS.get(ICodeProcessService.class).find(classShortcut, ClassCodeType.ID);
     for (int i = 0; i < clazz.getMainBox().getLanguage().getRowCount(); i++) {
-      if (CompareUtility.equals(clazz.getMainBox().getLanguage().getLanguage(i), LanguageCodeType.German.ID)) {
-        clazz.getMainBox().getLanguage().setTranslation(i, translationGerman);
+      if (CompareUtility.equals(clazz.getMainBox().getLanguage().rowAt(i).getLanguage(), LanguageCodeType.German.ID)) {
+        clazz.getMainBox().getLanguage().rowAt(i).setTranslation(translationGerman);
       }
       else {
-        clazz.getMainBox().getLanguage().setTranslation(i, translationDefault);
+        clazz.getMainBox().getLanguage().rowAt(i).setTranslation(translationDefault);
       }
     }
     if (clazz.getCodeUid() == null) {
@@ -621,11 +612,11 @@ public final class InitialLoadUtility {
     // Find Country
     CountryFormData country = BEANS.get(ICountryProcessService.class).find(translationDefault, shortcut, nationCode);
     for (int i = 0; i < country.getCodeBox().getLanguage().getRowCount(); i++) {
-      if (CompareUtility.equals(country.getCodeBox().getLanguage().getLanguage(i), LanguageCodeType.German.ID)) {
-        country.getCodeBox().getLanguage().setTranslation(i, translationGerman);
+      if (CompareUtility.equals(country.getCodeBox().getLanguage().rowAt(i).getLanguage(), LanguageCodeType.German.ID)) {
+        country.getCodeBox().getLanguage().rowAt(i).setTranslation(translationGerman);
       }
       else {
-        country.getCodeBox().getLanguage().setTranslation(i, translationDefault);
+        country.getCodeBox().getLanguage().rowAt(i).setTranslation(translationDefault);
       }
     }
     if (country.getCountryUid() == null) {

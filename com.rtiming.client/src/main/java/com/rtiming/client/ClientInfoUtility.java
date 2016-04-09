@@ -2,10 +2,10 @@ package com.rtiming.client;
 
 import java.util.Map;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.logger.IScoutLogger;
-import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.rtiming.shared.FMilaUtility;
 import com.rtiming.shared.SharedInfoUtility;
@@ -16,7 +16,7 @@ public final class ClientInfoUtility {
   private ClientInfoUtility() {
   }
 
-  private static final IScoutLogger LOG = ScoutLogManager.getLogger(ClientInfoUtility.class);
+  private static final Logger LOG = LoggerFactory.getLogger(ClientInfoUtility.class);
   private static final String NEW_LINE = FMilaUtility.LINE_SEPARATOR;
 
   public static String buildInstallationInfo(Map<String, String> plainTextPasswords) throws ProcessingException {

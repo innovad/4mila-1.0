@@ -1,7 +1,7 @@
 package com.rtiming.client.common.ui.columns;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractDateColumn;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 import com.rtiming.shared.FMilaUtility;
 import com.rtiming.shared.Texts;

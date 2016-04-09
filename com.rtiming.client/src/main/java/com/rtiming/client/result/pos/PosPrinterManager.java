@@ -3,7 +3,7 @@ package com.rtiming.client.result.pos;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 public final class PosPrinterManager {
 

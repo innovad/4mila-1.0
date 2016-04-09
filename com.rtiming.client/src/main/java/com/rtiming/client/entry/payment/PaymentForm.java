@@ -2,9 +2,7 @@ package com.rtiming.client.entry.payment;
 
 import java.math.BigDecimal;
 
-import org.eclipse.scout.commons.annotations.FormData;
-import org.eclipse.scout.commons.annotations.Order;
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.client.dto.FormData;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.bigdecimalfield.AbstractBigDecimalField;
@@ -14,6 +12,8 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.Order;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 
@@ -231,7 +231,7 @@ public class PaymentForm extends AbstractForm {
 
   private PaymentBean formData2bean(PaymentFormData formData) {
     PaymentBean bean = new PaymentBean();
-    bean.setAmount(formData.getAmount().getValue());
+    bean.setAmount(formData.getAmount().getValue() == null ? null : formData.getAmount().getValue().doubleValue());
     bean.setCurrencyUid(formData.getCurrencyUid().getValue());
     bean.setEvtPayment(formData.getEvtPayment().getValue());
     bean.setPaymentNo(formData.getPaymentNo().getValue());
@@ -243,7 +243,7 @@ public class PaymentForm extends AbstractForm {
 
   private PaymentFormData bean2formData(PaymentBean bean) {
     PaymentFormData formData = new PaymentFormData();
-    formData.getAmount().setValue(bean.getAmount());
+    formData.getAmount().setValue(bean.getAmount() == null ? null : BigDecimal.valueOf(bean.getAmount()));
     formData.getCurrencyUid().setValue(bean.getCurrencyUid());
     formData.getEvtPayment().setValue(bean.getEvtPayment());
     formData.getPaymentNo().setValue(bean.getPaymentNo());

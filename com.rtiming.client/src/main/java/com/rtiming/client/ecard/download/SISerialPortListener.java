@@ -2,12 +2,12 @@ package com.rtiming.client.ecard.download;
 
 import java.io.IOException;
 
-import org.eclipse.scout.commons.CompareUtility;
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.logger.IScoutLogger;
-import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.IClientSession;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.util.CompareUtility;
 import org.eclipse.scout.rt.shared.TEXTS;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.rtiming.client.common.infodisplay.InfoDisplayIdleJob;
 import com.rtiming.client.common.infodisplay.InfoDisplayUtility;
@@ -19,7 +19,7 @@ import com.rtiming.serial.FMilaSerialPort;
 
 public class SISerialPortListener implements FMilaSerialEventListener {
 
-  private static IScoutLogger logger = ScoutLogManager.getLogger(SISerialPortListener.class);
+  private static Logger logger = LoggerFactory.getLogger(SISerialPortListener.class);
   private final IClientSession session;
   private FMilaSerialPort port;
   private AbstractSISerialPortHandler handler;
@@ -88,9 +88,7 @@ public class SISerialPortListener implements FMilaSerialEventListener {
 
     if (!CompareUtility.equals(crcCalculated, crcRead)) {
       showInfoWindowError();
-      throw new ProcessingException(TEXTS.get("ReadOutError", "CRC Error " +
-          ByteUtility.dumpBytes(new byte[]{new Long(crcCalculated).byteValue()}) + " != " +
-          ByteUtility.dumpBytes(new byte[]{new Long(crcRead).byteValue()})));
+      throw new ProcessingException(TEXTS.get("ReadOutError", "CRC Error " + ByteUtility.dumpBytes(new byte[]{new Long(crcCalculated).byteValue()}) + " != " + ByteUtility.dumpBytes(new byte[]{new Long(crcRead).byteValue()})));
     }
   }
 

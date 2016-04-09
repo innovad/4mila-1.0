@@ -1,7 +1,7 @@
 package com.rtiming.client.ranking;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.shared.TEXTS;
 
 import com.rtiming.client.FMilaClientUtility;

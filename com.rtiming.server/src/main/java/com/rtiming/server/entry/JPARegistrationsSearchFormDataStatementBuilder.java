@@ -9,7 +9,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.persistence.criteria.Subquery;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 import com.rtiming.server.club.JPAClubBoxSearchFormDataStatementBuilder;
 import com.rtiming.server.common.AbstractJPASearchFormDataStatementBuilder;

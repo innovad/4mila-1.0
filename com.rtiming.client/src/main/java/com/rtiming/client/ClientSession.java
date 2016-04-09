@@ -2,14 +2,14 @@ package com.rtiming.client;
 
 import java.util.Locale;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.logger.IScoutLogger;
-import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.AbstractClientSession;
 import org.eclipse.scout.rt.client.session.ClientSessionProvider;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.servicetunnel.IServiceTunnel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.rtiming.client.common.ui.desktop.Desktop;
 import com.rtiming.shared.FMilaUtility;
@@ -17,7 +17,7 @@ import com.rtiming.shared.settings.account.IAccountProcessService;
 import com.rtiming.shared.settings.user.LanguageCodeType;
 
 public class ClientSession extends AbstractClientSession {
-  private static IScoutLogger logger = ScoutLogManager.getLogger(ClientSession.class);
+  private static Logger logger = LoggerFactory.getLogger(ClientSession.class);
 
   public ClientSession() {
     super(true);

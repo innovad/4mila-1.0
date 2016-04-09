@@ -2,7 +2,7 @@ package com.rtiming.shared.common.database.sql;
 
 import java.io.Serializable;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 public class AddressBean implements Serializable, Cloneable {
 

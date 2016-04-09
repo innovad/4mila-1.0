@@ -6,9 +6,9 @@ import java.util.Properties;
 import java.util.TimeZone;
 import java.util.TreeMap;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.logger.IScoutLogger;
-import org.eclipse.scout.commons.logger.ScoutLogManager;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public final class SharedInfoUtility {
 
@@ -16,7 +16,7 @@ public final class SharedInfoUtility {
   }
 
   private static final String NEW_LINE = FMilaUtility.LINE_SEPARATOR;
-  private static final IScoutLogger LOG = ScoutLogManager.getLogger(SharedInfoUtility.class);
+  private static final Logger LOG = LoggerFactory.getLogger(SharedInfoUtility.class);
 
   public static String buildInstallationInfo(String caller) throws ProcessingException {
     StringBuilder info = new StringBuilder();

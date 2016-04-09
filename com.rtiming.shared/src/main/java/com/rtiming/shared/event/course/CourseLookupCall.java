@@ -1,6 +1,5 @@
 package com.rtiming.shared.event.course;
 
-import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupService;
 import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 
@@ -14,12 +13,10 @@ public class CourseLookupCall extends LookupCall<Long> {
     return ICourseLookupService.class;
   }
 
-  @FormData
   public Long getEventNr() {
     return m_eventNr;
   }
 
-  @FormData
   public void setEventNr(Long eventNr) {
     m_eventNr = eventNr;
   }

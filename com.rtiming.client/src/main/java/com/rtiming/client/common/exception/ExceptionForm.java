@@ -6,11 +6,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import org.eclipse.scout.commons.StringUtility;
-import org.eclipse.scout.commons.annotations.Order;
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.logger.IScoutLogger;
-import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.services.common.clipboard.IClipboardService;
 import org.eclipse.scout.rt.client.ui.action.keystroke.AbstractKeyStroke;
 import org.eclipse.scout.rt.client.ui.basic.filechooser.FileChooser;
@@ -21,8 +16,13 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCancelButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.Order;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.resource.BinaryResource;
+import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.shared.TEXTS;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.rtiming.client.ClientInfoUtility;
 import com.rtiming.client.common.exception.ExceptionForm.MainBox.CancelButton;
@@ -34,7 +34,7 @@ import com.rtiming.shared.FMilaUtility;
 
 public class ExceptionForm extends AbstractForm {
 
-  private static final IScoutLogger LOG = ScoutLogManager.getLogger(ExceptionForm.class);
+  private static final Logger LOG = LoggerFactory.getLogger(ExceptionForm.class);
   private String messageText;
   private static String SEP = FMilaUtility.LINE_SEPARATOR;
 

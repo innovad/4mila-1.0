@@ -3,8 +3,8 @@ package com.rtiming.client.ecard.download;
 import java.io.IOException;
 import java.util.Date;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.IClientSession;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 import com.rtiming.client.ecard.download.processor.AbstractSICardProcessor;
 import com.rtiming.client.ecard.download.processor.SICardV5Processor;

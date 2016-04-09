@@ -1,6 +1,6 @@
 package com.rtiming.client.result.pos;
 
-import org.eclipse.scout.commons.StringUtility;
+import org.eclipse.scout.rt.platform.util.StringUtility;
 
 public class SplitBuilder {
 

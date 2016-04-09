@@ -1,6 +1,6 @@
 package com.rtiming.client.race;
 
-import org.eclipse.scout.commons.BooleanUtility;
+import org.eclipse.scout.rt.platform.util.BooleanUtility;
 
 import com.rtiming.client.race.RaceControlForm.MainBox.ControlStatusField;
 import com.rtiming.client.race.RaceControlForm.MainBox.ManualStatusField;

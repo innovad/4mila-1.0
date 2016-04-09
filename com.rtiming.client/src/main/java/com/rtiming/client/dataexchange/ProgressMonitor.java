@@ -1,7 +1,7 @@
 package com.rtiming.client.dataexchange;
 
-import org.eclipse.scout.commons.exception.IProcessingStatus;
 import org.eclipse.scout.rt.client.ui.form.fields.IValueField;
+import org.eclipse.scout.rt.platform.exception.IProcessingStatus;
 import org.eclipse.scout.rt.shared.TEXTS;
 
 import com.rtiming.shared.Texts;

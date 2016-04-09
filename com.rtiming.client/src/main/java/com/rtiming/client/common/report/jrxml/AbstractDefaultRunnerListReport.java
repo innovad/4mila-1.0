@@ -2,7 +2,7 @@ package com.rtiming.client.common.report.jrxml;
 
 import java.util.List;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 public abstract class AbstractDefaultRunnerListReport extends AbstractRunnerListReport {
 

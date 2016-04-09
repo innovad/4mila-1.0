@@ -9,7 +9,7 @@
 //import com.rtiming.shared.FMilaUtility.OperatingSystem;
 //
 //public class ServerApplication {
-//  private static IScoutLogger logger = ScoutLogManager.getLogger(ServerApplication.class);
+//  private static Logger logger = LoggerFactory.getLogger(ServerApplication.class);
 //
 //  @Override
 //  public Object start(IApplicationContext context) throws Exception {

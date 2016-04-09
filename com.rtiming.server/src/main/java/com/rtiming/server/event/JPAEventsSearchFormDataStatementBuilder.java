@@ -2,7 +2,7 @@ package com.rtiming.server.event;
 
 import javax.persistence.criteria.Root;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
 import com.rtiming.server.common.AbstractJPASearchFormDataStatementBuilder;
 import com.rtiming.shared.dao.RtEvent;

@@ -14,7 +14,7 @@
 //@Priority(1)
 //public class FMilaClientExceptionHandlerService extends ClientExceptionHandlerService {
 //
-//  private static final IScoutLogger LOG = ScoutLogManager.getLogger(FMilaClientExceptionHandlerService.class);
+//  private static final Logger LOG = LoggerFactory.getLogger(FMilaClientExceptionHandlerService.class);
 //
 //  @Override
 //  protected void showExceptionInUI(ProcessingException pex) {

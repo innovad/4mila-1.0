@@ -2,8 +2,8 @@ package com.rtiming.server.entry.payment;
 
 import java.util.Date;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.exception.VetoException;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.VetoException;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
 
 import com.rtiming.server.common.database.jpa.FMilaQuery;

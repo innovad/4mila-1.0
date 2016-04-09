@@ -1,12 +1,11 @@
 package com.rtiming.shared.entry.startlist;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.util.NumberUtility;
 
 import com.rtiming.shared.FMilaUtility;
@@ -20,7 +19,7 @@ public final class StartlistSettingUtility {
   public static List<Long> getStartlistOptions(Options startlistOptions) {
     List<Long> options = new ArrayList<Long>();
     if (startlistOptions != null && startlistOptions.getValue() != null) {
-      options = Arrays.asList(startlistOptions.getValue());
+      options = new ArrayList<>(startlistOptions.getValue());
     }
     return options;
   }
@@ -52,8 +51,7 @@ public final class StartlistSettingUtility {
       formData.setStartlistSettingNr(startlistSettingNr);
       formData = settingService.load(formData);
       List<Long> options = StartlistSettingUtility.getStartlistOptions(formData.getOptions());
-      if (options.contains(StartlistSettingOptionCodeType.GroupRegistrationsCode.ID) ||
-          options.contains(StartlistSettingOptionCodeType.SplitRegistrationsCode.ID)) {
+      if (options.contains(StartlistSettingOptionCodeType.GroupRegistrationsCode.ID) || options.contains(StartlistSettingOptionCodeType.SplitRegistrationsCode.ID)) {
         registrationOptionSelected = true;
         break;
       }

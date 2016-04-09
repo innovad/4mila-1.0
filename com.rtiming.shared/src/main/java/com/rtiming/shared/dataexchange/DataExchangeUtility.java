@@ -7,20 +7,20 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import org.eclipse.scout.commons.StringUtility;
-import org.eclipse.scout.commons.logger.IScoutLogger;
-import org.eclipse.scout.commons.logger.ScoutLogManager;
+import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.platform.util.date.DateUtility;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.rtiming.shared.FMilaUtility;
 import com.rtiming.shared.runner.SexCodeType;
 
 public final class DataExchangeUtility {
 
-  private static IScoutLogger logger = ScoutLogManager.getLogger(DataExchangeUtility.class);
+  private static Logger logger = LoggerFactory.getLogger(DataExchangeUtility.class);
 
   private DataExchangeUtility() {
 

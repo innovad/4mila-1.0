@@ -16,9 +16,9 @@ import java.util.regex.Pattern;
 import javax.persistence.Query;
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.logger.IScoutLogger;
-import org.eclipse.scout.commons.logger.ScoutLogManager;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com._4mila._4mila.jaxws.online.ObjectList;
 import com._4mila._4mila.jaxws.online.RowData;
@@ -51,7 +51,7 @@ public final class UploadUtility {
     return databaseDefinition;
   }
 
-  private static final IScoutLogger LOG = ScoutLogManager.getLogger(UploadUtility.class);
+  private static final Logger LOG = LoggerFactory.getLogger(UploadUtility.class);
 
   private static ArrayList<Bind> buildBinds(TableData tableData, ObjectList row, List<ColumnDefinition> columnDefinitions) {
     Map<String, ColumnDefinition> lookup = new HashMap<>();

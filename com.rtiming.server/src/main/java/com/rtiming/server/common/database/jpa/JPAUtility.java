@@ -7,21 +7,21 @@ import java.util.List;
 
 import javax.persistence.PersistenceException;
 
-import org.eclipse.scout.commons.BeanUtility;
-import org.eclipse.scout.commons.StringUtility;
-import org.eclipse.scout.commons.beans.FastBeanInfo;
-import org.eclipse.scout.commons.beans.FastPropertyDescriptor;
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.exception.VetoException;
-import org.eclipse.scout.commons.holders.IHolder;
-import org.eclipse.scout.commons.holders.NVPair;
-import org.eclipse.scout.commons.logger.IScoutLogger;
-import org.eclipse.scout.commons.logger.ScoutLogManager;
-import org.eclipse.scout.commons.parsers.BindModel;
-import org.eclipse.scout.commons.parsers.BindParser;
-import org.eclipse.scout.commons.parsers.token.IToken;
-import org.eclipse.scout.commons.parsers.token.ValueInputToken;
+import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.exception.VetoException;
+import org.eclipse.scout.rt.platform.holders.IHolder;
+import org.eclipse.scout.rt.platform.holders.NVPair;
+import org.eclipse.scout.rt.platform.reflect.FastBeanInfo;
+import org.eclipse.scout.rt.platform.reflect.FastPropertyDescriptor;
+import org.eclipse.scout.rt.platform.util.BeanUtility;
+import org.eclipse.scout.rt.platform.util.StringUtility;
+import org.eclipse.scout.rt.server.jdbc.parsers.BindModel;
+import org.eclipse.scout.rt.server.jdbc.parsers.BindParser;
+import org.eclipse.scout.rt.server.jdbc.parsers.token.IToken;
+import org.eclipse.scout.rt.server.jdbc.parsers.token.ValueInputToken;
 import org.eclipse.scout.rt.shared.data.form.fields.AbstractValueFieldData;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.rtiming.server.ServerSession;
 import com.rtiming.shared.FMilaUtility;
@@ -31,7 +31,7 @@ import com.rtiming.shared.Texts;
  * 
  */
 public final class JPAUtility {
-  private static final IScoutLogger LOG = ScoutLogManager.getLogger(JPAUtility.class);
+  private static final Logger LOG = LoggerFactory.getLogger(JPAUtility.class);
 
   public static Object[][] convertList2Array(List list) {
     Object[][] result = new Object[list.size()][0];
@@ -217,18 +217,12 @@ public final class JPAUtility {
   }
 
   private static void handleDataAlreadyExistsViolation(SQLException e) throws VetoException {
-    String message = Texts.get("DuplicateKeyMessage") +
-        FMilaUtility.LINE_SEPARATOR +
-        FMilaUtility.LINE_SEPARATOR +
-        " (" + e.getLocalizedMessage() + ")";
+    String message = Texts.get("DuplicateKeyMessage") + FMilaUtility.LINE_SEPARATOR + FMilaUtility.LINE_SEPARATOR + " (" + e.getLocalizedMessage() + ")";
     throw new VetoException(message);
   }
 
   private static void handleDataInUseViolation(SQLException e) throws VetoException {
-    String message = Texts.get("DataInUseMessage") +
-        FMilaUtility.LINE_SEPARATOR +
-        FMilaUtility.LINE_SEPARATOR +
-        " (" + e.getLocalizedMessage() + ")";
+    String message = Texts.get("DataInUseMessage") + FMilaUtility.LINE_SEPARATOR + FMilaUtility.LINE_SEPARATOR + " (" + e.getLocalizedMessage() + ")";
     throw new VetoException(message);
   }
 

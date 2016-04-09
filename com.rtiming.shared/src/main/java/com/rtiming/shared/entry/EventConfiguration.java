@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.scout.commons.CompareUtility;
+import org.eclipse.scout.rt.platform.util.CompareUtility;
 
 import com.rtiming.shared.common.database.sql.EventBean;
 import com.rtiming.shared.event.EventClassFormData;
