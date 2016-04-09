@@ -64,5 +64,12 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>4.2.2.Final</version>
 		</dependency>
+		<dependency>
+			<groupId>LIB_NAME</groupId>
+			<artifactId>LIB_NAME</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/ws-stub/online.jar</systemPath>
+		</dependency>
 	</dependencies>
 </project>
