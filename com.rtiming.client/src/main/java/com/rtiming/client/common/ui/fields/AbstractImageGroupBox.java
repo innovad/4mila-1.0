@@ -7,6 +7,7 @@ import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -15,6 +16,7 @@ import javax.imageio.ImageIO;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
 import org.eclipse.scout.rt.client.ui.action.menu.ValueFieldMenuType;
+import org.eclipse.scout.rt.client.ui.basic.filechooser.FileChooser;
 import org.eclipse.scout.rt.client.ui.dnd.IDNDSupport;
 import org.eclipse.scout.rt.client.ui.dnd.TransferObject;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractLinkButton;
@@ -23,6 +25,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.imagefield.AbstractImageField;
 import org.eclipse.scout.rt.platform.Order;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.exception.VetoException;
+import org.eclipse.scout.rt.platform.resource.BinaryResource;
 import org.eclipse.scout.rt.platform.util.CollectionUtility;
 import org.eclipse.scout.rt.platform.util.IOUtility;
 import org.eclipse.scout.rt.platform.util.StringUtility;
@@ -295,17 +298,16 @@ public abstract class AbstractImageGroupBox extends AbstractGroupBox {
   protected abstract byte[] getImageData();
 
   private void chooseFile() throws ProcessingException {
-// TODO MIG    
-//    try {
-//      List<BinaryResource> a = new FileChooser(Arrays.asList(FMilaUtility.getSupportedImageFormats()), true).startChooser();
-//      if (a != null && a.size() == 1) {
-//        byte[] data = a.get(0).getContent();
-//        getImageField().setImage(data, getImageField().getFileSuffix(a.get(0).getFilename()), true);
-//      }
-//    }
-//    catch (FileNotFoundException e) {
-//      throw new ProcessingException(e.getMessage());
-//    }
+    try {
+      List<BinaryResource> a = new FileChooser(Arrays.asList(FMilaUtility.getSupportedImageFormats()), true).startChooser();
+      if (a != null && a.size() == 1) {
+        byte[] data = a.get(0).getContent();
+        getImageField().setImage(data, getImageField().getFileSuffix(new File(a.get(0).getFilename())), true);
+      }
+    }
+    catch (Throwable e) {
+      throw new ProcessingException(e.getMessage());
+    }
   }
 
   private void pasteFromClipboard() throws ProcessingException {
