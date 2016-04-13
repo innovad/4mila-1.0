@@ -35,7 +35,6 @@
 		<dependency>
 			<groupId>org.eclipse.scout.rt</groupId>
 			<artifactId>org.eclipse.scout.rt.client</artifactId>
-			<version>5.2.0.M5</version>
 		</dependency>
 		<dependency>
 			<groupId>net.sourceforge.dynamicreports</groupId>
