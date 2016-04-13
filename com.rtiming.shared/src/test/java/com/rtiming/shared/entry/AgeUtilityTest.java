@@ -6,13 +6,12 @@ import java.util.List;
 
 import org.eclipse.scout.rt.platform.util.TriState;
 import org.eclipse.scout.rt.platform.util.date.DateUtility;
+import org.junit.Assert;
 import org.junit.Test;
 
 import com.rtiming.shared.dao.RtClassAge;
 import com.rtiming.shared.dao.RtClassAgeKey;
 import com.rtiming.shared.runner.SexCodeType;
-
-import junit.framework.Assert;
 
 /**
  * @author amo

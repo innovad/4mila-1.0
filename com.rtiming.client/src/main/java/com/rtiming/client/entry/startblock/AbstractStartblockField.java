@@ -35,13 +35,13 @@ public abstract class AbstractStartblockField extends AbstractSmartField<Long> {
 //}
 
   @Override
-  protected LookupRow execBrowseNew(String searchText) throws ProcessingException {
+  protected LookupRow<Long> execBrowseNew(String searchText) throws ProcessingException {
     StartblockForm form = new StartblockForm();
     form.startNew();
     form.getCodeBox().getShortcutField().setValue(searchText);
     form.waitFor();
     if (form.isFormStored()) {
-      return new LookupRow(form.getStartblockUid(), null);
+      return new LookupRow<Long>(form.getStartblockUid(), null);
     }
     return null;
   }

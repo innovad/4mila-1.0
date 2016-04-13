@@ -15,9 +15,9 @@ public class FieldSeparatorCharacterLookupCall extends LocalLookupCall<Character
   protected List<LookupRow<Character>> execCreateLookupRows() throws ProcessingException {
     ArrayList<LookupRow<Character>> rows = new ArrayList<LookupRow<Character>>();
 
-    rows.add(new LookupRow(';', ";"));
-    rows.add(new LookupRow(',', ","));
-    rows.add(new LookupRow('\t', "<Tab>"));
+    rows.add(new LookupRow<Character>(';', ";"));
+    rows.add(new LookupRow<Character>(',', ","));
+    rows.add(new LookupRow<Character>('\t', "<Tab>"));
     return rows;
   }
 }

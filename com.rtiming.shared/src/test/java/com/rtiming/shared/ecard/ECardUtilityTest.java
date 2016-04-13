@@ -1,9 +1,8 @@
 package com.rtiming.shared.ecard;
 
 import org.eclipse.scout.rt.platform.exception.VetoException;
+import org.junit.Assert;
 import org.junit.Test;
-
-import junit.framework.Assert;
 
 public class ECardUtilityTest {
 

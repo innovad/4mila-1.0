@@ -3,11 +3,10 @@ package com.rtiming.shared.common.web;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import com.rtiming.shared.common.security.FMilaVersion;
-
-import junit.framework.Assert;
 
 public class FMilaVersionTest {
 

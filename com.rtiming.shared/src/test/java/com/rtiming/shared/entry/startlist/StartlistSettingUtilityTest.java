@@ -5,11 +5,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import com.rtiming.shared.FMilaUtility;
-
-import junit.framework.Assert;
 
 public class StartlistSettingUtilityTest {
 

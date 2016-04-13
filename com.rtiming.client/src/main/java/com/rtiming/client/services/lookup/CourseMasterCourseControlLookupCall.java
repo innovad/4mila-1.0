@@ -22,7 +22,7 @@ public class CourseMasterCourseControlLookupCall extends LocalLookupCall<Long> {
     ArrayList<LookupRow<Long>> rows = new ArrayList<LookupRow<Long>>();
     for (CourseControlRowData row : list) {
       if (row.getLoopTypeUid() != null) {
-        LookupRow r = new LookupRow(row.getCourseControlNr(), row.getControlNo() + " - " + row.getSortCode());
+        LookupRow<Long> r = new LookupRow<Long>(row.getCourseControlNr(), row.getControlNo() + " - " + row.getSortCode());
         rows.add(r);
       }
     }

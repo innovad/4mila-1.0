@@ -3,11 +3,10 @@ package com.rtiming.shared;
 import java.util.Date;
 
 import org.eclipse.scout.rt.platform.exception.VetoException;
+import org.junit.Assert;
 import org.junit.Test;
 
 import com.rtiming.shared.race.TimePrecisionCodeType;
-
-import junit.framework.Assert;
 
 public class FMilaUtilityTest {
 

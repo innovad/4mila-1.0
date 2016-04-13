@@ -33,7 +33,7 @@ public class AbstractStartlistSettingOptionGroupBox extends AbstractRadioButtonG
   @Override
   protected void execFilterLookupResult(ILookupCall<Long> call, List<ILookupRow<Long>> result) {
     List<ILookupRow<Long>> filtered = new ArrayList<ILookupRow<Long>>();
-    filtered.add(new LookupRow(null, TEXTS.get("None")));
+    filtered.add(new LookupRow<Long>(null, TEXTS.get("None")));
     for (ILookupRow<Long> row : result) {
       if (CompareUtility.equals(row.getKey(), StartlistSettingOptionCodeType.GroupRegistrationsCode.ID) || CompareUtility.equals(row.getKey(), StartlistSettingOptionCodeType.SplitRegistrationsCode.ID)) {
         filtered.add(row);
