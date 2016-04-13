@@ -71,7 +71,7 @@ public abstract class AbstractJPALookupService extends AbstractLookupService<Lon
 
     List<LookupRow> result = new ArrayList<>();
     for (Object[] row : array) {
-      LookupRow lookupRow = new LookupRow(row[0], StringUtility.emptyIfNull(row[1]));
+      LookupRow lookupRow = new LookupRow<>(row[0], StringUtility.emptyIfNull(row[1]));
       if (getConfiguredIconId() != null) {
         lookupRow.setIconId(getConfiguredIconId());
       }

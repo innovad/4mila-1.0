@@ -52,7 +52,7 @@ public class TimezoneLookupCall extends LocalLookupCall<Integer> {
           displayName = "+" + displayName;
         }
       }
-      LookupRow row = new LookupRow(offset, displayName);
+      LookupRow<Integer> row = new LookupRow<>(offset, displayName);
       rows.add(row);
     }
     return rows;

@@ -65,7 +65,7 @@ public abstract class AbstractCityField extends AbstractSmartField<Long> {
     form.getCityField().setValue(searchText);
     form.waitFor();
     if (form.isFormStored()) {
-      return new LookupRow(form.getCityNr(), null);
+      return new LookupRow<Long>(form.getCityNr(), null);
     }
     return null;
   }

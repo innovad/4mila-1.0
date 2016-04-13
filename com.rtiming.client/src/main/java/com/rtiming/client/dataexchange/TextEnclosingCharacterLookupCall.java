@@ -15,7 +15,7 @@ public class TextEnclosingCharacterLookupCall extends LocalLookupCall<Character>
   protected List<LookupRow<Character>> execCreateLookupRows() throws ProcessingException {
     ArrayList<LookupRow<Character>> rows = new ArrayList<LookupRow<Character>>();
 
-    rows.add(new LookupRow('"', "\""));
+    rows.add(new LookupRow<Character>('"', "\""));
 
     return rows;
   }

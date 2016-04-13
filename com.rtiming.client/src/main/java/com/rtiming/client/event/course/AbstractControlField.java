@@ -134,7 +134,7 @@ public abstract class AbstractControlField extends AbstractSmartField<Long> {
     form.getNumberField().setValue(searchText);
     form.waitFor();
     if (form.isFormStored()) {
-      return new LookupRow(form.getControlNr(), null);
+      return new LookupRow<Long>(form.getControlNr(), null);
     }
     return null;
   }

@@ -20,7 +20,7 @@ public class PrinterLookupCall extends LocalLookupCall<String> {
     PrintService[] printServices = PrintServiceLookup.lookupPrintServices(null, null);
 
     for (PrintService printer : printServices) {
-      LookupRow row = new LookupRow(printer.getName(), printer.getName());
+      LookupRow<String> row = new LookupRow<>(printer.getName(), printer.getName());
       rows.add(row);
     }
 

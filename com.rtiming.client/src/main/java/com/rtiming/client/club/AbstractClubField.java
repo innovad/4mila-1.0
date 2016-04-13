@@ -41,7 +41,7 @@ public abstract class AbstractClubField extends AbstractSmartField<Long> {
     form.getNameField().setValue(searchText);
     form.waitFor();
     if (form.isFormStored()) {
-      return new LookupRow(form.getClubNr(), null);
+      return new LookupRow<Long>(form.getClubNr(), null);
     }
     return null;
   }

@@ -124,7 +124,7 @@ public abstract class AbstractClassField extends AbstractSmartField<Long> {
     form.getMainBox().getShortcutField().setValue(searchText);
     form.waitFor();
     if (form.isFormStored()) {
-      return new LookupRow(form.getCodeUid(), null);
+      return new LookupRow<Long>(form.getCodeUid(), null);
     }
     return null;
   }

@@ -41,7 +41,7 @@ public abstract class AbstractECardField extends AbstractSmartField<Long> {
     form.getNumberField().setValue(searchText);
     form.waitFor();
     if (form.isFormStored()) {
-      return new LookupRow(form.getECardKey().getId(), null);
+      return new LookupRow<Long>(form.getECardKey().getId(), null);
     }
     return null;
   }
