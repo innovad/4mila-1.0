@@ -42,7 +42,7 @@ public class ServerSession extends AbstractServerSession {
     if (user.getLanguage().getValue() != null) {
       setLanguageUid(user.getLanguage().getValue());
     }
-    roleUids = user.getRoles().getValue().toArray(new Long[0]);
+    roleUids = user.getRoles().getValue() == null ? null : user.getRoles().getValue().toArray(new Long[0]);
 
     Locale locale = new Locale(BEANS.get(LanguageCodeType.class).getCode(getLanguageUid()).getExtKey());
     // TODO MIG setLocale(locale);
