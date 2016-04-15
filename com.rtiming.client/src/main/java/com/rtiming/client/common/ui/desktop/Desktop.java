@@ -9,7 +9,6 @@ import org.eclipse.scout.rt.client.session.ClientSessionProvider;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
 import org.eclipse.scout.rt.client.ui.action.menu.TableMenuType;
-import org.eclipse.scout.rt.client.ui.basic.table.ITable;
 import org.eclipse.scout.rt.client.ui.desktop.AbstractDesktop;
 import org.eclipse.scout.rt.client.ui.desktop.IDesktop;
 import org.eclipse.scout.rt.client.ui.desktop.OpenUriAction;
@@ -58,9 +57,6 @@ import com.rtiming.shared.settings.ISettingsOutlineService;
 
 public class Desktop extends AbstractDesktop implements IDesktop {
   private static Logger logger = LoggerFactory.getLogger(Desktop.class);
-
-  private LinkForm linkForm;
-  private MenuTableListener menuTableListener;
 
   public Desktop() {
   }
@@ -130,20 +126,6 @@ public class Desktop extends AbstractDesktop implements IDesktop {
   }
 
   @Override
-  protected void execPageDetailTableChanged(ITable oldTable, ITable newTable) throws ProcessingException {
-    super.execPageDetailTableChanged(oldTable, newTable);
-    if (oldTable != null) {
-      oldTable.removeTableListener(menuTableListener);
-    }
-    if (newTable != null) {
-      if (linkForm != null) {
-        linkForm.buildLinks();
-        newTable.addTableListener(menuTableListener);
-      }
-    }
-  }
-
-  @Override
   protected void execGuiAttached() throws ProcessingException {
     ExpirationManager manager = new ExpirationManager();
     manager.checkExpiration();
@@ -165,14 +147,9 @@ public class Desktop extends AbstractDesktop implements IDesktop {
       ECardStationStatusForm status = new ECardStationStatusForm();
       status.startForm();
     }
-    // context menu alternative: link form
-    linkForm = new LinkForm();
-    linkForm.startForm();
 
     ToolsForm toolsForm = new ToolsForm();
     toolsForm.startForm();
-
-    menuTableListener = new MenuTableListener(linkForm);
 
     //load startup bookmark
     IBookmarkService bookmarkService = BEANS.get(IBookmarkService.class);
