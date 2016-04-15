@@ -10,7 +10,6 @@ import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.util.CollectionUtility;
 import org.eclipse.scout.rt.platform.util.CompareUtility;
 import org.eclipse.scout.rt.platform.util.StringUtility;
-import org.eclipse.scout.rt.shared.services.common.code.CODES;
 
 import com.rtiming.client.common.report.ReportType;
 import com.rtiming.client.race.RaceControlsTablePage;
