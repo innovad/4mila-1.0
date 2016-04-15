@@ -19,6 +19,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.longfield.AbstractLongField;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.Order;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.exception.VetoException;
@@ -28,7 +29,6 @@ import org.eclipse.scout.rt.platform.util.NumberUtility;
 import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.shared.ScoutTexts;
 import org.eclipse.scout.rt.shared.data.basic.FontSpec;
-import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
@@ -58,7 +58,7 @@ public abstract class AbstractAdditionalInformationField extends AbstractTableFi
 
     for (int k = 0; k < getTable().getRowCount(); k++) {
       if (BooleanUtility.nvl(getTable().getMandatoryColumn().getValue(k), false) && StringUtility.isNullOrEmpty(getTable().getValueColumn().getValue(k))) {
-        ICode code = CODES.getCodeType(AdditionalInformationCodeType.class).getCode(getTable().getAdditionalInformationUidColumn().getValue(k));
+        ICode code = BEANS.get(AdditionalInformationCodeType.class).getCode(getTable().getAdditionalInformationUidColumn().getValue(k));
         mandatoryTexts.add(code != null ? code.getText() : getTable().getAdditionalInformationUidColumn().getValue(k).toString());
       }
     }
@@ -358,7 +358,7 @@ public abstract class AbstractAdditionalInformationField extends AbstractTableFi
           getValueColumn().setValue(row, null);
         }
         else {
-          getValueColumn().setValue(row, CODES.getCodeType(BooleanCodeType.class).getCode(value == 1).getText());
+          getValueColumn().setValue(row, BEANS.get(BooleanCodeType.class).getCode(value == 1).getText());
         }
       }
       else if (CompareUtility.equals(getTypeColumn().getValue(row), AdditionalInformationTypeCodeType.IntegerCode.ID)) {
@@ -388,7 +388,7 @@ public abstract class AbstractAdditionalInformationField extends AbstractTableFi
           getValueColumn().setValue(row, null);
         }
         else {
-          ICode code = CODES.getCodeType(AdditionalInformationCodeType.class).getCode(value);
+          ICode code = BEANS.get(AdditionalInformationCodeType.class).getCode(value);
           getValueColumn().setValue(row, code != null ? code.getText() : String.valueOf(value));
         }
       }

@@ -1,6 +1,7 @@
 package com.rtiming.server.event.course;
 
 import java.awt.geom.Point2D;
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.media.jai.WarpPerspective;
@@ -35,7 +36,7 @@ import com.rtiming.shared.event.course.IControlProcessService;
 import com.rtiming.shared.map.IMapProcessService;
 import com.rtiming.shared.map.MapFormData;
 
-public class ControlProcessService  implements IControlProcessService {
+public class ControlProcessService implements IControlProcessService {
 
   @Override
   public ControlFormData prepareCreate(ControlFormData formData) throws ProcessingException {
@@ -46,9 +47,7 @@ public class ControlProcessService  implements IControlProcessService {
     formData.getType().setValue(ControlTypeCodeType.ControlCode.ID);
     formData.getActive().setValue(true);
 
-    String queryString = "SELECT controlNo FROM RtControl " +
-        "WHERE eventNr = :event " +
-        "AND id.clientNr = :sessionClientNr ";
+    String queryString = "SELECT controlNo FROM RtControl " + "WHERE eventNr = :event " + "AND id.clientNr = :sessionClientNr ";
     FMilaTypedQuery<String> query = JPA.createQuery(queryString, String.class);
     query.setParameter("event", formData.getEvent().getValue());
     query.setParameter("sessionClientNr", ServerSession.get().getSessionClientNr());
@@ -107,29 +106,7 @@ public class ControlProcessService  implements IControlProcessService {
       throw new VetoException(Texts.get("AuthorizationFailed"));
     }
 
-    JPAUtility.select("SELECT " +
-        "controlNo, " +
-        "typeUid, " +
-        "active, " +
-        "localx, " +
-        "localy, " +
-        "eventNr," +
-        "globalx," +
-        "globaly " +
-        "FROM RtControl " +
-        "WHERE id.controlNr = :controlNr " +
-        "AND id.clientNr = COALESCE(:clientNr, :sessionClientNr) " +
-        "INTO " +
-        ":number, " +
-        ":type," +
-        ":active," +
-        ":positionX," +
-        ":positionY," +
-        ":event," +
-        ":globalX," +
-        ":globalY"
-        , formData
-        );
+    JPAUtility.select("SELECT " + "controlNo, " + "typeUid, " + "active, " + "localx, " + "localy, " + "eventNr," + "globalx," + "globaly " + "FROM RtControl " + "WHERE id.controlNr = :controlNr " + "AND id.clientNr = COALESCE(:clientNr, :sessionClientNr) " + "INTO " + ":number, " + ":type," + ":active," + ":positionX," + ":positionY," + ":event," + ":globalX," + ":globalY", formData);
 
     return formData;
   }
@@ -144,12 +121,7 @@ public class ControlProcessService  implements IControlProcessService {
       throw new VetoException(TEXTS.get("ControlNumberMandatoryMessage"));
     }
 
-    String queryString = "SELECT COUNT(id.controlNr) " +
-        "FROM RtControl " +
-        "WHERE controlNo = :number " +
-        "AND id.controlNr != :controlNr " +
-        "AND eventNr = :event " +
-        "AND id.clientNr = :sessionClientNr ";
+    String queryString = "SELECT COUNT(id.controlNr) " + "FROM RtControl " + "WHERE controlNo = :number " + "AND id.controlNr != :controlNr " + "AND eventNr = :event " + "AND id.clientNr = :sessionClientNr ";
     FMilaTypedQuery<Long> query = JPA.createQuery(queryString, Long.class);
     query.setParameter("number", formData.getNumber().getValue());
     query.setParameter("controlNr", formData.getControlNr());
@@ -162,17 +134,7 @@ public class ControlProcessService  implements IControlProcessService {
     }
 
     formData.getActive().setValue(BooleanUtility.nvl(formData.getActive().getValue()));
-    queryString = "UPDATE RtControl " +
-        "SET controlNo = :number, " +
-        "typeUid = :type, " +
-        "active = :active, " +
-        "localx = :positionX, " +
-        "localy = :positionY, " +
-        "eventNr = :event, " +
-        "globalx = :globalX, " +
-        "globaly = :globalY " +
-        "WHERE id.controlNr = :controlNr " +
-        "AND id.clientNr = :sessionClientNr ";
+    queryString = "UPDATE RtControl " + "SET controlNo = :number, " + "typeUid = :type, " + "active = :active, " + "localx = :positionX, " + "localy = :positionY, " + "eventNr = :event, " + "globalx = :globalX, " + "globaly = :globalY " + "WHERE id.controlNr = :controlNr " + "AND id.clientNr = :sessionClientNr ";
     FMilaQuery query2 = JPA.createQuery(queryString);
     JPAUtility.setAutoParameters(query2, queryString, formData);
     query2.executeUpdate();
@@ -184,11 +146,7 @@ public class ControlProcessService  implements IControlProcessService {
   public ControlFormData find(String controlNo, long eventNr) throws ProcessingException {
     controlNo = StringUtility.uppercase(StringUtility.nvl(controlNo, "")).trim();
 
-    String queryString = "SELECT MAX(id.controlNr) " +
-        "FROM RtControl " +
-        "WHERE UPPER(controlNo) = :controlNo " +
-        "AND eventNr = :eventNr " +
-        "AND id.clientNr = :sessionClientNr ";
+    String queryString = "SELECT MAX(id.controlNr) " + "FROM RtControl " + "WHERE UPPER(controlNo) = :controlNo " + "AND eventNr = :eventNr " + "AND id.clientNr = :sessionClientNr ";
 
     FMilaTypedQuery<Long> query = JPA.createQuery(queryString, Long.class);
     query.setParameter("controlNo", controlNo);
@@ -214,18 +172,13 @@ public class ControlProcessService  implements IControlProcessService {
     // Load Map Info
     MapFormData map = BeanUtility.mapBean2FormData(BEANS.get(IMapProcessService.class).findMap(eventNr, ServerSession.get().getSessionClientNr()));
 
-    if (map.getResolution().getValue() == null ||
-        map.getOriginX().getValue() == null ||
-        map.getOriginY().getValue() == null ||
-        map.getScale().getValue() == null ||
-        map.getWidth().getValue() == null ||
-        map.getHeight().getValue() == null) {
+    if (map.getResolution().getValue() == null || map.getOriginX().getValue() == null || map.getOriginY().getValue() == null || map.getScale().getValue() == null || map.getWidth().getValue() == null || map.getHeight().getValue() == null) {
       throw new VetoException(TEXTS.get("GeoreferenceRequiredDataError"));
     }
 
-    double resolution = map.getResolution().getValue();
-    double mapX = map.getOriginX().getValue();
-    double mapY = map.getOriginY().getValue();
+    double resolution = NumberUtility.toDouble(map.getResolution().getValue());
+    double mapX = NumberUtility.toDouble(map.getOriginX().getValue());
+    double mapY = NumberUtility.toDouble(map.getOriginY().getValue());
     long scale = map.getScale().getValue();
 
     if (map.getWidth() != null && map.getHeight() != null) {
@@ -237,8 +190,8 @@ public class ControlProcessService  implements IControlProcessService {
 
         // Calculate Longitude, Latitude
         if (control.getPositionX().getValue() != null && control.getPositionY().getValue() != null) {
-          double x = control.getPositionX().getValue();
-          double y = control.getPositionY().getValue();
+          double x = NumberUtility.toDouble(control.getPositionX().getValue());
+          double y = NumberUtility.toDouble(control.getPositionY().getValue());
 
           double lx = (x - mapX) * 10;
           double ly = -1 * (y - mapY) * 10;
@@ -253,8 +206,8 @@ public class ControlProcessService  implements IControlProcessService {
           Point2D point = new Point2D.Double(lx, ly);
           point = warp.mapSourcePoint(point);
 
-          control.getGlobalX().setValue(point.getX());
-          control.getGlobalY().setValue(point.getY());
+          control.getGlobalX().setValue(BigDecimal.valueOf(point.getX()));
+          control.getGlobalY().setValue(BigDecimal.valueOf(point.getY()));
           control = store(control);
         }
       }

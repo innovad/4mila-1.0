@@ -268,10 +268,10 @@ public final class EntryFormUtility {
       for (int k = 0; k < infoTable.getRowCount(); k++) {
         long infoUid = infoTable.getAdditionalInformationUidColumn().getValue(k);
         for (int j = 0; j < formData.getRowCount(); j++) {
-          if (formData.getAdditionalInformationUid(j) == infoUid) {
-            formData.setInteger(j, infoTable.getIntegerColumn().getValue(k));
-            formData.setDecimal(j, infoTable.getDecimalColumn().getValue(k).doubleValue()); // TODO MIG
-            formData.setText(j, infoTable.getTextColumn().getValue(k));
+          if (formData.getRows()[j].getAdditionalInformationUid() == infoUid) {
+            formData.getRows()[j].setInteger(infoTable.getIntegerColumn().getValue(k));
+            formData.getRows()[j].setDecimal(infoTable.getDecimalColumn().getValue(k) == null ? null : BigDecimal.valueOf(infoTable.getDecimalColumn().getValue(k).doubleValue()));
+            formData.getRows()[j].setText(infoTable.getTextColumn().getValue(k));
           }
         }
       }

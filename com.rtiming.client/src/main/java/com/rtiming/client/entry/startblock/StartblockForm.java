@@ -1,7 +1,6 @@
 package com.rtiming.client.entry.startblock;
 
 import org.eclipse.scout.rt.client.dto.FormData;
-import org.eclipse.scout.rt.client.dto.FormData.SdkCommand;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCancelButton;
@@ -73,7 +72,6 @@ public class StartblockForm extends AbstractForm {
   public class MainBox extends AbstractGroupBox {
 
     @Order(10.0)
-    @FormData(value = StartblockFormData.class, sdkCommand = SdkCommand.CREATE)
     public class CodeBox extends AbstractCodeBox {
 
       @Override

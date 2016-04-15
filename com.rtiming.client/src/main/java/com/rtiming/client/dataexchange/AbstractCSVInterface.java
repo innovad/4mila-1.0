@@ -12,13 +12,13 @@ import java.util.Locale;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.util.NumberUtility;
 import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.csv.CsvHelper;
 import org.eclipse.scout.rt.shared.csv.IDataConsumer;
-import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
 
 import com.rtiming.client.ClientSession;
@@ -47,7 +47,7 @@ public abstract class AbstractCSVInterface<Bean extends AbstractCSVDataBean> ext
     this.separator = interfaceConfig.getFieldSeparator().getValue();
     wrapper = interfaceConfig.getTextEnclosing().getValue();
     if (getLanguageUid() != null) {
-      ICode<?> language = CODES.getCodeType(LanguageCodeType.class).getCode(getLanguageUid());
+      ICode<?> language = BEANS.get(LanguageCodeType.class).getCode(getLanguageUid());
       locale = new Locale(language.getExtKey());
     }
     init();

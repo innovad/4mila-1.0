@@ -1,11 +1,11 @@
 package com.rtiming.shared;
 
+import java.math.BigDecimal;
 import java.util.Locale;
 
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.common.code.CODES;
 
 import com.rtiming.shared.common.EntityCodeType;
 import com.rtiming.shared.settings.addinfo.AdditionalInformationAdministrationFormData;
@@ -37,7 +37,7 @@ public final class AdditionalInformationUtility {
       ai = new AdditionalInformationAdministrationFormData();
       ai = BEANS.get(IAdditionalInformationAdministrationProcessService.class).prepareCreate(ai);
       for (int i = 0; i < ai.getCodeBox().getLanguage().getRowCount(); i++) {
-        String language = CODES.getCodeType(LanguageCodeType.class).getCode(ai.getCodeBox().getLanguage().rowAt(i).getLanguage()).getExtKey();
+        String language = BEANS.get(LanguageCodeType.class).getCode(ai.getCodeBox().getLanguage().rowAt(i).getLanguage()).getExtKey();
         Locale locale = new Locale(language);
         ai.getCodeBox().getLanguage().rowAt(i).setTranslation(TEXTS.get(locale, textKey));
       }
@@ -109,7 +109,7 @@ public final class AdditionalInformationUtility {
   private static void addIndividualStartFeeForCurrency(Long feeGroupNr, Long currencyUid) throws ProcessingException {
     FeeFormData fee = new FeeFormData();
     fee.setFeeGroupNr(feeGroupNr);
-    fee.getFee().setValue(1d);
+    fee.getFee().setValue(BigDecimal.ONE);
     fee.getCurrency().setValue(currencyUid);
     fee = BEANS.get(IFeeProcessService.class).create(fee);
   }

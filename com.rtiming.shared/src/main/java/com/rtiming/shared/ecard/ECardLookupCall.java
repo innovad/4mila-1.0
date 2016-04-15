@@ -2,11 +2,11 @@ package com.rtiming.shared.ecard;
 
 import java.util.List;
 
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.util.ColorUtility;
 import org.eclipse.scout.rt.platform.util.NumberUtility;
 import org.eclipse.scout.rt.platform.util.StringUtility;
-import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupRow;
 import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
@@ -59,7 +59,7 @@ public class ECardLookupCall extends LookupCall<Long> {
       if (!StringUtility.isNullOrEmpty(row.getBackgroundColor())) {
         Long id = NumberUtility.parseLong(row.getBackgroundColor());
         if (id != null && id != 0) {
-          ECardTypeCodeType codeType = CODES.getCodeType(ECardTypeCodeType.class);
+          ECardTypeCodeType codeType = BEANS.get(ECardTypeCodeType.class);
           ICode code = codeType.getCode(id);
           if (code != null) {
             typeText = code.getText();

@@ -65,17 +65,13 @@ public class FeeCalculator {
 
         // calculate fee for runners
         for (FeeFormData fee : feeConfiguration) {
-          if (CompareUtility.equals(fee.getEventNr(), eventNr) &&
-              CompareUtility.equals(fee.getClassUid(), classUid)) {
+          if (CompareUtility.equals(fee.getEventNr(), eventNr) && CompareUtility.equals(fee.getClassUid(), classUid)) {
             Long year = NumberUtility.nvl(runnerYear, yearOfEvent + 1);
             if (CompareUtility.equals(currencyUid, fee.getCurrency().getValue())) {
               Long runnerAge = yearOfEvent - year;
-              if (runnerAge >= NumberUtility.nvl(fee.getAgeFrom().getValue(), Long.MIN_VALUE) &&
-                  runnerAge <= NumberUtility.nvl(fee.getAgeTo().getValue(), Long.MAX_VALUE) &&
-                  (fee.getDateFrom().getValue() == null || evtEntry.compareTo(fee.getDateFrom().getValue()) >= 0) &&
-                  (fee.getDateTo().getValue() == null || evtEntry.compareTo(fee.getDateTo().getValue()) <= 0)) {
+              if (runnerAge >= NumberUtility.nvl(fee.getAgeFrom().getValue(), Long.MIN_VALUE) && runnerAge <= NumberUtility.nvl(fee.getAgeTo().getValue(), Long.MAX_VALUE) && (fee.getDateFrom().getValue() == null || evtEntry.compareTo(fee.getDateFrom().getValue()) >= 0) && (fee.getDateTo().getValue() == null || evtEntry.compareTo(fee.getDateTo().getValue()) <= 0)) {
                 FeeOutput feeOutput = new FeeOutput();
-                feeOutput.setAmount(fee.getFee().getValue());
+                feeOutput.setAmount(NumberUtility.toDouble(fee.getFee().getValue()));
                 feeOutput.setCurrencyUid(fee.getCurrency().getValue());
 
                 String displayText = Texts.get("Entry") + " " + FMilaUtility.getCodeText(ClassCodeType.class, classUid) + ", " + Texts.get("Age") + " " + runnerAge;
@@ -83,7 +79,7 @@ public class FeeCalculator {
                 feeOutput.setCashPaymentOnRegistration(fee.isCashPaymentOnRegistration());
                 result.getFees().add(feeOutput);
 
-                result.setSum(result.getSum() + fee.getFee().getValue());
+                result.setSum(result.getSum() + NumberUtility.toDouble(fee.getFee().getValue()));
               }
             }
             else {
@@ -103,16 +99,10 @@ public class FeeCalculator {
       if (CompareUtility.equals(typeUid, AdditionalInformationTypeCodeType.SmartfieldCode.ID)) {
         additionalInformationUid = addInfo.getInteger();
       }
-      if ((CompareUtility.equals(typeUid, AdditionalInformationTypeCodeType.BooleanCode.ID) && NumberUtility.nvl(addInfo.getInteger(), 0) == 1) ||
-          (CompareUtility.equals(typeUid, AdditionalInformationTypeCodeType.IntegerCode.ID) && NumberUtility.nvl(addInfo.getInteger(), 0) != 0) ||
-          (CompareUtility.equals(typeUid, AdditionalInformationTypeCodeType.DoubleCode.ID) && NumberUtility.nvl(addInfo.getDecimal(), 0D) != 0) ||
-          (CompareUtility.equals(typeUid, AdditionalInformationTypeCodeType.TextCode.ID) && !StringUtility.isNullOrEmpty(addInfo.getText())) ||
-          (CompareUtility.equals(typeUid, AdditionalInformationTypeCodeType.SmartfieldCode.ID) && addInfo.getInteger() != null)) {
+      if ((CompareUtility.equals(typeUid, AdditionalInformationTypeCodeType.BooleanCode.ID) && NumberUtility.nvl(addInfo.getInteger(), 0) == 1) || (CompareUtility.equals(typeUid, AdditionalInformationTypeCodeType.IntegerCode.ID) && NumberUtility.nvl(addInfo.getInteger(), 0) != 0) || (CompareUtility.equals(typeUid, AdditionalInformationTypeCodeType.DoubleCode.ID) && NumberUtility.nvl(addInfo.getDecimal(), 0D) != 0) || (CompareUtility.equals(typeUid, AdditionalInformationTypeCodeType.TextCode.ID) && !StringUtility.isNullOrEmpty(addInfo.getText())) || (CompareUtility.equals(typeUid, AdditionalInformationTypeCodeType.SmartfieldCode.ID) && addInfo.getInteger() != null)) {
         for (FeeFormData fee : feeConfiguration) {
-          if (CompareUtility.equals(currencyUid, fee.getCurrency().getValue()) &&
-              CompareUtility.equals(fee.getAdditionalInformationUid(), additionalInformationUid)) {
-            if ((fee.getDateFrom().getValue() == null || evtEntry.compareTo(fee.getDateFrom().getValue()) >= 0) &&
-                (fee.getDateTo().getValue() == null || evtEntry.compareTo(fee.getDateTo().getValue()) <= 0)) {
+          if (CompareUtility.equals(currencyUid, fee.getCurrency().getValue()) && CompareUtility.equals(fee.getAdditionalInformationUid(), additionalInformationUid)) {
+            if ((fee.getDateFrom().getValue() == null || evtEntry.compareTo(fee.getDateFrom().getValue()) >= 0) && (fee.getDateTo().getValue() == null || evtEntry.compareTo(fee.getDateTo().getValue()) <= 0)) {
 
               Double factor = 1d;
               if (CompareUtility.equals(typeUid, AdditionalInformationTypeCodeType.DoubleCode.ID)) {
@@ -123,7 +113,7 @@ public class FeeCalculator {
               }
 
               FeeOutput feeOutput = new FeeOutput();
-              feeOutput.setAmount(fee.getFee().getValue() * factor);
+              feeOutput.setAmount(NumberUtility.toDouble(fee.getFee().getValue()) * factor);
               feeOutput.setCurrencyUid(fee.getCurrency().getValue());
 
               String displayText = FMilaUtility.getCodeText(AdditionalInformationCodeType.class, additionalInformationUid);
@@ -131,7 +121,7 @@ public class FeeCalculator {
               feeOutput.setCashPaymentOnRegistration(fee.isCashPaymentOnRegistration());
               result.getFees().add(feeOutput);
 
-              result.setSum(result.getSum() + (fee.getFee().getValue() * factor));
+              result.setSum(result.getSum() + (NumberUtility.toDouble(fee.getFee().getValue()) * factor));
             }
           }
         }

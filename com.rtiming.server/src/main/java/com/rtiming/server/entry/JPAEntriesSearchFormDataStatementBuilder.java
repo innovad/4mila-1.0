@@ -50,8 +50,7 @@ public class JPAEntriesSearchFormDataStatementBuilder extends AbstractJPASearchF
   private final Path<RtCity> city;
   private final CriteriaQuery<Object[]> query;
 
-  public JPAEntriesSearchFormDataStatementBuilder(CriteriaQuery<Object[]> query, Path<RtRace> race, Path<RtEntry> entry,
-      Path<RtParticipation> participation, Path<RtRunner> runner, Path<RtEcard> ecard, Path<RtClub> club, Path<RtCity> city) {
+  public JPAEntriesSearchFormDataStatementBuilder(CriteriaQuery<Object[]> query, Path<RtRace> race, Path<RtEntry> entry, Path<RtParticipation> participation, Path<RtRunner> runner, Path<RtEcard> ecard, Path<RtClub> club, Path<RtCity> city) {
     super();
     this.query = query;
     this.race = race;
@@ -91,7 +90,7 @@ public class JPAEntriesSearchFormDataStatementBuilder extends AbstractJPASearchF
     // Startlist > Starttime Yes No All
     addBooleanAsNullWherePart(participation.get(RtParticipation_.startTime), searchFormData.getStartTimeGroup().getValue());
     // Startlist > Startblock
-    addLongWherePart(participation.get(RtParticipation_.startblockUid), searchFormData.getStartblocks().getValue());
+    addLongWherePart(participation.get(RtParticipation_.startblockUid), searchFormData.getStartblocks().getValue().toArray(new Long[0]));
 
     // Runner
     JPARunnerBoxSearchFormDataStatementBuilder runnerBuilder = new JPARunnerBoxSearchFormDataStatementBuilder(runner);
@@ -128,11 +127,7 @@ public class JPAEntriesSearchFormDataStatementBuilder extends AbstractJPASearchF
     CriteriaBuilder b = JPA.getCriteriaBuilder();
     Subquery<Long> subquery = query.subquery(Long.class);
     Root<RtRaceControl> subroot = subquery.from(RtRaceControl.class);
-    subquery.select(subroot.get(RtRaceControl_.controlNr)).
-        where(b.and(
-            b.equal(race.get(RtRace_.id).get(RtRaceKey_.raceNr), subroot.get(RtRaceControl_.raceNr)),
-            b.equal(subroot.get(RtRaceControl_.controlNr), startcontrolUid)
-            ));
+    subquery.select(subroot.get(RtRaceControl_.controlNr)).where(b.and(b.equal(race.get(RtRace_.id).get(RtRaceKey_.raceNr), subroot.get(RtRaceControl_.raceNr)), b.equal(subroot.get(RtRaceControl_.controlNr), startcontrolUid)));
     Predicate exists = b.exists(subquery);
     return exists;
   }

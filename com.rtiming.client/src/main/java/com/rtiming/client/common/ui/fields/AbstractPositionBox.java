@@ -1,6 +1,7 @@
 package com.rtiming.client.common.ui.fields;
 
 import org.eclipse.scout.rt.client.dto.FormData;
+import org.eclipse.scout.rt.client.dto.FormData.DefaultSubtypeSdkCommand;
 import org.eclipse.scout.rt.client.dto.FormData.SdkCommand;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.platform.Order;
@@ -12,7 +13,7 @@ import com.rtiming.shared.map.AbstractPositionBoxData;
 /**
  *
  */
-@FormData(value = AbstractPositionBoxData.class, sdkCommand = SdkCommand.CREATE)
+@FormData(value = AbstractPositionBoxData.class, sdkCommand = SdkCommand.CREATE, defaultSubtypeSdkCommand = DefaultSubtypeSdkCommand.CREATE)
 public abstract class AbstractPositionBox extends AbstractGroupBox {
 
   @Override

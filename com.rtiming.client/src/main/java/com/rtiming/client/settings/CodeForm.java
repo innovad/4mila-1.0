@@ -99,7 +99,6 @@ public class CodeForm extends AbstractForm {
   }
 
   @Order(10.0)
-  @FormData(value = CodeFormData.class, sdkCommand = SdkCommand.CREATE)
   public class MainBox extends AbstractCodeBox {
 
     @Order(48.0)

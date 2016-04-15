@@ -13,6 +13,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 import org.eclipse.scout.rt.client.dto.FormData;
+import org.eclipse.scout.rt.client.dto.FormData.DefaultSubtypeSdkCommand;
 import org.eclipse.scout.rt.client.dto.FormData.SdkCommand;
 import org.eclipse.scout.rt.client.ui.basic.filechooser.FileChooser;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
@@ -71,7 +72,7 @@ import com.rtiming.shared.map.IGoogleEarthService;
 import com.rtiming.shared.map.IMapProcessService;
 import com.rtiming.shared.map.MapFormData;
 
-@FormData(value = MapFormData.class, sdkCommand = SdkCommand.CREATE)
+@FormData(value = MapFormData.class, sdkCommand = SdkCommand.CREATE, defaultSubtypeSdkCommand = DefaultSubtypeSdkCommand.CREATE)
 public class MapForm extends AbstractForm {
 
   private RtMapKey mapKey;
@@ -325,7 +326,6 @@ public class MapForm extends AbstractForm {
         }
 
         @Order(10.0)
-        @FormData(value = MapFormData.class, sdkCommand = SdkCommand.CREATE)
         public class NWCornerBox extends AbstractPositionBox {
 
           @Override
@@ -341,7 +341,6 @@ public class MapForm extends AbstractForm {
         }
 
         @Order(20.0)
-        @FormData(value = MapFormData.class, sdkCommand = SdkCommand.CREATE)
         public class NECornerBox extends AbstractPositionBox {
 
           @Override
@@ -357,7 +356,6 @@ public class MapForm extends AbstractForm {
         }
 
         @Order(30.0)
-        @FormData(value = MapFormData.class, sdkCommand = SdkCommand.CREATE)
         public class SECornerBox extends AbstractPositionBox {
 
           @Override
@@ -373,7 +371,6 @@ public class MapForm extends AbstractForm {
         }
 
         @Order(40.0)
-        @FormData(value = MapFormData.class, sdkCommand = SdkCommand.CREATE)
         public class SWCornerBox extends AbstractPositionBox {
 
           @Override

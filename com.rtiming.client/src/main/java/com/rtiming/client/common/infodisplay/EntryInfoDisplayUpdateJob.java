@@ -1,9 +1,9 @@
 package com.rtiming.client.common.infodisplay;
 
 import org.eclipse.scout.rt.client.IClientSession;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.util.StringUtility;
-import org.eclipse.scout.rt.shared.services.common.code.CODES;
 
 import com.rtiming.client.entry.EntryForm;
 import com.rtiming.shared.settings.currency.CurrencyCodeType;
@@ -26,7 +26,7 @@ public class EntryInfoDisplayUpdateJob extends AbstractInfoDisplayUpdateJob {
     String clazz = form.getClazzField().getDisplayText();
     String ecard = form.getECardField().getTooltipText();
     String fee = form.getFeesBox().getLabel();
-    String currencyText = CODES.getCodeType(CurrencyCodeType.class).getCode(form.getCurrencyField().getValue()).getExtKey();
+    String currencyText = BEANS.get(CurrencyCodeType.class).getCode(form.getCurrencyField().getValue()).getExtKey();
 
     // create html file
     String location = InfoDisplayUtility.getInfoDisplayHtmlUrl("infoDisplayEntry.html");

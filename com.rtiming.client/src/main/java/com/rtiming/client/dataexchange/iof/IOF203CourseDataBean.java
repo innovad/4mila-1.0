@@ -10,6 +10,7 @@ import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.exception.VetoException;
 import org.eclipse.scout.rt.platform.util.CompareUtility;
+import org.eclipse.scout.rt.platform.util.NumberUtility;
 import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.shared.TEXTS;
 
@@ -107,8 +108,8 @@ public class IOF203CourseDataBean extends AbstractXMLDataBean {
       mapFormData.getScale().setValue(DataExchangeUtility.parseLong(map.getScale()));
       if (map.getMapPosition() != null) {
         MapPosition pos = map.getMapPosition();
-        mapFormData.getOriginX().setValue(DataExchangeUtility.parseDouble(pos.getX()));
-        mapFormData.getOriginY().setValue(DataExchangeUtility.parseDouble(pos.getY()));
+        mapFormData.getOriginX().setValue(NumberUtility.toBigDecimal(DataExchangeUtility.parseDouble(pos.getX())));
+        mapFormData.getOriginY().setValue(NumberUtility.toBigDecimal(DataExchangeUtility.parseDouble(pos.getY())));
       }
       if (mapFormData.getMapKey().getId() == null) {
         EventBean event = new EventBean();
@@ -298,10 +299,10 @@ public class IOF203CourseDataBean extends AbstractXMLDataBean {
       // write attributes
       control.getType().setValue(controlTypeUid);
       if (position != null && !StringUtility.isNullOrEmpty(position.getX())) {
-        control.getPositionX().setValue(Double.parseDouble(position.getX()));
+        control.getPositionX().setValue(NumberUtility.toBigDecimal(Double.parseDouble(position.getX())));
       }
       if (position != null && !StringUtility.isNullOrEmpty(position.getY())) {
-        control.getPositionY().setValue(Double.parseDouble(position.getY()));
+        control.getPositionY().setValue(NumberUtility.toBigDecimal(Double.parseDouble(position.getY())));
       }
 
       // put/replace in cache

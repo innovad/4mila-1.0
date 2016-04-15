@@ -210,7 +210,7 @@ public class DataExchangeStartForm extends AbstractForm {
       @Override
       protected void execChangedValue() throws ProcessingException {
         if (getValue() != null) {
-          AbstractImportExportCode code = (AbstractImportExportCode) CODES.getCodeType(ImportExportFormatCodeType.class).getCode(getValue());
+          AbstractImportExportCode code = (AbstractImportExportCode) BEANS.get(ImportExportFormatCodeType.class).getCode(getValue());
 
           // Import/Export
           if (code.isImport() && !code.isExport()) {

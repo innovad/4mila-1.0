@@ -3,8 +3,8 @@ package com.rtiming.client.common.ui.columns;
 import org.eclipse.scout.rt.client.ui.basic.cell.Cell;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractSmartColumn;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
-import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 
@@ -36,7 +36,7 @@ public class AbstractClassShortcutColumn extends AbstractSmartColumn<Long> {
     // only display ext key in column
     Object value = cell.getValue();
     if (value != null) {
-      ICode code = CODES.getCodeType(ClassCodeType.class).getCode((Long) value);
+      ICode code = BEANS.get(ClassCodeType.class).getCode((Long) value);
       if (code != null) {
         cell.setText(code.getExtKey());
       }

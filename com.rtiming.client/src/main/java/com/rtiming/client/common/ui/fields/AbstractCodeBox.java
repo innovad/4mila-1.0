@@ -1,6 +1,7 @@
 package com.rtiming.client.common.ui.fields;
 
 import org.eclipse.scout.rt.client.dto.FormData;
+import org.eclipse.scout.rt.client.dto.FormData.DefaultSubtypeSdkCommand;
 import org.eclipse.scout.rt.client.dto.FormData.SdkCommand;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
@@ -21,7 +22,7 @@ import com.rtiming.shared.Texts;
 import com.rtiming.shared.common.AbstractCodeBoxData;
 import com.rtiming.shared.settings.user.LanguageCodeType;
 
-@FormData(value = AbstractCodeBoxData.class, sdkCommand = SdkCommand.CREATE)
+@FormData(value = AbstractCodeBoxData.class, sdkCommand = SdkCommand.CREATE, defaultSubtypeSdkCommand = DefaultSubtypeSdkCommand.CREATE)
 public abstract class AbstractCodeBox extends AbstractGroupBox {
 
   @Override

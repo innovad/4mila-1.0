@@ -6,7 +6,6 @@ import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.server.AbstractServerSession;
 import org.eclipse.scout.rt.server.session.ServerSessionProvider;
-import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,9 +42,9 @@ public class ServerSession extends AbstractServerSession {
     if (user.getLanguage().getValue() != null) {
       setLanguageUid(user.getLanguage().getValue());
     }
-    roleUids = user.getRoles().getValue();
+    roleUids = user.getRoles().getValue().toArray(new Long[0]);
 
-    Locale locale = new Locale(CODES.getCodeType(LanguageCodeType.class).getCode(getLanguageUid()).getExtKey());
+    Locale locale = new Locale(BEANS.get(LanguageCodeType.class).getCode(getLanguageUid()).getExtKey());
     // TODO MIG setLocale(locale);
     // TODO MIG LocaleThreadLocal.set(locale);
 

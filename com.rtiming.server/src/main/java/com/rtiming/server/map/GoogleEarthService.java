@@ -3,6 +3,7 @@ package com.rtiming.server.map;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,10 +52,10 @@ public class GoogleEarthService implements IGoogleEarthService {
     }
     LatLonQuad quad = KmlFactory.createGxLatLonQuad();
     List<Coordinate> coordinates = new ArrayList<Coordinate>();
-    coordinates.add(new Coordinate(formData.getSWCornerBox().getX().getValue(), formData.getSWCornerBox().getY().getValue()));
-    coordinates.add(new Coordinate(formData.getSECornerBox().getX().getValue(), formData.getSECornerBox().getY().getValue()));
-    coordinates.add(new Coordinate(formData.getNECornerBox().getX().getValue(), formData.getNECornerBox().getY().getValue()));
-    coordinates.add(new Coordinate(formData.getNWCornerBox().getX().getValue(), formData.getNWCornerBox().getY().getValue()));
+    coordinates.add(new Coordinate(formData.getSWCornerBox().getX().getValue().doubleValue(), formData.getSWCornerBox().getY().getValue().doubleValue()));
+    coordinates.add(new Coordinate(formData.getSECornerBox().getX().getValue().doubleValue(), formData.getSECornerBox().getY().getValue().doubleValue()));
+    coordinates.add(new Coordinate(formData.getNECornerBox().getX().getValue().doubleValue(), formData.getNECornerBox().getY().getValue().doubleValue()));
+    coordinates.add(new Coordinate(formData.getNWCornerBox().getX().getValue().doubleValue(), formData.getNWCornerBox().getY().getValue().doubleValue()));
     quad.setCoordinates(coordinates);
     overlay.addToGroundOverlayObjectExtension(quad);
 
@@ -111,32 +112,32 @@ public class GoogleEarthService implements IGoogleEarthService {
           LatLonQuad quad = (LatLonQuad) ext;
           if (quad.getCoordinates() != null && quad.getCoordinates().size() >= 4) {
             // longitude
-            formData.getSWCornerBox().getX().setValue(quad.getCoordinates().get(0).getLongitude());
-            formData.getSECornerBox().getX().setValue(quad.getCoordinates().get(1).getLongitude());
-            formData.getNECornerBox().getX().setValue(quad.getCoordinates().get(2).getLongitude());
-            formData.getNWCornerBox().getX().setValue(quad.getCoordinates().get(3).getLongitude());
+            formData.getSWCornerBox().getX().setValue(BigDecimal.valueOf(quad.getCoordinates().get(0).getLongitude()));
+            formData.getSECornerBox().getX().setValue(BigDecimal.valueOf(quad.getCoordinates().get(1).getLongitude()));
+            formData.getNECornerBox().getX().setValue(BigDecimal.valueOf(quad.getCoordinates().get(2).getLongitude()));
+            formData.getNWCornerBox().getX().setValue(BigDecimal.valueOf(quad.getCoordinates().get(3).getLongitude()));
 
             // latitude
-            formData.getSWCornerBox().getY().setValue(quad.getCoordinates().get(0).getLatitude());
-            formData.getSECornerBox().getY().setValue(quad.getCoordinates().get(1).getLatitude());
-            formData.getNECornerBox().getY().setValue(quad.getCoordinates().get(2).getLatitude());
-            formData.getNWCornerBox().getY().setValue(quad.getCoordinates().get(3).getLatitude());
+            formData.getSWCornerBox().getY().setValue(BigDecimal.valueOf(quad.getCoordinates().get(0).getLatitude()));
+            formData.getSECornerBox().getY().setValue(BigDecimal.valueOf(quad.getCoordinates().get(1).getLatitude()));
+            formData.getNECornerBox().getY().setValue(BigDecimal.valueOf(quad.getCoordinates().get(2).getLatitude()));
+            formData.getNWCornerBox().getY().setValue(BigDecimal.valueOf(quad.getCoordinates().get(3).getLatitude()));
           }
         }
       }
       LatLonBox box = overlay.getLatLonBox();
       if (box != null) {
         // longitude
-        formData.getSWCornerBox().getX().setValue(box.getWest());
-        formData.getSECornerBox().getX().setValue(box.getEast());
-        formData.getNECornerBox().getX().setValue(box.getEast());
-        formData.getNWCornerBox().getX().setValue(box.getWest());
+        formData.getSWCornerBox().getX().setValue(BigDecimal.valueOf(box.getWest()));
+        formData.getSECornerBox().getX().setValue(BigDecimal.valueOf(box.getEast()));
+        formData.getNECornerBox().getX().setValue(BigDecimal.valueOf(box.getEast()));
+        formData.getNWCornerBox().getX().setValue(BigDecimal.valueOf(box.getWest()));
 
         // latitude
-        formData.getSWCornerBox().getY().setValue(box.getSouth());
-        formData.getSECornerBox().getY().setValue(box.getSouth());
-        formData.getNECornerBox().getY().setValue(box.getNorth());
-        formData.getNWCornerBox().getY().setValue(box.getNorth());
+        formData.getSWCornerBox().getY().setValue(BigDecimal.valueOf(box.getSouth()));
+        formData.getSECornerBox().getY().setValue(BigDecimal.valueOf(box.getSouth()));
+        formData.getNECornerBox().getY().setValue(BigDecimal.valueOf(box.getNorth()));
+        formData.getNWCornerBox().getY().setValue(BigDecimal.valueOf(box.getNorth()));
       }
       if (formData.getSWCornerBox().getY().getValue() == null || formData.getSECornerBox().getY().getValue() == null || formData.getNECornerBox().getY().getValue() == null || formData.getNWCornerBox().getY().getValue() == null || formData.getSWCornerBox().getX().getValue() == null || formData.getSECornerBox().getX().getValue() == null || formData.getNECornerBox().getX().getValue() == null || formData.getNWCornerBox().getX().getValue() == null) {
         throw new VetoException(TEXTS.get("KML_KMZ_ImportNoCoordinates"));

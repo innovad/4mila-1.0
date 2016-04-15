@@ -3,6 +3,7 @@ package com.rtiming.client.race;
 import java.util.Date;
 
 import org.eclipse.scout.rt.client.dto.FormData;
+import org.eclipse.scout.rt.client.dto.FormData.DefaultSubtypeSdkCommand;
 import org.eclipse.scout.rt.client.dto.FormData.SdkCommand;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
@@ -65,7 +66,7 @@ import com.rtiming.shared.race.RaceStatusCodeType;
 import com.rtiming.shared.runner.RunnerLookupCall;
 import com.rtiming.shared.settings.city.AbstractAddressBoxData;
 
-@FormData(value = RaceFormData.class, sdkCommand = SdkCommand.CREATE)
+@FormData(value = RaceFormData.class, sdkCommand = SdkCommand.CREATE, defaultSubtypeSdkCommand = DefaultSubtypeSdkCommand.CREATE)
 public class RaceForm extends AbstractForm {
 
   private Long raceNr;
@@ -432,7 +433,7 @@ public class RaceForm extends AbstractForm {
       }
 
       @Order(20.0)
-      @FormData(value = AbstractAddressBoxData.class, sdkCommand = SdkCommand.CREATE)
+      @FormData(value = AbstractAddressBoxData.class, sdkCommand = SdkCommand.CREATE, defaultSubtypeSdkCommand = DefaultSubtypeSdkCommand.CREATE)
       public class AddressBox extends AbstractAddressBox {
 
       }

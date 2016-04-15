@@ -74,7 +74,7 @@ public abstract class FMilaReport {
   public final void setTemplate(Long reportTypeUid, Long eventNr) throws ProcessingException {
     Set<RtReportTemplateFile> files = TemplateSelectionUtility.getTemplateFiles(reportTypeUid, eventNr, SharedCache.getTemplateConfiguration());
 
-    AbstractReportTypeCode report = (AbstractReportTypeCode) CODES.getCodeType(ReportTypeCodeType.class).getCode(reportTypeUid);
+    AbstractReportTypeCode report = (AbstractReportTypeCode) BEANS.get(ReportTypeCodeType.class).getCode(reportTypeUid);
     if (files != null && files.size() > 0) {
       templateFilename = TemplateSelectionUtility.loadFilesIntoLocalDir(files, TemplateSelectionUtility.getCustomTemplateLoader(), report.getConfiguredCompilationRequired());
       setSubreportDirectory(IOUtility.getFilePath(templateFilename) + FMilaUtility.FILE_SEPARATOR);

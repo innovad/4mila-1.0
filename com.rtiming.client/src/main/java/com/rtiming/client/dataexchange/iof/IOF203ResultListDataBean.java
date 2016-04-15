@@ -91,7 +91,7 @@ public class IOF203ResultListDataBean extends AbstractXMLDataBean {
       // Nation
       Country country = new Country();
       Name countryName = new Name();
-      ICode code = CODES.getCodeType(CountryCodeType.class).getCode(table.getCountryColumn().getValue(k));
+      ICode code = BEANS.get(CountryCodeType.class).getCode(table.getCountryColumn().getValue(k));
       if (code != null) {
         countryName.setvalue(code.getText());
       }

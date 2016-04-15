@@ -157,7 +157,7 @@ public class CountryProcessService implements ICountryProcessService {
       }
 
       // loop through available languages
-      for (ICode<?> c : CODES.getCodeType(LanguageCodeType.class).getCodes()) {
+      for (ICode<?> c : BEANS.get(LanguageCodeType.class).getCodes()) {
         LanguageRowData newRow = country.getCodeBox().getLanguage().addRow(ITableHolder.STATUS_INSERTED);
         newRow.setTranslation(name);
         newRow.setLanguage((Long) c.getId());

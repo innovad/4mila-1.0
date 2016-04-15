@@ -16,6 +16,7 @@ import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Root;
 import javax.persistence.criteria.Subquery;
 
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.exception.VetoException;
 import org.eclipse.scout.rt.platform.util.BooleanUtility;
@@ -25,7 +26,6 @@ import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.platform.util.TypeCastUtility;
 import org.eclipse.scout.rt.platform.util.date.DateUtility;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 
 import com.rtiming.server.ServerSession;
@@ -158,7 +158,7 @@ public class ResultsOutlineService implements IResultsOutlineService {
     Join<RtEventClass, RtCourse> joinCourse = joinEventClass.join(RtEventClass_.rtCourse, JoinType.LEFT);
 
     selectQuery.select(b.array(race.get(RtRace_.legTime), // must be first
-    race.get(RtRace_.id).get(RtRaceKey_.raceNr), race.get(RtRace_.entryNr), joinRunner.get(RtRunner_.id).get(RtRunnerKey_.runnerNr), race.get(RtRace_.legClassUid), joinCourse.get(RtCourse_.shortcut), race.get(RtRace_.bibNo), joinRunner.get(RtRunner_.extKey), JPACriteriaUtility.runnerNameJPA(joinRunner), joinRunner.get(RtRunner_.lastName), joinRunner.get(RtRunner_.firstName), joinECard.get(RtEcard_.ecardNo), joinECard.get(RtEcard_.rentalCard), joinClub.get(RtClub_.shortcut), joinClub.get(RtClub_.extKey), joinClub.get(RtClub_.name), joinNation.get(RtCountry_.nation), joinNation.get(RtCountry_.countryCode), joinRunner.get(RtRunner_.sexUid), joinRunner.get(RtRunner_.evtBirth), joinRunner.get(RtRunner_.year), joinAddress.get(RtAddress_.street), joinCity.get(RtCity_.zip), joinCity.get(RtCity_.name), joinCity.get(RtCity_.areaUid), joinCity.get(RtCity_.region), joinCity.get(RtCity_.countryUid), joinAddress.get(RtAddress_.phone), joinAddress.get(RtAddress_.fax), joinAddress.get(RtAddress_.mobile), joinAddress.get(RtAddress_.email), joinAddress.get(RtAddress_.www), race.get(RtRace_.statusUid), race.get(RtRace_.legStartTime), joinEventClass.get(RtEventClass_.timePrecisionUid))).where(b.and(b.equal(race.get(RtRace_.id).get(RtRaceKey_.clientNr), ServerSession.get().getSessionClientNr()), eventNr != null ? b.equal(race.get(RtRace_.eventNr), eventNr) : b.conjunction(), classUid != null ? b.equal(race.get(RtRace_.legClassUid), classUid) : b.conjunction(), courseNr != null ? b.equal(joinCourse.get(RtCourse_.id).get(RtCourseKey_.courseNr), courseNr) : b.conjunction(), clubNr != null ? b.equal(joinClub.get(RtClub_.id).get(RtClubKey_.clubNr), clubNr) : b.conjunction(), b.isNotNull(race.get(RtRace_.statusUid)), b.notEqual(race.get(RtRace_.statusUid), RaceStatusCodeType.DidNotStartCode.ID)));
+        race.get(RtRace_.id).get(RtRaceKey_.raceNr), race.get(RtRace_.entryNr), joinRunner.get(RtRunner_.id).get(RtRunnerKey_.runnerNr), race.get(RtRace_.legClassUid), joinCourse.get(RtCourse_.shortcut), race.get(RtRace_.bibNo), joinRunner.get(RtRunner_.extKey), JPACriteriaUtility.runnerNameJPA(joinRunner), joinRunner.get(RtRunner_.lastName), joinRunner.get(RtRunner_.firstName), joinECard.get(RtEcard_.ecardNo), joinECard.get(RtEcard_.rentalCard), joinClub.get(RtClub_.shortcut), joinClub.get(RtClub_.extKey), joinClub.get(RtClub_.name), joinNation.get(RtCountry_.nation), joinNation.get(RtCountry_.countryCode), joinRunner.get(RtRunner_.sexUid), joinRunner.get(RtRunner_.evtBirth), joinRunner.get(RtRunner_.year), joinAddress.get(RtAddress_.street), joinCity.get(RtCity_.zip), joinCity.get(RtCity_.name), joinCity.get(RtCity_.areaUid), joinCity.get(RtCity_.region), joinCity.get(RtCity_.countryUid), joinAddress.get(RtAddress_.phone), joinAddress.get(RtAddress_.fax), joinAddress.get(RtAddress_.mobile), joinAddress.get(RtAddress_.email), joinAddress.get(RtAddress_.www), race.get(RtRace_.statusUid), race.get(RtRace_.legStartTime), joinEventClass.get(RtEventClass_.timePrecisionUid))).where(b.and(b.equal(race.get(RtRace_.id).get(RtRaceKey_.clientNr), ServerSession.get().getSessionClientNr()), eventNr != null ? b.equal(race.get(RtRace_.eventNr), eventNr) : b.conjunction(), classUid != null ? b.equal(race.get(RtRace_.legClassUid), classUid) : b.conjunction(), courseNr != null ? b.equal(joinCourse.get(RtCourse_.id).get(RtCourseKey_.courseNr), courseNr) : b.conjunction(), clubNr != null ? b.equal(joinClub.get(RtClub_.id).get(RtClubKey_.clubNr), clubNr) : b.conjunction(), b.isNotNull(race.get(RtRace_.statusUid)), b.notEqual(race.get(RtRace_.statusUid), RaceStatusCodeType.DidNotStartCode.ID)));
     List<Order> order = new ArrayList<>();
     if (clubNr != null) {
       order.add(b.asc(race.get(RtRace_.legClassUid)));
@@ -415,7 +415,7 @@ public class ResultsOutlineService implements IResultsOutlineService {
         parameters.put(IReportParameters.RACE_TIME, FMilaUtility.formatTime(legTime, timePrecisionUid));
       }
       else {
-        parameters.put(IReportParameters.RACE_TIME, CODES.getCodeType(RaceStatusCodeType.class).getCode(raceStatusUid).getText());
+        parameters.put(IReportParameters.RACE_TIME, BEANS.get(RaceStatusCodeType.class).getCode(raceStatusUid).getText());
       }
       parameters.put(IReportParameters.EVENT_NAME, eventName);
       // logo
@@ -449,10 +449,10 @@ public class ResultsOutlineService implements IResultsOutlineService {
   public List<ResultClazzRowData> getResultClassTableData(Long clientNr, SearchFilter filter) throws ProcessingException {
     Long eventNr = ((SingleEventSearchFormData) filter.getFormData()).getEvent().getValue();
     String queryString = "SELECT " + "EC.parentUid, " + // Parent/Relay Uid
-    "EC.id.classUid, " + // Class/Leg Uid
-    "EC.typeUid, " + // Class Type
-    "EC.sortcode, " + // Order
-    "COUNT(DISTINCT RA.entryNr), " + "COUNT(DISTINCT RA.id.raceNr), " + "COUNT(RA.statusUid), " + "COUNT(DISTINCT RA.id.raceNr) - COUNT(RA.statusUid) " + "FROM RtEventClass EC " + "LEFT JOIN EC.rtRaces RA " + "WHERE (EC.id.eventNr = :eventNr OR :eventNr IS NULL) " + "AND EC.id.clientNr = :clientNr " + "AND EC.typeUid != " + ClassTypeCodeType.RelayCode.ID + " " + "GROUP BY EC.id.classUid, EC.parentUid, EC.typeUid, EC.sortcode ";
+        "EC.id.classUid, " + // Class/Leg Uid
+        "EC.typeUid, " + // Class Type
+        "EC.sortcode, " + // Order
+        "COUNT(DISTINCT RA.entryNr), " + "COUNT(DISTINCT RA.id.raceNr), " + "COUNT(RA.statusUid), " + "COUNT(DISTINCT RA.id.raceNr) - COUNT(RA.statusUid) " + "FROM RtEventClass EC " + "LEFT JOIN EC.rtRaces RA " + "WHERE (EC.id.eventNr = :eventNr OR :eventNr IS NULL) " + "AND EC.id.clientNr = :clientNr " + "AND EC.typeUid != " + ClassTypeCodeType.RelayCode.ID + " " + "GROUP BY EC.id.classUid, EC.parentUid, EC.typeUid, EC.sortcode ";
     FMilaQuery query = JPA.createQuery(queryString);
     query.setParameter("clientNr", clientNr);
     query.setParameter("eventNr", eventNr);

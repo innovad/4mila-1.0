@@ -1,9 +1,11 @@
 package com.rtiming.server.settings.user;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.exception.VetoException;
 import org.eclipse.scout.rt.platform.security.EncryptionUtility;
@@ -11,7 +13,6 @@ import org.eclipse.scout.rt.platform.util.Base64Utility;
 import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.platform.util.TypeCastUtility;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
 
@@ -32,7 +33,7 @@ import com.rtiming.shared.settings.user.IUserProcessService;
 import com.rtiming.shared.settings.user.LanguageCodeType;
 import com.rtiming.shared.settings.user.UserFormData;
 
-public class UserProcessService  implements IUserProcessService {
+public class UserProcessService implements IUserProcessService {
 
   @Override
   public UserFormData prepareCreate(UserFormData formData) throws ProcessingException {
@@ -43,7 +44,7 @@ public class UserProcessService  implements IUserProcessService {
     // set default language to system locale
     String language = Locale.getDefault().getLanguage();
     if (!StringUtility.isNullOrEmpty(language)) {
-      for (ICode<?> code : CODES.getCodeType(LanguageCodeType.class).getCodes()) {
+      for (ICode<?> code : BEANS.get(LanguageCodeType.class).getCodes()) {
         if (language.equalsIgnoreCase(code.getExtKey())) {
           formData.getLanguage().setValue(TypeCastUtility.castValue(code.getId(), Long.class));
         }
@@ -75,25 +76,14 @@ public class UserProcessService  implements IUserProcessService {
       throw new VetoException(Texts.get("AuthorizationFailed"));
     }
 
-    JPAUtility.select("SELECT " +
-        "username, " +
-        "password, " +
-        "password, " +
-        "languageUid " +
-        "FROM RtUser " +
-        "WHERE id.userNr = :userNr " +
-        "AND id.clientNr = :sessionClientNr " +
-        "INTO :username, :password, :repeatPassword, :language ", formData);
+    JPAUtility.select("SELECT " + "username, " + "password, " + "password, " + "languageUid " + "FROM RtUser " + "WHERE id.userNr = :userNr " + "AND id.clientNr = :sessionClientNr " + "INTO :username, :password, :repeatPassword, :language ", formData);
 
-    String queryString = "SELECT id.roleUid " +
-        "FROM RtUserRole " +
-        "WHERE id.userNr = :userNr " +
-        "AND id.clientNr = :clientNr";
+    String queryString = "SELECT id.roleUid " + "FROM RtUserRole " + "WHERE id.userNr = :userNr " + "AND id.clientNr = :clientNr";
     FMilaTypedQuery<Long> query = JPA.createQuery(queryString, Long.class);
     query.setParameter("userNr", formData.getUserNr());
     query.setParameter("clientNr", ServerSession.get().getSessionClientNr());
     List<Long> result = query.getResultList();
-    formData.getRoles().setValue(result.toArray(new Long[]{}));
+    formData.getRoles().setValue(new HashSet<>(result));
 
     return formData;
   }
@@ -105,11 +95,7 @@ public class UserProcessService  implements IUserProcessService {
     }
 
     // check unique username
-    String queryString = "SELECT COUNT(U.id.userNr) " +
-        "FROM RtUser U " +
-        "WHERE U.username = :username " +
-        "AND U.id.clientNr = :sessionClientNr " +
-        "AND U.id.userNr != :userNr ";
+    String queryString = "SELECT COUNT(U.id.userNr) " + "FROM RtUser U " + "WHERE U.username = :username " + "AND U.id.clientNr = :sessionClientNr " + "AND U.id.userNr != :userNr ";
 
     FMilaTypedQuery<Long> queryLong = JPA.createQuery(queryString, Long.class);
     JPAUtility.setAutoParameters(queryLong, queryString, formData);
@@ -120,7 +106,7 @@ public class UserProcessService  implements IUserProcessService {
     }
 
     // check at least one role
-    if (formData.getRoles().getValue() == null || formData.getRoles().getValue().length == 0) {
+    if (formData.getRoles().getValue() == null || formData.getRoles().getValue().size() == 0) {
       throw new VetoException(TEXTS.get("UserRoleMandatoryMessage"));
     }
 
@@ -136,12 +122,7 @@ public class UserProcessService  implements IUserProcessService {
     }
 
     // store user data
-    queryString = "UPDATE RtUser U " +
-        "SET U.username = :usernameLowercase, " +
-        "U.password = :passwordEncrypted, " +
-        "U.languageUid = :language " +
-        "WHERE U.id.userNr = :userNr " +
-        "AND U.id.clientNr = :sessionClientNr";
+    queryString = "UPDATE RtUser U " + "SET U.username = :usernameLowercase, " + "U.password = :passwordEncrypted, " + "U.languageUid = :language " + "WHERE U.id.userNr = :userNr " + "AND U.id.clientNr = :sessionClientNr";
 
     FMilaQuery query = JPA.createQuery(queryString);
     query.setParameter("usernameLowercase", formData.getUsername().getValue().toLowerCase());
@@ -170,10 +151,7 @@ public class UserProcessService  implements IUserProcessService {
   public UserFormData find(String username) throws ProcessingException {
     UserFormData result = new UserFormData();
 
-    String queryString = "SELECT MAX(U.id.userNr) " +
-        "FROM RtUser U " +
-        "WHERE LOWER(U.username) = LOWER(:username) " +
-        "AND U.id.clientNr = :sessionClientNr ";
+    String queryString = "SELECT MAX(U.id.userNr) " + "FROM RtUser U " + "WHERE LOWER(U.username) = LOWER(:username) " + "AND U.id.clientNr = :sessionClientNr ";
 
     FMilaTypedQuery<Long> queryLong = JPA.createQuery(queryString, Long.class);
     queryLong.setParameter("username", username);

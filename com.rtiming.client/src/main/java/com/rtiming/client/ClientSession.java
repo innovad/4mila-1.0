@@ -61,7 +61,7 @@ public class ClientSession extends AbstractClientSession {
       // TODO MIG setServiceTunnel(new HttpServiceTunnel(this, serverUrl, version));
     }
 
-    Locale locale = new Locale(CODES.getCodeType(LanguageCodeType.class).getCode(getLanguageUid()).getExtKey());
+    Locale locale = new Locale(BEANS.get(LanguageCodeType.class).getCode(getLanguageUid()).getExtKey());
     setLocale(locale);
     // TODO MIG LocaleThreadLocal.set(locale);
 

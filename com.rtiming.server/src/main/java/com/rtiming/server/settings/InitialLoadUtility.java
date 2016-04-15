@@ -1,5 +1,6 @@
 package com.rtiming.server.settings;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +16,6 @@ import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.util.CompareUtility;
 import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.platform.util.TypeCastUtility;
-import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
 
 import com.rtiming.server.ServerSession;
@@ -505,7 +505,7 @@ public final class InitialLoadUtility {
 
   public static long insertMissingTranslationsWithEnglish() throws ProcessingException {
     long insertCount = 0;
-    for (ICode code : CODES.getCodeType(LanguageCodeType.class).getCodes()) {
+    for (ICode code : BEANS.get(LanguageCodeType.class).getCodes()) {
       if (CompareUtility.notEquals(LanguageCodeType.English.ID, code.getId())) {
         Long otherLanguageUid = (Long) code.getId();
 
@@ -560,7 +560,7 @@ public final class InitialLoadUtility {
     }
     currency.getCodeBox().getShortcut().setValue(code);
     currency.getCodeBox().getActive().setValue(true);
-    currency.getExchangeRate().setValue(1d);
+    currency.getExchangeRate().setValue(BigDecimal.ONE);
     for (int i = 0; i < currency.getCodeBox().getLanguage().getRowCount(); i++) {
       currency.getCodeBox().getLanguage().rowAt(i).setTranslation(text);
     }

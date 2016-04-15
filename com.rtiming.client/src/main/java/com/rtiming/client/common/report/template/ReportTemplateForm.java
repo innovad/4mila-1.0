@@ -129,7 +129,7 @@ public class ReportTemplateForm extends AbstractForm {
   private void validateReportType() throws ProcessingException {
     Long id = getReportTypeField().getValue();
     if (id != null) {
-      ICode<?> code = CODES.getCodeType(ReportTypeCodeType.class).getCode(id);
+      ICode<?> code = BEANS.get(ReportTypeCodeType.class).getCode(id);
       if (code instanceof AbstractReportTypeCode) {
         AbstractReportTypeCode reportCode = (AbstractReportTypeCode) code;
         ReportTemplateType type = reportCode.getConfiguredReportTemplateType();
@@ -380,7 +380,7 @@ public class ReportTemplateForm extends AbstractForm {
 
     @SuppressWarnings("unchecked")
     private Class<? extends AbstractReportTypeCode> getReportTypeCodeClass() {
-      Class<? extends ICode> reportTypeCodeClass = CODES.getCodeType(ReportTypeCodeType.class).getCode(getReportTypeField().getValue()).getClass();
+      Class<? extends ICode> reportTypeCodeClass = BEANS.get(ReportTypeCodeType.class).getCode(getReportTypeField().getValue()).getClass();
       Class<? extends AbstractReportTypeCode> clazz = null;
       if (AbstractReportTypeCode.class.isAssignableFrom(reportTypeCodeClass)) {
         clazz = (Class<? extends AbstractReportTypeCode>) reportTypeCodeClass;

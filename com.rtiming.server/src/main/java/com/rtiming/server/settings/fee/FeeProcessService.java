@@ -12,6 +12,7 @@ import javax.persistence.criteria.Root;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.exception.VetoException;
 import org.eclipse.scout.rt.platform.util.BooleanUtility;
+import org.eclipse.scout.rt.platform.util.NumberUtility;
 import org.eclipse.scout.rt.platform.util.TypeCastUtility;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
 
@@ -37,7 +38,7 @@ import com.rtiming.shared.dao.RtFee_;
 import com.rtiming.shared.settings.fee.FeeFormData;
 import com.rtiming.shared.settings.fee.IFeeProcessService;
 
-public class FeeProcessService  implements IFeeProcessService {
+public class FeeProcessService implements IFeeProcessService {
 
   @Override
   public FeeFormData prepareCreate(FeeFormData formData) throws ProcessingException {
@@ -73,27 +74,7 @@ public class FeeProcessService  implements IFeeProcessService {
       throw new VetoException(Texts.get("AuthorizationFailed"));
     }
 
-    JPAUtility.select("SELECT F.fee, " +
-        "F.currencyUid, " +
-        "F.evtFrom, " +
-        "F.evtTo, " +
-        "F.ageFrom, " +
-        "F.ageTo, " +
-        "COALESCE(FG.cashPaymentOnRegistration,FALSE) " +
-        "FROM RtFee F " +
-        "INNER JOIN F.rtFeeGroup FG " +
-        "WHERE F.id.feeNr = :feeNr " +
-        "AND F.id.clientNr = :sessionClientNr " +
-        "INTO " +
-        ":fee, " +
-        ":currency, " +
-        ":dateFrom, " +
-        ":dateTo, " +
-        ":ageFrom, " +
-        ":ageTo, " +
-        ":cashPaymentOnRegistration "
-        , formData
-        );
+    JPAUtility.select("SELECT F.fee, " + "F.currencyUid, " + "F.evtFrom, " + "F.evtTo, " + "F.ageFrom, " + "F.ageTo, " + "COALESCE(FG.cashPaymentOnRegistration,FALSE) " + "FROM RtFee F " + "INNER JOIN F.rtFeeGroup FG " + "WHERE F.id.feeNr = :feeNr " + "AND F.id.clientNr = :sessionClientNr " + "INTO " + ":fee, " + ":currency, " + ":dateFrom, " + ":dateTo, " + ":ageFrom, " + ":ageTo, " + ":cashPaymentOnRegistration ", formData);
 
     return formData;
   }
@@ -104,18 +85,9 @@ public class FeeProcessService  implements IFeeProcessService {
       throw new VetoException(Texts.get("AuthorizationFailed"));
     }
 
-    String queryString = "UPDATE RtFee F " +
-        "SET " +
-        // only during creation set fee group nr
-        (formData.getFeeGroupNr() != null ? "F.rtFeeGroup.id.feeGroupNr = :feeGroupNr, " : "") +
-        "F.fee = :fee, " +
-        "F.evtFrom = :dateFrom, " +
-        "F.evtTo = :dateTo, " +
-        "F.ageFrom = :ageFrom, " +
-        "F.ageTo = :ageTo, " +
-        "F.currencyUid = :currency " +
-        "WHERE F.id.feeNr = :feeNr " +
-        "AND F.id.clientNr = :sessionClientNr";
+    String queryString = "UPDATE RtFee F " + "SET " +
+    // only during creation set fee group nr
+        (formData.getFeeGroupNr() != null ? "F.rtFeeGroup.id.feeGroupNr = :feeGroupNr, " : "") + "F.fee = :fee, " + "F.evtFrom = :dateFrom, " + "F.evtTo = :dateTo, " + "F.ageFrom = :ageFrom, " + "F.ageTo = :ageTo, " + "F.currencyUid = :currency " + "WHERE F.id.feeNr = :feeNr " + "AND F.id.clientNr = :sessionClientNr";
 
     FMilaQuery query = JPA.createQuery(queryString);
     JPAUtility.setAutoParameters(query, queryString, formData);
@@ -152,17 +124,7 @@ public class FeeProcessService  implements IFeeProcessService {
     Join<RtFee, RtFeeGroup> joinFeeGroup = feeRoot.join(RtFee_.rtFeeGroup);
     Join<RtFeeGroup, RtAdditionalInformationDef> joinAddInfoDef = joinFeeGroup.join(RtFeeGroup_.rtAdditionalInformationDefs);
 
-    selectQuery.select(b.array(
-        feeRoot.get(RtFee_.id).get(RtFeeKey_.feeNr),
-        joinAddInfoDef.get(RtAdditionalInformationDef_.id).get(RtAdditionalInformationDefKey_.additionalInformationUid),
-        feeRoot.get(RtFee_.fee),
-        feeRoot.get(RtFee_.currencyUid),
-        feeRoot.get(RtFee_.evtFrom),
-        feeRoot.get(RtFee_.evtTo),
-        feeRoot.get(RtFee_.ageFrom),
-        feeRoot.get(RtFee_.ageTo),
-        joinFeeGroup.get(RtFeeGroup_.cashPaymentOnRegistration)
-        ));
+    selectQuery.select(b.array(feeRoot.get(RtFee_.id).get(RtFeeKey_.feeNr), joinAddInfoDef.get(RtAdditionalInformationDef_.id).get(RtAdditionalInformationDefKey_.additionalInformationUid), feeRoot.get(RtFee_.fee), feeRoot.get(RtFee_.currencyUid), feeRoot.get(RtFee_.evtFrom), feeRoot.get(RtFee_.evtTo), feeRoot.get(RtFee_.ageFrom), feeRoot.get(RtFee_.ageTo), joinFeeGroup.get(RtFeeGroup_.cashPaymentOnRegistration)));
     List<Object[]> resultList = JPA.createQuery(selectQuery).getResultList();
 
     List<FeeFormData> result = new ArrayList<>();
@@ -170,7 +132,7 @@ public class FeeProcessService  implements IFeeProcessService {
       FeeFormData feeData = new FeeFormData();
       feeData.setFeeNr(TypeCastUtility.castValue(row[0], Long.class));
       feeData.setAdditionalInformationUid(TypeCastUtility.castValue(row[1], Long.class));
-      feeData.getFee().setValue(TypeCastUtility.castValue(row[2], Double.class));
+      feeData.getFee().setValue(NumberUtility.toBigDecimal(TypeCastUtility.castValue(row[2], Double.class)));
       feeData.getCurrency().setValue(TypeCastUtility.castValue(row[3], Long.class));
       feeData.getDateFrom().setValue(TypeCastUtility.castValue(row[4], Date.class));
       feeData.getDateTo().setValue(TypeCastUtility.castValue(row[5], Date.class));
@@ -189,18 +151,7 @@ public class FeeProcessService  implements IFeeProcessService {
     Join<RtFee, RtFeeGroup> joinFeeGroup = feeRoot.join(RtFee_.rtFeeGroup);
     Join<RtFeeGroup, RtEventClass> joinEventClass = joinFeeGroup.join(RtFeeGroup_.rtEventClasses);
 
-    selectQuery.select(b.array(
-        feeRoot.get(RtFee_.id).get(RtFeeKey_.feeNr),
-        joinEventClass.get(RtEventClass_.id).get(RtEventClassKey_.eventNr),
-        joinEventClass.get(RtEventClass_.id).get(RtEventClassKey_.classUid),
-        feeRoot.get(RtFee_.fee),
-        feeRoot.get(RtFee_.currencyUid),
-        feeRoot.get(RtFee_.evtFrom),
-        feeRoot.get(RtFee_.evtTo),
-        feeRoot.get(RtFee_.ageFrom),
-        feeRoot.get(RtFee_.ageTo),
-        joinFeeGroup.get(RtFeeGroup_.cashPaymentOnRegistration)
-        ));
+    selectQuery.select(b.array(feeRoot.get(RtFee_.id).get(RtFeeKey_.feeNr), joinEventClass.get(RtEventClass_.id).get(RtEventClassKey_.eventNr), joinEventClass.get(RtEventClass_.id).get(RtEventClassKey_.classUid), feeRoot.get(RtFee_.fee), feeRoot.get(RtFee_.currencyUid), feeRoot.get(RtFee_.evtFrom), feeRoot.get(RtFee_.evtTo), feeRoot.get(RtFee_.ageFrom), feeRoot.get(RtFee_.ageTo), joinFeeGroup.get(RtFeeGroup_.cashPaymentOnRegistration)));
     List<Object[]> resultList = JPA.createQuery(selectQuery).getResultList();
 
     List<FeeFormData> result = new ArrayList<>();
@@ -209,7 +160,7 @@ public class FeeProcessService  implements IFeeProcessService {
       feeData.setFeeNr(TypeCastUtility.castValue(row[0], Long.class));
       feeData.setEventNr(TypeCastUtility.castValue(row[1], Long.class));
       feeData.setClassUid(TypeCastUtility.castValue(row[2], Long.class));
-      feeData.getFee().setValue(TypeCastUtility.castValue(row[3], Double.class));
+      feeData.getFee().setValue(NumberUtility.toBigDecimal(TypeCastUtility.castValue(row[3], Double.class)));
       feeData.getCurrency().setValue(TypeCastUtility.castValue(row[4], Long.class));
       feeData.getDateFrom().setValue(TypeCastUtility.castValue(row[5], Date.class));
       feeData.getDateTo().setValue(TypeCastUtility.castValue(row[6], Date.class));

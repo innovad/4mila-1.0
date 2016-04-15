@@ -1,5 +1,6 @@
 package com.rtiming.shared.common.database.sql;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import org.eclipse.scout.rt.platform.BEANS;
@@ -7,6 +8,7 @@ import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.holders.ITableHolder;
 import org.eclipse.scout.rt.platform.util.BooleanUtility;
 import org.eclipse.scout.rt.platform.util.CompareUtility;
+import org.eclipse.scout.rt.platform.util.NumberUtility;
 
 import com.rtiming.shared.FMilaUtility;
 import com.rtiming.shared.club.ClubFormData;
@@ -20,6 +22,8 @@ import com.rtiming.shared.dao.RtRankingEvent;
 import com.rtiming.shared.dao.RtReportTemplate;
 import com.rtiming.shared.ecard.ECardFormData;
 import com.rtiming.shared.entry.EntryFormData;
+import com.rtiming.shared.entry.EntryFormData.Events.EventsRowData;
+import com.rtiming.shared.entry.EntryFormData.Races.RacesRowData;
 import com.rtiming.shared.entry.EventConfiguration;
 import com.rtiming.shared.event.EventFormData;
 import com.rtiming.shared.event.IEventProcessService;
@@ -31,6 +35,7 @@ import com.rtiming.shared.ranking.RankingFormData;
 import com.rtiming.shared.ranking.RankingFormatCodeType;
 import com.rtiming.shared.runner.RunnerFormData;
 import com.rtiming.shared.settings.addinfo.AbstractAdditionalInformationFieldData;
+import com.rtiming.shared.settings.addinfo.AbstractAdditionalInformationFieldData.AbstractAdditionalInformationRowData;
 import com.rtiming.shared.settings.city.AbstractAddressBoxData;
 import com.rtiming.shared.settings.clazz.AgeFormData;
 
@@ -109,17 +114,17 @@ public final class BeanUtility {
     bean.setMapData(formData.getMapData());
     bean.setName(formData.getName().getValue());
     bean.setNewEventNr(formData.getNewEventNr());
-    bean.setNeX(formData.getNECornerBox().getX().getValue());
-    bean.setNeY(formData.getNECornerBox().getY().getValue());
-    bean.setNwX(formData.getNWCornerBox().getX().getValue());
-    bean.setNwY(formData.getNWCornerBox().getY().getValue());
-    bean.setSeX(formData.getSECornerBox().getX().getValue());
-    bean.setSeY(formData.getSECornerBox().getY().getValue());
-    bean.setSwX(formData.getSWCornerBox().getX().getValue());
-    bean.setSwY(formData.getSWCornerBox().getY().getValue());
-    bean.setOriginX(formData.getOriginX().getValue());
-    bean.setOriginY(formData.getOriginY().getValue());
-    bean.setResolution(formData.getResolution().getValue());
+    bean.setNeX(NumberUtility.toDouble(formData.getNECornerBox().getX().getValue()));
+    bean.setNeY(NumberUtility.toDouble(formData.getNECornerBox().getY().getValue()));
+    bean.setNwX(NumberUtility.toDouble(formData.getNWCornerBox().getX().getValue()));
+    bean.setNwY(NumberUtility.toDouble(formData.getNWCornerBox().getY().getValue()));
+    bean.setSeX(NumberUtility.toDouble(formData.getSECornerBox().getX().getValue()));
+    bean.setSeY(NumberUtility.toDouble(formData.getSECornerBox().getY().getValue()));
+    bean.setSwX(NumberUtility.toDouble(formData.getSWCornerBox().getX().getValue()));
+    bean.setSwY(NumberUtility.toDouble(formData.getSWCornerBox().getY().getValue()));
+    bean.setOriginX(NumberUtility.toDouble(formData.getOriginX().getValue()));
+    bean.setOriginY(NumberUtility.toDouble(formData.getOriginY().getValue()));
+    bean.setResolution(NumberUtility.toDouble(formData.getResolution().getValue()));
     bean.setScale(formData.getScale().getValue());
     bean.setW(formData.getWidth().getValue());
     return bean;
@@ -135,17 +140,17 @@ public final class BeanUtility {
     formData.setMapData(bean.getMapData());
     formData.getName().setValue(bean.getName());
     formData.setNewEventNr(bean.getNewEventNr());
-    formData.getNECornerBox().getX().setValue(bean.getNeX());
-    formData.getNECornerBox().getY().setValue(bean.getNeY());
-    formData.getNWCornerBox().getX().setValue(bean.getNwX());
-    formData.getNWCornerBox().getY().setValue(bean.getNwY());
-    formData.getSECornerBox().getX().setValue(bean.getSeX());
-    formData.getSECornerBox().getY().setValue(bean.getSeY());
-    formData.getSWCornerBox().getX().setValue(bean.getSwX());
-    formData.getSWCornerBox().getY().setValue(bean.getSwY());
-    formData.getOriginX().setValue(bean.getOriginX());
-    formData.getOriginY().setValue(bean.getOriginY());
-    formData.getResolution().setValue(bean.getResolution());
+    formData.getNECornerBox().getX().setValue(NumberUtility.toBigDecimal(bean.getNeX()));
+    formData.getNECornerBox().getY().setValue(NumberUtility.toBigDecimal(bean.getNeY()));
+    formData.getNWCornerBox().getX().setValue(NumberUtility.toBigDecimal(bean.getNwX()));
+    formData.getNWCornerBox().getY().setValue(NumberUtility.toBigDecimal(bean.getNwY()));
+    formData.getSECornerBox().getX().setValue(NumberUtility.toBigDecimal(bean.getSeX()));
+    formData.getSECornerBox().getY().setValue(NumberUtility.toBigDecimal(bean.getSeY()));
+    formData.getSWCornerBox().getX().setValue(NumberUtility.toBigDecimal(bean.getSwX()));
+    formData.getSWCornerBox().getY().setValue(NumberUtility.toBigDecimal(bean.getSwY()));
+    formData.getOriginX().setValue(NumberUtility.toBigDecimal(bean.getOriginX()));
+    formData.getOriginY().setValue(NumberUtility.toBigDecimal(bean.getOriginY()));
+    formData.getResolution().setValue(NumberUtility.toBigDecimal(bean.getResolution()));
     formData.getScale().setValue(bean.getScale());
     formData.getWidth().setValue(bean.getW());
     return formData;
@@ -295,7 +300,7 @@ public final class BeanUtility {
     bean.setSexUid(formData.getSex().getValue());
     bean.setYear(formData.getYear().getValue());
 
-    addressFormData2Bean(formData.getAddressBox(), bean.getAddress(), formData.getAddressNr(), formData.getClientNr());
+    addressFormData2Bean(formData.getAbstractAddressBoxData(), bean.getAddress(), formData.getAddressNr(), formData.getClientNr());
     addInfoFormData2Bean(formData.getAdditionalInformation(), bean.getAddInfo(), EntityCodeType.RunnerCode.ID, formData.getRunnerNr(), formData.getClientNr());
 
     return bean;
@@ -318,7 +323,7 @@ public final class BeanUtility {
     formData.getSex().setValue(bean.getSexUid());
     formData.getYear().setValue(bean.getYear());
 
-    addressBean2formData(bean.getAddress(), formData.getAddressBox());
+    addressBean2formData(bean.getAddress(), formData.getAbstractAddressBoxData());
     addInfoBean2FormData(bean.getAddInfo(), formData.getAdditionalInformation());
 
     return formData;
@@ -332,49 +337,49 @@ public final class BeanUtility {
     bean.setRegistrationNr(formData.getRegistration().getValue());
 
     for (int row = 0; row < formData.getEvents().getRowCount(); row++) {
-      if (formData.getEvents().getRowState(row) != ITableHolder.STATUS_DELETED) {
-        Long eventNr = formData.getEvents().getEventNr(row);
-        ParticipationBean participation = formData.getEvents().getParticipationBean(row);
+      if (formData.getEvents().getRows()[row].getRowState() != ITableHolder.STATUS_DELETED) {
+        Long eventNr = formData.getEvents().getRows()[row].getEventNr();
+        ParticipationBean participation = formData.getEvents().getRows()[row].getParticipationBean();
         if (participation == null) {
           participation = new ParticipationBean();
         }
         bean.addParticipation(participation);
-        participation.setClassUid(formData.getEvents().getEventClass(row));
+        participation.setClassUid(formData.getEvents().getRows()[row].getEventClass());
         participation.setEntryNr(formData.getEntryNr());
         participation.setEventNr(eventNr);
-        participation.setStartTime(FMilaUtility.getDateDifferenceInMilliSeconds(configuration.getEvent(eventNr).getEvtZero(), formData.getEvents().getStartTime(row)));
+        participation.setStartTime(FMilaUtility.getDateDifferenceInMilliSeconds(configuration.getEvent(eventNr).getEvtZero(), formData.getEvents().getRows()[row].getStartTime()));
       }
     }
 
     for (int row = 0; row < formData.getRaces().getRowCount(); row++) {
-      if (formData.getRaces().getRowState(row) != ITableHolder.STATUS_DELETED) {
-        RaceBean race = formData.getRaces().getRaceBean(row);
+      if (formData.getRaces().getRows()[row].getRowState() != ITableHolder.STATUS_DELETED) {
+        RaceBean race = formData.getRaces().getRows()[row].getRaceBean();
         if (race == null) {
           race = new RaceBean();
         }
         bean.addRace(race);
 
-        Long eventNr = formData.getRaces().getRaceEvent(row);
-        race.setBibNo(formData.getRaces().getBibNumber(row));
-        race.setClubNr(formData.getRaces().getClubNr(row));
-        race.setECardNr(formData.getRaces().getECard(row));
+        Long eventNr = formData.getRaces().getRows()[row].getRaceEvent();
+        race.setBibNo(formData.getRaces().getRows()[row].getBibNumber());
+        race.setClubNr(formData.getRaces().getRows()[row].getClubNr());
+        race.setECardNr(formData.getRaces().getRows()[row].getECard());
         race.setEntryNr(formData.getEntryNr());
         race.setEventNr(eventNr);
-        race.setLegClassUid(formData.getRaces().getLeg(row));
-        race.setLegStartTime(FMilaUtility.getDateDifferenceInMilliSeconds(configuration.getEvent(eventNr).getEvtZero(), formData.getRaces().getLegStartTime(row)));
-        race.setNationUid(formData.getRaces().getNation(row));
-        race.setRaceNr(formData.getRaces().getRaceNr(row));
-        race.setRunnerNr(formData.getRaces().getRunnerNr(row));
+        race.setLegClassUid(formData.getRaces().getRows()[row].getLeg());
+        race.setLegStartTime(FMilaUtility.getDateDifferenceInMilliSeconds(configuration.getEvent(eventNr).getEvtZero(), formData.getRaces().getRows()[row].getLegStartTime()));
+        race.setNationUid(formData.getRaces().getRows()[row].getNation());
+        race.setRaceNr(formData.getRaces().getRows()[row].getRaceNr());
+        race.setRunnerNr(formData.getRaces().getRows()[row].getRunnerNr());
       }
     }
 
     for (int row = 0; row < formData.getFees().getRowCount(); row++) {
-      if (formData.getFees().getRowState(row) != ITableHolder.STATUS_DELETED) {
+      if (formData.getFees().getRows()[row].getRowState() != ITableHolder.STATUS_DELETED) {
         FeeBean fee = new FeeBean();
         bean.addFee(fee);
-        fee.setAmount(formData.getFees().getAmount(row));
-        fee.setCashPaymentOnRegistration(formData.getFees().getCashPaymentOnRegistration(row));
-        fee.setCurrencyUid(formData.getFees().getCurrency(row));
+        fee.setAmount(NumberUtility.toDouble(formData.getFees().getRows()[row].getAmount()));
+        fee.setCashPaymentOnRegistration(formData.getFees().getRows()[row].getCashPaymentOnRegistration());
+        fee.setCurrencyUid(formData.getFees().getRows()[row].getCurrency());
       }
     }
 
@@ -391,31 +396,31 @@ public final class BeanUtility {
     formData.getRegistration().setValue(bean.getRegistrationNr());
 
     for (ParticipationBean participation : bean.getParticipations()) {
-      int row = formData.getEvents().addRow();
-      formData.getEvents().setParticipationBean(row, participation);
-      formData.getEvents().setEventClass(row, participation.getClassUid());
-      formData.getEvents().setEventNr(row, participation.getEventNr());
+      EventsRowData row = formData.getEvents().createRow();
+      row.setParticipationBean(participation);
+      row.setEventClass(participation.getClassUid());
+      row.setEventNr(participation.getEventNr());
       if (participation.getStartTime() != null) {
-        formData.getEvents().setStartTime(row, FMilaUtility.addMilliSeconds(configuration.getEvent(participation.getEventNr()).getEvtZero(), participation.getStartTime()));
+        row.setStartTime(FMilaUtility.addMilliSeconds(configuration.getEvent(participation.getEventNr()).getEvtZero(), participation.getStartTime()));
       }
     }
 
     for (RaceBean race : bean.getRaces()) {
-      int row = formData.getRaces().addRow();
-      formData.getRaces().setRaceBean(row, race);
-      formData.getRaces().setBibNumber(row, race.getBibNo());
-      formData.getRaces().setClubNr(row, race.getClubNr());
-      formData.getRaces().setECard(row, race.getECardNr());
-      formData.getRaces().setLeg(row, race.getLegClassUid());
+      RacesRowData row = formData.getRaces().createRow();
+      row.setRaceBean(race);
+      row.setBibNumber(race.getBibNo());
+      row.setClubNr(race.getClubNr());
+      row.setECard(race.getECardNr());
+      row.setLeg(race.getLegClassUid());
       if (race.getLegStartTime() != null) {
-        formData.getRaces().setLegStartTime(row, FMilaUtility.addMilliSeconds(configuration.getEvent(race.getEventNr()).getEvtZero(), race.getLegStartTime()));
+        row.setLegStartTime(FMilaUtility.addMilliSeconds(configuration.getEvent(race.getEventNr()).getEvtZero(), race.getLegStartTime()));
       }
-      formData.getRaces().setFirstName(row, race.getRunner().getFirstName());
-      formData.getRaces().setLastName(row, race.getRunner().getLastName());
-      formData.getRaces().setNation(row, race.getNationUid());
-      formData.getRaces().setRaceEvent(row, race.getEventNr());
-      formData.getRaces().setRaceNr(row, race.getRaceNr());
-      formData.getRaces().setRunnerNr(row, race.getRunnerNr());
+      row.setFirstName(race.getRunner().getFirstName());
+      row.setLastName(race.getRunner().getLastName());
+      row.setNation(race.getNationUid());
+      row.setRaceEvent(race.getEventNr());
+      row.setRaceNr(race.getRaceNr());
+      row.setRunnerNr(race.getRunnerNr());
     }
 
     addInfoBean2FormData(bean.getAddInfo(), formData.getAdditionalInformationEntry());
@@ -455,7 +460,7 @@ public final class BeanUtility {
     bean.setRunner(formData.getRunner());
     bean.setStatusUid(formData.getRaceStatus().getValue());
 
-    addressFormData2Bean(formData.getAddressBox(), bean.getAddress(), formData.getAddressNr(), formData.getClientNr());
+    addressFormData2Bean(formData.getAbstractAddressBoxData(), bean.getAddress(), formData.getAddressNr(), formData.getClientNr());
 
     return bean;
   }
@@ -479,7 +484,7 @@ public final class BeanUtility {
     formData.setRunner(bean.getRunner());
     formData.getRaceStatus().setValue(bean.getStatusUid());
 
-    addressBean2formData(bean.getAddress(), formData.getAddressBox());
+    addressBean2formData(bean.getAddress(), formData.getAbstractAddressBoxData());
 
     return formData;
   }
@@ -492,19 +497,19 @@ public final class BeanUtility {
   private static AbstractAdditionalInformationFieldData addInfoBean2FormData(AdditionalInformationBean bean, AbstractAdditionalInformationFieldData formData) {
     formData.clearRows();
     for (AdditionalInformationValueBean value : bean.getValues()) {
-      int row = formData.addRow();
-      formData.setAdditionalInformationUid(row, value.getAdditionalInformationUid());
-      formData.setDecimal(row, value.getValueDouble());
-      formData.setDefaultValueDecimal(row, value.getDefaultDecimal());
-      formData.setDefaultValueInteger(row, value.getDefaultInteger());
-      formData.setDefaultValueText(row, value.getDefaultText());
-      formData.setFeeGroup(row, value.getFeeGroupNr());
-      formData.setInteger(row, value.getValueInteger());
-      formData.setMandatory(row, value.isMandatory());
-      formData.setMaximum(row, value.getValueMax());
-      formData.setMinimum(row, value.getValueMin());
-      formData.setText(row, value.getValueString());
-      formData.setType(row, value.getTypeUid());
+      AbstractAdditionalInformationRowData row = formData.addRow();
+      row.setAdditionalInformationUid(value.getAdditionalInformationUid());
+      row.setDecimal(value.getValueDouble() == null ? null : BigDecimal.valueOf(value.getValueDouble()));
+      row.setDefaultValueDecimal(value.getDefaultDecimal() == null ? null : BigDecimal.valueOf(value.getDefaultDecimal()));
+      row.setDefaultValueInteger(value.getDefaultInteger());
+      row.setDefaultValueText(value.getDefaultText());
+      row.setFeeGroup(value.getFeeGroupNr());
+      row.setInteger(value.getValueInteger());
+      row.setMandatory(value.isMandatory());
+      row.setMaximum(value.getValueMax() == null ? null : BigDecimal.valueOf(value.getValueMax()));
+      row.setMinimum(value.getValueMin() == null ? null : BigDecimal.valueOf(value.getValueMin()));
+      row.setText(value.getValueString());
+      row.setType(value.getTypeUid());
     }
     return formData;
   }
@@ -516,18 +521,18 @@ public final class BeanUtility {
     bean.setClientNr(clientNr);
     for (int k = 0; k < formData.getRowCount(); k++) {
       AdditionalInformationValueBean value = new AdditionalInformationValueBean();
-      value.setAdditionalInformationUid(formData.getAdditionalInformationUid(k));
-      value.setValueDouble(formData.getDecimal(k));
-      value.setDefaultDecimal(formData.getDefaultValueDecimal(k));
-      value.setDefaultInteger(formData.getDefaultValueInteger(k));
-      value.setDefaultText(formData.getDefaultValueText(k));
-      value.setFeeGroupNr(formData.getFeeGroup(k));
-      value.setValueInteger(formData.getInteger(k));
-      value.setMandatory(formData.getMandatory(k));
-      value.setValueMax(formData.getMaximum(k));
-      value.setValueMin(formData.getMinimum(k));
-      value.setValueString(formData.getText(k));
-      value.setTypeUid(formData.getType(k));
+      value.setAdditionalInformationUid(formData.getRows()[k].getAdditionalInformationUid());
+      value.setValueDouble(formData.getRows()[k].getDecimal() == null ? null : formData.getRows()[k].getDecimal().doubleValue());
+      value.setDefaultDecimal(formData.getRows()[k].getDefaultValueDecimal() == null ? null : formData.getRows()[k].getDefaultValueDecimal().doubleValue());
+      value.setDefaultInteger(formData.getRows()[k].getDefaultValueInteger());
+      value.setDefaultText(formData.getRows()[k].getDefaultValueText());
+      value.setFeeGroupNr(formData.getRows()[k].getFeeGroup());
+      value.setValueInteger(formData.getRows()[k].getInteger());
+      value.setMandatory(formData.getRows()[k].getMandatory());
+      value.setValueMax(formData.getRows()[k].getMaximum() == null ? null : formData.getRows()[k].getMaximum().doubleValue());
+      value.setValueMin(formData.getRows()[k].getMinimum() == null ? null : formData.getRows()[k].getMinimum().doubleValue());
+      value.setValueString(formData.getRows()[k].getText());
+      value.setTypeUid(formData.getRows()[k].getType());
       bean.addValue(value);
     }
     return bean;

@@ -1,5 +1,6 @@
 package com.rtiming.client.settings.currency;
 
+import java.math.BigDecimal;
 import java.util.Set;
 
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
@@ -246,7 +247,7 @@ public class CurrenciesTablePage extends AbstractPageWithTable<CurrenciesTablePa
         CurrencyFormData currency = new CurrencyFormData();
         currency.setCurrencyUid(getCurrencyUidColumn().getSelectedValue());
         currency = BEANS.get(ICurrencyProcessService.class).load(currency);
-        currency.getExchangeRate().setValue(1D);
+        currency.getExchangeRate().setValue(BigDecimal.ONE);
         BEANS.get(ICurrencyProcessService.class).store(currency);
 
         reloadPage();

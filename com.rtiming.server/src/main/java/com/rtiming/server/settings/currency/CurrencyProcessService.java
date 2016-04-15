@@ -1,5 +1,7 @@
 package com.rtiming.server.settings.currency;
 
+import java.math.BigDecimal;
+
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.exception.VetoException;
@@ -22,7 +24,7 @@ import com.rtiming.shared.settings.currency.CurrencyCodeType;
 import com.rtiming.shared.settings.currency.CurrencyFormData;
 import com.rtiming.shared.settings.currency.ICurrencyProcessService;
 
-public class CurrencyProcessService  implements ICurrencyProcessService {
+public class CurrencyProcessService implements ICurrencyProcessService {
 
   @Override
   public CurrencyFormData prepareCreate(CurrencyFormData formData) throws ProcessingException {
@@ -61,7 +63,7 @@ public class CurrencyProcessService  implements ICurrencyProcessService {
 
     RtCurrency currency = JPA.find(RtCurrency.class, RtCurrencyKey.create(formData.getCurrencyUid()));
     if (currency != null) {
-      formData.getExchangeRate().setValue(currency.getExchangeRate());
+      formData.getExchangeRate().setValue(BigDecimal.valueOf(currency.getExchangeRate()));
     }
 
     formData.getCodeBox().getCodeUid().setValue(formData.getCurrencyUid());
@@ -78,7 +80,7 @@ public class CurrencyProcessService  implements ICurrencyProcessService {
 
     RtCurrency currency = new RtCurrency();
     currency.setId(RtCurrencyKey.create(formData.getCurrencyUid()));
-    currency.setExchangeRate(NumberUtility.nvl(formData.getExchangeRate().getValue(), 0d));
+    currency.setExchangeRate(NumberUtility.nvl(NumberUtility.toDouble(formData.getExchangeRate().getValue()), 0d));
     JPA.merge(currency);
 
     BEANS.get(ICodeProcessService.class).storeCodeBox(formData.getCodeBox());
@@ -96,9 +98,7 @@ public class CurrencyProcessService  implements ICurrencyProcessService {
     }
     formData = load(formData);
 
-    String queryString = "DELETE FROM RtCurrency " +
-        "WHERE id.clientNr = :sessionClientNr " +
-        "AND id.currencyUid = :currencyUid";
+    String queryString = "DELETE FROM RtCurrency " + "WHERE id.clientNr = :sessionClientNr " + "AND id.currencyUid = :currencyUid";
     FMilaQuery query = JPA.createQuery(queryString);
     query.setParameter("currencyUid", formData.getCurrencyUid());
     query.setParameter("sessionClientNr", ServerSession.get().getSessionClientNr());

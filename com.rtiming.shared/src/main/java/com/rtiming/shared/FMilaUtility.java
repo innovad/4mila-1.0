@@ -317,7 +317,7 @@ public final class FMilaUtility {
       return "";
     }
     if (BEANS.get(ICodeService.class) != null) {
-      ICode code = CODES.getCodeType(codeTypeClass).getCode(codeUid);
+      ICode code = BEANS.get(codeTypeClass).getCode(codeUid);
       if (code != null) {
         return code.getText();
       }
@@ -330,7 +330,7 @@ public final class FMilaUtility {
       return "";
     }
     if (BEANS.get(ICodeService.class) != null) {
-      ICode code = CODES.getCodeType(codeTypeClass).getCode(codeUid);
+      ICode code = BEANS.get(codeTypeClass).getCode(codeUid);
       if (code != null) {
         return code.getExtKey();
       }

@@ -10,6 +10,7 @@ import org.junit.Test;
 import com.rtiming.shared.dao.RtRankingEvent;
 import com.rtiming.shared.dao.RtRankingEventKey;
 import com.rtiming.shared.entry.EntryFormData;
+import com.rtiming.shared.entry.EntryFormData.Events.EventsRowData;
 import com.rtiming.shared.entry.EventConfiguration;
 import com.rtiming.shared.ranking.RankingEventFormData;
 
@@ -95,12 +96,12 @@ public class BeanUtilityTest {
   @Test
   public void testEntryFormData2bean2() throws Exception {
     EntryFormData formData = new EntryFormData();
-    int newRow = formData.getEvents().addRow();
+    EventsRowData newRow = formData.getEvents().createRow();
     ParticipationBean participationBean = new ParticipationBean();
     participationBean.setEventNr(3L);
     participationBean.setStartTime(0L);
-    formData.getEvents().setParticipationBean(newRow, participationBean);
-    formData.getEvents().setEventNr(newRow, 3L);
+    newRow.setParticipationBean(participationBean);
+    newRow.setEventNr(3L);
     EventConfiguration configuration = new EventConfiguration();
     EventBean event = new EventBean();
     event.setEventNr(3L);
@@ -115,8 +116,8 @@ public class BeanUtilityTest {
   @Test
   public void testEntryFormData2bean3() throws Exception {
     EntryFormData formData = new EntryFormData();
-    int newRow = formData.getEvents().addRow();
-    formData.getEvents().setEventNr(newRow, 3L);
+    EventsRowData newRow = formData.getEvents().createRow();
+    newRow.setEventNr(3L);
     EventConfiguration configuration = new EventConfiguration();
     EventBean event = new EventBean();
     event.setEventNr(3L);

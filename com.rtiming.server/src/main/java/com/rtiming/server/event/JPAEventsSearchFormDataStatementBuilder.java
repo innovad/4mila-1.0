@@ -35,7 +35,7 @@ public class JPAEventsSearchFormDataStatementBuilder extends AbstractJPASearchFo
     addStringWherePart(root.get(RtEvent_.location), searchFormData.getLocation().getValue());
 
     // type
-    addLongWherePart(root.get(RtEvent_.typeUid), searchFormData.getType().getValue());
+    addLongWherePart(root.get(RtEvent_.typeUid), searchFormData.getType().getValue().toArray(new Long[0]));
 
     // time from
     addDateGreaterThanOrEqualsWherePart(root.get(RtEvent_.evtZero), searchFormData.getZeroTimeFrom().getValue());

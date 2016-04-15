@@ -22,7 +22,7 @@ public final class ServerWarpUtility {
   }
 
   public static WarpPerspective build(MapFormData map) {
-    return build(map.getNWCornerBox().getX().getValue(), map.getNWCornerBox().getY().getValue(), map.getNECornerBox().getX().getValue(), map.getNECornerBox().getY().getValue(), map.getSECornerBox().getX().getValue(), map.getSECornerBox().getY().getValue(), map.getSWCornerBox().getX().getValue(), map.getSWCornerBox().getY().getValue(), map.getWidth().getValue(), map.getHeight().getValue());
+    return build(map.getNWCornerBox().getX().getValue().doubleValue(), map.getNWCornerBox().getY().getValue().doubleValue(), map.getNECornerBox().getX().getValue().doubleValue(), map.getNECornerBox().getY().getValue().doubleValue(), map.getSECornerBox().getX().getValue().doubleValue(), map.getSECornerBox().getY().getValue().doubleValue(), map.getSWCornerBox().getX().getValue().doubleValue(), map.getSWCornerBox().getY().getValue().doubleValue(), map.getWidth().getValue().doubleValue(), map.getHeight().getValue());
   }
 
 }

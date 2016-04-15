@@ -9,12 +9,12 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.longfield.AbstractLongField;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.Order;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.util.CompareUtility;
 import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
@@ -175,7 +175,7 @@ public abstract class AbstractRankingBox extends AbstractGroupBox {
         RankingType type = getConfiguredRankingType();
         List<ILookupRow<Long>> filtered = new ArrayList<ILookupRow<Long>>();
         for (ILookupRow<Long> row : result) {
-          ICode code = CODES.getCodeType(RankingFormulaTypeCodeType.class).getCode(row.getKey());
+          ICode code = BEANS.get(RankingFormulaTypeCodeType.class).getCode(row.getKey());
           AbstractFormulaCode formulaCode = (AbstractFormulaCode) code;
           if (formulaCode.getRankingType() == null || formulaCode.getRankingType().equals(type)) {
             filtered.add(row);
@@ -243,7 +243,7 @@ public abstract class AbstractRankingBox extends AbstractGroupBox {
   }
 
   public void updateDefaultFormulaValues() {
-    ICode<?> code = CODES.getCodeType(RankingFormulaTypeCodeType.class).getCode(getFormulaTypeField().getValue());
+    ICode<?> code = BEANS.get(RankingFormulaTypeCodeType.class).getCode(getFormulaTypeField().getValue());
     if (code != null && code instanceof AbstractFormulaCode) {
       AbstractFormulaCode formulaCode = (AbstractFormulaCode) code;
       // Formula

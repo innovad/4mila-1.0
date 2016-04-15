@@ -92,7 +92,7 @@ public final class SplitTimesReport {
           // status (except ok)
           if (data.getControlStatusColumn().getValue(i) != ControlStatusCodeType.OkCode.ID) {
             Long statusUid = data.getControlStatusColumn().getValue(i);
-            control.put(IReportParameters.CONTROL_STATUS, CODES.getCodeType(ControlStatusCodeType.class).getCode(statusUid).getText());
+            control.put(IReportParameters.CONTROL_STATUS, BEANS.get(ControlStatusCodeType.class).getCode(statusUid).getText());
           }
           // times
           control.put(IReportParameters.CONTROL_TIME_ABS, "" + data.getOverallTimeColumn().getValue(i));

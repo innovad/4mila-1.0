@@ -29,6 +29,7 @@ import com.rtiming.shared.ecard.download.DownloadedECardFormData;
 import com.rtiming.shared.ecard.download.IDownloadedECardProcessService;
 import com.rtiming.shared.ecard.download.IPunchProcessService;
 import com.rtiming.shared.entry.EntryFormData;
+import com.rtiming.shared.entry.EntryFormData.Races.RacesRowData;
 import com.rtiming.shared.entry.EventConfiguration;
 import com.rtiming.shared.entry.IEntryProcessService;
 import com.rtiming.shared.entry.IEntryService;
@@ -40,7 +41,7 @@ import com.rtiming.shared.settings.ISettingsOutlineService;
 import com.rtiming.shared.settings.ITestDataProcessService;
 import com.rtiming.shared.settings.TestDataFormData;
 
-public class TestDataProcessService  implements ITestDataProcessService {
+public class TestDataProcessService implements ITestDataProcessService {
 
   @Override
   public TestDataFormData prepareCreate(TestDataFormData formData) throws ProcessingException {
@@ -109,16 +110,7 @@ public class TestDataProcessService  implements ITestDataProcessService {
     yearTo = NumberUtility.nvl(yearTo, Long.MAX_VALUE);
 
     // select random runner
-    String queryString = "SELECT MAX(id.runnerNr) " +
-        "FROM RtRunner R " +
-        "WHERE NOT EXISTS (SELECT 1 FROM RtRace RA WHERE RA.runnerNr = R.id.runnerNr AND RA.eventNr = :eventNr) " +
-        "AND firstName IS NOT NULL " +
-        "AND clubNr IS NOT NULL " +
-        "AND eCardNr IS NOT NULL " +
-        "AND year >= :yearFrom " +
-        "AND year <= :yearTo " +
-        "AND sexUid = :sexUid " +
-        "AND R.id.clientNr = :sessionClientNr ";
+    String queryString = "SELECT MAX(id.runnerNr) " + "FROM RtRunner R " + "WHERE NOT EXISTS (SELECT 1 FROM RtRace RA WHERE RA.runnerNr = R.id.runnerNr AND RA.eventNr = :eventNr) " + "AND firstName IS NOT NULL " + "AND clubNr IS NOT NULL " + "AND eCardNr IS NOT NULL " + "AND year >= :yearFrom " + "AND year <= :yearTo " + "AND sexUid = :sexUid " + "AND R.id.clientNr = :sessionClientNr ";
     FMilaTypedQuery<Long> query = JPA.createQuery(queryString, Long.class);
     query.setParameter("sessionClientNr", ServerSession.get().getSessionClientNr());
     query.setParameter("eventNr", eventNr);
@@ -151,36 +143,36 @@ public class TestDataProcessService  implements ITestDataProcessService {
 
     entry = BeanUtility.entryBean2formData(BEANS.get(IEntryProcessService.class).prepareCreate(BeanUtility.entryFormData2bean(entry, configuration)), configuration);
 
-    int newRowId = entry.getRaces().addRow();
-    entry.getRaces().setRowState(newRowId, ITableHolder.STATUS_INSERTED);
-    entry.getRaces().setRunnerNr(newRowId, runner.getRunnerNr());
+    RacesRowData newRow = entry.getRaces().createRow();
+    newRow.setRowState(ITableHolder.STATUS_INSERTED);
+    newRow.setRunnerNr(runner.getRunnerNr());
     RaceBean raceBean = new RaceBean();
     raceBean.setRunner(runner);
     raceBean.setAddress(runner.getAddress().copy());
     raceBean.setNationUid(runner.getNationUid());
     raceBean.setClubNr(runner.getClubNr());
-    entry.getRaces().setRaceBean(newRowId, raceBean);
-    entry.getRaces().getRaceBean(newRowId).setRunner(runner);
-    entry.getRaces().setRaceEvent(newRowId, eventNr);
-    entry.getRaces().setECard(newRowId, runner.getECardNr());
-    entry.getRaces().setLastName(newRowId, runner.getLastName());
-    entry.getRaces().setFirstName(newRowId, runner.getFirstName());
-    entry.getRaces().setLeg(newRowId, classUid);
-    entry.getRaces().setClubNr(newRowId, runner.getClubNr());
-    entry.getRaces().setNation(newRowId, runner.getNationUid());
+    newRow.setRaceBean(raceBean);
+    newRow.getRaceBean().setRunner(runner);
+    newRow.setRaceEvent(eventNr);
+    newRow.setECard(runner.getECardNr());
+    newRow.setLastName(runner.getLastName());
+    newRow.setFirstName(runner.getFirstName());
+    newRow.setLeg(classUid);
+    newRow.setClubNr(runner.getClubNr());
+    newRow.setNation(runner.getNationUid());
 
     int newEventRowId = 0; // create in prepareCreate
-    entry.getRaces().setRowState(newEventRowId, ITableHolder.STATUS_INSERTED);
-    entry.getEvents().setEventNr(newEventRowId, eventNr);
-    entry.getEvents().setEventClass(newEventRowId, classUid);
+    newRow.setRowState(ITableHolder.STATUS_INSERTED);
+    entry.getEvents().getRows()[newEventRowId].setEventNr(eventNr);
+    entry.getEvents().getRows()[newEventRowId].setEventClass(classUid);
 
     entry = BeanUtility.entryBean2formData(BEANS.get(IEntryProcessService.class).create(BeanUtility.entryFormData2bean(entry, configuration)), configuration);
 
     // create punch session
     DownloadedECardFormData punchSession = new DownloadedECardFormData();
-    Long raceNr = entry.getRaces().getRaceNr(newRowId);
+    Long raceNr = newRow.getRaceNr();
     punchSession.getRace().setValue(raceNr);
-    punchSession.getECard().setValue(entry.getRaces().getECard(newRowId));
+    punchSession.getECard().setValue(newRow.getECard());
     punchSession.getEvent().setValue(eventNr);
     punchSession.getEvtDownload().setValue(new Date());
     punchSession.getECardStation().setValue(stationNr);

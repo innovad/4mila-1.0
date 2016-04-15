@@ -197,7 +197,7 @@ public class SettingsOutlineService implements ISettingsOutlineService {
   @Override
   public Object[][] getClassTableData() throws ProcessingException {
     CODES.reloadCodeType(ClassCodeType.class);
-    List<? extends ICode<Long>> codes = CODES.getCodeType(ClassCodeType.class).getCodes();
+    List<? extends ICode<Long>> codes = BEANS.get(ClassCodeType.class).getCodes();
 
     CriteriaBuilder b = JPA.getCriteriaBuilder();
     CriteriaQuery<RtClassAge> q = b.createQuery(RtClassAge.class);
@@ -397,7 +397,7 @@ public class SettingsOutlineService implements ISettingsOutlineService {
     query.setParameter("sessionClientNr", ServerSession.get().getSessionClientNr());
     Object[][] data = JPAUtility.convertList2Array(query.getResultList());
 
-    ICodeType roles = CODES.getCodeType(RoleCodeType.class);
+    ICodeType roles = BEANS.get(RoleCodeType.class);
     for (Object[] row : data) {
       queryString = "SELECT id.roleUid " + "FROM RtUserRole " + "WHERE id.userNr = :userNr " + "AND id.clientNr = :clientNr";
       FMilaTypedQuery<Long> typedQuery = JPA.createQuery(queryString, Long.class);

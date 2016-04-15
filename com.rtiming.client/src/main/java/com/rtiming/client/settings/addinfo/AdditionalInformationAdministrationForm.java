@@ -3,6 +3,7 @@ package com.rtiming.client.settings.addinfo;
 import java.math.BigDecimal;
 
 import org.eclipse.scout.rt.client.dto.FormData;
+import org.eclipse.scout.rt.client.dto.FormData.DefaultSubtypeSdkCommand;
 import org.eclipse.scout.rt.client.dto.FormData.SdkCommand;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
@@ -50,7 +51,7 @@ import com.rtiming.shared.settings.addinfo.AdditionalInformationTypeCodeType;
 import com.rtiming.shared.settings.addinfo.IAdditionalInformationAdministrationProcessService;
 import com.rtiming.shared.settings.fee.FeeGroupLookupCall;
 
-@FormData(value = AdditionalInformationAdministrationFormData.class, sdkCommand = SdkCommand.CREATE)
+@FormData(value = AdditionalInformationAdministrationFormData.class, sdkCommand = SdkCommand.CREATE, defaultSubtypeSdkCommand = DefaultSubtypeSdkCommand.CREATE)
 public class AdditionalInformationAdministrationForm extends AbstractForm {
 
   private Long m_additionalInformationUid;
@@ -426,7 +427,6 @@ public class AdditionalInformationAdministrationForm extends AbstractForm {
     }
 
     @Order(130.0)
-    @FormData(value = AdditionalInformationAdministrationFormData.class, sdkCommand = SdkCommand.CREATE)
     public class CodeBox extends AbstractCodeBox {
 
       @Override

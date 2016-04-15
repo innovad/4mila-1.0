@@ -29,7 +29,7 @@ import com.rtiming.shared.settings.addinfo.AdditionalInformationCodeType;
 import com.rtiming.shared.settings.addinfo.AdditionalInformationTypeCodeType;
 import com.rtiming.shared.settings.addinfo.IAdditionalInformationAdministrationProcessService;
 
-public class AdditionalInformationAdministrationProcessService  implements IAdditionalInformationAdministrationProcessService {
+public class AdditionalInformationAdministrationProcessService implements IAdditionalInformationAdministrationProcessService {
 
   @Override
   public AdditionalInformationAdministrationFormData prepareCreate(AdditionalInformationAdministrationFormData formData) throws ProcessingException {
@@ -74,14 +74,14 @@ public class AdditionalInformationAdministrationProcessService  implements IAddi
     RtAdditionalInformationDef def = JPA.find(RtAdditionalInformationDef.class, key);
     if (def != null) {
       formData.getEntity().setValue(def.getEntityUid());
-      formData.getMinimum().setValue(def.getValueMin());
-      formData.getMaximum().setValue(def.getValueMax());
+      formData.getMinimum().setValue(NumberUtility.toBigDecimal(def.getValueMin()));
+      formData.getMaximum().setValue(NumberUtility.toBigDecimal(def.getValueMax()));
       formData.getType().setValue(def.getTypeUid());
       formData.getFeeGroup().setValue(def.getFeeGroupNr());
       formData.getDefaultValueInteger().setValue(def.getDefaultLong());
       formData.getDefaultValueBoolean().setValue(NumberUtility.nvl(def.getDefaultLong(), 0) != 0);
       formData.getDefaultValueSmartfield().setValue(def.getDefaultLong());
-      formData.getDefaultValueDecimal().setValue(def.getDefaultDecimal());
+      formData.getDefaultValueDecimal().setValue(NumberUtility.toBigDecimal(def.getDefaultDecimal()));
       formData.getDefaultValueText().setValue(def.getDefaultText());
       formData.getMandatory().setValue(def.getMandatory());
     }
@@ -125,12 +125,12 @@ public class AdditionalInformationAdministrationProcessService  implements IAddi
     RtAdditionalInformationDef def = new RtAdditionalInformationDef();
     def.setId(key);
     def.setEntityUid(formData.getEntity().getValue());
-    def.setValueMin(formData.getMinimum().getValue());
-    def.setValueMax(formData.getMaximum().getValue());
+    def.setValueMin(NumberUtility.toDouble(formData.getMinimum().getValue()));
+    def.setValueMax(NumberUtility.toDouble(formData.getMaximum().getValue()));
     def.setTypeUid(formData.getType().getValue());
     def.setFeeGroupNr(formData.getFeeGroup().getValue());
     def.setDefaultLong(value);
-    def.setDefaultDecimal(formData.getDefaultValueDecimal().getValue());
+    def.setDefaultDecimal(NumberUtility.toDouble(formData.getDefaultValueDecimal().getValue()));
     def.setDefaultText(formData.getDefaultValueText().getValue());
     def.setMandatory(BooleanUtility.nvl(formData.getMandatory().getValue()));
     def.setParentUid(formData.getSmartfield().getValue());
@@ -154,18 +154,14 @@ public class AdditionalInformationAdministrationProcessService  implements IAddi
     formData = load(formData);
 
     // delete child
-    String queryString = "DELETE FROM RtAdditionalInformationDef " +
-        "WHERE parentUid = :additionalInformationUid " +
-        "AND id.clientNr = :sessionClientNr ";
+    String queryString = "DELETE FROM RtAdditionalInformationDef " + "WHERE parentUid = :additionalInformationUid " + "AND id.clientNr = :sessionClientNr ";
     FMilaQuery query = JPA.createQuery(queryString);
     query.setParameter("additionalInformationUid", formData.getAdditionalInformationUid());
     query.setParameter("sessionClientNr", ServerSession.get().getSessionClientNr());
     query.executeUpdate();
 
     // delete parent
-    queryString = "DELETE FROM RtAdditionalInformationDef " +
-        "WHERE id.additionalInformationUid = :additionalInformationUid " +
-        "AND id.clientNr = :sessionClientNr ";
+    queryString = "DELETE FROM RtAdditionalInformationDef " + "WHERE id.additionalInformationUid = :additionalInformationUid " + "AND id.clientNr = :sessionClientNr ";
     query = JPA.createQuery(queryString);
     query.setParameter("additionalInformationUid", formData.getAdditionalInformationUid());
     query.setParameter("sessionClientNr", ServerSession.get().getSessionClientNr());

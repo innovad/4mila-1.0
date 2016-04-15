@@ -4,6 +4,7 @@ import java.util.Currency;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
@@ -19,7 +20,6 @@ import org.eclipse.scout.rt.platform.Order;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.exception.VetoException;
 import org.eclipse.scout.rt.shared.ScoutTexts;
-import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 
@@ -289,7 +289,7 @@ public class SetupForm extends AbstractForm {
         getCountryField().setValue(country.getCountryUid());
       }
 
-      ICode language = CODES.getCodeType(LanguageCodeType.class).getCodeByExtKey(locale.getLanguage());
+      ICode language = BEANS.get(LanguageCodeType.class).getCodeByExtKey(locale.getLanguage());
       if (language != null) {
         getLanguageField().setValue((Long) language.getId());
       }
@@ -300,7 +300,7 @@ public class SetupForm extends AbstractForm {
         getCurrencyField().setValue(currency.getCodeUid());
       }
 
-      for (ICode<?> code : CODES.getCodeType(RoleCodeType.class).getCodes()) {
+      for (ICode<?> code : BEANS.get(RoleCodeType.class).getCodes()) {
         AbstractRoleCode roleCode = (AbstractRoleCode) code;
         ITableRow row = getUserField().getTable().createRow();
         row = getUserField().getTable().addRow(row);
@@ -338,7 +338,9 @@ public class SetupForm extends AbstractForm {
           user.getPassword().setValue(userTable.getPasswordColumn().getValue(i));
           user.getRepeatPassword().setValue(userTable.getPasswordColumn().getValue(i));
           user.getLanguage().setValue(getLanguageField().getValue());
-          user.getRoles().setValue(new Long[]{userTable.getRoleColumn().getValue(i)});
+          Set<Long> set = new HashSet<>();
+          set.add(userTable.getRoleColumn().getValue(i));
+          user.getRoles().setValue(set);
           BEANS.get(IUserProcessService.class).create(user);
         }
       }

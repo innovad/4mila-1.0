@@ -3,7 +3,6 @@ package com.rtiming.client.settings.currency;
 import java.math.BigDecimal;
 
 import org.eclipse.scout.rt.client.dto.FormData;
-import org.eclipse.scout.rt.client.dto.FormData.SdkCommand;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.bigdecimalfield.AbstractBigDecimalField;
@@ -117,7 +116,6 @@ public class CurrencyForm extends AbstractForm {
     }
 
     @Order(20.0)
-    @FormData(value = CurrencyFormData.class, sdkCommand = SdkCommand.CREATE)
     public class CodeBox extends AbstractCodeBox {
 
       @Override

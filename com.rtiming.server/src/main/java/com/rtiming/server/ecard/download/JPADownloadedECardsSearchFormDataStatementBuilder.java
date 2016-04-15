@@ -52,13 +52,13 @@ public class JPADownloadedECardsSearchFormDataStatementBuilder extends AbstractJ
     addStringWherePart(ecard.get(RtEcard_.ecardNo), searchFormData.getECard().getValue());
     addDateGreaterThanOrEqualsWherePart(punchsession.get(RtPunchSession_.evtDownload), searchFormData.getDownloadedOnFrom().getValue());
     addDateLessThanOrEqualsWherePart(punchsession.get(RtPunchSession_.evtDownload), searchFormData.getDownloadedOnTo().getValue());
-    addLongWherePart(race.get(RtRace_.statusUid), searchFormData.getRaceStatus().getValue());
+    addLongWherePart(race.get(RtRace_.statusUid), searchFormData.getRaceStatus().getValue().toArray(new Long[0]));
     addBooleanAsNullWherePart(race.get(RtRace_.id).get(RtRaceKey_.raceNr), searchFormData.getRunnerAssignedGroup().getValue());
 
     // Event Tab
     addLongOrIsNullWherePart(event.get(RtEvent_.id).get(RtEventKey_.eventNr), searchFormData.getEvent().getValue());
-    addLongWherePart(race.get(RtRace_.legClassUid), searchFormData.getClazz().getValue());
-    addLongWherePart(course.get(RtCourse_.id).get(RtCourseKey_.courseNr), searchFormData.getCourse().getValue());
+    addLongWherePart(race.get(RtRace_.legClassUid), searchFormData.getClazz().getValue().toArray(new Long[0]));
+    addLongWherePart(course.get(RtCourse_.id).get(RtCourseKey_.courseNr), searchFormData.getCourse().getValue().toArray(new Long[0]));
   }
 
   @Override

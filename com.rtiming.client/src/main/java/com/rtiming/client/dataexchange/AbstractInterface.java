@@ -28,7 +28,7 @@ public abstract class AbstractInterface<Bean extends AbstractDataBean> {
   private InfoField infoField;
 
   public AbstractInterface(DataExchangeStartFormData interfaceConfig) throws ProcessingException {
-    this.fullPathName = interfaceConfig.getFile().getValue();
+    this.fullPathName = interfaceConfig.getFile().getValue().getFilename();
     this.eventNr = interfaceConfig.getEvent().getValue();
     this.isImport = interfaceConfig.getImportExportGroup().getValue();
     this.characterSet = interfaceConfig.getCharacterSet().getValue();

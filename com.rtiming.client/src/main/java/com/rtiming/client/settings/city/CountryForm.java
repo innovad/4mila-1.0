@@ -1,6 +1,7 @@
 package com.rtiming.client.settings.city;
 
 import org.eclipse.scout.rt.client.dto.FormData;
+import org.eclipse.scout.rt.client.dto.FormData.DefaultSubtypeSdkCommand;
 import org.eclipse.scout.rt.client.dto.FormData.SdkCommand;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
@@ -25,7 +26,7 @@ import com.rtiming.shared.common.security.permission.UpdateCountryPermission;
 import com.rtiming.shared.settings.city.CountryFormData;
 import com.rtiming.shared.settings.city.ICountryProcessService;
 
-@FormData(value = CountryFormData.class, sdkCommand = SdkCommand.CREATE)
+@FormData(value = CountryFormData.class, sdkCommand = SdkCommand.CREATE, defaultSubtypeSdkCommand = DefaultSubtypeSdkCommand.CREATE)
 public class CountryForm extends AbstractForm {
 
   private Long countryUid;
@@ -113,7 +114,6 @@ public class CountryForm extends AbstractForm {
     }
 
     @Order(35.0)
-    @FormData(value = CountryFormData.class, sdkCommand = SdkCommand.CREATE)
     public class CodeBox extends AbstractCodeBox {
 
       @Override

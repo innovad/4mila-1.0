@@ -86,7 +86,7 @@ public class CodeProcessService implements ICodeProcessService {
     codeBox.getActive().setValue(true);
 
     int k = 0;
-    for (ICode code : CODES.getCodeType(LanguageCodeType.class).getCodes()) {
+    for (ICode code : BEANS.get(LanguageCodeType.class).getCodes()) {
       codeBox.getLanguage().addRow();
       codeBox.getLanguage().rowAt(k).setLanguage((Long) code.getId());
       k++;
@@ -220,7 +220,7 @@ public class CodeProcessService implements ICodeProcessService {
       code.setCodeType(codeType);
 
       // loop through available languages
-      for (ICode<?> c : CODES.getCodeType(LanguageCodeType.class).getCodes()) {
+      for (ICode<?> c : BEANS.get(LanguageCodeType.class).getCodes()) {
         LanguageRowData newRow = code.getMainBox().getLanguage().addRow(ITableHolder.STATUS_INSERTED);
         newRow.setTranslation(shortcut);
         newRow.setLanguage((Long) c.getId());

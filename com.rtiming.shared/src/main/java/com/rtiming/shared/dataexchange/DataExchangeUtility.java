@@ -7,9 +7,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.platform.util.date.DateUtility;
-import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.slf4j.Logger;
@@ -157,7 +157,7 @@ public final class DataExchangeUtility {
 
   public static String getCodeText(Long codeUid, Class<? extends ICodeType> codeTypeClass) {
     if (codeUid != null && codeTypeClass != null) {
-      ICodeType codeType = CODES.getCodeType(codeTypeClass);
+      ICodeType codeType = BEANS.get(codeTypeClass);
       if (codeType != null) {
         ICode code = codeType.getCode(codeUid);
         if (code != null) {
