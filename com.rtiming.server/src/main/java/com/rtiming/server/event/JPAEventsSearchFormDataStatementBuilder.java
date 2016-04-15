@@ -3,6 +3,7 @@ package com.rtiming.server.event;
 import javax.persistence.criteria.Root;
 
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.util.CollectionUtility;
 
 import com.rtiming.server.common.AbstractJPASearchFormDataStatementBuilder;
 import com.rtiming.shared.dao.RtEvent;
@@ -35,7 +36,7 @@ public class JPAEventsSearchFormDataStatementBuilder extends AbstractJPASearchFo
     addStringWherePart(root.get(RtEvent_.location), searchFormData.getLocation().getValue());
 
     // type
-    addLongWherePart(root.get(RtEvent_.typeUid), searchFormData.getType().getValue().toArray(new Long[0]));
+    addLongWherePart(root.get(RtEvent_.typeUid), CollectionUtility.toArray(searchFormData.getType().getValue(), Long.class));
 
     // time from
     addDateGreaterThanOrEqualsWherePart(root.get(RtEvent_.evtZero), searchFormData.getZeroTimeFrom().getValue());
