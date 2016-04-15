@@ -1,6 +1,7 @@
 package com.rtiming.client.ecard.download.job;
 
 import org.eclipse.scout.rt.client.IClientSession;
+import org.eclipse.scout.rt.client.ui.desktop.notification.DesktopNotification;
 
 import com.rtiming.client.FMilaClientSyncJob;
 
@@ -18,7 +19,7 @@ public class StatusUpdaterJob extends FMilaClientSyncJob {
   @Override
   protected void runVoid() throws Exception {
     if (session != null && session.getDesktop() != null) {
-      session.getDesktop().setStatusText(statusText);
+      session.getDesktop().addNotification(new DesktopNotification(statusText));
     }
   }
 

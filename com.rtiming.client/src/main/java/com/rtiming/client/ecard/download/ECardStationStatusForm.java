@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.eclipse.scout.rt.client.dto.FormData;
 import org.eclipse.scout.rt.client.dto.FormData.SdkCommand;
+import org.eclipse.scout.rt.client.ui.desktop.notification.DesktopNotification;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.IForm;
@@ -142,7 +143,7 @@ public class ECardStationStatusForm extends AbstractForm {
 
       @Override
       protected void execPrepareLookup(ILookupCall call) throws ProcessingException {
-        getDesktop().setStatusText(TEXTS.get("SearchingDownloadStations"));
+        getDesktop().addNotification(new DesktopNotification(TEXTS.get("SearchingDownloadStations")));
       }
 
       @Override
@@ -178,7 +179,6 @@ public class ECardStationStatusForm extends AbstractForm {
       @Override
       protected void execFilterLookupResult(ILookupCall<String> call, List<ILookupRow<String>> result) {
         super.execFilterLookupResult(call, result);
-        getDesktop().setStatusText(null);
       }
 
     }
@@ -274,7 +274,7 @@ public class ECardStationStatusForm extends AbstractForm {
           if (getComPortField().getValue() == null || getModusField().getValue() == null) {
             throw new VetoException(TEXTS.get("ChoosePortAndMode"));
           }
-          getDesktop().setStatusText(TEXTS.get("ConnectToECardStation"));
+          getDesktop().addNotification(new DesktopNotification(TEXTS.get("ConnectToECardStation")));
           init(getModusField().getValue(), getComPortField().getValue());
         }
         else if (StationMode.CONNECTED.equals(currentMode)) {
@@ -283,7 +283,7 @@ public class ECardStationStatusForm extends AbstractForm {
           }
           currentMode = StationMode.DISCONNECTED;
           execInitButton();
-          getDesktop().setStatusText(TEXTS.get("ECardStationCanBeRemovedMessage"));
+          getDesktop().addNotification(new DesktopNotification(TEXTS.get("ECardStationCanBeRemovedMessage")));
 
           // close all POS printer devices
           PosPrinterManager.closeAll();
@@ -337,7 +337,6 @@ public class ECardStationStatusForm extends AbstractForm {
       if (!StringUtility.isNullOrEmpty(getComPortField().getValue())) {
         init(null, getComPortField().getValue());
       }
-      getDesktop().setStatusText(null);
     }
 
   }
@@ -434,7 +433,7 @@ public class ECardStationStatusForm extends AbstractForm {
       SICardSerialPortHandler cardHandler = new SICardSerialPortHandler(station, currentEvtZero, defaultEventNr, ClientSession.get(), serialPort);
       serialPortListener.installHandler(cardHandler);
       currentMode = StationMode.CONNECTED;
-      getDesktop().setStatusText(TEXTS.get("DownloadStationReady"));
+      getDesktop().addNotification(new DesktopNotification(TEXTS.get("DownloadStationReady")));
     }
     catch (Exception e) {
       setCurrentECardStationNr(null);
@@ -444,7 +443,7 @@ public class ECardStationStatusForm extends AbstractForm {
       }
       e.printStackTrace(); // temp
       System.out.println(e.getMessage()); // temp
-      ClientSession.get().getDesktop().setStatusText(TEXTS.get("FailedOpeningPort", e.getMessage()));
+      getDesktop().addNotification(new DesktopNotification(TEXTS.get(TEXTS.get("FailedOpeningPort", e.getMessage()))));
     }
     finally {
       clientSerialPorts.put(port, serialPort);

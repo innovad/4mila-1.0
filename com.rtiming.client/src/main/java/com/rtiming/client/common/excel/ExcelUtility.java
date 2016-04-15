@@ -18,6 +18,7 @@ import org.eclipse.scout.rt.client.ui.basic.table.ITable;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractDateColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.IColumn;
 import org.eclipse.scout.rt.client.ui.desktop.OpenUriAction;
+import org.eclipse.scout.rt.client.ui.desktop.notification.DesktopNotification;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.util.IOUtility;
 import org.eclipse.scout.rt.shared.TEXTS;
@@ -83,7 +84,7 @@ public final class ExcelUtility {
     }
 
     ClientSessionProvider.currentSession().getDesktop().openUri(filename, OpenUriAction.DOWNLOAD);
-    ClientSession.get().getDesktop().setStatusText(TEXTS.get("ExcelFileCreated"));
+    ClientSession.get().getDesktop().addNotification(new DesktopNotification(TEXTS.get("ExcelFileCreated")));
   }
 
   private static void setBold(HSSFWorkbook workbook, HSSFCell cell) {

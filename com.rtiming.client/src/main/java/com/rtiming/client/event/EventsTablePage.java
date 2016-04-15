@@ -12,6 +12,7 @@ import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractDateColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractSmartColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
+import org.eclipse.scout.rt.client.ui.desktop.notification.DesktopNotification;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithTable;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.ISearchForm;
@@ -464,7 +465,7 @@ public class EventsTablePage extends AbstractPageWithTable<EventsTablePage.Table
       @Override
       protected void execAction() throws ProcessingException {
         BEANS.get(IEventProcessService.class).syncWithOnline(getEventNrColumn().getSelectedValue());
-        ClientSession.get().getDesktop().setStatusText(TEXTS.get("EventSynced"));
+        ClientSession.get().getDesktop().addNotification(new DesktopNotification(TEXTS.get("EventSynced")));
         reloadPage();
       }
     }

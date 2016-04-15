@@ -314,11 +314,6 @@ public class ReportTemplateForm extends AbstractForm {
     return super.execValidate();
   }
 
-  @Override
-  protected void execDisposeForm() throws ProcessingException {
-    getDesktop().setStatusText(null);
-  }
-
   public class ModifyHandler extends AbstractFormHandler {
 
     @Override
