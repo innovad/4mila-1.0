@@ -1,12 +1,11 @@
 package com.rtiming.client.common.help;
 
 import org.eclipse.scout.rt.client.ui.desktop.IDesktop;
-import org.eclipse.scout.rt.client.ui.form.IForm;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractLinkButton;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.Platform;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.util.StringUtility;
-import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
 
 import com.rtiming.client.ClientSession;
@@ -36,15 +35,11 @@ public class AbstractHelpLinkButton extends AbstractLinkButton {
     }
 
     // Id
-    IForm enclosingForm = getForm();
-    String id;
-
-    IDesktop desktop = ClientSession.get().getDesktop();
-    id = getForm().getFormId();
+    String id = getForm().getFormId();
 
     // Language
     Long languageUid = ClientSession.get().getLanguageUid();
-    ICode languageCode = CODES.getCodeType(LanguageCodeType.class).getCode(languageUid);
+    ICode languageCode = BEANS.get(LanguageCodeType.class).getCode(languageUid);
     String languageKey = null;
     if (languageCode != null && !StringUtility.isNullOrEmpty(languageCode.getExtKey()) && languageUid != LanguageCodeType.English.ID) {
       languageKey = languageCode.getExtKey();
