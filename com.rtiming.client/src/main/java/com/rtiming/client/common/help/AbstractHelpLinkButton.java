@@ -11,7 +11,6 @@ import org.eclipse.scout.rt.shared.services.common.code.ICode;
 
 import com.rtiming.client.ClientSession;
 import com.rtiming.client.FMilaClientUtility;
-import com.rtiming.client.common.ui.desktop.LinkForm;
 import com.rtiming.shared.FMilaUtility;
 import com.rtiming.shared.FMilaUtility.OperatingSystem;
 import com.rtiming.shared.Texts;
@@ -41,12 +40,7 @@ public class AbstractHelpLinkButton extends AbstractLinkButton {
     String id;
 
     IDesktop desktop = ClientSession.get().getDesktop();
-    if (enclosingForm instanceof LinkForm) {
-      id = desktop.getOutline().getActivePage().getNodeId();
-    }
-    else {
-      id = getForm().getFormId();
-    }
+    id = getForm().getFormId();
 
     // Language
     Long languageUid = ClientSession.get().getLanguageUid();
