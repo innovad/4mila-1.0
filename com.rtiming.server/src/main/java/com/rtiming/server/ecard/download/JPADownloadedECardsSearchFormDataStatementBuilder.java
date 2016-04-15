@@ -4,6 +4,7 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Path;
 
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.util.CollectionUtility;
 
 import com.rtiming.server.common.AbstractJPASearchFormDataStatementBuilder;
 import com.rtiming.server.common.database.jpa.JPACriteriaUtility;
@@ -52,13 +53,13 @@ public class JPADownloadedECardsSearchFormDataStatementBuilder extends AbstractJ
     addStringWherePart(ecard.get(RtEcard_.ecardNo), searchFormData.getECard().getValue());
     addDateGreaterThanOrEqualsWherePart(punchsession.get(RtPunchSession_.evtDownload), searchFormData.getDownloadedOnFrom().getValue());
     addDateLessThanOrEqualsWherePart(punchsession.get(RtPunchSession_.evtDownload), searchFormData.getDownloadedOnTo().getValue());
-    addLongWherePart(race.get(RtRace_.statusUid), searchFormData.getRaceStatus().getValue().toArray(new Long[0]));
+    addLongWherePart(race.get(RtRace_.statusUid), CollectionUtility.toArray(searchFormData.getRaceStatus().getValue(), Long.class));
     addBooleanAsNullWherePart(race.get(RtRace_.id).get(RtRaceKey_.raceNr), searchFormData.getRunnerAssignedGroup().getValue());
 
     // Event Tab
     addLongOrIsNullWherePart(event.get(RtEvent_.id).get(RtEventKey_.eventNr), searchFormData.getEvent().getValue());
-    addLongWherePart(race.get(RtRace_.legClassUid), searchFormData.getClazz().getValue().toArray(new Long[0]));
-    addLongWherePart(course.get(RtCourse_.id).get(RtCourseKey_.courseNr), searchFormData.getCourse().getValue().toArray(new Long[0]));
+    addLongWherePart(race.get(RtRace_.legClassUid), CollectionUtility.toArray(searchFormData.getClazz().getValue(), Long.class));
+    addLongWherePart(course.get(RtCourse_.id).get(RtCourseKey_.courseNr), CollectionUtility.toArray(searchFormData.getCourse().getValue(), Long.class));
   }
 
   @Override

@@ -11,6 +11,7 @@ import javax.persistence.criteria.Subquery;
 
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.util.CollectionUtility;
 
 import com.rtiming.server.club.JPAClubBoxSearchFormDataStatementBuilder;
 import com.rtiming.server.common.AbstractJPASearchFormDataStatementBuilder;
@@ -90,7 +91,7 @@ public class JPAEntriesSearchFormDataStatementBuilder extends AbstractJPASearchF
     // Startlist > Starttime Yes No All
     addBooleanAsNullWherePart(participation.get(RtParticipation_.startTime), searchFormData.getStartTimeGroup().getValue());
     // Startlist > Startblock
-    addLongWherePart(participation.get(RtParticipation_.startblockUid), searchFormData.getStartblocks().getValue().toArray(new Long[0]));
+    addLongWherePart(participation.get(RtParticipation_.startblockUid), CollectionUtility.toArray(searchFormData.getStartblocks().getValue(), Long.class));
 
     // Runner
     JPARunnerBoxSearchFormDataStatementBuilder runnerBuilder = new JPARunnerBoxSearchFormDataStatementBuilder(runner);
