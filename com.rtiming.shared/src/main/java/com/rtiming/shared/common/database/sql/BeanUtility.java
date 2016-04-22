@@ -395,7 +395,7 @@ public final class BeanUtility {
     formData.getRegistration().setValue(bean.getRegistrationNr());
 
     for (ParticipationBean participation : bean.getParticipations()) {
-      EventsRowData row = formData.getEvents().createRow();
+      EventsRowData row = formData.getEvents().addRow();
       row.setParticipationBean(participation);
       row.setEventClass(participation.getClassUid());
       row.setEventNr(participation.getEventNr());
@@ -405,7 +405,7 @@ public final class BeanUtility {
     }
 
     for (RaceBean race : bean.getRaces()) {
-      RacesRowData row = formData.getRaces().createRow();
+      RacesRowData row = formData.getRaces().addRow();
       row.setRaceBean(race);
       row.setBibNumber(race.getBibNo());
       row.setClubNr(race.getClubNr());

@@ -96,7 +96,7 @@ public class BeanUtilityTest {
   @Test
   public void testEntryFormData2bean2() throws Exception {
     EntryFormData formData = new EntryFormData();
-    EventsRowData newRow = formData.getEvents().createRow();
+    EventsRowData newRow = formData.getEvents().addRow();
     ParticipationBean participationBean = new ParticipationBean();
     participationBean.setEventNr(3L);
     participationBean.setStartTime(0L);
@@ -116,7 +116,7 @@ public class BeanUtilityTest {
   @Test
   public void testEntryFormData2bean3() throws Exception {
     EntryFormData formData = new EntryFormData();
-    EventsRowData newRow = formData.getEvents().createRow();
+    EventsRowData newRow = formData.getEvents().addRow();
     newRow.setEventNr(3L);
     EventConfiguration configuration = new EventConfiguration();
     EventBean event = new EventBean();
