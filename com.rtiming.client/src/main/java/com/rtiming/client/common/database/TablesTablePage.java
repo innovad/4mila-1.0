@@ -24,7 +24,7 @@ public class TablesTablePage extends AbstractPageWithTable<TablesTablePage.Table
   }
 
   @Override
-  protected IPage execCreateChildPage(ITableRow row) throws ProcessingException {
+  protected IPage<?> execCreateChildPage(ITableRow row) throws ProcessingException {
     TableColumnsTablePage childPage = new TableColumnsTablePage(getTable().getTableColumn().getValue(row));
     return childPage;
   }

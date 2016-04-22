@@ -64,7 +64,7 @@ public class ControlsTablePage extends AbstractPageWithTable<ControlsTablePage.T
   }
 
   @Override
-  protected IPage execCreateChildPage(ITableRow row) throws ProcessingException {
+  protected IPage<?> execCreateChildPage(ITableRow row) throws ProcessingException {
     return new ReplacementControlsTablePage(getTable().getControlNrColumn().getValue(row), getEventNr());
   }
 

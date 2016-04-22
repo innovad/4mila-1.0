@@ -119,7 +119,7 @@ public class CourseVariantsTablePage extends AbstractPageWithTable<CourseVariant
   }
 
   @Override
-  protected IPage execCreateChildPage(ITableRow row) throws ProcessingException {
+  protected IPage<?> execCreateChildPage(ITableRow row) throws ProcessingException {
     List<List<CourseControlRowData>> list = BEANS.get(ICourseControlProcessService.class).getCourses(courseNr);
     return new CourseControlsTablePage(courseNr, list.get(getTable().getVariantCountNrColumn().getValue(row)));
   }

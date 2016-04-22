@@ -44,7 +44,7 @@ public class ResultsClubsTablePage extends AbstractPageWithTable<ResultsClubsTab
   }
 
   @Override
-  protected IPage execCreateChildPage(ITableRow row) throws ProcessingException {
+  protected IPage<?> execCreateChildPage(ITableRow row) throws ProcessingException {
     return new ResultsTablePage(ClientSession.get().getSessionClientNr(), null, null, getTable().getClubNrColumn().getValue(row));
   }
 

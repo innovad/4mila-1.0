@@ -343,7 +343,7 @@ public class EventClassesTablePage extends AbstractPageWithTable<EventClassesTab
   }
 
   @Override
-  protected IPage execCreateChildPage(ITableRow row) throws ProcessingException {
+  protected IPage<?> execCreateChildPage(ITableRow row) throws ProcessingException {
     if (getParentClassUid() == null && !ClassTypeCodeType.isLegClassType(getTable().getTypeColumn().getValue(row))) {
       return new EventClassesTablePage(getEventNr(), getTable().getClazzColumn().getValue(row));
     }

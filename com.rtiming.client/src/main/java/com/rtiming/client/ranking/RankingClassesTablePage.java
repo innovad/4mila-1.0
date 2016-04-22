@@ -61,7 +61,7 @@ public class RankingClassesTablePage extends AbstractPageWithTable<RankingClasse
   }
 
   @Override
-  protected IPage execCreateChildPage(ITableRow row) throws ProcessingException {
+  protected IPage<?> execCreateChildPage(ITableRow row) throws ProcessingException {
     Long classUid = getTable().getClazzUidColumn().getValue(row);
     if (RankingType.EVENT.equals(type)) {
       return new RankingEventResultsTablePage(rankingNr, eventNr, classUid);

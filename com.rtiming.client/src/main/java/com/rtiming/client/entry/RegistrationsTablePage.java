@@ -51,7 +51,7 @@ public class RegistrationsTablePage extends AbstractPageWithTable<RegistrationsT
   }
 
   @Override
-  protected IPage execCreateChildPage(ITableRow row) throws ProcessingException {
+  protected IPage<?> execCreateChildPage(ITableRow row) throws ProcessingException {
     return new RegistrationNodePage(getTable().getRegistrationNrColumn().getValue(row));
   }
 

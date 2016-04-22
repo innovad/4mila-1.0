@@ -85,7 +85,7 @@ public class GeneralCityInterfaceTest {
     // remove
     cities.getTable().selectAllRows();
     Assert.assertEquals(15, cities.getTable().getSelectedRowCount());
-    cities.getTable().getMenu(DeleteMenu.class).doAction();
+    cities.getTable().getMenuByClass(DeleteMenu.class).doAction();
   }
 
   private void doImport() throws ProcessingException {

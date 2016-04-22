@@ -29,7 +29,7 @@ public class AccountClientTablePage extends AbstractPageWithTable<AccountClientT
   }
 
   @Override
-  protected IPage execCreateChildPage(ITableRow row) throws ProcessingException {
+  protected IPage<?> execCreateChildPage(ITableRow row) throws ProcessingException {
     return new EventsTablePage(getTable().getNumberColumn().getValue(row));
   }
 

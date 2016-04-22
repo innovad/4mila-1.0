@@ -16,7 +16,7 @@ public class PosPrinterLookupCall extends LocalLookupCall<String> {
     ArrayList<LookupRow<String>> rows = new ArrayList<LookupRow<String>>();
 
     for (String printer : PosPrinterUtility.getPosPrinters()) {
-      LookupRow row = new LookupRow(printer, printer);
+      LookupRow<String> row = new LookupRow<>(printer, printer);
       rows.add(row);
     }
 

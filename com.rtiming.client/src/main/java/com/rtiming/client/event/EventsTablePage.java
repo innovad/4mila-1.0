@@ -71,7 +71,7 @@ public class EventsTablePage extends AbstractPageWithTable<EventsTablePage.Table
   }
 
   @Override
-  protected IPage execCreateChildPage(ITableRow row) throws ProcessingException {
+  protected IPage<?> execCreateChildPage(ITableRow row) throws ProcessingException {
     EventNodePage childPage = new EventNodePage(getTable().getEventNrColumn().getValue(row));
     return childPage;
   }

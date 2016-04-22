@@ -132,7 +132,7 @@ public abstract class AbstractEntriesTablePage extends AbstractPageWithTable<Abs
   }
 
   @Override
-  protected IPage execCreateChildPage(ITableRow row) throws ProcessingException {
+  protected IPage<?> execCreateChildPage(ITableRow row) throws ProcessingException {
     return new RaceControlsTablePage(getTable().getRaceNrColumn().getValue(row));
   }
 

@@ -60,7 +60,7 @@ public class ResultsClassesTablePage extends AbstractPageWithTable<ResultsClasse
   }
 
   @Override
-  protected IPage execCreateChildPage(ITableRow row) throws ProcessingException {
+  protected IPage<?> execCreateChildPage(ITableRow row) throws ProcessingException {
     Long eventNr = ((SingleEventSearchForm) getSearchFormInternal()).getEventField().getValue();
     return new ResultTypeNodePage(ClientSession.get().getSessionClientNr(), eventNr, getTable().getParentUidColumn().getValue(row), getTable().getClassUidColumn().getValue(row), getTable().getClassTypeColumn().getValue(row), null, null);
   }

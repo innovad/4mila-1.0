@@ -53,7 +53,7 @@ public class RankingEventsTablePage extends AbstractPageWithTable<RankingEventsT
   }
 
   @Override
-  protected IPage execCreateChildPage(ITableRow row) throws ProcessingException {
+  protected IPage<?> execCreateChildPage(ITableRow row) throws ProcessingException {
     return new RankingNodePage(rankingNr, getTable().getEventNrColumn().getValue(row));
   }
 

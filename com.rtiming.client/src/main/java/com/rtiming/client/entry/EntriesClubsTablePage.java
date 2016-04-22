@@ -47,7 +47,7 @@ public class EntriesClubsTablePage extends AbstractPageWithTable<EntriesClubsTab
   }
 
   @Override
-  protected IPage execCreateChildPage(ITableRow row) throws ProcessingException {
+  protected IPage<?> execCreateChildPage(ITableRow row) throws ProcessingException {
     if (getTable().getClubNrColumn().getValue(row) != null) {
       return new EntriesTablePage(((SingleEventSearchFormData) getSearchFilter().getFormData()).getEvent().getValue(), ClientSession.get().getSessionClientNr(), null, null, null, getTable().getClubNrColumn().getValue(row));
     }

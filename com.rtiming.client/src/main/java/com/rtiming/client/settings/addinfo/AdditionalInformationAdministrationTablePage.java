@@ -72,7 +72,7 @@ public class AdditionalInformationAdministrationTablePage extends AbstractPageWi
   }
 
   @Override
-  protected IPage execCreateChildPage(ITableRow row) throws ProcessingException {
+  protected IPage<?> execCreateChildPage(ITableRow row) throws ProcessingException {
     if (getTable().getTypeColumn().getValue(row) == AdditionalInformationTypeCodeType.SmartfieldCode.ID && getParentUid() == null) {
       // display child values for smartfield type
       return new AdditionalInformationAdministrationTablePage(getTable().getAdditionalInformationUidColumn().getValue(row));

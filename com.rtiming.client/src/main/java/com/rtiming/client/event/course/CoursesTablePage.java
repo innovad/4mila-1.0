@@ -292,7 +292,7 @@ public class CoursesTablePage extends AbstractPageWithTable<CoursesTablePage.Tab
   }
 
   @Override
-  protected IPage execCreateChildPage(ITableRow row) throws ProcessingException {
+  protected IPage<?> execCreateChildPage(ITableRow row) throws ProcessingException {
     Long courseNr = getTable().getCourseNrColumn().getValue(row);
     List<List<CourseControlRowData>> courses = BEANS.get(ICourseControlProcessService.class).getCourses(courseNr);
     if (courses.size() <= 1) {

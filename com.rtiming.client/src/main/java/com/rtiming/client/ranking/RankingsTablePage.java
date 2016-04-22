@@ -44,7 +44,7 @@ public class RankingsTablePage extends AbstractPageWithTable<RankingsTablePage.T
   }
 
   @Override
-  protected IPage execCreateChildPage(ITableRow row) throws ProcessingException {
+  protected IPage<?> execCreateChildPage(ITableRow row) throws ProcessingException {
     return new RankingEventsTablePage(getTable().getRankingNrColumn().getValue(row));
   }
 

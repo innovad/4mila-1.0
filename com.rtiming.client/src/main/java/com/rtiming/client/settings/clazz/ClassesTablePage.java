@@ -44,7 +44,7 @@ public class ClassesTablePage extends AbstractPageWithTable<ClassesTablePage.Tab
   }
 
   @Override
-  protected IPage execCreateChildPage(ITableRow row) throws ProcessingException {
+  protected IPage<?> execCreateChildPage(ITableRow row) throws ProcessingException {
     AgeTablePage childPage = new AgeTablePage(getTable().getClassUidColumn().getValue(row));
     return childPage;
   }

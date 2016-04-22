@@ -54,7 +54,7 @@ public class ReportTemplatesTablePage extends AbstractPageWithTable<ReportTempla
   }
 
   @Override
-  protected IPage execCreateChildPage(ITableRow row) throws ProcessingException {
+  protected IPage<?> execCreateChildPage(ITableRow row) throws ProcessingException {
     return new ReportTemplateColumnsTablePage(getTable().getReportTypeColumn().getValue(row));
   }
 

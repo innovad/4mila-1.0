@@ -37,7 +37,9 @@ import com.rtiming.shared.dao.RtEcardKey;
 import com.rtiming.shared.ecard.IECardProcessService;
 import com.rtiming.shared.settings.IDefaultProcessService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class)
+@RunWithSubject("admin")
+@RunWithClientSession(TestEnvironmentClientSession.class)
 public class SICardEntryJobTest {
 
   private static CurrencyTestDataProvider currency;
@@ -100,7 +102,7 @@ public class SICardEntryJobTest {
         catch (ProcessingException e) {
           Assert.fail(e.getMessage());
         }
-      };
+      }
     };
     FMilaClientTestUtility.runBlockingJob(job, runnableAfterWaitFor);
   }
@@ -121,7 +123,7 @@ public class SICardEntryJobTest {
         catch (ProcessingException e) {
           Assert.fail(e.getMessage());
         }
-      };
+      }
     };
     FMilaClientTestUtility.runBlockingJob(job, runnableAfterWaitFor);
   }
@@ -143,7 +145,7 @@ public class SICardEntryJobTest {
         catch (ProcessingException e) {
           Assert.fail(e.getMessage());
         }
-      };
+      }
     };
     FMilaClientTestUtility.runBlockingJob(job, runnableAfterWaitFor);
   }
@@ -178,7 +180,7 @@ public class SICardEntryJobTest {
         catch (ProcessingException e) {
           Assert.fail(e.getMessage());
         }
-      };
+      }
     };
     FMilaClientTestUtility.runBlockingJob(job, runnableAfterWaitFor);
 

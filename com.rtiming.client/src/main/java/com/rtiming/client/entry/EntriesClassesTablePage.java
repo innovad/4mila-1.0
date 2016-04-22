@@ -53,7 +53,7 @@ public class EntriesClassesTablePage extends AbstractPageWithTable<EntriesClasse
   }
 
   @Override
-  protected IPage execCreateChildPage(ITableRow row) throws ProcessingException {
+  protected IPage<?> execCreateChildPage(ITableRow row) throws ProcessingException {
     if (getTable().getClassUidColumn().getValue(row) != null) {
       return new EntriesTablePage(((SingleEventSearchFormData) getSearchFilter().getFormData()).getEvent().getValue(), ClientSession.get().getSessionClientNr(), null, getTable().getClassUidColumn().getValue(row), null, null);
     }

@@ -75,7 +75,7 @@ public abstract class AbstractRegistrationSearchBox extends AbstractGroupBox {
     @Override
     protected void execFilterLookupResult(ILookupCall<Long> call, List<ILookupRow<Long>> result) {
       super.execFilterLookupResult(call, result);
-      result.add(0, new LookupRow(0L, Texts.get("All")));
+      result.add(0, new LookupRow<Long>(0L, Texts.get("All")));
     }
 
   }

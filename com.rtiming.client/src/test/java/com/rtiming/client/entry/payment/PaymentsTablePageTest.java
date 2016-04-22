@@ -84,7 +84,7 @@ public class PaymentsTablePageTest extends AbstractTablePageTest<PaymentsTablePa
 
     page.getTable().selectFirstRow();
     // TODO MIG page.getTable().getMenu(EditMenu.class).prepareAction();
-    Assert.assertTrue(page.getTable().getMenu(EditMenu.class).isVisible());
+    Assert.assertTrue(page.getTable().getMenuByClass(EditMenu.class).isVisible());
     boolean runMenu = page.getTable().runMenu(DeleteMenu.class);
     Assert.assertTrue(runMenu);
 

@@ -36,7 +36,7 @@ public class AccountTablePage extends AbstractPageWithTable<AccountTablePage.Tab
   }
 
   @Override
-  protected IPage execCreateChildPage(ITableRow row) throws ProcessingException {
+  protected IPage<?> execCreateChildPage(ITableRow row) throws ProcessingException {
     return new AccountClientTablePage(getTable().getAccountNrColumn().getValue(row));
   }
 

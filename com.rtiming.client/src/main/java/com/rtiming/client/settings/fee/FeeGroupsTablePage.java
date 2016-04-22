@@ -43,7 +43,7 @@ public class FeeGroupsTablePage extends AbstractPageWithTable<FeeGroupsTablePage
   }
 
   @Override
-  protected IPage execCreateChildPage(ITableRow row) throws ProcessingException {
+  protected IPage<?> execCreateChildPage(ITableRow row) throws ProcessingException {
     return new FeeTablePage(getTable().getFeeGroupNrColumn().getValue(row));
   }
 
