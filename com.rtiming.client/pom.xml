@@ -33,6 +33,13 @@
 			<version>2.0.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
+			<groupId>com.4mila</groupId>
+			<artifactId>com.rtiming.shared</artifactId>
+			<version>2.0.0-SNAPSHOT</version>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.eclipse.scout.rt</groupId>
 			<artifactId>org.eclipse.scout.rt.client</artifactId>
 		</dependency>
