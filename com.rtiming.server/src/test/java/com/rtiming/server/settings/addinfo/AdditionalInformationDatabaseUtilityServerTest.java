@@ -33,7 +33,7 @@ public class AdditionalInformationDatabaseUtilityServerTest {
 
   @Test
   public void testCreate() throws ProcessingException {
-    List<? extends ICode<Long>> codes = CODES.getCodeType(AdditionalInformationTypeCodeType.class).getCodes();
+    List<? extends ICode<Long>> codes = BEANS.get(AdditionalInformationTypeCodeType.class).getCodes();
     for (ICode<?> code : codes) {
       AdditionalInformationAdministrationFormData bean = testAdditionalInformationColumn((Long) code.getId());
       dropColumn(bean);
@@ -51,7 +51,7 @@ public class AdditionalInformationDatabaseUtilityServerTest {
 
   @Test
   public void testUpdate() throws Exception {
-    List<? extends ICode<Long>> codes = CODES.getCodeType(AdditionalInformationTypeCodeType.class).getCodes();
+    List<? extends ICode<Long>> codes = BEANS.get(AdditionalInformationTypeCodeType.class).getCodes();
     for (ICode<?> code : codes) {
       AdditionalInformationAdministrationFormData bean = doCreateColumn(code);
       AdditionalInformationValueBean value = new AdditionalInformationValueBean();
@@ -65,7 +65,7 @@ public class AdditionalInformationDatabaseUtilityServerTest {
 
   @Test
   public void testSelect() throws Exception {
-    List<? extends ICode<Long>> codes = CODES.getCodeType(AdditionalInformationTypeCodeType.class).getCodes();
+    List<? extends ICode<Long>> codes = BEANS.get(AdditionalInformationTypeCodeType.class).getCodes();
     for (ICode<?> code : codes) {
       AdditionalInformationAdministrationFormData bean = doCreateColumn(code);
       AdditionalInformationValueBean value = new AdditionalInformationValueBean();

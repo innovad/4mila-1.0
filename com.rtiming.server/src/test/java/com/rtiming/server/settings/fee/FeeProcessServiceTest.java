@@ -1,14 +1,14 @@
 package com.rtiming.server.settings.fee;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import org.eclipse.scout.rt.platform.util.CompareUtility;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.util.CompareUtility;
 import org.eclipse.scout.rt.testing.platform.runner.RunWithSubject;
 import org.eclipse.scout.rt.testing.server.runner.RunWithServerSession;
 import org.eclipse.scout.rt.testing.server.runner.ServerTestRunner;
@@ -34,7 +34,9 @@ import com.rtiming.shared.event.course.ClassCodeType;
 import com.rtiming.shared.settings.addinfo.AdditionalInformationCodeType;
 import com.rtiming.shared.settings.fee.FeeFormData;
 
-@RunWith(ServerTestRunner.class) @RunWithSubject("admin") @RunWithServerSession(ServerSession.class)
+@RunWith(ServerTestRunner.class)
+@RunWithSubject("admin")
+@RunWithServerSession(ServerSession.class)
 public class FeeProcessServiceTest {
 
   private RtFeeGroup feeGroup;
@@ -88,7 +90,6 @@ public class FeeProcessServiceTest {
   }
 
   @Test
-  @SuppressWarnings("null")
   public void testLoadFeeConfigurationAddInfo() throws Exception {
     createTestData(false, true);
     FeeProcessService svc = new FeeProcessService();
@@ -106,7 +107,6 @@ public class FeeProcessServiceTest {
   }
 
   @Test
-  @SuppressWarnings("null")
   public void testLoadFeeConfigurationEventClass() throws Exception {
     createTestData(true, false);
     FeeProcessService svc = new FeeProcessService();
