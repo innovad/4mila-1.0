@@ -76,7 +76,7 @@ public class UserFormTest extends AbstractFormTest<UserForm> {
 
     Long languageUid = null;
     String language = Locale.getDefault().getLanguage();
-    for (ICode<?> code : CODES.getCodeType(LanguageCodeType.class).getCodes()) {
+    for (ICode<?> code : BEANS.get(LanguageCodeType.class).getCodes()) {
       if (language.equalsIgnoreCase(code.getExtKey())) {
         languageUid = TypeCastUtility.castValue(code.getId(), Long.class);
       }

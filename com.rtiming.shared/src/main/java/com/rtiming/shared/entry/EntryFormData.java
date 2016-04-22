@@ -1,6 +1,5 @@
 package com.rtiming.shared.entry;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.annotation.Generated;
@@ -386,7 +385,7 @@ public class EntryFormData extends AbstractFormData {
       public static final String currency = "currency";
       public static final String cashPaymentOnRegistration = "cashPaymentOnRegistration";
       private String m_name;
-      private BigDecimal m_amount;
+      private Double m_amount;
       private Long m_currency;
       private Boolean m_cashPaymentOnRegistration;
 
@@ -398,11 +397,11 @@ public class EntryFormData extends AbstractFormData {
         m_name = newName;
       }
 
-      public BigDecimal getAmount() {
+      public Double getAmount() {
         return m_amount;
       }
 
-      public void setAmount(BigDecimal newAmount) {
+      public void setAmount(Double newAmount) {
         m_amount = newAmount;
       }
 

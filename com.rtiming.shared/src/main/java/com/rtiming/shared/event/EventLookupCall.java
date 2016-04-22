@@ -23,7 +23,7 @@ public class EventLookupCall extends LookupCall<Long> {
     List<? extends ILookupRow<Long>> rows = super.getDataByAll();
     if (restrictToEventNrs != null) {
       List<ILookupRow<Long>> filtered = new ArrayList<ILookupRow<Long>>();
-      for (ILookupRow row : rows) {
+      for (ILookupRow<Long> row : rows) {
         if (restrictToEventNrs.contains(row.getKey())) {
           filtered.add(row);
         }

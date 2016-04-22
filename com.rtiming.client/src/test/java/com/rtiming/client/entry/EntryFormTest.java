@@ -109,7 +109,7 @@ public class EntryFormTest {
     // Lookups
     List<List<ILookupRow<?>>> lookupRows = new ArrayList<>();
     List<ILookupRow<?>> row = new ArrayList<>();
-    row.add(new LookupRow(0L, "Bla", null));
+    row.add(new LookupRow(0L, "Bla"));
     lookupRows.add(row);
     lookupRows.add(row);
     batchLookupService = Mockito.mock(IBatchLookupService.class);

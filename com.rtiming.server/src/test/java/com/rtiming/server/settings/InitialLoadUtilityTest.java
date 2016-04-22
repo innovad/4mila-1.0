@@ -5,10 +5,10 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.BeanMetaData;
 import org.eclipse.scout.rt.platform.IBean;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
-import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeService;
 import org.eclipse.scout.rt.testing.platform.runner.RunWithSubject;
 import org.eclipse.scout.rt.testing.server.runner.RunWithServerSession;
@@ -107,7 +107,7 @@ public class InitialLoadUtilityTest {
     JPA.persist(ucl);
 
     long insertCount = InitialLoadUtility.insertMissingTranslationsWithEnglish();
-    assertEquals("1 code", CODES.getCodeType(LanguageCodeType.class).getCodes().size() - 1, insertCount);
+    assertEquals("1 code", BEANS.get(LanguageCodeType.class).getCodes().size() - 1, insertCount);
 
     insertCount = InitialLoadUtility.insertMissingTranslationsWithEnglish();
     assertEquals("0 codes", 0, insertCount);

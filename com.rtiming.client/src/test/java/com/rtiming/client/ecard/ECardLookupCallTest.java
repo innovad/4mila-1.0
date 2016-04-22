@@ -70,7 +70,7 @@ public class ECardLookupCallTest extends AbstractDefaultLookupCallTest {
   public void testPrepareRows3() throws Exception {
     ECardLookupCall call = new ECardLookupCall();
     List<ILookupRow<Long>> rows = new ArrayList<>();
-    rows.add(new LookupRow(-1L, "Text", "Icon", null, null));
+    rows.add(new LookupRow<Long>(-1L, "Text").withIconId("Icon"));
     call.prepareRows(rows);
     Assert.assertEquals("1 Row", 1, rows.size());
     Assert.assertEquals("Text", "Text", rows.get(0).getText());
@@ -80,7 +80,7 @@ public class ECardLookupCallTest extends AbstractDefaultLookupCallTest {
   public void testPrepareRows4() throws Exception {
     ECardLookupCall call = new ECardLookupCall();
     List<ILookupRow<Long>> rows = new ArrayList<>();
-    rows.add(new LookupRow(-1L, "Text", "Icon", "true", null));
+    rows.add(new LookupRow<Long>(-1L, "Text").withIconId("Icon").withTooltipText("true"));
     call.prepareRows(rows);
     Assert.assertEquals("1 Row", 1, rows.size());
     Assert.assertEquals("Text", "Text " + "(" + TEXTS.get("RentalCard") + ")", rows.get(0).getText());
@@ -90,7 +90,7 @@ public class ECardLookupCallTest extends AbstractDefaultLookupCallTest {
   public void testPrepareRows5() throws Exception {
     ECardLookupCall call = new ECardLookupCall();
     List<ILookupRow<Long>> rows = new ArrayList<>();
-    rows.add(new LookupRow(-1L, "Text", "Icon", "ffffalse", null));
+    rows.add(new LookupRow<Long>(-1L, "Text").withIconId("Icon").withTooltipText("ffffalse"));
     call.prepareRows(rows);
     Assert.assertEquals("1 Row", 1, rows.size());
     Assert.assertEquals("Text", "Text", rows.get(0).getText());

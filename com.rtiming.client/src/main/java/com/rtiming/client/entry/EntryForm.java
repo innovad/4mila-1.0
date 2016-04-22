@@ -1371,7 +1371,7 @@ public class EntryForm extends AbstractForm {
               }
 
               @Override
-              protected void execPrepareLookup(ILookupCall call, ITableRow row) {
+              protected void execPrepareLookup(ILookupCall<Long> call, ITableRow row) {
                 ((ClazzLookupCall) call).setEventNr(getEventNrColumn().getValue(row));
                 ((ClazzLookupCall) call).setShowClassesOnly(true);
                 super.execPrepareLookup(call, row);

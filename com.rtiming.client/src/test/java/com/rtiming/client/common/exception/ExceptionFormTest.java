@@ -45,7 +45,7 @@ public class ExceptionFormTest {
     DesktopListener listener = new DesktopListener() {
       @Override
       public void desktopChanged(DesktopEvent e) {
-        if (e.getType() == DesktopEvent.TYPE_FILE_CHOOSER_ADDED) {
+        if (e.getType() == DesktopEvent.TYPE_FILE_CHOOSER_SHOW) {
           IFileChooser chooser = e.getFileChooser();
           chooser.setFiles(Arrays.asList(new BinaryResource[]{FMilaUtility.createBinaryResource(file)}));
         }

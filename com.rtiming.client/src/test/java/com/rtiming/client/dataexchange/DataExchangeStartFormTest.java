@@ -1,8 +1,8 @@
 package com.rtiming.client.dataexchange;
 
 import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
-import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
 import org.eclipse.scout.rt.testing.client.runner.RunWithClientSession;
@@ -16,7 +16,9 @@ import com.rtiming.client.dataexchange.cache.DataExchangeFormUtility;
 import com.rtiming.shared.dataexchange.AbstractImportExportCode;
 import com.rtiming.shared.dataexchange.ImportExportFormatCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class)
+@RunWithSubject("admin")
+@RunWithClientSession(TestEnvironmentClientSession.class)
 public class DataExchangeStartFormTest {
 
   @Before
@@ -31,7 +33,7 @@ public class DataExchangeStartFormTest {
 
     Assert.assertEquals("Format default", ImportExportFormatCodeType.IOFDataStandard203CourseDataCode.ID, form.getFormatField().getValue().longValue());
 
-    ICode<?> code = CODES.getCodeType(ImportExportFormatCodeType.class).getCode(ImportExportFormatCodeType.IOFDataStandard203CourseDataCode.ID);
+    ICode<?> code = BEANS.get(ImportExportFormatCodeType.class).getCode(ImportExportFormatCodeType.IOFDataStandard203CourseDataCode.ID);
     Assert.assertTrue("is AbstractImportExportCode", code instanceof AbstractImportExportCode);
 
     AbstractImportExportCode interfaceCode = (AbstractImportExportCode) code;
@@ -48,7 +50,7 @@ public class DataExchangeStartFormTest {
     Assert.assertEquals("Format default", ImportExportFormatCodeType.IOFDataStandard203CourseDataCode.ID, form.getFormatField().getValue().longValue());
     form.getFormatField().setValue(ImportExportFormatCodeType.SwissOrienteeringRunnerDatabaseCode.ID);
 
-    ICode<?> code = CODES.getCodeType(ImportExportFormatCodeType.class).getCode(ImportExportFormatCodeType.SwissOrienteeringRunnerDatabaseCode.ID);
+    ICode<?> code = BEANS.get(ImportExportFormatCodeType.class).getCode(ImportExportFormatCodeType.SwissOrienteeringRunnerDatabaseCode.ID);
     Assert.assertTrue("is AbstractImportExportCode", code instanceof AbstractImportExportCode);
 
     AbstractImportExportCode interfaceCode = (AbstractImportExportCode) code;

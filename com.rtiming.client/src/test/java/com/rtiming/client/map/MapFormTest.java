@@ -134,7 +134,7 @@ public class MapFormTest extends AbstractFormTest<MapForm> {
     DesktopListener listener = new DesktopListener() {
       @Override
       public void desktopChanged(DesktopEvent e) {
-        if (e.getType() == DesktopEvent.TYPE_FILE_CHOOSER_ADDED) {
+        if (e.getType() == DesktopEvent.TYPE_FILE_CHOOSER_SHOW) {
           IFileChooser chooser = e.getFileChooser();
           chooser.setFiles(Arrays.asList(new BinaryResource[]{FMilaUtility.createBinaryResource(file.getAbsolutePath())}));
         }
@@ -216,7 +216,7 @@ public class MapFormTest extends AbstractFormTest<MapForm> {
     DesktopListener listener = new DesktopListener() {
       @Override
       public void desktopChanged(DesktopEvent e) {
-        if (e.getType() == DesktopEvent.TYPE_FILE_CHOOSER_ADDED) {
+        if (e.getType() == DesktopEvent.TYPE_FILE_CHOOSER_SHOW) {
           IFileChooser chooser = e.getFileChooser();
           Assert.assertNotNull("There must be a file chooser", chooser);
           chooser.setFiles(Arrays.asList(new BinaryResource[]{FMilaUtility.createBinaryResource(file.getAbsolutePath())}));
@@ -247,7 +247,7 @@ public class MapFormTest extends AbstractFormTest<MapForm> {
     DesktopListener listener = new DesktopListener() {
       @Override
       public void desktopChanged(DesktopEvent e) {
-        if (e.getType() == DesktopEvent.TYPE_FILE_CHOOSER_ADDED) {
+        if (e.getType() == DesktopEvent.TYPE_FILE_CHOOSER_SHOW) {
           IFileChooser chooser = e.getFileChooser();
           Assert.assertNotNull("There must be a file chooser", chooser);
           chooser.setFiles(Arrays.asList(new BinaryResource[]{FMilaUtility.createBinaryResource(file.getAbsolutePath())}));

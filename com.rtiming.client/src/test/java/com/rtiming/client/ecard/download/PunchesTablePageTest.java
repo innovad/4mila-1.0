@@ -19,7 +19,9 @@ import com.rtiming.client.ecard.download.PunchesTablePage.Table.DeleteMenu;
 import com.rtiming.client.test.AbstractTablePageTest;
 import com.rtiming.client.test.data.EventWithIndividualValidatedRaceTestDataProvider;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class)
+@RunWithSubject("admin")
+@RunWithClientSession(TestEnvironmentClientSession.class)
 public class PunchesTablePageTest extends AbstractTablePageTest<PunchesTablePage> {
 
   private EventWithIndividualValidatedRaceTestDataProvider event;
@@ -69,7 +71,7 @@ public class PunchesTablePageTest extends AbstractTablePageTest<PunchesTablePage
     DesktopListener listener = new DesktopListener() {
       @Override
       public void desktopChanged(DesktopEvent e) {
-        if (e.getType() == DesktopEvent.TYPE_MESSAGE_BOX_ADDED) {
+        if (e.getType() == DesktopEvent.TYPE_MESSAGE_BOX_SHOW) {
           IMessageBox box = e.getMessageBox();
           box.getUIFacade().setResultFromUI(IMessageBox.YES_OPTION);
         }

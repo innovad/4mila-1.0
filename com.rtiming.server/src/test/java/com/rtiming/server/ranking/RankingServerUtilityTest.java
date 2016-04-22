@@ -2,7 +2,7 @@ package com.rtiming.server.ranking;
 
 import static org.junit.Assert.assertEquals;
 
-import org.eclipse.scout.rt.shared.services.common.code.CODES;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.testing.platform.runner.RunWithSubject;
 import org.eclipse.scout.rt.testing.server.runner.RunWithServerSession;
 import org.eclipse.scout.rt.testing.server.runner.ServerTestRunner;
@@ -16,7 +16,9 @@ import com.rtiming.shared.ranking.RankingFormulaTypeCodeType;
 /**
  * @author amo
  */
-@RunWith(ServerTestRunner.class) @RunWithSubject("admin") @RunWithServerSession(ServerSession.class)
+@RunWith(ServerTestRunner.class)
+@RunWithSubject("admin")
+@RunWithServerSession(ServerSession.class)
 public class RankingServerUtilityTest {
 
   @Test
@@ -41,7 +43,7 @@ public class RankingServerUtilityTest {
   }
 
   private void doTest(Long codeTypeId) {
-    AbstractFormulaCode code = (AbstractFormulaCode) CODES.getCodeType(RankingFormulaTypeCodeType.class).getCode(codeTypeId);
+    AbstractFormulaCode code = (AbstractFormulaCode) BEANS.get(RankingFormulaTypeCodeType.class).getCode(codeTypeId);
     long result = RankingServerUtility.analyzeFormulaType(code.getFormula());
     assertEquals("Formula Type", result, codeTypeId.longValue());
   }

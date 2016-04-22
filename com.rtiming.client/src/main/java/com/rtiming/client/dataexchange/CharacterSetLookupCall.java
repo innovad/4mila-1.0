@@ -29,14 +29,16 @@ public class CharacterSetLookupCall extends LocalLookupCall<String> {
       Charset cs = map.get(charsetName);
       String displayName = cs.displayName();
 
-      LookupRow<String> e = new LookupRow<>(charsetName, displayName, Icons.FILE);
+      LookupRow<String> e = new LookupRow<>(charsetName, displayName);
+      e.withIconId(Icons.FILE);
       rows.add(e);
 
     }
 
     // make sure we have default
     if (!rows.contains(System.getProperty("file.encoding"))) {
-      LookupRow<String> e = new LookupRow(System.getProperty("file.encoding"), System.getProperty("file.encoding"), Icons.FILE);
+      LookupRow<String> e = new LookupRow<>(System.getProperty("file.encoding"), System.getProperty("file.encoding"));
+      e.withIconId(Icons.FILE);
       rows.add(e);
     }
 

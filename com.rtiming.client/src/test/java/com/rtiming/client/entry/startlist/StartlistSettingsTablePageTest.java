@@ -168,7 +168,7 @@ public class StartlistSettingsTablePageTest extends AbstractTablePageTest<Startl
     DesktopListener listener = new DesktopListener() {
       @Override
       public void desktopChanged(DesktopEvent e) {
-        if (e.getType() == DesktopEvent.TYPE_MESSAGE_BOX_ADDED) {
+        if (e.getType() == DesktopEvent.TYPE_MESSAGE_BOX_SHOW) {
           IMessageBox box = e.getMessageBox();
           box.getUIFacade().setResultFromUI(IMessageBox.YES_OPTION);
         }
