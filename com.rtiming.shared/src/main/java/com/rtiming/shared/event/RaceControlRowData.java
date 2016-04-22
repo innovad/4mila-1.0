@@ -3,28 +3,25 @@ package com.rtiming.shared.event;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * 
- */
 public class RaceControlRowData implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  Long raceNr;
-  Long raceControlNr;
-  Long courseControlNr;
-  Long typeUid;
-  String controlNo;
-  Long sortCode;
-  Long statusUid;
-  Date overallTime;
-  Long overallTimeRaw;
-  String relativeTime;
-  String legTime;
-  Long legTimeRaw;
-  boolean countLeg;
-  boolean manualStatus;
-  Long shiftTime;
+  private Long raceNr;
+  private Long raceControlNr;
+  private Long courseControlNr;
+  private Long typeUid;
+  private String controlNo;
+  private Long sortCode;
+  private Long statusUid;
+  private Date overallTime;
+  private Long overallTimeRaw;
+  private String relativeTime;
+  private String legTime;
+  private Long legTimeRaw;
+  private boolean countLeg;
+  private boolean manualStatus;
+  private Long shiftTime;
 
   public Long getRaceNr() {
     return raceNr;

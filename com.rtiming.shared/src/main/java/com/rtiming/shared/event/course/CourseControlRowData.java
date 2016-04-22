@@ -6,17 +6,17 @@ public class CourseControlRowData implements Serializable, Cloneable {
 
   private static final long serialVersionUID = 1L;
 
-  Long courseControlNr;
-  Long controlNr;
-  String controlNo;
-  Long forkMasterCourseControlNr;
-  String forkMasterCourseControlNo;
-  String forkVariantCode;
-  Long forkTypeUid;
-  Long typeUid;
-  Long sortCode;
-  boolean countLeg;
-  boolean mandatory;
+  private Long courseControlNr;
+  private Long controlNr;
+  private String controlNo;
+  private Long forkMasterCourseControlNr;
+  private String forkMasterCourseControlNo;
+  private String forkVariantCode;
+  private Long forkTypeUid;
+  private Long typeUid;
+  private Long sortCode;
+  private boolean countLeg;
+  private boolean mandatory;
 
   public Long getCourseControlNr() {
     return courseControlNr;

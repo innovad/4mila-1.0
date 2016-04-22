@@ -9,17 +9,17 @@ public class ResultClazzRowData implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  Long parentUid;
-  Long clazzUid;
-  String outline;
-  String parent;
-  String clazz;
-  Long clazzTypeUid;
-  Long sortCode;
-  Long entries;
-  Long runners;
-  Long processed;
-  Long missing;
+  private Long parentUid;
+  private Long clazzUid;
+  private String outline;
+  private String parent;
+  private String clazz;
+  private Long clazzTypeUid;
+  private Long sortCode;
+  private Long entries;
+  private Long runners;
+  private Long processed;
+  private Long missing;
 
   public Long getParentUid() {
     return parentUid;
