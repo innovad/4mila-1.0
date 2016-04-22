@@ -364,7 +364,7 @@ public final class FormTestUtility {
   public static void closeAllBlockingForms() throws ProcessingException {
     IClientSession session = (IClientSession) IClientSession.CURRENT.get();
     if (session != null) {
-      List<IForm> forms = session.getDesktop().getDialogStack();
+      List<IForm> forms = session.getDesktop().getDialogs();
       for (IForm form : forms) {
         form.doClose();
       }
