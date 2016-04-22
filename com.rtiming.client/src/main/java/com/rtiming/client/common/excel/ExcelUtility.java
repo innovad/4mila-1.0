@@ -119,10 +119,8 @@ public final class ExcelUtility {
     // date
     else if (value instanceof Date) {
       String string = "DD.MM.YYYY";
-      if (column instanceof AbstractDateColumn) {
-        if (((AbstractDateColumn) column).isHasTime()) {
-          string = "DD.MM.YYYY hh:mm:ss";
-        }
+      if (column instanceof AbstractDateColumn && ((AbstractDateColumn) column).isHasTime()) {
+        string = "DD.MM.YYYY hh:mm:ss";
       }
       HSSFCellStyle cellStyle = workbook.createCellStyle();
       cellStyle.setVerticalAlignment(HSSFCellStyle.VERTICAL_TOP);

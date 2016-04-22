@@ -18,12 +18,12 @@ import com.rtiming.shared.common.file.AllFilenameFilter;
  */
 public final class InfoDisplayUtility {
 
-  public InfoDisplayUtility() {
-  }
-
   private static boolean isActive = false;
   private static boolean filesAreSynced = false;
   private static Object lock = new Object();
+
+  public InfoDisplayUtility() {
+  }
 
   public static boolean isActive() {
     return isActive;
