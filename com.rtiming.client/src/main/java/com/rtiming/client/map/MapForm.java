@@ -18,7 +18,6 @@ import org.eclipse.scout.rt.client.dto.FormData.SdkCommand;
 import org.eclipse.scout.rt.client.ui.basic.filechooser.FileChooser;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
-import org.eclipse.scout.rt.client.ui.form.fields.bigdecimalfield.AbstractBigDecimalField;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCancelButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractLinkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractOkButton;
@@ -36,6 +35,7 @@ import org.eclipse.scout.rt.platform.util.IOUtility;
 import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.shared.ScoutTexts;
 
+import com.rtiming.client.AbstractDoubleField;
 import com.rtiming.client.FMilaClientUtility;
 import com.rtiming.client.common.help.AbstractHelpLinkButton;
 import com.rtiming.client.common.ui.fields.AbstractGoogleMapsButton;
@@ -403,7 +403,7 @@ public class MapForm extends AbstractForm {
           }
 
           @Order(10.0)
-          public class OriginXField extends AbstractBigDecimalField {
+          public class OriginXField extends AbstractDoubleField {
 
             @Override
             protected String getConfiguredLabel() {
@@ -412,7 +412,7 @@ public class MapForm extends AbstractForm {
           }
 
           @Order(20.0)
-          public class OriginYField extends AbstractBigDecimalField {
+          public class OriginYField extends AbstractDoubleField {
 
             @Override
             protected String getConfiguredLabel() {
@@ -459,7 +459,7 @@ public class MapForm extends AbstractForm {
         }
 
         @Order(30.0)
-        public class ResolutionField extends AbstractBigDecimalField {
+        public class ResolutionField extends AbstractDoubleField {
 
           @Override
           protected String getConfiguredLabel() {

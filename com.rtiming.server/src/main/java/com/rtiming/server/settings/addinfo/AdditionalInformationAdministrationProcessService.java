@@ -74,14 +74,14 @@ public class AdditionalInformationAdministrationProcessService implements IAddit
     RtAdditionalInformationDef def = JPA.find(RtAdditionalInformationDef.class, key);
     if (def != null) {
       formData.getEntity().setValue(def.getEntityUid());
-      formData.getMinimum().setValue(NumberUtility.toBigDecimal(def.getValueMin()));
-      formData.getMaximum().setValue(NumberUtility.toBigDecimal(def.getValueMax()));
+      formData.getMinimum().setValue(def.getValueMin());
+      formData.getMaximum().setValue(def.getValueMax());
       formData.getType().setValue(def.getTypeUid());
       formData.getFeeGroup().setValue(def.getFeeGroupNr());
       formData.getDefaultValueInteger().setValue(def.getDefaultLong());
       formData.getDefaultValueBoolean().setValue(NumberUtility.nvl(def.getDefaultLong(), 0) != 0);
       formData.getDefaultValueSmartfield().setValue(def.getDefaultLong());
-      formData.getDefaultValueDecimal().setValue(NumberUtility.toBigDecimal(def.getDefaultDecimal()));
+      formData.getDefaultValueDecimal().setValue(def.getDefaultDecimal());
       formData.getDefaultValueText().setValue(def.getDefaultText());
       formData.getMandatory().setValue(def.getMandatory());
     }

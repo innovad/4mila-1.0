@@ -3,7 +3,6 @@ package com.rtiming.client.settings.addinfo;
 import org.eclipse.scout.rt.client.dto.FormData;
 import org.eclipse.scout.rt.client.dto.FormData.DefaultSubtypeSdkCommand;
 import org.eclipse.scout.rt.client.dto.FormData.SdkCommand;
-import org.eclipse.scout.rt.client.ui.form.fields.bigdecimalfield.AbstractBigDecimalField;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.labelfield.AbstractLabelField;
 import org.eclipse.scout.rt.client.ui.form.fields.longfield.AbstractLongField;
@@ -18,6 +17,7 @@ import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
 import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 
+import com.rtiming.client.AbstractDoubleField;
 import com.rtiming.client.settings.addinfo.AbstractAdditionalInformationSearchBox.DecimalBox.DecimalFrom;
 import com.rtiming.client.settings.addinfo.AbstractAdditionalInformationSearchBox.DecimalBox.DecimalTo;
 import com.rtiming.client.settings.addinfo.AbstractAdditionalInformationSearchBox.IntegerBox.IntegerFrom;
@@ -188,7 +188,7 @@ public abstract class AbstractAdditionalInformationSearchBox extends AbstractGro
     }
 
     @Order(10.0)
-    public class DecimalFrom extends AbstractBigDecimalField {
+    public class DecimalFrom extends AbstractDoubleField {
 
       @Override
       protected String getConfiguredLabel() {
@@ -197,7 +197,7 @@ public abstract class AbstractAdditionalInformationSearchBox extends AbstractGro
     }
 
     @Order(20.0)
-    public class DecimalTo extends AbstractBigDecimalField {
+    public class DecimalTo extends AbstractDoubleField {
 
       @Override
       protected String getConfiguredLabel() {

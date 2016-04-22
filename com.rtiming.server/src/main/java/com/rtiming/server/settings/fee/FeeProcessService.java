@@ -12,7 +12,6 @@ import javax.persistence.criteria.Root;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.exception.VetoException;
 import org.eclipse.scout.rt.platform.util.BooleanUtility;
-import org.eclipse.scout.rt.platform.util.NumberUtility;
 import org.eclipse.scout.rt.platform.util.TypeCastUtility;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
 
@@ -132,7 +131,7 @@ public class FeeProcessService implements IFeeProcessService {
       FeeFormData feeData = new FeeFormData();
       feeData.setFeeNr(TypeCastUtility.castValue(row[0], Long.class));
       feeData.setAdditionalInformationUid(TypeCastUtility.castValue(row[1], Long.class));
-      feeData.getFee().setValue(NumberUtility.toBigDecimal(TypeCastUtility.castValue(row[2], Double.class)));
+      feeData.getFee().setValue(TypeCastUtility.castValue(row[2], Double.class));
       feeData.getCurrency().setValue(TypeCastUtility.castValue(row[3], Long.class));
       feeData.getDateFrom().setValue(TypeCastUtility.castValue(row[4], Date.class));
       feeData.getDateTo().setValue(TypeCastUtility.castValue(row[5], Date.class));
@@ -160,7 +159,7 @@ public class FeeProcessService implements IFeeProcessService {
       feeData.setFeeNr(TypeCastUtility.castValue(row[0], Long.class));
       feeData.setEventNr(TypeCastUtility.castValue(row[1], Long.class));
       feeData.setClassUid(TypeCastUtility.castValue(row[2], Long.class));
-      feeData.getFee().setValue(NumberUtility.toBigDecimal(TypeCastUtility.castValue(row[3], Double.class)));
+      feeData.getFee().setValue(TypeCastUtility.castValue(row[3], Double.class));
       feeData.getCurrency().setValue(TypeCastUtility.castValue(row[4], Long.class));
       feeData.getDateFrom().setValue(TypeCastUtility.castValue(row[5], Date.class));
       feeData.getDateTo().setValue(TypeCastUtility.castValue(row[6], Date.class));

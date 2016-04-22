@@ -1,7 +1,5 @@
 package com.rtiming.server.settings.currency;
 
-import java.math.BigDecimal;
-
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.exception.VetoException;
@@ -63,7 +61,7 @@ public class CurrencyProcessService implements ICurrencyProcessService {
 
     RtCurrency currency = JPA.find(RtCurrency.class, RtCurrencyKey.create(formData.getCurrencyUid()));
     if (currency != null) {
-      formData.getExchangeRate().setValue(BigDecimal.valueOf(currency.getExchangeRate()));
+      formData.getExchangeRate().setValue(currency.getExchangeRate());
     }
 
     formData.getCodeBox().getCodeUid().setValue(formData.getCurrencyUid());

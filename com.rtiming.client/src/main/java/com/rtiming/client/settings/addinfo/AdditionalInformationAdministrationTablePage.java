@@ -9,7 +9,6 @@ import org.eclipse.scout.rt.client.ui.action.menu.TableMenuType;
 import org.eclipse.scout.rt.client.ui.action.menu.ValueFieldMenuType;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
-import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractBigDecimalColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractBooleanColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractSmartColumn;
@@ -27,6 +26,7 @@ import org.eclipse.scout.rt.shared.ScoutTexts;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 
+import com.rtiming.client.AbstractDoubleColumn;
 import com.rtiming.client.common.EmptyWorkaroundTablePage;
 import com.rtiming.client.common.help.IHelpEnabledPage;
 import com.rtiming.client.common.ui.action.AbstractSeparatorMenu;
@@ -217,7 +217,7 @@ public class AdditionalInformationAdministrationTablePage extends AbstractPageWi
     }
 
     @Order(50.0)
-    public class MinimumColumn extends AbstractBigDecimalColumn {
+    public class MinimumColumn extends AbstractDoubleColumn {
 
       @Override
       protected String getConfiguredHeaderText() {
@@ -231,7 +231,7 @@ public class AdditionalInformationAdministrationTablePage extends AbstractPageWi
     }
 
     @Order(60.0)
-    public class MaximumColumn extends AbstractBigDecimalColumn {
+    public class MaximumColumn extends AbstractDoubleColumn {
 
       @Override
       protected String getConfiguredHeaderText() {

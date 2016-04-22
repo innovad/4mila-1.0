@@ -1,7 +1,5 @@
 package com.rtiming.shared.settings.addinfo;
 
-import java.math.BigDecimal;
-
 import javax.annotation.Generated;
 
 import org.eclipse.scout.rt.shared.data.form.fields.AbstractFormFieldData;
@@ -62,12 +60,12 @@ public abstract class AbstractAdditionalInformationSearchBoxData extends Abstrac
     private static final long serialVersionUID = 1L;
   }
 
-  public static class DecimalFrom extends AbstractValueFieldData<BigDecimal> {
+  public static class DecimalFrom extends AbstractValueFieldData<Double> {
 
     private static final long serialVersionUID = 1L;
   }
 
-  public static class DecimalTo extends AbstractValueFieldData<BigDecimal> {
+  public static class DecimalTo extends AbstractValueFieldData<Double> {
 
     private static final long serialVersionUID = 1L;
   }

@@ -1,6 +1,6 @@
 //package com.rtiming.client.entry;
 //
-//import org.eclipse.scout.commons.exception.ProcessingException;
+//import org.eclipse.scout.rt.platform.exception.ProcessingException;
 //import org.eclipse.scout.rt.platform.BEANS;
 //import org.eclipse.scout.rt.platform.exception.ExceptionHandler;
 //

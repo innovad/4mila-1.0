@@ -1,8 +1,8 @@
 // TODO MIG
 //package com.rtiming.server;
 //
-//import org.eclipse.scout.commons.logger.IScoutLogger;
-//import org.eclipse.scout.commons.logger.ScoutLogManager;
+//import org.eclipse.scout.rt.platform.logger.IScoutLogger;
+//import org.eclipse.scout.rt.platform.logger.ScoutLogManager;
 //
 //import com.rtiming.server.common.database.DatabaseService;
 //import com.rtiming.shared.FMilaUtility;

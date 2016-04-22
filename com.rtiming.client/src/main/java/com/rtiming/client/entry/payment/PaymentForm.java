@@ -1,11 +1,8 @@
 package com.rtiming.client.entry.payment;
 
-import java.math.BigDecimal;
-
 import org.eclipse.scout.rt.client.dto.FormData;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
-import org.eclipse.scout.rt.client.ui.form.fields.bigdecimalfield.AbstractBigDecimalField;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCancelButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractOkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
@@ -17,6 +14,7 @@ import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 
+import com.rtiming.client.AbstractDoubleField;
 import com.rtiming.client.common.help.AbstractHelpLinkButton;
 import com.rtiming.client.common.ui.fields.AbstractDefaultDateTimeField;
 import com.rtiming.client.entry.payment.PaymentForm.MainBox.AmountField;
@@ -155,7 +153,7 @@ public class PaymentForm extends AbstractForm {
     }
 
     @Order(40.0)
-    public class AmountField extends AbstractBigDecimalField {
+    public class AmountField extends AbstractDoubleField {
 
       @Override
       protected String getConfiguredLabel() {
@@ -167,15 +165,6 @@ public class PaymentForm extends AbstractForm {
         return true;
       }
 
-      @Override
-      protected BigDecimal getConfiguredMaxValue() {
-        return BigDecimal.valueOf(9.99999999E8);
-      }
-
-      @Override
-      protected BigDecimal getConfiguredMinValue() {
-        return BigDecimal.valueOf(-9.99999999E8);
-      }
     }
 
     @Order(50.0)
@@ -243,7 +232,7 @@ public class PaymentForm extends AbstractForm {
 
   private PaymentFormData bean2formData(PaymentBean bean) {
     PaymentFormData formData = new PaymentFormData();
-    formData.getAmount().setValue(bean.getAmount() == null ? null : BigDecimal.valueOf(bean.getAmount()));
+    formData.getAmount().setValue(bean.getAmount());
     formData.getCurrencyUid().setValue(bean.getCurrencyUid());
     formData.getEvtPayment().setValue(bean.getEvtPayment());
     formData.getPaymentNo().setValue(bean.getPaymentNo());

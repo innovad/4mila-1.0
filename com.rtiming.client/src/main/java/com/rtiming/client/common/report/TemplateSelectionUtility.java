@@ -152,7 +152,7 @@ public class TemplateSelectionUtility {
 
   public static String findDefaultTemplatePath(String pathInReportResourcesDirectory) throws ProcessingException {
     // TODO MIG
-//    URL jasperFile = FMilaUtility.findFileLocation(FMilaReport.LOCAL_REPORT_DIR + pathInReportResourcesDirectory, Activator.getDefault().getBundle().getSymbolicName());
+//    URL jasperFile = FMilaUtility.findFileLocation(FMilaReport.LOCAL_REPORT_DIR + pathInReportResourcesDirectory, "");
 //    return jasperFile.getFile();
     return null;
   }

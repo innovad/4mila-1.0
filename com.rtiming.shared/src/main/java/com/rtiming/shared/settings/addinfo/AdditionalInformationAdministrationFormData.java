@@ -1,7 +1,5 @@
 package com.rtiming.shared.settings.addinfo;
 
-import java.math.BigDecimal;
-
 import javax.annotation.Generated;
 
 import org.eclipse.scout.rt.shared.data.form.AbstractFormData;
@@ -104,7 +102,7 @@ public class AdditionalInformationAdministrationFormData extends AbstractFormDat
     private static final long serialVersionUID = 1L;
   }
 
-  public static class DefaultValueDecimal extends AbstractValueFieldData<BigDecimal> {
+  public static class DefaultValueDecimal extends AbstractValueFieldData<Double> {
 
     private static final long serialVersionUID = 1L;
   }
@@ -139,12 +137,12 @@ public class AdditionalInformationAdministrationFormData extends AbstractFormDat
     private static final long serialVersionUID = 1L;
   }
 
-  public static class Maximum extends AbstractValueFieldData<BigDecimal> {
+  public static class Maximum extends AbstractValueFieldData<Double> {
 
     private static final long serialVersionUID = 1L;
   }
 
-  public static class Minimum extends AbstractValueFieldData<BigDecimal> {
+  public static class Minimum extends AbstractValueFieldData<Double> {
 
     private static final long serialVersionUID = 1L;
   }

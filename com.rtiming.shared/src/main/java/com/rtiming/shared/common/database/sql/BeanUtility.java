@@ -1,6 +1,5 @@
 package com.rtiming.shared.common.database.sql;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 import org.eclipse.scout.rt.platform.BEANS;
@@ -140,17 +139,17 @@ public final class BeanUtility {
     formData.setMapData(bean.getMapData());
     formData.getName().setValue(bean.getName());
     formData.setNewEventNr(bean.getNewEventNr());
-    formData.getNECornerBox().getX().setValue(NumberUtility.toBigDecimal(bean.getNeX()));
-    formData.getNECornerBox().getY().setValue(NumberUtility.toBigDecimal(bean.getNeY()));
-    formData.getNWCornerBox().getX().setValue(NumberUtility.toBigDecimal(bean.getNwX()));
-    formData.getNWCornerBox().getY().setValue(NumberUtility.toBigDecimal(bean.getNwY()));
-    formData.getSECornerBox().getX().setValue(NumberUtility.toBigDecimal(bean.getSeX()));
-    formData.getSECornerBox().getY().setValue(NumberUtility.toBigDecimal(bean.getSeY()));
-    formData.getSWCornerBox().getX().setValue(NumberUtility.toBigDecimal(bean.getSwX()));
-    formData.getSWCornerBox().getY().setValue(NumberUtility.toBigDecimal(bean.getSwY()));
-    formData.getOriginX().setValue(NumberUtility.toBigDecimal(bean.getOriginX()));
-    formData.getOriginY().setValue(NumberUtility.toBigDecimal(bean.getOriginY()));
-    formData.getResolution().setValue(NumberUtility.toBigDecimal(bean.getResolution()));
+    formData.getNECornerBox().getX().setValue(bean.getNeX());
+    formData.getNECornerBox().getY().setValue(bean.getNeY());
+    formData.getNWCornerBox().getX().setValue(bean.getNwX());
+    formData.getNWCornerBox().getY().setValue(bean.getNwY());
+    formData.getSECornerBox().getX().setValue(bean.getSeX());
+    formData.getSECornerBox().getY().setValue(bean.getSeY());
+    formData.getSWCornerBox().getX().setValue(bean.getSwX());
+    formData.getSWCornerBox().getY().setValue(bean.getSwY());
+    formData.getOriginX().setValue(bean.getOriginX());
+    formData.getOriginY().setValue(bean.getOriginY());
+    formData.getResolution().setValue(bean.getResolution());
     formData.getScale().setValue(bean.getScale());
     formData.getWidth().setValue(bean.getW());
     return formData;
@@ -499,15 +498,15 @@ public final class BeanUtility {
     for (AdditionalInformationValueBean value : bean.getValues()) {
       AbstractAdditionalInformationRowData row = formData.addRow();
       row.setAdditionalInformationUid(value.getAdditionalInformationUid());
-      row.setDecimal(value.getValueDouble() == null ? null : BigDecimal.valueOf(value.getValueDouble()));
-      row.setDefaultValueDecimal(value.getDefaultDecimal() == null ? null : BigDecimal.valueOf(value.getDefaultDecimal()));
+      row.setDecimal(value.getValueDouble());
+      row.setDefaultValueDecimal(value.getDefaultDecimal());
       row.setDefaultValueInteger(value.getDefaultInteger());
       row.setDefaultValueText(value.getDefaultText());
       row.setFeeGroup(value.getFeeGroupNr());
       row.setInteger(value.getValueInteger());
       row.setMandatory(value.isMandatory());
-      row.setMaximum(value.getValueMax() == null ? null : BigDecimal.valueOf(value.getValueMax()));
-      row.setMinimum(value.getValueMin() == null ? null : BigDecimal.valueOf(value.getValueMin()));
+      row.setMaximum(value.getValueMax());
+      row.setMinimum(value.getValueMin());
       row.setText(value.getValueString());
       row.setType(value.getTypeUid());
     }

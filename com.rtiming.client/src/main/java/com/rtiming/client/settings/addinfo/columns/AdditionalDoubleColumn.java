@@ -1,12 +1,13 @@
 package com.rtiming.client.settings.addinfo.columns;
 
 import org.eclipse.scout.rt.client.ui.basic.table.HeaderCell;
-import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractBigDecimalColumn;
 import org.eclipse.scout.rt.platform.Order;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 
+import com.rtiming.client.AbstractDoubleColumn;
+
 @Order(value = Double.MAX_VALUE)
-public class AdditionalDoubleColumn extends AbstractBigDecimalColumn implements IAdditionalColumn {
+public class AdditionalDoubleColumn extends AbstractDoubleColumn implements IAdditionalColumn {
 
   private final Long additionalInformationUid;
   private final String id;

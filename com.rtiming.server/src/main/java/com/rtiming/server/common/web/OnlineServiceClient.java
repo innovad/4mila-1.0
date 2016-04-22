@@ -3,8 +3,8 @@
 //
 //import java.net.URL;
 //
-//import org.eclipse.scout.commons.logger.IScoutLogger;
-//import org.eclipse.scout.commons.logger.ScoutLogManager;
+//import org.eclipse.scout.rt.platform.logger.IScoutLogger;
+//import org.eclipse.scout.rt.platform.logger.ScoutLogManager;
 //
 //import com._4mila._4mila.jaxws.online.OnlineService;
 //import com._4mila._4mila.jaxws.online.OnlineServiceSoap;
@@ -19,7 +19,7 @@
 //  @Override
 //  public URL getConfiguredWsdlLocation() {
 //    try {
-//      return FMilaUtility.findFileLocation("WEB-INF/wsdl/consumer/online.wsdl", Activator.getDefault().getBundle().getSymbolicName());
+//      return FMilaUtility.findFileLocation("WEB-INF/wsdl/consumer/online.wsdl", "");
 //    }
 //    catch (Exception e) {
 //      logger.warn("Failed opening WSDL: " + e.getMessage());

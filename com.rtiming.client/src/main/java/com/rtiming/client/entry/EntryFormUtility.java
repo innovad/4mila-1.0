@@ -1,6 +1,5 @@
 package com.rtiming.client.entry;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -238,7 +237,7 @@ public final class EntryFormUtility {
     for (FeeOutput feeOutput : result.getFees()) {
       ITableRow row = feesField.getTable().createRow();
       feesField.getTable().getCurrencyColumn().setValue(row, feeOutput.getCurrencyUid());
-      feesField.getTable().getAmountColumn().setValue(row, BigDecimal.valueOf(feeOutput.getAmount())); // TODO MIG
+      feesField.getTable().getAmountColumn().setValue(row, feeOutput.getAmount());
       feesField.getTable().getCashPaymentOnRegistrationColumn().setValue(row, feeOutput.getCashPaymentOnRegistration());
       feesField.getTable().getNameColumn().setValue(row, feeOutput.getText());
       feesField.getTable().addRow(row);
@@ -270,7 +269,7 @@ public final class EntryFormUtility {
         for (int j = 0; j < formData.getRowCount(); j++) {
           if (formData.getRows()[j].getAdditionalInformationUid() == infoUid) {
             formData.getRows()[j].setInteger(infoTable.getIntegerColumn().getValue(k));
-            formData.getRows()[j].setDecimal(infoTable.getDecimalColumn().getValue(k) == null ? null : BigDecimal.valueOf(infoTable.getDecimalColumn().getValue(k).doubleValue()));
+            formData.getRows()[j].setDecimal(infoTable.getDecimalColumn().getValue(k));
             formData.getRows()[j].setText(infoTable.getTextColumn().getValue(k));
           }
         }

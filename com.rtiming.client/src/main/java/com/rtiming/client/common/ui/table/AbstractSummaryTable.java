@@ -1,10 +1,7 @@
 package com.rtiming.client.common.ui.table;
 
-import java.math.BigDecimal;
-
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
-import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractBigDecimalColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractBooleanColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
@@ -14,6 +11,7 @@ import org.eclipse.scout.rt.platform.util.BooleanUtility;
 import org.eclipse.scout.rt.platform.util.NumberUtility;
 import org.eclipse.scout.rt.shared.data.basic.FontSpec;
 
+import com.rtiming.client.AbstractDoubleColumn;
 import com.rtiming.shared.Texts;
 
 public abstract class AbstractSummaryTable extends AbstractTable {
@@ -55,12 +53,12 @@ public abstract class AbstractSummaryTable extends AbstractTable {
           }
 
           // Double
-          if (column instanceof AbstractBigDecimalColumn) {
+          if (column instanceof AbstractDoubleColumn) {
             Double sum = 0D;
             for (int k = 0; k < dataColCount; k++) {
               sum = sum + NumberUtility.nvl((Double) getTableData()[k][column.getColumnIndex()], 0D);
             }
-            ((AbstractBigDecimalColumn) column).setValue(dataColCount, BigDecimal.valueOf(sum));
+            ((AbstractDoubleColumn) column).setValue(dataColCount, sum);
           }
         }
       }

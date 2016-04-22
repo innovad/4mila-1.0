@@ -1,6 +1,5 @@
 package com.rtiming.shared.map;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.annotation.Generated;
@@ -222,17 +221,17 @@ public class MapFormData extends AbstractFormData {
     private static final long serialVersionUID = 1L;
   }
 
-  public static class OriginX extends AbstractValueFieldData<BigDecimal> {
+  public static class OriginX extends AbstractValueFieldData<Double> {
 
     private static final long serialVersionUID = 1L;
   }
 
-  public static class OriginY extends AbstractValueFieldData<BigDecimal> {
+  public static class OriginY extends AbstractValueFieldData<Double> {
 
     private static final long serialVersionUID = 1L;
   }
 
-  public static class Resolution extends AbstractValueFieldData<BigDecimal> {
+  public static class Resolution extends AbstractValueFieldData<Double> {
 
     private static final long serialVersionUID = 1L;
   }

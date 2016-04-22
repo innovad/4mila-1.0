@@ -1,13 +1,10 @@
 package com.rtiming.client.settings.addinfo;
 
-import java.math.BigDecimal;
-
 import org.eclipse.scout.rt.client.dto.FormData;
 import org.eclipse.scout.rt.client.dto.FormData.DefaultSubtypeSdkCommand;
 import org.eclipse.scout.rt.client.dto.FormData.SdkCommand;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
-import org.eclipse.scout.rt.client.ui.form.fields.bigdecimalfield.AbstractBigDecimalField;
 import org.eclipse.scout.rt.client.ui.form.fields.booleanfield.AbstractBooleanField;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCancelButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractOkButton;
@@ -23,6 +20,7 @@ import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
 import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 
+import com.rtiming.client.AbstractDoubleField;
 import com.rtiming.client.common.help.AbstractHelpLinkButton;
 import com.rtiming.client.common.ui.fields.AbstractCodeBox;
 import com.rtiming.client.settings.addinfo.AdditionalInformationAdministrationForm.MainBox.CancelButton;
@@ -279,21 +277,11 @@ public class AdditionalInformationAdministrationForm extends AbstractForm {
     }
 
     @Order(50.0)
-    public class DefaultValueDecimalField extends AbstractBigDecimalField {
+    public class DefaultValueDecimalField extends AbstractDoubleField {
 
       @Override
       protected String getConfiguredLabel() {
         return Texts.get("DefaultValue");
-      }
-
-      @Override
-      protected BigDecimal getConfiguredMaxValue() {
-        return BigDecimal.valueOf(9.99999999E8);
-      }
-
-      @Override
-      protected BigDecimal getConfiguredMinValue() {
-        return BigDecimal.valueOf(-9.99999999E8);
       }
 
       @Override
@@ -380,41 +368,23 @@ public class AdditionalInformationAdministrationForm extends AbstractForm {
     }
 
     @Order(100.0)
-    public class MinimumField extends AbstractBigDecimalField {
+    public class MinimumField extends AbstractDoubleField {
 
       @Override
       protected String getConfiguredLabel() {
         return Texts.get("Minimum");
       }
 
-      @Override
-      protected BigDecimal getConfiguredMaxValue() {
-        return BigDecimal.valueOf(9.99999999E8);
-      }
-
-      @Override
-      protected BigDecimal getConfiguredMinValue() {
-        return BigDecimal.valueOf(-9.99999999E8);
-      }
     }
 
     @Order(110.0)
-    public class MaximumField extends AbstractBigDecimalField {
+    public class MaximumField extends AbstractDoubleField {
 
       @Override
       protected String getConfiguredLabel() {
         return Texts.get("Maximum");
       }
 
-      @Override
-      protected BigDecimal getConfiguredMaxValue() {
-        return BigDecimal.valueOf(9.99999999E8);
-      }
-
-      @Override
-      protected BigDecimal getConfiguredMinValue() {
-        return BigDecimal.valueOf(-9.99999999E8);
-      }
     }
 
     @Order(120.0)

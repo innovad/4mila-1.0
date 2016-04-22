@@ -17,7 +17,6 @@ import org.eclipse.scout.rt.client.ui.action.menu.ValueFieldMenuType;
 import org.eclipse.scout.rt.client.ui.basic.cell.Cell;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
-import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractBigDecimalColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractBooleanColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractSmartColumn;
@@ -49,6 +48,7 @@ import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
 import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 
+import com.rtiming.client.AbstractDoubleColumn;
 import com.rtiming.client.ClientSession;
 import com.rtiming.client.FMilaClientSyncJob;
 import com.rtiming.client.club.AbstractClubField;
@@ -1572,7 +1572,7 @@ public class EntryForm extends AbstractForm {
             }
 
             @Order(20.0)
-            public class AmountColumn extends AbstractBigDecimalColumn {
+            public class AmountColumn extends AbstractDoubleColumn {
 
               @Override
               protected String getConfiguredHeaderText() {

@@ -1,7 +1,5 @@
 package com.rtiming.shared.settings.currency;
 
-import java.math.BigDecimal;
-
 import javax.annotation.Generated;
 
 import org.eclipse.scout.rt.shared.data.form.AbstractFormData;
@@ -55,7 +53,7 @@ public class CurrencyFormData extends AbstractFormData {
     private static final long serialVersionUID = 1L;
   }
 
-  public static class ExchangeRate extends AbstractValueFieldData<BigDecimal> {
+  public static class ExchangeRate extends AbstractValueFieldData<Double> {
 
     private static final long serialVersionUID = 1L;
   }

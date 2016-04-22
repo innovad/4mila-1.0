@@ -1,6 +1,5 @@
 package com.rtiming.shared.settings.fee;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.annotation.Generated;
@@ -195,7 +194,7 @@ public class FeeFormData extends AbstractFormData {
     private static final long serialVersionUID = 1L;
   }
 
-  public static class Fee extends AbstractValueFieldData<BigDecimal> {
+  public static class Fee extends AbstractValueFieldData<Double> {
 
     private static final long serialVersionUID = 1L;
   }

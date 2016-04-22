@@ -1,8 +1,8 @@
 package com.rtiming.client.common.ui.fields;
 
-import org.eclipse.scout.rt.client.ui.form.fields.bigdecimalfield.AbstractBigDecimalField;
+import com.rtiming.client.AbstractDoubleField;
 
-public abstract class AbstractLongLatField extends AbstractBigDecimalField {
+public abstract class AbstractLongLatField extends AbstractDoubleField {
 
   @Override
   protected int getConfiguredMaxFractionDigits() {

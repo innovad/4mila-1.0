@@ -1,6 +1,5 @@
 package com.rtiming.client.settings.currency;
 
-import java.math.BigDecimal;
 import java.util.Set;
 
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
@@ -9,7 +8,6 @@ import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
 import org.eclipse.scout.rt.client.ui.action.menu.TableMenuType;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
-import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractBigDecimalColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractSmartColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
@@ -26,6 +24,7 @@ import org.eclipse.scout.rt.shared.data.basic.FontSpec;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 
+import com.rtiming.client.AbstractDoubleColumn;
 import com.rtiming.client.common.help.IHelpEnabledPage;
 import com.rtiming.client.common.ui.action.AbstractSeparatorMenu;
 import com.rtiming.shared.Icons;
@@ -159,7 +158,7 @@ public class CurrenciesTablePage extends AbstractPageWithTable<CurrenciesTablePa
     }
 
     @Order(50.0)
-    public class ExchangeRateColumn extends AbstractBigDecimalColumn {
+    public class ExchangeRateColumn extends AbstractDoubleColumn {
 
       @Override
       protected String getConfiguredHeaderText() {
@@ -247,7 +246,7 @@ public class CurrenciesTablePage extends AbstractPageWithTable<CurrenciesTablePa
         CurrencyFormData currency = new CurrencyFormData();
         currency.setCurrencyUid(getCurrencyUidColumn().getSelectedValue());
         currency = BEANS.get(ICurrencyProcessService.class).load(currency);
-        currency.getExchangeRate().setValue(BigDecimal.ONE);
+        currency.getExchangeRate().setValue(1D);
         BEANS.get(ICurrencyProcessService.class).store(currency);
 
         reloadPage();

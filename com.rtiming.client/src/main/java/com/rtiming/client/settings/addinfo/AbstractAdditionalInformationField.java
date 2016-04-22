@@ -1,6 +1,5 @@
 package com.rtiming.client.settings.addinfo;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -8,13 +7,11 @@ import org.eclipse.scout.rt.client.dto.FormData;
 import org.eclipse.scout.rt.client.dto.FormData.SdkCommand;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
-import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractBigDecimalColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractBooleanColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractSmartColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.form.fields.IFormField;
-import org.eclipse.scout.rt.client.ui.form.fields.bigdecimalfield.AbstractBigDecimalField;
 import org.eclipse.scout.rt.client.ui.form.fields.longfield.AbstractLongField;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
@@ -34,6 +31,8 @@ import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
 import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 
+import com.rtiming.client.AbstractDoubleColumn;
+import com.rtiming.client.AbstractDoubleField;
 import com.rtiming.shared.Icons;
 import com.rtiming.shared.Texts;
 import com.rtiming.shared.common.BooleanCodeType;
@@ -213,7 +212,7 @@ public abstract class AbstractAdditionalInformationField extends AbstractTableFi
 
       }
 
-      public class DoubleField extends AbstractBigDecimalField {
+      public class DoubleField extends AbstractDoubleField {
 
       }
 
@@ -371,7 +370,7 @@ public abstract class AbstractAdditionalInformationField extends AbstractTableFi
         }
       }
       else if (CompareUtility.equals(getTypeColumn().getValue(row), AdditionalInformationTypeCodeType.DoubleCode.ID)) {
-        BigDecimal value = getDecimalColumn().getValue(row);
+        Double value = getDecimalColumn().getValue(row);
         if (value == null) {
           getValueColumn().setValue(row, null);
         }
@@ -412,7 +411,7 @@ public abstract class AbstractAdditionalInformationField extends AbstractTableFi
     }
 
     @Order(70.0)
-    public class DecimalColumn extends AbstractBigDecimalColumn {
+    public class DecimalColumn extends AbstractDoubleColumn {
 
       @Override
       protected boolean getConfiguredDisplayable() {
@@ -440,7 +439,7 @@ public abstract class AbstractAdditionalInformationField extends AbstractTableFi
     }
 
     @Order(90.0)
-    public class MinimumColumn extends AbstractBigDecimalColumn {
+    public class MinimumColumn extends AbstractDoubleColumn {
 
       @Override
       protected boolean getConfiguredDisplayable() {
@@ -454,7 +453,7 @@ public abstract class AbstractAdditionalInformationField extends AbstractTableFi
     }
 
     @Order(100.0)
-    public class MaximumColumn extends AbstractBigDecimalColumn {
+    public class MaximumColumn extends AbstractDoubleColumn {
 
       @Override
       protected boolean getConfiguredDisplayable() {
@@ -492,7 +491,7 @@ public abstract class AbstractAdditionalInformationField extends AbstractTableFi
     }
 
     @Order(130.0)
-    public class DefaultValueDecimalColumn extends AbstractBigDecimalColumn {
+    public class DefaultValueDecimalColumn extends AbstractDoubleColumn {
 
       @Override
       protected boolean getConfiguredDisplayable() {

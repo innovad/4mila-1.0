@@ -71,5 +71,10 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/ws-stub/online.jar</systemPath>
 		</dependency>
+		<dependency>
+			<groupId>org.eclipse.scout.rt</groupId>
+			<artifactId>org.eclipse.scout.rt.server.test</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 </project>

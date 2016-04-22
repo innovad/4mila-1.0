@@ -1,6 +1,6 @@
 //package com.rtiming.client.common.ui.fields;
 //
-//import org.eclipse.scout.commons.exception.ProcessingException;
+//import org.eclipse.scout.rt.platform.exception.ProcessingException;
 //import org.eclipse.scout.rt.client.ui.form.fields.button.IButton;
 //import org.eclipse.scout.rt.client.ui.form.fields.smartfield.ISmartField;
 //

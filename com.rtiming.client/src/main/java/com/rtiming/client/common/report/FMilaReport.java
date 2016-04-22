@@ -140,14 +140,14 @@ public abstract class FMilaReport {
       }
       else {
         // TODO MIG
-//        URL file = FMilaUtility.findFileLocation("resources/images/report_logo.png", Activator.getDefault().getBundle().getSymbolicName());
+//        URL file = FMilaUtility.findFileLocation("resources/images/report_logo.png", "");
 //        parameters.put(IReportParameters.JASPER_LOGO_PARAMETER, file.getPath());
       }
 
       // Default Subreport Directory
       if (getSubreportDirectory() == null) {
         // TODO MIG
-//        URL subreportDir = FMilaUtility.findFileLocation(LOCAL_REPORT_DIR, Activator.getDefault().getBundle().getSymbolicName());
+//        URL subreportDir = FMilaUtility.findFileLocation(LOCAL_REPORT_DIR, "");
 //        setSubreportDirectory(subreportDir.getPath());
       }
 

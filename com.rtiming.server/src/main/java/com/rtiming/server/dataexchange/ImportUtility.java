@@ -1,7 +1,5 @@
 package com.rtiming.server.dataexchange;
 
-import java.math.BigDecimal;
-
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.util.BooleanUtility;
@@ -83,7 +81,7 @@ public final class ImportUtility {
       currency = currencyCache.get(currencyStr);
       if (currency.getCurrencyUid() == null) {
         currency = BEANS.get(ICurrencyProcessService.class).prepareCreate(currency);
-        currency.getExchangeRate().setValue(BigDecimal.ONE);
+        currency.getExchangeRate().setValue(1D);
         currency.getCodeBox().getShortcut().setValue(currencyStr);
         for (int k = 0; k < currency.getCodeBox().getLanguage().getRowCount(); k++) {
           currency.getCodeBox().getLanguage().rowAt(k).setTranslation(currencyStr);

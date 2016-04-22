@@ -7,7 +7,6 @@ import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
 import org.eclipse.scout.rt.client.ui.action.menu.TableMenuType;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
-import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractBigDecimalColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractSmartColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
@@ -25,6 +24,7 @@ import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 
+import com.rtiming.client.AbstractDoubleColumn;
 import com.rtiming.client.common.help.IHelpEnabledPage;
 import com.rtiming.client.common.ui.action.AbstractSeparatorMenu;
 import com.rtiming.shared.Icons;
@@ -162,7 +162,7 @@ public class ControlsTablePage extends AbstractPageWithTable<ControlsTablePage.T
     }
 
     @Order(40.0)
-    public class PositionXColumn extends AbstractBigDecimalColumn {
+    public class PositionXColumn extends AbstractDoubleColumn {
 
       @Override
       protected String getConfiguredHeaderText() {
@@ -176,7 +176,7 @@ public class ControlsTablePage extends AbstractPageWithTable<ControlsTablePage.T
     }
 
     @Order(50.0)
-    public class PositionYColumn extends AbstractBigDecimalColumn {
+    public class PositionYColumn extends AbstractDoubleColumn {
 
       @Override
       protected String getConfiguredHeaderText() {
@@ -190,7 +190,7 @@ public class ControlsTablePage extends AbstractPageWithTable<ControlsTablePage.T
     }
 
     @Order(60.0)
-    public class LongitudeColumn extends AbstractBigDecimalColumn {
+    public class LongitudeColumn extends AbstractDoubleColumn {
 
       @Override
       protected String getConfiguredHeaderText() {
@@ -198,12 +198,12 @@ public class ControlsTablePage extends AbstractPageWithTable<ControlsTablePage.T
       }
 
       @Override
-      protected int getConfiguredMaxFractionDigits() {
+      protected int getConfiguredMaxIntegerDigits() {
         return 6;
       }
 
       @Override
-      protected int getConfiguredMinFractionDigits() {
+      protected int getConfiguredMinIntegerDigits() {
         return 6;
       }
 
@@ -214,7 +214,7 @@ public class ControlsTablePage extends AbstractPageWithTable<ControlsTablePage.T
     }
 
     @Order(70.0)
-    public class LatitudeColumn extends AbstractBigDecimalColumn {
+    public class LatitudeColumn extends AbstractDoubleColumn {
 
       @Override
       protected String getConfiguredHeaderText() {

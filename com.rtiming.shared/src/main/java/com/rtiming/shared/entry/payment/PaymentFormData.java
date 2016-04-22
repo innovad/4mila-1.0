@@ -1,6 +1,5 @@
 package com.rtiming.shared.entry.payment;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.annotation.Generated;
@@ -60,7 +59,7 @@ public class PaymentFormData extends AbstractFormData {
     return getFieldByClass(TypeUid.class);
   }
 
-  public static class Amount extends AbstractValueFieldData<BigDecimal> {
+  public static class Amount extends AbstractValueFieldData<Double> {
 
     private static final long serialVersionUID = 1L;
   }

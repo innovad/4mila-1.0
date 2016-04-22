@@ -4,8 +4,8 @@
 //import java.lang.reflect.Method;
 //import java.util.regex.Pattern;
 //
-//import org.eclipse.scout.commons.exception.ProcessingException;
-//import org.eclipse.scout.commons.exception.VetoException;
+//import org.eclipse.scout.rt.platform.exception.ProcessingException;
+//import org.eclipse.scout.rt.platform.exception.VetoException;
 //import org.eclipse.scout.rt.shared.ScoutTexts;
 //import org.eclipse.scout.rt.shared.servicetunnel.ServiceTunnelRequest;
 //import org.eclipse.scout.rt.shared.servicetunnel.ServiceTunnelResponse;

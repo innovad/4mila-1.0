@@ -3,10 +3,10 @@
 //import java.net.ConnectException;
 //import java.util.List;
 //
-//import org.eclipse.scout.commons.exception.ProcessingException;
-//import org.eclipse.scout.commons.exception.VetoException;
-//import org.eclipse.scout.commons.logger.IScoutLogger;
-//import org.eclipse.scout.commons.logger.ScoutLogManager;
+//import org.eclipse.scout.rt.platform.exception.ProcessingException;
+//import org.eclipse.scout.rt.platform.exception.VetoException;
+//import org.eclipse.scout.rt.platform.logger.IScoutLogger;
+//import org.eclipse.scout.rt.platform.logger.ScoutLogManager;
 //import org.eclipse.scout.rt.client.ui.form.IForm;
 //
 //import com.rtiming.client.ClientSession;

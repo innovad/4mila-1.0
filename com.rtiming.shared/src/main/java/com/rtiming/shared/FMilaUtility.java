@@ -18,6 +18,7 @@ import javax.mail.internet.InternetAddress;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.exception.VetoException;
+import org.eclipse.scout.rt.platform.resource.BinaryResource;
 import org.eclipse.scout.rt.platform.util.CompareUtility;
 import org.eclipse.scout.rt.platform.util.IOUtility;
 import org.eclipse.scout.rt.platform.util.StringUtility;
@@ -412,6 +413,11 @@ public final class FMilaUtility {
 
   public static String getVersion() {
     return "2.0.0";
+  }
+
+  public static BinaryResource createBinaryResource(String path) {
+    File file = new File(path);
+    return new BinaryResource(file.getName(), IOUtility.getContent(file));
   }
 
 }

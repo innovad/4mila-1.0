@@ -1,6 +1,5 @@
 package com.rtiming.shared;
 
-import java.math.BigDecimal;
 import java.util.Locale;
 
 import org.eclipse.scout.rt.platform.BEANS;
@@ -109,7 +108,7 @@ public final class AdditionalInformationUtility {
   private static void addIndividualStartFeeForCurrency(Long feeGroupNr, Long currencyUid) throws ProcessingException {
     FeeFormData fee = new FeeFormData();
     fee.setFeeGroupNr(feeGroupNr);
-    fee.getFee().setValue(BigDecimal.ONE);
+    fee.getFee().setValue(1d);
     fee.getCurrency().setValue(currencyUid);
     fee = BEANS.get(IFeeProcessService.class).create(fee);
   }

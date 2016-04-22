@@ -1,6 +1,5 @@
 package com.rtiming.client.result;
 
-import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractBigDecimalColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.IColumn;
@@ -9,6 +8,7 @@ import org.eclipse.scout.rt.platform.Order;
 import org.eclipse.scout.rt.platform.util.collection.OrderedCollection;
 import org.eclipse.scout.rt.shared.TEXTS;
 
+import com.rtiming.client.AbstractDoubleColumn;
 import com.rtiming.shared.Texts;
 
 public class RelayTableCustomizer extends AbstractTableCustomizer {
@@ -61,7 +61,7 @@ public class RelayTableCustomizer extends AbstractTableCustomizer {
   }
 
   @Order(999999998.0)
-  public class RelayPercentColumn extends AbstractBigDecimalColumn {
+  public class RelayPercentColumn extends AbstractDoubleColumn {
 
     @Override
     protected String getConfiguredHeaderText() {

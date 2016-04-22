@@ -1,12 +1,9 @@
 package com.rtiming.client.settings.fee;
 
-import java.math.BigDecimal;
-
 import org.eclipse.scout.rt.client.dto.FormData;
 import org.eclipse.scout.rt.client.dto.FormData.SdkCommand;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
-import org.eclipse.scout.rt.client.ui.form.fields.bigdecimalfield.AbstractBigDecimalField;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCancelButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractOkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
@@ -19,6 +16,7 @@ import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.shared.ScoutTexts;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 
+import com.rtiming.client.AbstractDoubleField;
 import com.rtiming.client.common.help.AbstractHelpLinkButton;
 import com.rtiming.client.common.ui.fields.AbstractDefaultDateTimeField;
 import com.rtiming.client.settings.fee.FeeForm.MainBox.AgeBox;
@@ -132,7 +130,7 @@ public class FeeForm extends AbstractForm {
   public class MainBox extends AbstractGroupBox {
 
     @Order(10.0)
-    public class FeeField extends AbstractBigDecimalField {
+    public class FeeField extends AbstractDoubleField {
 
       @Override
       protected String getConfiguredLabel() {
@@ -142,16 +140,6 @@ public class FeeForm extends AbstractForm {
       @Override
       protected boolean getConfiguredMandatory() {
         return true;
-      }
-
-      @Override
-      protected BigDecimal getConfiguredMaxValue() {
-        return BigDecimal.valueOf(9.99999999999E11);
-      }
-
-      @Override
-      protected BigDecimal getConfiguredMinValue() {
-        return BigDecimal.valueOf(-9.99999999999E11);
       }
 
     }

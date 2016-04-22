@@ -1,7 +1,6 @@
 package com.rtiming.server.event.course;
 
 import java.awt.geom.Point2D;
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.media.jai.WarpPerspective;
@@ -206,8 +205,8 @@ public class ControlProcessService implements IControlProcessService {
           Point2D point = new Point2D.Double(lx, ly);
           point = warp.mapSourcePoint(point);
 
-          control.getGlobalX().setValue(BigDecimal.valueOf(point.getX()));
-          control.getGlobalY().setValue(BigDecimal.valueOf(point.getY()));
+          control.getGlobalX().setValue(point.getX());
+          control.getGlobalY().setValue(point.getY());
           control = store(control);
         }
       }

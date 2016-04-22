@@ -36,7 +36,6 @@ public class JPA {
     JPAScoutTransactionMember m = (JPAScoutTransactionMember) t.getMember(JPAScoutTransactionMember.TRANSACTION_MEMBER_ID);
     if (m == null) {
       try {
-
         EntityManager session = Persistence.createEntityManagerFactory("4mila").createEntityManager();
         m = new JPAScoutTransactionMember(session);
         t.registerMember(m);

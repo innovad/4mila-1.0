@@ -8,7 +8,6 @@ import org.eclipse.scout.rt.client.ui.action.menu.IMenu;
 import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
 import org.eclipse.scout.rt.client.ui.action.menu.TableMenuType;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
-import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractBigDecimalColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithTable;
@@ -22,6 +21,7 @@ import org.eclipse.scout.rt.shared.ScoutTexts;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 
+import com.rtiming.client.AbstractDoubleColumn;
 import com.rtiming.client.common.help.IHelpEnabledPage;
 import com.rtiming.client.common.ui.action.AbstractSeparatorMenu;
 import com.rtiming.shared.Icons;
@@ -157,7 +157,7 @@ public class MapsTablePage extends AbstractPageWithTable<MapsTablePage.Table> im
     }
 
     @Order(40.0)
-    public class X0Column extends AbstractBigDecimalColumn {
+    public class X0Column extends AbstractDoubleColumn {
 
       @Override
       protected String getConfiguredHeaderText() {
@@ -171,7 +171,7 @@ public class MapsTablePage extends AbstractPageWithTable<MapsTablePage.Table> im
     }
 
     @Order(50.0)
-    public class Y0Column extends AbstractBigDecimalColumn {
+    public class Y0Column extends AbstractDoubleColumn {
 
       @Override
       protected String getConfiguredHeaderText() {

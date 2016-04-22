@@ -1,11 +1,8 @@
 package com.rtiming.client.settings.currency;
 
-import java.math.BigDecimal;
-
 import org.eclipse.scout.rt.client.dto.FormData;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
-import org.eclipse.scout.rt.client.ui.form.fields.bigdecimalfield.AbstractBigDecimalField;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCancelButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractOkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
@@ -14,6 +11,7 @@ import org.eclipse.scout.rt.platform.Order;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.util.CompareUtility;
 
+import com.rtiming.client.AbstractDoubleField;
 import com.rtiming.client.common.help.AbstractHelpLinkButton;
 import com.rtiming.client.common.ui.fields.AbstractCodeBox;
 import com.rtiming.client.settings.currency.CurrencyForm.MainBox.CancelButton;
@@ -77,7 +75,7 @@ public class CurrencyForm extends AbstractForm {
   public class MainBox extends AbstractGroupBox {
 
     @Order(10.0)
-    public class ExchangeRateField extends AbstractBigDecimalField {
+    public class ExchangeRateField extends AbstractDoubleField {
 
       @Override
       protected int getConfiguredFractionDigits() {
@@ -100,8 +98,8 @@ public class CurrencyForm extends AbstractForm {
       }
 
       @Override
-      protected BigDecimal getConfiguredMaxValue() {
-        return BigDecimal.valueOf(1000.0);
+      protected Double getConfiguredMaxValue() {
+        return 1000D;
       }
 
       @Override
@@ -110,8 +108,8 @@ public class CurrencyForm extends AbstractForm {
       }
 
       @Override
-      protected BigDecimal getConfiguredMinValue() {
-        return BigDecimal.valueOf(0.000001);
+      protected Double getConfiguredMinValue() {
+        return 0.000001D;
       }
     }
 

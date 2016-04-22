@@ -1,7 +1,5 @@
 package com.rtiming.shared.map;
 
-import java.math.BigDecimal;
-
 import javax.annotation.Generated;
 
 import org.eclipse.scout.rt.shared.data.form.fields.AbstractFormFieldData;
@@ -24,12 +22,12 @@ public abstract class AbstractPositionBoxData extends AbstractFormFieldData {
     return getFieldByClass(Y.class);
   }
 
-  public static class X extends AbstractValueFieldData<BigDecimal> {
+  public static class X extends AbstractValueFieldData<Double> {
 
     private static final long serialVersionUID = 1L;
   }
 
-  public static class Y extends AbstractValueFieldData<BigDecimal> {
+  public static class Y extends AbstractValueFieldData<Double> {
 
     private static final long serialVersionUID = 1L;
   }

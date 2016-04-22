@@ -1,7 +1,5 @@
 package com.rtiming.shared.settings.addinfo;
 
-import java.math.BigDecimal;
-
 import javax.annotation.Generated;
 
 import org.eclipse.scout.rt.shared.data.basic.table.AbstractTableRowData;
@@ -68,13 +66,13 @@ public abstract class AbstractAdditionalInformationFieldData extends AbstractTab
     private Long m_type;
     private String m_value;
     private Long m_integer;
-    private BigDecimal m_decimal;
+    private Double m_decimal;
     private String m_text;
-    private BigDecimal m_minimum;
-    private BigDecimal m_maximum;
+    private Double m_minimum;
+    private Double m_maximum;
     private Long m_feeGroup;
     private Long m_defaultValueInteger;
-    private BigDecimal m_defaultValueDecimal;
+    private Double m_defaultValueDecimal;
     private String m_defaultValueText;
     private Boolean m_mandatory;
 
@@ -110,11 +108,11 @@ public abstract class AbstractAdditionalInformationFieldData extends AbstractTab
       m_integer = newInteger;
     }
 
-    public BigDecimal getDecimal() {
+    public Double getDecimal() {
       return m_decimal;
     }
 
-    public void setDecimal(BigDecimal newDecimal) {
+    public void setDecimal(Double newDecimal) {
       m_decimal = newDecimal;
     }
 
@@ -126,19 +124,19 @@ public abstract class AbstractAdditionalInformationFieldData extends AbstractTab
       m_text = newText;
     }
 
-    public BigDecimal getMinimum() {
+    public Double getMinimum() {
       return m_minimum;
     }
 
-    public void setMinimum(BigDecimal newMinimum) {
+    public void setMinimum(Double newMinimum) {
       m_minimum = newMinimum;
     }
 
-    public BigDecimal getMaximum() {
+    public Double getMaximum() {
       return m_maximum;
     }
 
-    public void setMaximum(BigDecimal newMaximum) {
+    public void setMaximum(Double newMaximum) {
       m_maximum = newMaximum;
     }
 
@@ -158,11 +156,11 @@ public abstract class AbstractAdditionalInformationFieldData extends AbstractTab
       m_defaultValueInteger = newDefaultValueInteger;
     }
 
-    public BigDecimal getDefaultValueDecimal() {
+    public Double getDefaultValueDecimal() {
       return m_defaultValueDecimal;
     }
 
-    public void setDefaultValueDecimal(BigDecimal newDefaultValueDecimal) {
+    public void setDefaultValueDecimal(Double newDefaultValueDecimal) {
       m_defaultValueDecimal = newDefaultValueDecimal;
     }
 

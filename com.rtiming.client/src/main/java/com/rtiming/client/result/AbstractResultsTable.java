@@ -3,7 +3,6 @@ package com.rtiming.client.result;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.action.menu.IMenu;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
-import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractBigDecimalColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractBooleanColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractDateColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
@@ -16,6 +15,7 @@ import org.eclipse.scout.rt.shared.ScoutTexts;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 
+import com.rtiming.client.AbstractDoubleColumn;
 import com.rtiming.client.ClientSession;
 import com.rtiming.client.common.ui.columns.AbstractClassNameColumn;
 import com.rtiming.client.common.ui.columns.AbstractClassShortcutColumn;
@@ -798,7 +798,7 @@ public abstract class AbstractResultsTable extends AbstractTableWithAdditionalCo
   }
 
   @Order(160.0)
-  public class PercentColumn extends AbstractBigDecimalColumn {
+  public class PercentColumn extends AbstractDoubleColumn {
 
     @Override
     protected String getConfiguredHeaderText() {
@@ -806,7 +806,7 @@ public abstract class AbstractResultsTable extends AbstractTableWithAdditionalCo
     }
 
     @Override
-    protected int getConfiguredMaxFractionDigits() {
+    protected int getConfiguredMaxIntegerDigits() {
       return 1;
     }
 

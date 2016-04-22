@@ -1,9 +1,9 @@
 //package com.rtiming.client.common.exception;
 //
-//import org.eclipse.scout.commons.StringUtility;
-//import org.eclipse.scout.commons.exception.ProcessingException;
-//import org.eclipse.scout.commons.logger.IScoutLogger;
-//import org.eclipse.scout.commons.logger.ScoutLogManager;
+//import org.eclipse.scout.rt.platform.util.StringUtility;
+//import org.eclipse.scout.rt.platform.exception.ProcessingException;
+//import org.eclipse.scout.rt.platform.logger.IScoutLogger;
+//import org.eclipse.scout.rt.platform.logger.ScoutLogManager;
 //
 //public class FMilaErrorHandler extends ErrorHandler {
 //  private static final Logger LOG = LoggerFactory.getLogger(FMilaErrorHandler.class);

@@ -4,7 +4,6 @@ import org.eclipse.scout.rt.client.dto.FormData;
 import org.eclipse.scout.rt.client.dto.FormData.SdkCommand;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
-import org.eclipse.scout.rt.client.ui.form.fields.bigdecimalfield.AbstractBigDecimalField;
 import org.eclipse.scout.rt.client.ui.form.fields.booleanfield.AbstractBooleanField;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCancelButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractOkButton;
@@ -17,6 +16,7 @@ import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 
+import com.rtiming.client.AbstractDoubleField;
 import com.rtiming.client.common.help.AbstractHelpLinkButton;
 import com.rtiming.client.common.ui.fields.AbstractGoogleMapsButton;
 import com.rtiming.client.common.ui.fields.AbstractLongLatField;
@@ -221,7 +221,7 @@ public class ControlForm extends AbstractForm {
       }
 
       @Order(10.0)
-      public class PositionXField extends AbstractBigDecimalField {
+      public class PositionXField extends AbstractDoubleField {
 
         @Override
         protected String getConfiguredLabel() {
@@ -230,7 +230,7 @@ public class ControlForm extends AbstractForm {
       }
 
       @Order(20.0)
-      public class PositionYField extends AbstractBigDecimalField {
+      public class PositionYField extends AbstractDoubleField {
 
         @Override
         protected String getConfiguredLabel() {

@@ -1,6 +1,5 @@
 package com.rtiming.server.settings;
 
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -560,7 +559,7 @@ public final class InitialLoadUtility {
     }
     currency.getCodeBox().getShortcut().setValue(code);
     currency.getCodeBox().getActive().setValue(true);
-    currency.getExchangeRate().setValue(BigDecimal.ONE);
+    currency.getExchangeRate().setValue(1D);
     for (int i = 0; i < currency.getCodeBox().getLanguage().getRowCount(); i++) {
       currency.getCodeBox().getLanguage().rowAt(i).setTranslation(text);
     }

@@ -198,8 +198,8 @@ public class IOF300CourseDataBean extends AbstractXMLDataBean {
     mapFormData.getScale().setValue(NumberUtility.toLong(map.getScale()));
     if (map.getMapPositionTopLeft() != null) {
       MapPosition pos = map.getMapPositionTopLeft();
-      mapFormData.getOriginX().setValue(NumberUtility.toBigDecimal(pos.getX()));
-      mapFormData.getOriginY().setValue(NumberUtility.toBigDecimal(pos.getY()));
+      mapFormData.getOriginX().setValue(pos.getX());
+      mapFormData.getOriginY().setValue(pos.getY());
     }
     if (mapFormData.getMapKey().getId() == null) {
       EventBean event = access.loadEvent();
@@ -322,8 +322,8 @@ public class IOF300CourseDataBean extends AbstractXMLDataBean {
       // write attributes
       control.getType().setValue(controlTypeUid);
       if (position != null) {
-        control.getPositionX().setValue(NumberUtility.toBigDecimal(position.getLat()));
-        control.getPositionY().setValue(NumberUtility.toBigDecimal(position.getLng()));
+        control.getPositionX().setValue(position.getLat());
+        control.getPositionY().setValue(position.getLng());
       }
 
       // put/replace in cache

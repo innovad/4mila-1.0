@@ -7,7 +7,6 @@ import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
 import org.eclipse.scout.rt.client.ui.action.menu.TableMenuType;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
-import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractBigDecimalColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractDateColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
@@ -24,6 +23,7 @@ import org.eclipse.scout.rt.shared.ScoutTexts;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 
+import com.rtiming.client.AbstractDoubleColumn;
 import com.rtiming.client.common.help.IHelpEnabledPage;
 import com.rtiming.client.common.ui.action.AbstractSeparatorMenu;
 import com.rtiming.shared.Icons;
@@ -208,7 +208,7 @@ public class RegistrationsTablePage extends AbstractPageWithTable<RegistrationsT
     }
 
     @Order(80.0)
-    public class FeeColumn extends AbstractBigDecimalColumn {
+    public class FeeColumn extends AbstractDoubleColumn {
 
       @Override
       protected String getConfiguredHeaderText() {
@@ -222,7 +222,7 @@ public class RegistrationsTablePage extends AbstractPageWithTable<RegistrationsT
     }
 
     @Order(90.0)
-    public class PaymentsColumn extends AbstractBigDecimalColumn {
+    public class PaymentsColumn extends AbstractDoubleColumn {
 
       @Override
       protected String getConfiguredHeaderText() {

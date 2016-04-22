@@ -1,7 +1,5 @@
 package com.rtiming.shared.event.course;
 
-import java.math.BigDecimal;
-
 import javax.annotation.Generated;
 
 import org.eclipse.scout.rt.shared.data.form.AbstractFormData;
@@ -105,12 +103,12 @@ public class ControlFormData extends AbstractFormData {
     private static final long serialVersionUID = 1L;
   }
 
-  public static class GlobalX extends AbstractValueFieldData<BigDecimal> {
+  public static class GlobalX extends AbstractValueFieldData<Double> {
 
     private static final long serialVersionUID = 1L;
   }
 
-  public static class GlobalY extends AbstractValueFieldData<BigDecimal> {
+  public static class GlobalY extends AbstractValueFieldData<Double> {
 
     private static final long serialVersionUID = 1L;
   }
@@ -120,12 +118,12 @@ public class ControlFormData extends AbstractFormData {
     private static final long serialVersionUID = 1L;
   }
 
-  public static class PositionX extends AbstractValueFieldData<BigDecimal> {
+  public static class PositionX extends AbstractValueFieldData<Double> {
 
     private static final long serialVersionUID = 1L;
   }
 
-  public static class PositionY extends AbstractValueFieldData<BigDecimal> {
+  public static class PositionY extends AbstractValueFieldData<Double> {
 
     private static final long serialVersionUID = 1L;
   }
