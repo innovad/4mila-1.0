@@ -23,7 +23,7 @@ public final class RankingUtility {
 
   private static void init() throws ProcessingException {
     synchronized (initialized) {
-      if (initialized == false) {
+      if (!initialized) {
         RaceStatusCodeType type = new RaceStatusCodeType();
         List<? extends ICode<Long>> codes = type.getCodes(false);
         for (ICode code : codes) {

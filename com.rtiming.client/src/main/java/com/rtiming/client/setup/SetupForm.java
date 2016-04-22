@@ -26,6 +26,7 @@ import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import com.rtiming.client.settings.user.UsersTablePage;
 import com.rtiming.client.setup.SetupForm.MainBox.SettingsBox;
 import com.rtiming.client.setup.SetupForm.MainBox.SettingsBox.CountryField;
+import com.rtiming.client.setup.SetupForm.MainBox.SettingsBox.CurrencyField;
 import com.rtiming.client.setup.SetupForm.MainBox.SettingsBox.LanguageField;
 import com.rtiming.client.setup.SetupForm.MainBox.UserBox;
 import com.rtiming.client.setup.SetupForm.MainBox.UserBox.UserField;
@@ -83,8 +84,8 @@ public class SetupForm extends AbstractForm {
     return getFieldByClass(LanguageField.class);
   }
 
-  public com.rtiming.client.setup.SetupForm.MainBox.SettingsBox.CurrencyField getCurrencyField() {
-    return getFieldByClass(com.rtiming.client.setup.SetupForm.MainBox.SettingsBox.CurrencyField.class);
+  public CurrencyField getCurrencyField() {
+    return getFieldByClass(CurrencyField.class);
   }
 
   @Order(10.0)

@@ -1,6 +1,5 @@
 package com.rtiming.client.setup;
 
-import org.eclipse.scout.rt.client.IClientSession;
 import org.eclipse.scout.rt.client.ui.action.keystroke.AbstractKeyStroke;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
@@ -13,7 +12,6 @@ import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.shared.ScoutTexts;
 
-import com.rtiming.client.ClientSession;
 import com.rtiming.client.setup.WelcomeForm.MainBox.ImageField;
 import com.rtiming.client.setup.WelcomeForm.MainBox.PasswordField;
 import com.rtiming.client.setup.WelcomeForm.MainBox.UsernameField;
@@ -168,8 +166,8 @@ public class WelcomeForm extends AbstractForm {
 
     @Override
     protected void execLoad() throws ProcessingException {
-      IClientSession clientSession = ClientSession.get();
-// TODO MIG      
+//      TODO MIG      
+//      IClientSession clientSession = ClientSession.get();
 //      IconSpec iconSpec = clientSession.getIconLocator().getIconSpec("application_logo_large.png");
 //      getImageField().setImage(iconSpec.getContent());
     }

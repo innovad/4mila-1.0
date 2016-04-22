@@ -24,9 +24,9 @@ import com.rtiming.shared.event.EventMapFormData;
 @RunWithServerSession(ServerSession.class)
 public class EventMapProcessServiceTest {
 
-  RtMap map;
-  RtEvent event;
-  RtEventMap eventMap;
+  private RtMap map;
+  private RtEvent event;
+  private RtEventMap eventMap;
 
   @Test
   public void testDelete1() throws ProcessingException {
