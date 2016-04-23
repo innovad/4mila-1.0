@@ -22,20 +22,6 @@ public final class FMilaClientUtility {
     ClientSession.get().getDesktop().addNotification(new DesktopNotification(TEXTS.get("FileOpened")));
   }
 
-  public static boolean isTestEnvironment() {
-    // TODO MIG
-//    Bundle server = Platform.getBundle(com.rtiming.client.Activator.PLUGIN_ID);
-//    Bundle[] fragments = Platform.getFragments(server);
-//    if (fragments != null) {
-//      for (Bundle fragment : fragments) {
-//        if (fragment.getSymbolicName().contains("test")) {
-//          return true;
-//        }
-//      }
-//    }
-    return false;
-  }
-
   public static boolean isAdminUser() {
     return "admin".equalsIgnoreCase(ClientSession.get().getUserId());
   }

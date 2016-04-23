@@ -41,7 +41,7 @@ public abstract class AbstractCreateSchema {
     if (!schemaExists()) {
       System.out.println("Create schema...");
       create();
-      if (Platform.get().inDevelopmentMode()) { // TODO MIG devMode
+      if (Platform.get().inDevelopmentMode() || FMilaUtility.isTestEnvironment()) {
         System.out.println("Init dev data...");
         initDevData();
       }

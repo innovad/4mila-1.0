@@ -15,11 +15,11 @@ import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.shared.TEXTS;
 
 import com.rtiming.client.ClientSession;
-import com.rtiming.client.FMilaClientUtility;
 import com.rtiming.client.common.database.BackupSettingsForm.MainBox.BackupDirectoryField;
 import com.rtiming.client.common.database.BackupSettingsForm.MainBox.BackupIntervalField;
 import com.rtiming.client.common.database.BackupSettingsForm.MainBox.BackupMaxNumberField;
 import com.rtiming.client.common.database.BackupSettingsForm.MainBox.ScheduledBackupsField;
+import com.rtiming.shared.FMilaUtility;
 import com.rtiming.shared.common.database.IDatabaseService;
 import com.rtiming.shared.common.database.SharedBackupUtility;
 import com.rtiming.shared.settings.IDefaultProcessService;
@@ -80,7 +80,7 @@ public class BackupSettingsForm extends AbstractForm {
       }
     }
 
-    BEANS.get(IDatabaseService.class).setScheduledBackupStatus(forceNewJob, !FMilaClientUtility.isTestEnvironment());
+    BEANS.get(IDatabaseService.class).setScheduledBackupStatus(forceNewJob, !FMilaUtility.isTestEnvironment());
 
     if (reloadBackupList && !StringUtility.isNullOrEmpty(getBackupDirectoryField().getValue().getFilename())) {
       IPage activePage = ClientSession.get().getDesktop().getOutline().getActivePage();

@@ -15,6 +15,7 @@ import com.rtiming.shared.settings.user.LanguageCodeType;
 import com.rtiming.shared.settings.user.UserFormData;
 
 public class ServerSession extends AbstractServerSession {
+  private static final long serialVersionUID = 1L;
   private static Logger logger = LoggerFactory.getLogger(ServerSession.class);
   private Long[] roleUids;
 
@@ -26,7 +27,7 @@ public class ServerSession extends AbstractServerSession {
    * @return session in current ThreadContext
    */
   public static ServerSession get() {
-    return (ServerSession) ServerSessionProvider.currentSession();
+    return ServerSessionProvider.currentSession(ServerSession.class);
   }
 
   @Override

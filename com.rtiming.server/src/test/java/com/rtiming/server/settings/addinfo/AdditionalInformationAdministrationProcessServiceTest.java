@@ -18,7 +18,9 @@ import com.rtiming.shared.dao.RtUcKey;
 import com.rtiming.shared.settings.addinfo.AdditionalInformationAdministrationFormData;
 import com.rtiming.shared.settings.addinfo.AdditionalInformationCodeType;
 
-@RunWith(ServerTestRunner.class) @RunWithSubject("admin") @RunWithServerSession(ServerSession.class)
+@RunWith(ServerTestRunner.class)
+@RunWithSubject("admin")
+@RunWithServerSession(ServerSession.class)
 public class AdditionalInformationAdministrationProcessServiceTest {
 
   @Test

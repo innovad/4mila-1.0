@@ -394,8 +394,7 @@ public class AccountForm extends AbstractForm {
       IAccountProcessService globalService = BEANS.get(IAccountProcessService.class);
       AccountFormData formData = new AccountFormData();
       exportFormData(formData);
-      if (FMilaClientUtility.isTestEnvironment() ||
-          (FMilaUtility.isWebClient() && FMilaClientUtility.isAdminUser())) {
+      if (FMilaUtility.isTestEnvironment() || (FMilaUtility.isWebClient() && FMilaClientUtility.isAdminUser())) {
         // on global web client
         formData = globalService.create(formData, false);
       }

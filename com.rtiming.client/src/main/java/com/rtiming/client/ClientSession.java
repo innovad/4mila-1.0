@@ -74,7 +74,7 @@ public class ClientSession extends AbstractClientSession {
     setDesktop(new Desktop());
 
     // turn client notification polling on
-    if (FMilaUtility.isRichClient() && !FMilaClientUtility.isTestEnvironment()) {
+    if (FMilaUtility.isRichClient() && !FMilaUtility.isTestEnvironment()) {
       // getServiceTunnel().setClientNotificationPollInterval(2000L); TODO MIG
     }
   }

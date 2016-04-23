@@ -431,4 +431,14 @@ public final class FMilaUtility {
     return new BinaryResource(file.getName(), IOUtility.getContent(file));
   }
 
+  public static boolean isTestEnvironment() {
+    try {
+      Thread.currentThread().getContextClassLoader().loadClass(FMilaUtility.class.getCanonicalName() + "Test");
+    }
+    catch (ClassNotFoundException e) {
+      return false;
+    }
+    return true;
+  }
+
 }

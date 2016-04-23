@@ -17,12 +17,12 @@ import org.eclipse.scout.rt.shared.services.common.code.ICode;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
 
-import com.rtiming.server.FMilaServerUtility;
 import com.rtiming.server.ServerSession;
 import com.rtiming.server.common.database.jpa.FMilaQuery;
 import com.rtiming.server.common.database.jpa.FMilaTypedQuery;
 import com.rtiming.server.common.database.jpa.JPA;
 import com.rtiming.server.common.database.jpa.JPAUtility;
+import com.rtiming.shared.FMilaUtility;
 import com.rtiming.shared.Texts;
 import com.rtiming.shared.common.AbstractCodeBoxData;
 import com.rtiming.shared.common.AbstractCodeBoxData.Language.LanguageRowData;
@@ -176,7 +176,7 @@ public class CodeProcessService implements ICodeProcessService {
 
     ICodeType codeTypeClass = CODES.findCodeTypeById(formData.getCodeTypeUid().getValue());
     if (codeTypeClass instanceof AbstractSqlCodeType) {
-      if (!FMilaServerUtility.isTestEnvironment()) {
+      if (!FMilaUtility.isTestEnvironment()) {
         // for some reason, reload in junit mode causes problems
         CODES.reloadCodeType(codeTypeClass.getClass());
       }

@@ -15,8 +15,8 @@ import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.shared.ScoutTexts;
 import org.eclipse.scout.rt.shared.TEXTS;
 
-import com.rtiming.client.FMilaClientUtility;
 import com.rtiming.client.dataexchange.DataExchangePreviewForm.MainBox.PreviewDataField.Table;
+import com.rtiming.shared.FMilaUtility;
 import com.rtiming.shared.Texts;
 import com.rtiming.shared.dataexchange.DataExchangeStartFormData;
 
@@ -211,7 +211,7 @@ public class DataExchangeWizard extends AbstractWizard {
     super.execFinish();
     IPage activePage = getDesktop().getOutline().getActivePage();
     if (activePage != null) {
-      if (!FMilaClientUtility.isTestEnvironment()) {
+      if (!FMilaUtility.isTestEnvironment()) {
         activePage.reloadPage();
       }
     }
