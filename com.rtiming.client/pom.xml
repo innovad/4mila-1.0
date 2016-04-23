@@ -59,7 +59,7 @@
 							<artifactId>com.rtiming.server.app.war</artifactId>
 							<type>war</type>
 							<properties>
-								<context></context>
+								<context>4mila</context>
 							</properties>
 						</deployable>
 					</deployables>
