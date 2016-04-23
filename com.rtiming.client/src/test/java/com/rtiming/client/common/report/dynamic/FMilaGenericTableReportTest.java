@@ -3,7 +3,6 @@ package com.rtiming.client.common.report.dynamic;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.util.IOUtility;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
 import org.eclipse.scout.rt.testing.client.runner.RunWithClientSession;
@@ -20,7 +19,7 @@ import com.rtiming.shared.services.code.ReportTypeCodeType;
 /**
  * @author amo
  */
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class FMilaGenericTableReportTest {
 
   @Test(expected = IllegalArgumentException.class)

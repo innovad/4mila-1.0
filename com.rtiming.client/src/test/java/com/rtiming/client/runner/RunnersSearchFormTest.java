@@ -3,7 +3,6 @@ package com.rtiming.client.runner;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
 import org.eclipse.scout.rt.platform.BEANS;
@@ -16,6 +15,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.event.EventsOutline;
 import com.rtiming.client.settings.addinfo.AdditionalInformationAdministrationForm;
 import com.rtiming.client.settings.addinfo.AdditionalInformationAdministrationForm.MainBox.EntityField;
@@ -34,7 +34,7 @@ import com.rtiming.shared.settings.addinfo.IAdditionalInformationAdministrationP
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWithClientSession(ClientSession.class)
 public class RunnersSearchFormTest {
 
   private AdditionalInformationAdministrationTestDataProvider admin;

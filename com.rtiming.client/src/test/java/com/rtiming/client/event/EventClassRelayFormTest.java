@@ -1,6 +1,5 @@
 package com.rtiming.client.event;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
 import org.eclipse.scout.rt.testing.client.runner.RunWithClientSession;
@@ -11,10 +10,11 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.test.data.EventWithRelayClassTestDataProvider;
 import com.rtiming.shared.event.course.ClassTypeCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class EventClassRelayFormTest {
 
   private EventWithRelayClassTestDataProvider relay;

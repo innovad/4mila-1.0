@@ -2,7 +2,6 @@ package com.rtiming.client.event.course;
 
 import java.net.URL;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.util.IOUtility;
@@ -14,6 +13,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.map.EventMapForm;
 import com.rtiming.client.test.AbstractTablePageTest;
 import com.rtiming.client.test.data.EventWithIndividualValidatedRaceTestDataProvider;
@@ -25,7 +25,7 @@ import com.rtiming.shared.map.IGoogleEarthService;
 import com.rtiming.shared.map.IMapProcessService;
 import com.rtiming.shared.map.MapFormData;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class ControlsTablePageTest extends AbstractTablePageTest<ControlsTablePage> {
 
   private EventWithIndividualValidatedRaceTestDataProvider event;

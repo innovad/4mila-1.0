@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.client.ui.form.IForm;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
@@ -39,7 +38,7 @@ import com.rtiming.shared.settings.IDefaultProcessService;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWithClientSession(ClientSession.class)
 public class SICardEntryJobTest {
 
   private static CurrencyTestDataProvider currency;

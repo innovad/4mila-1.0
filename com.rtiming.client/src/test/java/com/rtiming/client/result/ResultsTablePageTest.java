@@ -1,6 +1,5 @@
 package com.rtiming.client.result;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
@@ -21,7 +20,7 @@ import com.rtiming.client.test.data.EventWithIndividualValidatedRaceTestDataProv
 import com.rtiming.shared.race.RaceStatusCodeType;
 import com.rtiming.shared.settings.IDefaultProcessService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class ResultsTablePageTest extends AbstractTablePageTest<ResultsTablePage> {
 
   private static EventWithIndividualValidatedRaceTestDataProvider event;

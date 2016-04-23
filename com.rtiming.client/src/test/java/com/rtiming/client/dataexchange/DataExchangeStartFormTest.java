@@ -1,6 +1,5 @@
 package com.rtiming.client.dataexchange;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
@@ -12,13 +11,14 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.dataexchange.cache.DataExchangeFormUtility;
 import com.rtiming.shared.dataexchange.AbstractImportExportCode;
 import com.rtiming.shared.dataexchange.ImportExportFormatCodeType;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWithClientSession(ClientSession.class)
 public class DataExchangeStartFormTest {
 
   @Before

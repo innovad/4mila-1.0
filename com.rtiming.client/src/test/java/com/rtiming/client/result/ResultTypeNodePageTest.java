@@ -1,6 +1,5 @@
 package com.rtiming.client.result;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
 import org.eclipse.scout.rt.testing.client.runner.RunWithClientSession;
@@ -16,7 +15,7 @@ import com.rtiming.client.test.data.EventWithIndividualClassTestDataProvider;
 import com.rtiming.client.test.data.EventWithRelayClassTestDataProvider;
 import com.rtiming.shared.event.course.ClassTypeCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class ResultTypeNodePageTest {
 
   private EventTestDataProvider event;

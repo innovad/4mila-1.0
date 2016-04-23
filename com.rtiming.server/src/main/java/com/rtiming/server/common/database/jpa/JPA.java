@@ -36,16 +36,16 @@ public class JPA {
     JPAScoutTransactionMember m = (JPAScoutTransactionMember) t.getMember(JPAScoutTransactionMember.TRANSACTION_MEMBER_ID);
     if (m == null) {
       try {
-        EntityManager session = Persistence.createEntityManagerFactory("4mila").createEntityManager();
-        m = new JPAScoutTransactionMember(session);
+        EntityManager entityManager = Persistence.createEntityManagerFactory("4mila").createEntityManager();
+        m = new JPAScoutTransactionMember(entityManager);
         t.registerMember(m);
-        session.getTransaction().begin();
+        entityManager.getTransaction().begin();
       }
       catch (ProcessingException e) {
         throw new IllegalStateException("scout transaction is not accepting new members", e);
       }
     }
-    return m.getSession();
+    return m.getEntityManager();
   }
 
   public static Connection getConnection() throws ProcessingException {

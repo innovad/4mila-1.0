@@ -1,6 +1,5 @@
 package com.rtiming.client.settings.addinfo;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
@@ -10,11 +9,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.test.AbstractTablePageTest;
 import com.rtiming.client.test.data.EventTestDataProvider;
 import com.rtiming.shared.event.IEventProcessService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class EventAdditionalInformationTablePageTest extends AbstractTablePageTest<EventAdditionalInformationTablePage> {
 
   private EventTestDataProvider event;

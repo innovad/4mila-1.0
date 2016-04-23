@@ -1,6 +1,5 @@
 package com.rtiming.client.ecard.download;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
@@ -12,12 +11,13 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.test.data.EventWithIndividualValidatedRaceTestDataProvider;
 import com.rtiming.shared.settings.IDefaultProcessService;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWithClientSession(ClientSession.class)
 public class DownloadedECardsTablePageDetailFormTest {
 
   private static EventWithIndividualValidatedRaceTestDataProvider event;

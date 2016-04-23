@@ -1,6 +1,5 @@
 package com.rtiming.client.ecard.download;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.client.ui.desktop.DesktopEvent;
 import org.eclipse.scout.rt.client.ui.desktop.DesktopListener;
 import org.eclipse.scout.rt.client.ui.messagebox.IMessageBox;
@@ -21,7 +20,7 @@ import com.rtiming.client.test.data.EventWithIndividualValidatedRaceTestDataProv
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWithClientSession(ClientSession.class)
 public class PunchesTablePageTest extends AbstractTablePageTest<PunchesTablePage> {
 
   private EventWithIndividualValidatedRaceTestDataProvider event;

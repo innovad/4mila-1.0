@@ -3,7 +3,6 @@ package com.rtiming.client.dataexchange.iof3;
 import java.net.URL;
 import java.util.List;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.client.ui.wizard.DefaultWizardContainerForm.MainBox.WizardCancelButton;
 import org.eclipse.scout.rt.client.ui.wizard.DefaultWizardContainerForm.MainBox.WizardFinishButton;
 import org.eclipse.scout.rt.client.ui.wizard.DefaultWizardContainerForm.MainBox.WizardNextStepButton;
@@ -19,6 +18,7 @@ import org.junit.ComparisonFailure;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.dataexchange.DataExchangeFinalizationForm;
 import com.rtiming.client.dataexchange.DataExchangePreviewForm;
 import com.rtiming.client.dataexchange.DataExchangeStartForm;
@@ -39,7 +39,7 @@ import com.rtiming.shared.event.course.ICourseProcessService;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWithClientSession(ClientSession.class)
 public class IOF300CourseImporterTest {
 
   private EventTestDataProvider event;

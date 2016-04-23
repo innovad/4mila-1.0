@@ -3,7 +3,6 @@ package com.rtiming.client.setup;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
@@ -18,6 +17,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.test.FMilaClientTestUtility;
 import com.rtiming.client.test.data.CountryTestDataProvider;
 import com.rtiming.client.test.data.CurrencyTestDataProvider;
@@ -30,7 +30,7 @@ import com.rtiming.shared.settings.user.UserFormData;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWithClientSession(ClientSession.class)
 public class SetupFormTest {
 
   private Long defaultCountryUid;

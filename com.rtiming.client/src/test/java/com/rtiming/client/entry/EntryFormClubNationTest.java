@@ -3,7 +3,6 @@ package com.rtiming.client.entry;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
 import org.eclipse.scout.rt.testing.client.runner.RunWithClientSession;
@@ -13,6 +12,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.race.RaceForm;
 import com.rtiming.client.runner.RunnerForm;
 import com.rtiming.client.runner.RunnerForm.MainBox.ClubField;
@@ -26,7 +26,7 @@ import com.rtiming.client.test.data.RunnerTestDataProvider;
 import com.rtiming.client.test.field.FieldValue;
 import com.rtiming.shared.race.RaceStatusCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class EntryFormClubNationTest {
 
   private RunnerTestDataProvider runner;

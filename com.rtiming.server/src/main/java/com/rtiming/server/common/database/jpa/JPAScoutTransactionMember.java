@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The scout framework handles transactions osgi based using a {@link ServerJob}.
+ * The scout framework handles transactions using a {@link ServerJob}.
  * A server job transaction sets {@link ThreadContext#getTransaction()}. This transaction has a greater scope than just
  * jdbc or JTA.
  * It may include any kind of resource, also files, custom object etc. Therefore we register the hibernate session (JTA)
@@ -19,15 +19,15 @@ public class JPAScoutTransactionMember extends AbstractTransactionMember {
   public static final String TRANSACTION_MEMBER_ID = JPAScoutTransactionMember.class.getName();
   private static final Logger LOG = LoggerFactory.getLogger(JPAScoutTransactionMember.class);
 
-  private final EntityManager m_session;
+  private final EntityManager entityManager;
 
   public JPAScoutTransactionMember(EntityManager entityManager) {
     super(TRANSACTION_MEMBER_ID);
-    m_session = entityManager;
+    this.entityManager = entityManager;
   }
 
-  public EntityManager getSession() {
-    return m_session;
+  public EntityManager getEntityManager() {
+    return entityManager;
   }
 
   @Override
@@ -38,8 +38,8 @@ public class JPAScoutTransactionMember extends AbstractTransactionMember {
   @Override
   public boolean commitPhase1() {
     try {
-      m_session.flush();
-      m_session.getTransaction().commit();
+      entityManager.flush();
+      entityManager.getTransaction().commit();
       return true;
     }
     catch (HibernateException e) {
@@ -54,17 +54,17 @@ public class JPAScoutTransactionMember extends AbstractTransactionMember {
 
   @Override
   public void rollback() {
-    m_session.getTransaction().rollback();
+    entityManager.getTransaction().rollback();
   }
 
   @Override
   public void release() {
-    m_session.close();
+    entityManager.close();
   }
 
   @Override
   public void cancel() {
-    Session delegate = m_session.unwrap(Session.class);
+    Session delegate = entityManager.unwrap(Session.class);
     delegate.cancelQuery();
   }
 }

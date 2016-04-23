@@ -2,7 +2,6 @@ package com.rtiming.client.ecard.download;
 
 import java.util.ArrayList;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
@@ -14,6 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.event.EventForm.MainBox.PunchingSystemField;
 import com.rtiming.client.result.ResultsOutline;
 import com.rtiming.client.test.data.EventTestDataProvider;
@@ -22,7 +22,7 @@ import com.rtiming.shared.ecard.download.PunchingSystemCodeType;
 import com.rtiming.shared.ecard.download.PunchingSystemCodeType.PunchingSystemNoneCode;
 import com.rtiming.shared.settings.IDefaultProcessService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class DownloadedECardsNodePageTest {
 
   private EventTestDataProvider event;

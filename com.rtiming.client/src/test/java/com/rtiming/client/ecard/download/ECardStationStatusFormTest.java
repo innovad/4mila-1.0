@@ -1,6 +1,5 @@
 package com.rtiming.client.ecard.download;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.exception.VetoException;
@@ -12,6 +11,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.test.ClientTestingUtility;
 import com.rtiming.client.test.data.ECardStationTestDataProvider;
 import com.rtiming.client.test.data.EventTestDataProvider;
@@ -22,7 +22,7 @@ import com.rtiming.shared.ecard.download.ECardStationFormData;
 import com.rtiming.shared.ecard.download.IECardStationProcessService;
 import com.rtiming.shared.settings.IDefaultProcessService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class ECardStationStatusFormTest {
 
   private static final String TESTINGPORT = ClientTestingUtility.getSerialTestingPort();

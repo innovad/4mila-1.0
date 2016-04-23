@@ -1,6 +1,5 @@
 package com.rtiming.client.entry;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.exception.VetoException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
@@ -13,13 +12,14 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.entry.EntryForm.MainBox.TabBox.RacesBox.RacesField.Table.AddRunnerMenu;
 import com.rtiming.client.test.FMilaClientTestUtility;
 import com.rtiming.client.test.data.CurrencyTestDataProvider;
 import com.rtiming.client.test.data.EventWithTeamCombinedCourseClassTestDataProvider;
 import com.rtiming.client.test.data.RunnerTestDataProvider;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class EntryFormTeamSizeTest {
 
   private static CurrencyTestDataProvider currency;

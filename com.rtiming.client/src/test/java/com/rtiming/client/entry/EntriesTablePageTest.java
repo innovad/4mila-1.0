@@ -1,6 +1,5 @@
 package com.rtiming.client.entry;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
@@ -23,7 +22,7 @@ import com.rtiming.client.test.data.EventWithIndividualClassTestDataProvider;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWithClientSession(ClientSession.class)
 public class EntriesTablePageTest extends AbstractTablePageTest<EntriesTablePage> {
 
   private EventWithIndividualClassTestDataProvider event;

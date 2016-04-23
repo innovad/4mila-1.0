@@ -1,6 +1,5 @@
 package com.rtiming.client.entry.payment;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
@@ -13,6 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.entry.RegistrationOutline;
 import com.rtiming.client.entry.payment.PaymentsTablePage.Table.DeleteMenu;
 import com.rtiming.client.entry.payment.PaymentsTablePage.Table.EditMenu;
@@ -26,7 +26,7 @@ import com.rtiming.shared.entry.payment.IPaymentProcessService;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWithClientSession(ClientSession.class)
 public class PaymentsTablePageTest extends AbstractTablePageTest<PaymentsTablePage> {
 
   private static CurrencyTestDataProvider currency;

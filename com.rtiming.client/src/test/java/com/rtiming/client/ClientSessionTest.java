@@ -1,6 +1,5 @@
 package com.rtiming.client;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.client.ui.desktop.IDesktop;
 import org.eclipse.scout.rt.client.ui.desktop.outline.IOutline;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
@@ -17,7 +16,7 @@ import com.rtiming.client.event.EventsOutline;
 import com.rtiming.client.result.ResultsOutline;
 import com.rtiming.client.settings.SettingsOutline;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class ClientSessionTest {
   private ClientSession m_clientSession;
 

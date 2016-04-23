@@ -1,6 +1,5 @@
 package com.rtiming.client.map;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.client.ui.action.menu.IMenu;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.IColumn;
 import org.eclipse.scout.rt.client.ui.form.IForm;
@@ -12,6 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.map.MapsTablePage.Table.DeleteMenu;
 import com.rtiming.client.map.MapsTablePage.Table.EditMenu;
 import com.rtiming.client.map.MapsTablePage.Table.MapNrColumn;
@@ -19,7 +19,7 @@ import com.rtiming.client.map.MapsTablePage.Table.NewMenu;
 import com.rtiming.client.test.AbstractEntityTablePageTest;
 import com.rtiming.client.test.data.MapTestDataProvider;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class MapsTablePageTest extends AbstractEntityTablePageTest<MapsTablePage, Long> {
 
   private MapTestDataProvider map;

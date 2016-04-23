@@ -1,6 +1,5 @@
 package com.rtiming.client.entry.startlist;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.client.ui.desktop.DesktopEvent;
 import org.eclipse.scout.rt.client.ui.desktop.DesktopListener;
@@ -44,7 +43,7 @@ import com.rtiming.shared.settings.IDefaultProcessService;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWithClientSession(ClientSession.class)
 public class StartlistSettingsTablePageTest extends AbstractTablePageTest<StartlistSettingsTablePage> {
 
   private EventWithIndividualClassTestDataProvider event;

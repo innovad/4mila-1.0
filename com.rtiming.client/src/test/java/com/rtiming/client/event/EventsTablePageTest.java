@@ -1,6 +1,5 @@
 package com.rtiming.client.event;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.client.ui.action.menu.IMenu;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.IColumn;
 import org.eclipse.scout.rt.client.ui.form.IForm;
@@ -25,7 +24,7 @@ import com.rtiming.client.test.data.EventTestDataProvider;
 import com.rtiming.shared.common.database.sql.EventBean;
 import com.rtiming.shared.event.IEventProcessService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class EventsTablePageTest extends AbstractEntityTablePageTest<EventsTablePage, Long> {
 
   private EventTestDataProvider event;

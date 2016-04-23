@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.Arrays;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.client.ui.basic.filechooser.IFileChooser;
 import org.eclipse.scout.rt.client.ui.desktop.DesktopEvent;
 import org.eclipse.scout.rt.client.ui.desktop.DesktopListener;
@@ -23,7 +22,7 @@ import com.rtiming.shared.FMilaUtility;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWithClientSession(ClientSession.class)
 public class ExceptionFormTest {
 
   @Test

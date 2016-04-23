@@ -1,6 +1,5 @@
 package com.rtiming.client.entry;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
@@ -16,7 +15,7 @@ import com.rtiming.client.test.data.EntryTestDataProvider;
 import com.rtiming.client.test.data.EventWithIndividualClassTestDataProvider;
 import com.rtiming.shared.settings.IDefaultProcessService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class EntriesTablePageRegistrationTest {
 
   private EventWithIndividualClassTestDataProvider event;

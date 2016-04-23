@@ -3,7 +3,6 @@ package com.rtiming.client.settings.city;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
@@ -15,6 +14,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.settings.city.CityForm.MainBox.CountryField;
 import com.rtiming.client.test.AbstractFormTest;
 import com.rtiming.client.test.data.CountryTestDataProvider;
@@ -28,7 +28,7 @@ import com.rtiming.shared.settings.user.LanguageCodeType;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWithClientSession(ClientSession.class)
 public class CityFormTest extends AbstractFormTest<CityForm> {
 
   private static CountryTestDataProvider defaultCountry;

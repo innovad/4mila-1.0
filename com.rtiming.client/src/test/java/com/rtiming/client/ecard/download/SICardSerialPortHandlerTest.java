@@ -3,7 +3,6 @@ package com.rtiming.client.ecard.download;
 import java.util.Date;
 import java.util.List;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
@@ -26,7 +25,7 @@ import com.rtiming.shared.ecard.download.IDownloadedECardProcessService;
 import com.rtiming.shared.event.IEventProcessService;
 import com.rtiming.shared.test.helper.ITestingJPAService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class SICardSerialPortHandlerTest {
 
   private EventTestDataProvider event;

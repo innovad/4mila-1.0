@@ -1,6 +1,5 @@
 package com.rtiming.client.result;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
@@ -10,6 +9,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.ecard.download.DownloadedECardForm;
 import com.rtiming.client.race.RaceForm;
 import com.rtiming.client.test.data.ECardTestDataProvider;
@@ -18,7 +18,7 @@ import com.rtiming.shared.common.report.template.IReportParameters;
 import com.rtiming.shared.results.IResultsOutlineService;
 import com.rtiming.shared.results.SplitTimeReportData;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class ResultsOutlineServiceTest {
 
   private EventWithIndividualValidatedRaceTestDataProvider event;

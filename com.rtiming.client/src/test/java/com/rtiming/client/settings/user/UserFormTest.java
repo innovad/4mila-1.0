@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.exception.VetoException;
 import org.eclipse.scout.rt.platform.util.TypeCastUtility;
-import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
 import org.eclipse.scout.rt.testing.client.runner.RunWithClientSession;
@@ -19,6 +17,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.settings.user.UserForm.MainBox.PasswordField;
 import com.rtiming.client.settings.user.UserForm.MainBox.RepeatPasswordField;
 import com.rtiming.client.settings.user.UserForm.MainBox.UsernameField;
@@ -29,7 +28,7 @@ import com.rtiming.shared.dao.RtUserKey;
 import com.rtiming.shared.settings.user.IUserProcessService;
 import com.rtiming.shared.settings.user.LanguageCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class UserFormTest extends AbstractFormTest<UserForm> {
 
   @Override

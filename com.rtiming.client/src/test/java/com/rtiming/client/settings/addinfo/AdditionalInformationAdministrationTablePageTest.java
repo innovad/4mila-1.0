@@ -3,7 +3,6 @@ package com.rtiming.client.settings.addinfo;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.IColumn;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
@@ -14,6 +13,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.settings.SettingsOutline;
 import com.rtiming.client.settings.addinfo.AdditionalInformationAdministrationForm.MainBox.EntityField;
 import com.rtiming.client.settings.addinfo.AdditionalInformationAdministrationForm.MainBox.MandatoryField;
@@ -32,7 +32,7 @@ import com.rtiming.shared.settings.addinfo.AdditionalInformationTypeCodeType;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWithClientSession(ClientSession.class)
 public class AdditionalInformationAdministrationTablePageTest extends AbstractTablePageTest<AdditionalInformationAdministrationTablePage> {
 
   @Override

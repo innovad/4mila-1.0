@@ -2,7 +2,6 @@ package com.rtiming.client.race;
 
 import java.util.Date;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.util.StringUtility;
@@ -16,6 +15,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.event.EventForm;
 import com.rtiming.client.test.data.EventTestDataProvider;
 import com.rtiming.client.test.data.EventWithIndividualValidatedRaceTestDataProvider;
@@ -24,7 +24,7 @@ import com.rtiming.shared.ecard.download.PunchingSystemCodeType;
 import com.rtiming.shared.event.IEventProcessService;
 import com.rtiming.shared.race.RaceStatusCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class RaceFormValidationTest {
 
   private EventWithIndividualValidatedRaceTestDataProvider event;

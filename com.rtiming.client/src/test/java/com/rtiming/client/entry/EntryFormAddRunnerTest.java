@@ -1,6 +1,5 @@
 package com.rtiming.client.entry;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
@@ -11,6 +10,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.entry.EntryForm.MainBox.TabBox.RacesBox.RacesField;
 import com.rtiming.client.entry.EntryForm.MainBox.TabBox.RacesBox.RacesField.Table.AddRunnerMenu;
 import com.rtiming.client.event.EventClassForm;
@@ -27,7 +27,7 @@ import com.rtiming.client.test.data.RunnerTestDataProvider;
 import com.rtiming.shared.event.course.ClassTypeCodeType;
 import com.rtiming.shared.runner.SexCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class EntryFormAddRunnerTest {
 
   private EventWithIndividualClassTestDataProvider event;

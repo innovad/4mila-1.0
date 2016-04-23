@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
@@ -17,6 +16,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.ecard.download.PunchForm;
 import com.rtiming.client.race.RaceControlForm.MainBox.ManualStatusField;
 import com.rtiming.client.race.RaceControlForm.MainBox.ShiftTimeField;
@@ -41,7 +41,7 @@ import com.rtiming.shared.race.RaceStatusCodeType;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWithClientSession(ClientSession.class)
 public class RaceControlFormTest extends AbstractFormTest<RaceControlForm> {
 
   private EventWithIndividualClassTestDataProvider eventForm;

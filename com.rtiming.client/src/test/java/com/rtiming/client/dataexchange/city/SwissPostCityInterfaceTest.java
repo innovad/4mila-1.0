@@ -5,7 +5,6 @@ import static org.junit.Assert.assertNotNull;
 
 import java.net.URL;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.client.ui.wizard.DefaultWizardContainerForm.MainBox.WizardFinishButton;
 import org.eclipse.scout.rt.client.ui.wizard.DefaultWizardContainerForm.MainBox.WizardNextStepButton;
 import org.eclipse.scout.rt.platform.BEANS;
@@ -19,6 +18,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.dataexchange.DataExchangeFinalizationForm;
 import com.rtiming.client.dataexchange.DataExchangePreviewForm;
 import com.rtiming.client.dataexchange.DataExchangeStartForm;
@@ -34,7 +34,7 @@ import com.rtiming.shared.test.helper.ITestingJPAService;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWithClientSession(ClientSession.class)
 public class SwissPostCityInterfaceTest {
 
   @Before

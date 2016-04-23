@@ -1,6 +1,5 @@
 package com.rtiming.client.entry.startblock;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
@@ -10,6 +9,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.common.ui.fields.AbstractCodeBox;
 import com.rtiming.client.test.AbstractFormTest;
 import com.rtiming.client.test.FormTestUtility;
@@ -19,7 +19,7 @@ import com.rtiming.shared.event.course.ClassCodeType;
 import com.rtiming.shared.settings.CodeFormData;
 import com.rtiming.shared.settings.ICodeProcessService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class StartblockFormTest extends AbstractFormTest<StartblockForm> {
 
   @Override

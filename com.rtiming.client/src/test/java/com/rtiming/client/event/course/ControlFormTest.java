@@ -1,6 +1,5 @@
 package com.rtiming.client.event.course;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.exception.VetoException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
@@ -10,11 +9,12 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.test.AbstractFormTest;
 import com.rtiming.client.test.data.EventTestDataProvider;
 import com.rtiming.shared.event.course.ControlTypeCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class ControlFormTest extends AbstractFormTest<ControlForm> {
 
   private EventTestDataProvider event;

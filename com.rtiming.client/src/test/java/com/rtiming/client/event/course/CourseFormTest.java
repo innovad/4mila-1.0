@@ -1,6 +1,5 @@
 package com.rtiming.client.event.course;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
@@ -10,13 +9,14 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.test.AbstractFormTest;
 import com.rtiming.client.test.FormTestUtility;
 import com.rtiming.client.test.data.EventTestDataProvider;
 import com.rtiming.shared.event.course.CourseFormData;
 import com.rtiming.shared.event.course.ICourseProcessService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class CourseFormTest extends AbstractFormTest<CourseForm> {
 
   private EventTestDataProvider event;

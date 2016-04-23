@@ -3,7 +3,6 @@ package com.rtiming.client.event.course;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.exception.VetoException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
@@ -13,13 +12,14 @@ import org.eclipse.scout.testing.client.ScoutClientAssert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.test.AbstractFormTest;
 import com.rtiming.client.test.data.ControlTestDataProvider;
 import com.rtiming.client.test.data.EventTestDataProvider;
 import com.rtiming.client.test.field.FieldValue;
 import com.rtiming.shared.event.course.ControlTypeCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class ReplacementControlFormTest extends AbstractFormTest<ReplacementControlForm> {
 
   private EventTestDataProvider event;

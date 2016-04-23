@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.client.ui.wizard.DefaultWizardContainerForm.MainBox.WizardFinishButton;
 import org.eclipse.scout.rt.client.ui.wizard.DefaultWizardContainerForm.MainBox.WizardNextStepButton;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
@@ -19,6 +18,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.FMilaClientUtility;
 import com.rtiming.client.dataexchange.DataExchangeFinalizationForm;
 import com.rtiming.client.dataexchange.DataExchangePreviewForm;
@@ -35,7 +35,7 @@ import com.rtiming.shared.dataexchange.ImportExportFormatCodeType;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWithClientSession(ClientSession.class)
 public class SwissOrienteeringRunnerInterfaceTest {
 
   private RunnerTestDataProvider runner;

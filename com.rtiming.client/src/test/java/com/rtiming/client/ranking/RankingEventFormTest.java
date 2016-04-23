@@ -3,7 +3,6 @@ package com.rtiming.client.ranking;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
 import org.eclipse.scout.rt.testing.client.runner.RunWithClientSession;
@@ -20,7 +19,7 @@ import com.rtiming.client.test.field.FieldValue;
 import com.rtiming.shared.dao.RtRankingEventKey;
 import com.rtiming.shared.ranking.RankingFormulaTypeCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class RankingEventFormTest extends AbstractFormTest<RankingEventForm> {
 
   private RankingTestDataProvider ranking;

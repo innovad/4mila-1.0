@@ -1,6 +1,5 @@
 package com.rtiming.client.result.split;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
 import org.eclipse.scout.rt.testing.client.runner.RunWithClientSession;
@@ -13,7 +12,7 @@ import com.rtiming.client.result.SingleEventSearchForm;
 import com.rtiming.client.test.AbstractTablePageTest;
 import com.rtiming.client.test.data.EventWithIndividualValidatedRaceTestDataProvider;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class SplitTimesTablePageTest extends AbstractTablePageTest<SplitTimesTablePage> {
 
   private EventWithIndividualValidatedRaceTestDataProvider event;

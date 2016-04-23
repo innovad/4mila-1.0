@@ -1,6 +1,5 @@
 package com.rtiming.client.result;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.shared.data.basic.table.SortSpec;
@@ -13,11 +12,12 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.event.course.EventClassesTablePage;
 import com.rtiming.client.result.RelayTableCustomizer.RelayTimeColumn;
 import com.rtiming.client.test.data.EventWithRelayValidatedRaceTestDataProvider;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class RelayAfterLegResultsTablePageDataTest {
 
   private static EventWithRelayValidatedRaceTestDataProvider relay;

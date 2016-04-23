@@ -2,7 +2,6 @@ package com.rtiming.client.dataexchange.city;
 
 import java.net.URL;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
 import org.eclipse.scout.rt.client.ui.wizard.DefaultWizardContainerForm.MainBox.WizardFinishButton;
 import org.eclipse.scout.rt.client.ui.wizard.DefaultWizardContainerForm.MainBox.WizardNextStepButton;
@@ -17,6 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.dataexchange.DataExchangeFinalizationForm;
 import com.rtiming.client.dataexchange.DataExchangePreviewForm;
 import com.rtiming.client.dataexchange.DataExchangeStartForm;
@@ -35,7 +35,7 @@ import com.rtiming.shared.settings.city.ICountryProcessService;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWithClientSession(ClientSession.class)
 public class GeonamesCityInterfaceTest {
 
   @Before

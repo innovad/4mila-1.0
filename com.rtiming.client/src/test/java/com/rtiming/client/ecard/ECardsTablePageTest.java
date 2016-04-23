@@ -1,6 +1,5 @@
 package com.rtiming.client.ecard;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.client.ui.action.menu.IMenu;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.IColumn;
 import org.eclipse.scout.rt.client.ui.form.IForm;
@@ -12,13 +11,14 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.ecard.ECardsTablePage.Table.ECardNrColumn;
 import com.rtiming.client.ecard.ECardsTablePage.Table.EditMenu;
 import com.rtiming.client.ecard.ECardsTablePage.Table.NewMenu;
 import com.rtiming.client.test.AbstractEntityTablePageTest;
 import com.rtiming.client.test.data.ECardTestDataProvider;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class ECardsTablePageTest extends AbstractEntityTablePageTest<ECardsTablePage, Long> {
 
   private ECardTestDataProvider ecard;

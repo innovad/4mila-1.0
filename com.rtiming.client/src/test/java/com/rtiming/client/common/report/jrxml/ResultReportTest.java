@@ -2,7 +2,6 @@ package com.rtiming.client.common.report.jrxml;
 
 import java.util.Date;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
@@ -29,7 +28,7 @@ import com.rtiming.client.test.data.EventWithIndividualClassTestDataProvider;
 import com.rtiming.shared.event.course.ControlTypeCodeType;
 import com.rtiming.shared.race.IRaceService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class ResultReportTest {
 
   private EventWithIndividualClassTestDataProvider event;

@@ -1,6 +1,5 @@
 package com.rtiming.client.ranking;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
 import org.eclipse.scout.rt.testing.client.runner.RunWithClientSession;
 import org.eclipse.scout.rt.testing.platform.runner.RunWithSubject;
@@ -9,12 +8,13 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.shared.entry.startlist.BibNoOrderCodeType;
 import com.rtiming.shared.race.TimePrecisionCodeType;
 import com.rtiming.shared.ranking.RankingFormatCodeType;
 import com.rtiming.shared.ranking.RankingFormulaTypeCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class RankingFormValidationTest {
 
   @Test

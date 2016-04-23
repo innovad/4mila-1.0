@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.exception.VetoException;
 import org.eclipse.scout.rt.platform.util.date.DateUtility;
@@ -18,6 +17,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.test.data.EventWithIndividualClassTestDataProvider;
 import com.rtiming.shared.FMilaUtility;
 import com.rtiming.shared.entry.startlist.BibNoOrderCodeType;
@@ -27,7 +27,7 @@ import com.rtiming.shared.entry.startlist.StartlistTypeCodeType;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWithClientSession(ClientSession.class)
 public class StartlistSettingFormTest {
 
   private EventWithIndividualClassTestDataProvider event;

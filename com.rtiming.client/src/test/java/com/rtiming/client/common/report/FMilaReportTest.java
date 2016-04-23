@@ -1,6 +1,5 @@
 package com.rtiming.client.common.report;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
 import org.eclipse.scout.rt.testing.client.runner.RunWithClientSession;
@@ -8,6 +7,7 @@ import org.eclipse.scout.rt.testing.platform.runner.RunWithSubject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.shared.services.code.ReportTypeCodeType;
 
 import net.sf.jasperreports.engine.JasperPrint;
@@ -15,7 +15,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 /**
  * @author amo
  */
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class FMilaReportTest {
 
   @Test(expected = IllegalArgumentException.class)

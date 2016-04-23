@@ -3,7 +3,6 @@ package com.rtiming.client.ecard;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupRow;
@@ -16,6 +15,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.test.AbstractDefaultLookupCallTest;
 import com.rtiming.client.test.data.ECardTestDataProvider;
 import com.rtiming.shared.ecard.ECardLookupCall;
@@ -23,7 +23,7 @@ import com.rtiming.shared.ecard.ECardTypeCodeType;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWithClientSession(ClientSession.class)
 public class ECardLookupCallTest extends AbstractDefaultLookupCallTest {
 
   private ECardTestDataProvider ecard;

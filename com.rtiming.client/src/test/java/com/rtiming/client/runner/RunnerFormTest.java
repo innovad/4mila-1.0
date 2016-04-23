@@ -1,6 +1,5 @@
 package com.rtiming.client.runner;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
@@ -21,7 +20,7 @@ import com.rtiming.shared.runner.RunnerFormData;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWithClientSession(ClientSession.class)
 public class RunnerFormTest extends AbstractFormTest<RunnerForm> {
 
   @Override

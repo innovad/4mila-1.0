@@ -1,6 +1,5 @@
 package com.rtiming.client.dataexchange.swiss;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.util.StringUtility;
@@ -35,7 +34,7 @@ import com.rtiming.shared.settings.currency.CurrencyFormData;
 import com.rtiming.shared.settings.currency.ICurrencyProcessService;
 import com.rtiming.shared.test.helper.ITestingJPAService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class GO2OLEntriesInterfaceTest {
 
   private EventTestDataProvider event;

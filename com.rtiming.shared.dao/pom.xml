@@ -88,6 +88,10 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>4.3.11.Final</version>
 		</dependency>
+		<dependency>
+			<groupId>org.eclipse.scout.rt</groupId>
+			<artifactId>org.eclipse.scout.rt.platform</artifactId>
+		</dependency>
 	</dependencies>
 
 </project>

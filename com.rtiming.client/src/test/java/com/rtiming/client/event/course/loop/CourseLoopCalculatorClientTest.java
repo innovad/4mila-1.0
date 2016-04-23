@@ -7,7 +7,6 @@ import static com.rtiming.client.event.course.loop.CourseLoopCalculatorTestUtili
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
 import org.eclipse.scout.rt.testing.client.runner.RunWithClientSession;
@@ -17,6 +16,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.race.RaceControlsTablePage;
 import com.rtiming.client.test.data.ControlTestData;
 import com.rtiming.client.test.data.EventWithIndividualValidatedRaceTestDataProvider;
@@ -24,7 +24,7 @@ import com.rtiming.shared.event.course.ControlStatusCodeType;
 import com.rtiming.shared.services.code.CourseForkTypeCodeType;
 import com.rtiming.shared.services.code.CourseGenerationCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class CourseLoopCalculatorClientTest {
 
   private EventWithIndividualValidatedRaceTestDataProvider event;

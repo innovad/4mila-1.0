@@ -3,7 +3,6 @@ package com.rtiming.client.common.report;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.client.ui.form.fields.IFormField;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractLinkButton;
 import org.eclipse.scout.rt.platform.BEANS;
@@ -17,6 +16,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.common.report.template.ReportTemplateForm;
 import com.rtiming.client.common.report.template.ReportTemplateForm.MainBox.HelpLink;
 import com.rtiming.client.common.report.template.TemplateBox;
@@ -29,7 +29,7 @@ import com.rtiming.shared.services.code.ReportTypeCodeType;
  */
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWithClientSession(ClientSession.class)
 public class ReportTemplateFormTest extends AbstractFormTest<ReportTemplateForm> {
 
   @Override

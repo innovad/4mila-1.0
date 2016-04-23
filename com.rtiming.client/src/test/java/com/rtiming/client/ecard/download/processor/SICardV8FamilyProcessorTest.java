@@ -3,7 +3,6 @@ package com.rtiming.client.ecard.download.processor;
 import java.io.IOException;
 import java.util.Date;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.util.date.DateUtility;
@@ -26,7 +25,7 @@ import com.rtiming.shared.FMilaUtility;
 import com.rtiming.shared.common.database.sql.EventBean;
 import com.rtiming.shared.event.IEventProcessService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class SICardV8FamilyProcessorTest {
 
   private EventWithIndividualClassTestDataProvider event;

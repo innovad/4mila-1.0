@@ -3,7 +3,6 @@ package com.rtiming.client.entry;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
@@ -29,7 +28,7 @@ import com.rtiming.client.test.field.FieldValue;
 import com.rtiming.shared.race.RaceStatusCodeType;
 import com.rtiming.shared.settings.IDefaultProcessService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class EntriesTablePageCountryNationTest {
 
   private EventWithIndividualClassTestDataProvider event;

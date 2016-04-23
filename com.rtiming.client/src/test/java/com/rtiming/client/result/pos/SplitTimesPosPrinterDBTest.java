@@ -1,6 +1,5 @@
 package com.rtiming.client.result.pos;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.exception.VetoException;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
@@ -12,12 +11,13 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.test.data.EntryTestDataProvider;
 import com.rtiming.client.test.data.EventWithIndividualClassTestDataProvider;
 import com.rtiming.client.test.data.EventWithIndividualValidatedRaceTestDataProvider;
 import com.rtiming.shared.event.course.ControlStatusCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class SplitTimesPosPrinterDBTest {
 
   private EventWithIndividualClassTestDataProvider event;

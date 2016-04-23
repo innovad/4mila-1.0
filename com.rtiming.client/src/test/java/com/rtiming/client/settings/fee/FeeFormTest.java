@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.client.ui.form.fields.IFormField;
 import org.eclipse.scout.rt.client.ui.form.fields.longfield.AbstractLongField;
@@ -24,6 +23,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.rtiming.client.AbstractDoubleField;
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.entry.EntryForm;
 import com.rtiming.client.event.EventClassForm;
 import com.rtiming.client.runner.RunnerForm;
@@ -56,7 +56,7 @@ import com.rtiming.shared.settings.fee.IFeeGroupProcessService;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWithClientSession(ClientSession.class)
 public class FeeFormTest extends AbstractFormTest<FeeForm> {
 
   private FeeGroupForm feeGroup;

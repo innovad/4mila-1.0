@@ -2,7 +2,6 @@ package com.rtiming.client.common.report.jrxml;
 
 import java.util.Date;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
@@ -14,6 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.ecard.download.PunchForm;
 import com.rtiming.client.entry.EntriesClassesTablePage;
 import com.rtiming.client.entry.EntriesClubsTablePage;
@@ -31,7 +31,7 @@ import com.rtiming.shared.race.IRaceProcessService;
 import com.rtiming.shared.race.IRaceService;
 import com.rtiming.shared.settings.IDefaultProcessService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class StartListReportTest {
 
   private EventWithIndividualClassTestDataProvider event;

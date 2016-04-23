@@ -1,6 +1,5 @@
 package com.rtiming.client.entry;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.client.ui.form.fields.IFormField;
 import org.eclipse.scout.rt.client.ui.form.fields.IValueField;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
@@ -13,12 +12,13 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.test.FMilaClientTestUtility;
 import com.rtiming.client.test.data.EventTestDataProvider;
 import com.rtiming.client.test.data.EventWithIndividualClassTestDataProvider;
 import com.rtiming.client.test.data.RunnerTestDataProvider;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class EntryFormValidationTest {
 
   private EventTestDataProvider event;

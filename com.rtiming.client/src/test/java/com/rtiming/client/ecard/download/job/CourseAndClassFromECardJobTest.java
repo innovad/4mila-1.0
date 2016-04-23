@@ -1,6 +1,5 @@
 package com.rtiming.client.ecard.download.job;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
@@ -26,7 +25,7 @@ import com.rtiming.shared.ecard.download.ECardStationDownloadModusCodeType;
 import com.rtiming.shared.event.IEventProcessService;
 import com.rtiming.shared.event.course.ClassCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class CourseAndClassFromECardJobTest {
 
   private EventTestDataProvider event;

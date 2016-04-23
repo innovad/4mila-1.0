@@ -1,17 +1,15 @@
 package com.rtiming.shared.dao.util;
 
+import org.eclipse.scout.rt.platform.BEANS;
+
 public abstract class AbstractKey<T extends IKey> implements IKey {
 
   private static Long getSessionClientNr() {
-    // return BEANS.get(IKeyService.class).getClientNr();
-    // TODO MIG
-    return 1L;
+    return BEANS.get(IKeyService.class).getClientNr();
   }
 
   private static Long verifyId(Long id) {
-    // TODO MIG
-    // return BEANS.get(IKeyService.class).verifyId(id);
-    return 1L;
+    return BEANS.get(IKeyService.class).verifyId(id);
   }
 
   public static IKey createKeyInternal(IKey key) {

@@ -3,7 +3,6 @@ package com.rtiming.client.entry;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
 import org.eclipse.scout.rt.testing.client.runner.RunWithClientSession;
@@ -26,7 +25,7 @@ import com.rtiming.client.test.data.RunnerTestDataProvider;
 import com.rtiming.client.test.field.FieldValue;
 import com.rtiming.shared.common.database.sql.RunnerBean;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class EntryFormAddressTest {
 
   private RunnerTestDataProvider runner;

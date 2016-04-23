@@ -2,7 +2,6 @@ package com.rtiming.client.setup;
 
 import java.util.Date;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.client.ui.form.fields.button.IButton;
 import org.eclipse.scout.rt.client.ui.wizard.DefaultWizardContainerForm.MainBox.WizardNextStepButton;
 import org.eclipse.scout.rt.client.ui.wizard.DefaultWizardContainerForm.MainBox.WizardPreviousStepButton;
@@ -17,6 +16,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.settings.account.AccountForm;
 import com.rtiming.client.test.FormTestUtility;
 import com.rtiming.shared.Texts;
@@ -24,7 +24,7 @@ import com.rtiming.shared.test.helper.ITestingJPAService;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWithClientSession(ClientSession.class)
 public class SetupWizardTest {
 
   @Test

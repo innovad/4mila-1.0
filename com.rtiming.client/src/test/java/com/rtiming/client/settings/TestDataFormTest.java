@@ -3,7 +3,6 @@ package com.rtiming.client.settings;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
 import org.eclipse.scout.rt.testing.client.runner.RunWithClientSession;
@@ -13,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rtiming.client.ClientSession;
 import com.rtiming.client.runner.RunnerForm.MainBox.ClubField;
 import com.rtiming.client.runner.RunnerForm.MainBox.ECardField;
 import com.rtiming.client.runner.RunnerForm.MainBox.SexField;
@@ -25,7 +25,7 @@ import com.rtiming.client.test.data.RunnerTestDataProvider;
 import com.rtiming.client.test.field.FieldValue;
 import com.rtiming.shared.runner.SexCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class TestDataFormTest {
 
   private EventWithIndividualClassTestDataProvider event;

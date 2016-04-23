@@ -3,7 +3,6 @@ package com.rtiming.client.entry;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.scout.rt.client.testenvironment.TestEnvironmentClientSession;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
@@ -36,7 +35,7 @@ import com.rtiming.shared.entry.SharedCache;
 import com.rtiming.shared.settings.addinfo.AdditionalInformationCodeType;
 import com.rtiming.shared.settings.addinfo.AdditionalInformationTypeCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
 public class EntriesSearchFormTest {
 
   private AdditionalInformationAdministrationTestDataProvider admin;
