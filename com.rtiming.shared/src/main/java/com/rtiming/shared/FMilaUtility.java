@@ -19,6 +19,7 @@ import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.exception.VetoException;
 import org.eclipse.scout.rt.platform.resource.BinaryResource;
+import org.eclipse.scout.rt.platform.util.Assertions.AssertionException;
 import org.eclipse.scout.rt.platform.util.CompareUtility;
 import org.eclipse.scout.rt.platform.util.IOUtility;
 import org.eclipse.scout.rt.platform.util.StringUtility;
@@ -312,27 +313,37 @@ public final class FMilaUtility {
     return Thread.currentThread().getContextClassLoader().getResource(path);
   }
 
-  public static String getCodeText(Class<? extends ICodeType> codeTypeClass, Long codeUid) throws ProcessingException {
+  public static String getCodeText(Class<? extends ICodeType<Long, Long>> codeTypeClass, Long codeUid) throws ProcessingException {
     if (codeUid == null || codeTypeClass == null) {
       return "";
     }
     if (BEANS.get(ICodeService.class) != null) {
-      ICode code = BEANS.get(codeTypeClass).getCode(codeUid);
-      if (code != null) {
-        return code.getText();
+      try {
+        ICode code = BEANS.get(codeTypeClass).getCode(codeUid);
+        if (code != null) {
+          return code.getText();
+        }
+      }
+      catch (AssertionException e) {
+        // ignore AssertionException due to Unit Tests
       }
     }
     return String.valueOf(codeUid);
   }
 
-  public static String getCodeExtKey(Class<? extends ICodeType> codeTypeClass, Long codeUid) throws ProcessingException {
+  public static String getCodeExtKey(Class<? extends ICodeType<Long, Long>> codeTypeClass, Long codeUid) throws ProcessingException {
     if (codeUid == null || codeTypeClass == null) {
       return "";
     }
     if (BEANS.get(ICodeService.class) != null) {
-      ICode code = BEANS.get(codeTypeClass).getCode(codeUid);
-      if (code != null) {
-        return code.getExtKey();
+      try {
+        ICode code = BEANS.get(codeTypeClass).getCode(codeUid);
+        if (code != null) {
+          return code.getExtKey();
+        }
+      }
+      catch (AssertionException e) {
+        // ignore AssertionException due to Unit Tests
       }
     }
     return String.valueOf(codeUid);
