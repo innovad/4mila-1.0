@@ -11,9 +11,10 @@
 	</parent>
 	<artifactId>com.rtiming.client</artifactId>
 
-	<!-- TODO MIG -->
 	<build>
 		<plugins>
+
+			<!-- TODO MIG -->
 			<plugin>
 				<groupId>org.basepom.maven</groupId>
 				<artifactId>duplicate-finder-maven-plugin</artifactId>
@@ -23,7 +24,94 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.cargo</groupId>
+				<artifactId>cargo-maven2-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>start-container</id>
+						<phase>process-test-classes</phase>
+						<goals>
+							<goal>start</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>stop-container</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>stop</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<container>
+						<containerId>jetty8x</containerId>
+						<artifactInstaller>
+							<groupId>org.eclipse.jetty</groupId>
+							<artifactId>jetty-distribution</artifactId>
+							<version>8.1.10.v20130312</version>
+						</artifactInstaller>
+					</container>
+					<deployables>
+						<deployable>
+							<groupId>com.4mila</groupId>
+							<artifactId>com.rtiming.server.app.war</artifactId>
+							<type>war</type>
+							<properties>
+								<context></context>
+							</properties>
+						</deployable>
+					</deployables>
+					<configuration>
+						<properties>
+							<cargo.servlet.port>8080</cargo.servlet.port>
+							<cargo.java.home>${java.home}</cargo.java.home>
+							<cargo.jvmargs>-XX:MaxPermSize=256M -Xmx512m -Xms512m</cargo.jvmargs>
+							<cargo.logging>low</cargo.logging>
+						</properties>
+					</configuration>
+					<wait>false</wait>
+				</configuration>
+			</plugin>
+
 		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.cargo
+										</groupId>
+										<artifactId>
+											cargo-maven2-plugin
+										</artifactId>
+										<versionRange>
+											[1.4.15,)
+										</versionRange>
+										<goals>
+											<goal>start</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 
 	<dependencies>
@@ -71,6 +159,13 @@
 		<dependency>
 			<groupId>org.eclipse.scout.rt</groupId>
 			<artifactId>org.eclipse.scout.rt.client.test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.4mila</groupId>
+			<artifactId>com.rtiming.server.app.war</artifactId>
+			<version>2.0.0-SNAPSHOT</version>
+			<type>war</type>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

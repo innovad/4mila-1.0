@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
@@ -10,16 +10,14 @@
 		<relativePath>../com.4mila.parent/</relativePath>
 	</parent>
 
-  <artifactId>com.rtiming.server.app.dev</artifactId>
+  <artifactId>com.rtiming.server.app.war</artifactId>
   <packaging>war</packaging>
 
-  <name>My Application HTML UI WAR Development</name>
+  <build>
+      <finalName>org.helloscout.server</finalName>
+  </build>
 
   <dependencies>
-    <dependency>
-      <groupId>org.eclipse.scout.rt</groupId>
-      <artifactId>org.eclipse.scout.dev.jetty</artifactId>
-    </dependency>
     <dependency>
       <groupId>com.4mila</groupId>
       <artifactId>com.rtiming.server</artifactId>

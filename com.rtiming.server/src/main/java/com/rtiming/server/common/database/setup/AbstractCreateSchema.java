@@ -1,6 +1,7 @@
 package com.rtiming.server.common.database.setup;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Driver;
@@ -12,6 +13,7 @@ import javax.persistence.Table;
 
 import org.eclipse.scout.rt.platform.Platform;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.util.IOUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -113,11 +115,10 @@ public abstract class AbstractCreateSchema {
     String path = null;
     try {
       URL url = FMilaUtility.findFileLocation(scriptName, ""); // TODO MIG
-      path = url.getFile();
-      File convertToPath = new File(path);
-      path = convertToPath.getAbsolutePath();
+      File file = IOUtility.createTempFile(url.openStream(), IOUtility.getTempFileName(""), ".sql");
+      path = file.getAbsolutePath();
     }
-    catch (ProcessingException e) {
+    catch (IOException | ProcessingException e) {
       throw new RuntimeException("unable to run script", e);
     }
     return path;

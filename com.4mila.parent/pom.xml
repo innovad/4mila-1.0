@@ -24,12 +24,13 @@
 
 	<modules>
 		<!-- 4mila -->
-		<module>../com.rtiming.client</module>
 		<module>../com.rtiming.shared.dao</module>
-		<module>../com.rtiming.server</module>
 		<module>../com.rtiming.shared</module>
+		<module>../com.rtiming.server</module>
+		<module>../com.rtiming.server.app.war</module>
 		<module>../jp.co.epson.pos</module>
 		<module>../org.gnu.rxtx</module>
+		<module>../com.rtiming.client</module>
 	</modules>
 
 	<build>
