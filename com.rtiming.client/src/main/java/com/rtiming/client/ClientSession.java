@@ -31,7 +31,7 @@ public class ClientSession extends AbstractClientSession {
    * @return session in current ThreadContext
    */
   public static ClientSession get() {
-    return (ClientSession) ClientSessionProvider.currentSession();
+    return ClientSessionProvider.currentSession(ClientSession.class);
   }
 
 // TODO MIG  

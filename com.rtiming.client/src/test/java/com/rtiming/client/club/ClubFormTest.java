@@ -37,7 +37,9 @@ import com.rtiming.shared.settings.addinfo.AdditionalInformationAdministrationFo
 import com.rtiming.shared.settings.addinfo.AdditionalInformationTypeCodeType;
 import com.rtiming.shared.settings.addinfo.IAdditionalInformationAdministrationProcessService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestEnvironmentClientSession.class)
+@RunWith(ClientTestRunner.class)
+@RunWithSubject("admin")
+@RunWithClientSession(TestEnvironmentClientSession.class)
 public class ClubFormTest extends AbstractFormTest<ClubForm> {
 
   private AdditionalInformationAdministrationTestDataProvider admin;
