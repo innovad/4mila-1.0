@@ -11,18 +11,15 @@ import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
 import org.eclipse.scout.rt.client.ui.action.menu.TableMenuType;
 import org.eclipse.scout.rt.client.ui.desktop.AbstractDesktop;
 import org.eclipse.scout.rt.client.ui.desktop.IDesktop;
-import org.eclipse.scout.rt.client.ui.desktop.OpenUriAction;
 import org.eclipse.scout.rt.client.ui.desktop.bookmark.menu.AbstractBookmarkMenu;
 import org.eclipse.scout.rt.client.ui.desktop.outline.AbstractOutlineViewButton;
 import org.eclipse.scout.rt.client.ui.desktop.outline.IOutline;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
 import org.eclipse.scout.rt.client.ui.form.ScoutInfoForm;
-import org.eclipse.scout.rt.client.ui.messagebox.IMessageBox;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.Order;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.util.CollectionUtility;
-import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.bookmark.Bookmark;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
@@ -48,9 +45,6 @@ import com.rtiming.shared.FMilaUtility;
 import com.rtiming.shared.FMilaUtility.OperatingSystem;
 import com.rtiming.shared.Texts;
 import com.rtiming.shared.common.database.IDatabaseService;
-import com.rtiming.shared.common.security.FMilaVersion;
-import com.rtiming.shared.common.security.IUpdateService;
-import com.rtiming.shared.common.security.UpdateInfo;
 import com.rtiming.shared.common.security.permission.CreateDataExchangePermission;
 import com.rtiming.shared.common.security.permission.ReadDownloadedECardPermission;
 import com.rtiming.shared.settings.ISettingsOutlineService;
@@ -123,12 +117,6 @@ public class Desktop extends AbstractDesktop implements IDesktop {
 
   public void updateApplicationWindowTitle(Date lastBackup) throws ProcessingException {
     setTitle(ApplicationWindowTitleUtility.getTitle(getConfiguredTitle(), lastBackup));
-  }
-
-  @Override
-  protected void execGuiAttached() throws ProcessingException {
-    ExpirationManager manager = new ExpirationManager();
-    manager.checkExpiration();
   }
 
   @Override
@@ -497,37 +485,6 @@ public class Desktop extends AbstractDesktop implements IDesktop {
 
     @Order(30.0)
     public class SeparatorMenu extends AbstractSeparatorMenu {
-    }
-
-    @Order(40.0)
-    public class CheckForUpdateMenu extends AbstractMenu {
-
-      @Override
-      protected String getConfiguredText() {
-        return TEXTS.get("CheckForUpdateMenu");
-      }
-
-      @Override
-      protected void execInitAction() throws ProcessingException {
-        setVisible(!FMilaUtility.isWebClient());
-      }
-
-      @Override
-      protected void execAction() throws ProcessingException {
-        UpdateInfo info = BEANS.get(IUpdateService.class).checkForUpdate();
-        FMilaVersion serverVersion = new FMilaVersion(info.getServerVersion());
-        if (StringUtility.isNullOrEmpty(info.getDownloadLink())) {
-          FMilaClientUtility.showOkMessage(TEXTS.get("ApplicationName"), null, TEXTS.get("InstallationUpToDateMessage", serverVersion.toString()));
-        }
-        else {
-          FMilaVersion newVersion = new FMilaVersion(info.getNewVersion());
-          IMessageBox box = FMilaClientUtility.createMessageBox(TEXTS.get("UpdateAvailable"), null, TEXTS.get("UpdateMessage", newVersion.toString(), serverVersion.toString()), TEXTS.get("Download"), null, TEXTS.get("Cancel"));
-          if (box.show() == IMessageBox.YES_OPTION) {
-            // start download
-            ClientSessionProvider.currentSession().getDesktop().openUri(info.getDownloadLink(), OpenUriAction.DOWNLOAD);
-          }
-        }
-      }
     }
 
     @Order(50.0)

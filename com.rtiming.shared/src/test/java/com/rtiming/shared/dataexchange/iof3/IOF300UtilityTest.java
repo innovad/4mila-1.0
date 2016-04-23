@@ -37,9 +37,6 @@ import com.rtiming.shared.race.RaceStatusCodeType;
 import com.rtiming.shared.runner.SexCodeType;
 import com.rtiming.shared.settings.city.CityFormData;
 
-/**
- * @author amo
- */
 public class IOF300UtilityTest {
 
   @Test

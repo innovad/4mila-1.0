@@ -22,8 +22,6 @@ import com._4mila._4mila.jaxws.online.TableData;
 import com._4mila._4mila.jaxws.online.TableDataList;
 import com._4mila._4mila.jaxws.online.UploadAccountResponse;
 import com.rtiming.shared.common.file.IFileProcessService;
-import com.rtiming.shared.common.security.Download;
-import com.rtiming.shared.common.security.IUpdateService;
 import com.rtiming.shared.map.IMapProcessService;
 import com.rtiming.shared.runner.IRunnerProcessService;
 import com.rtiming.shared.settings.account.AccountFormData;
@@ -150,19 +148,7 @@ public class OnlineServiceWebService implements OnlineServiceSoap {
 
   @Override
   public List<String> checkForUpdate(String versionToBeChecked) {
-    List<Download> downloads = null;
     List<String> availableDownloadFiles = new ArrayList<String>();
-    try {
-      downloads = BEANS.get(IUpdateService.class).loadDownloads();
-    }
-    catch (ProcessingException e) {
-      // TODO MIG BEANS.get(IExceptionHandlerService.class).handleException(e);
-    }
-    if (downloads != null && downloads.size() > 0) {
-      for (Download download : downloads) {
-        availableDownloadFiles.add(download.getFile());
-      }
-    }
     return availableDownloadFiles;
   }
 

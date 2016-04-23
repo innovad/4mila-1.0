@@ -37,12 +37,6 @@ public final class ApplicationWindowTitleUtility {
     title.append(configuredTitle);
     title.append(" ");
     title.append(FMilaUtility.getVersion());
-    if (FMilaUtility.isRichClient()) {
-      title.append(", ");
-      title.append(TEXTS.get("Expires"));
-      title.append(" ");
-      title.append(DateUtility.formatDate(ExpirationManager.calculateExpiryDate()));
-    }
     title.append(") ");
     // Client Nr
     if (Platform.get().inDevelopmentMode()) {
