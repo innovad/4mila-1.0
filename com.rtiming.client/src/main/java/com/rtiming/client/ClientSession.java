@@ -61,15 +61,15 @@ public class ClientSession extends AbstractClientSession {
       // TODO MIG setServiceTunnel(new HttpServiceTunnel(this, serverUrl, version));
     }
 
+    // Load code types
+    CODES.getAllCodeTypes("com.rtiming.shared");
+
     Locale locale = new Locale(BEANS.get(LanguageCodeType.class).getCode(getLanguageUid()).getExtKey());
     setLocale(locale);
     // TODO MIG LocaleThreadLocal.set(locale);
 
     // Get Client Nr
     BEANS.get(IAccountProcessService.class).loadClientNr();
-
-    // Load code types
-    CODES.getAllCodeTypes("com.rtiming");
 
     setDesktop(new Desktop());
 

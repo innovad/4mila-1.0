@@ -92,6 +92,10 @@
 			<groupId>org.eclipse.scout.rt</groupId>
 			<artifactId>org.eclipse.scout.rt.platform</artifactId>
 		</dependency>
+		<dependency>
+			<artifactId>org.eclipse.scout.rt.shared</artifactId>
+			<groupId>org.eclipse.scout.rt</groupId>
+		</dependency>
 	</dependencies>
 
 </project>

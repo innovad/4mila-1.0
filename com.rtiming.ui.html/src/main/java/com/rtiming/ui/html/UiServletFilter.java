@@ -13,12 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.server.commons.authentication.ConfigFileCredentialVerifier;
-import org.eclipse.scout.rt.server.commons.authentication.DevelopmentAccessController;
 import org.eclipse.scout.rt.server.commons.authentication.FormBasedAccessController;
 import org.eclipse.scout.rt.server.commons.authentication.FormBasedAccessController.FormBasedAuthConfig;
 import org.eclipse.scout.rt.server.commons.authentication.ServletFilterHelper;
 import org.eclipse.scout.rt.server.commons.authentication.TrivialAccessController;
 import org.eclipse.scout.rt.server.commons.authentication.TrivialAccessController.TrivialAuthConfig;
+
 
 /**
  * <h3>{@link UiServletFilter}</h3> This is the main servlet filter used for the
@@ -30,7 +30,7 @@ public class UiServletFilter implements Filter {
 
 	private TrivialAccessController m_trivialAccessController;
 	private FormBasedAccessController m_formBasedAccessController;
-	private DevelopmentAccessController m_developmentAccessController;
+	private FMilaClientAccessController m_fMilaAccessController;
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
@@ -38,7 +38,7 @@ public class UiServletFilter implements Filter {
 				.withExclusionFilter(filterConfig.getInitParameter("filter-exclude")).withLoginPageInstalled(true));
 		m_formBasedAccessController = BEANS.get(FormBasedAccessController.class)
 				.init(new FormBasedAuthConfig().withCredentialVerifier(BEANS.get(ConfigFileCredentialVerifier.class)));
-		m_developmentAccessController = BEANS.get(DevelopmentAccessController.class).init();
+		m_fMilaAccessController = BEANS.get(FMilaClientAccessController.class).init();
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class UiServletFilter implements Filter {
 			return;
 		}
 
-		if (m_developmentAccessController.handle(req, resp, chain)) {
+		if (m_fMilaAccessController.handle(req, resp, chain)) {
 			return;
 		}
 
@@ -64,7 +64,7 @@ public class UiServletFilter implements Filter {
 
 	@Override
 	public void destroy() {
-		m_developmentAccessController.destroy();
+		m_fMilaAccessController.destroy();
 		m_formBasedAccessController.destroy();
 		m_trivialAccessController.destroy();
 	}

@@ -13,6 +13,7 @@ hs_err_pid*
 
 # Maven
 /target/
+.flattened-pom.xml
 
 # Temporary until migration finished
 /com.4mila.client.feature
