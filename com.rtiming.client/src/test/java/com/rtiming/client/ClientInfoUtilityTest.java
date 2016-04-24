@@ -10,7 +10,9 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
+@RunWith(ClientTestRunner.class)
+@RunWithSubject("admin")
+@RunWithClientSession(TestClientSession.class)
 public class ClientInfoUtilityTest {
 
   @Test
