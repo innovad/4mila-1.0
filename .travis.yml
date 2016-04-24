@@ -2,3 +2,6 @@ language: java
 jdk:
   - oraclejdk8
 script: mvn --batch-mode -f com.4mila.parent/pom.xml clean verify
+cache:
+  directories:
+    - $HOME/.m2
