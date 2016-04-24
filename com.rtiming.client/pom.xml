@@ -77,6 +77,8 @@
 							<cargo.servlet.port>8080</cargo.servlet.port>
 							<cargo.java.home>${java.home}</cargo.java.home>
 							<cargo.start.jvmargs>
+								-Xmx768m 
+								-Xms768m
 								-Xdebug
 								-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000
 								-Xnoagent
