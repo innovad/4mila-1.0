@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.ecard.download.CourseAndClassFromECardForm;
 import com.rtiming.client.ecard.download.FMilaSerialTestPort;
 import com.rtiming.client.ecard.download.processor.SICardV5Processor;
@@ -25,7 +26,7 @@ import com.rtiming.shared.ecard.download.ECardStationDownloadModusCodeType;
 import com.rtiming.shared.event.IEventProcessService;
 import com.rtiming.shared.event.course.ClassCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class CourseAndClassFromECardJobTest {
 
   private EventTestDataProvider event;

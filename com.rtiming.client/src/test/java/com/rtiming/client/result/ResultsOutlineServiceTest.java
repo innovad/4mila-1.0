@@ -9,7 +9,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.ecard.download.DownloadedECardForm;
 import com.rtiming.client.race.RaceForm;
 import com.rtiming.client.test.data.ECardTestDataProvider;
@@ -18,7 +18,7 @@ import com.rtiming.shared.common.report.template.IReportParameters;
 import com.rtiming.shared.results.IResultsOutlineService;
 import com.rtiming.shared.results.SplitTimeReportData;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class ResultsOutlineServiceTest {
 
   private EventWithIndividualValidatedRaceTestDataProvider event;

@@ -14,7 +14,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.settings.city.CityForm.MainBox.CountryField;
 import com.rtiming.client.test.AbstractFormTest;
 import com.rtiming.client.test.data.CountryTestDataProvider;
@@ -28,7 +28,7 @@ import com.rtiming.shared.settings.user.LanguageCodeType;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(ClientSession.class)
+@RunWithClientSession(TestClientSession.class)
 public class CityFormTest extends AbstractFormTest<CityForm> {
 
   private static CountryTestDataProvider defaultCountry;

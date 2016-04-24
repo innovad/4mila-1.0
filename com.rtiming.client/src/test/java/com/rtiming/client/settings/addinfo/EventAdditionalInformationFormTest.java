@@ -10,7 +10,7 @@ import org.eclipse.scout.rt.testing.client.runner.RunWithClientSession;
 import org.eclipse.scout.rt.testing.platform.runner.RunWithSubject;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.settings.addinfo.EventAdditionalInformationForm.MainBox.AdditionalInformationField;
 import com.rtiming.client.settings.addinfo.EventAdditionalInformationForm.MainBox.EventField;
 import com.rtiming.client.test.AbstractFormTest;
@@ -23,7 +23,7 @@ import com.rtiming.shared.settings.addinfo.EventAdditionalInformationFormData;
 import com.rtiming.shared.settings.addinfo.IAdditionalInformationAdministrationProcessService;
 import com.rtiming.shared.settings.addinfo.IEventAdditionalInformationProcessService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class EventAdditionalInformationFormTest extends AbstractFormTest<EventAdditionalInformationForm> {
 
   private AdditionalInformationAdministrationForm addInfo;

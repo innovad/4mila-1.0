@@ -16,11 +16,11 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.test.field.IFormFieldValueProvider;
 import com.rtiming.client.test.field.MaxFormFieldValueProvider;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public abstract class AbstractTablePageTest<T extends AbstractPageWithTable<?>> {
 
   @Test

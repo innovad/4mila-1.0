@@ -10,7 +10,7 @@ import org.eclipse.scout.rt.testing.client.runner.RunWithClientSession;
 import org.eclipse.scout.rt.testing.platform.runner.RunWithSubject;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.map.EventMapForm.MainBox.EventField;
 import com.rtiming.client.map.EventMapForm.MainBox.MapField;
 import com.rtiming.client.test.AbstractFormTest;
@@ -22,7 +22,7 @@ import com.rtiming.shared.event.EventMapFormData;
 import com.rtiming.shared.map.IEventMapProcessService;
 import com.rtiming.shared.map.IMapProcessService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class EventMapFormTest extends AbstractFormTest<EventMapForm> {
 
   private MapForm map;

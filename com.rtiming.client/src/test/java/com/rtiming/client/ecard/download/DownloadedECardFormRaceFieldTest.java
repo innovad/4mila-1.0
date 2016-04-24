@@ -13,12 +13,12 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.test.data.EventWithIndividualValidatedRaceTestDataProvider;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(ClientSession.class)
+@RunWithClientSession(TestClientSession.class)
 public class DownloadedECardFormRaceFieldTest {
 
   private EventWithIndividualValidatedRaceTestDataProvider event;

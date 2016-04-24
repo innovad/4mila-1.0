@@ -15,7 +15,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.event.EventForm;
 import com.rtiming.client.test.data.EventTestDataProvider;
 import com.rtiming.client.test.data.EventWithIndividualValidatedRaceTestDataProvider;
@@ -24,7 +24,7 @@ import com.rtiming.shared.ecard.download.PunchingSystemCodeType;
 import com.rtiming.shared.event.IEventProcessService;
 import com.rtiming.shared.race.RaceStatusCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class RaceFormValidationTest {
 
   private EventWithIndividualValidatedRaceTestDataProvider event;

@@ -9,12 +9,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.test.AbstractTablePageTest;
 import com.rtiming.client.test.data.EventTestDataProvider;
 import com.rtiming.shared.event.IEventProcessService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class EventAdditionalInformationTablePageTest extends AbstractTablePageTest<EventAdditionalInformationTablePage> {
 
   private EventTestDataProvider event;

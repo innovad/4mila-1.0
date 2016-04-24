@@ -11,13 +11,13 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.test.data.EntryTestDataProvider;
 import com.rtiming.client.test.data.EventWithIndividualClassTestDataProvider;
 import com.rtiming.client.test.data.EventWithIndividualValidatedRaceTestDataProvider;
 import com.rtiming.shared.event.course.ControlStatusCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class SplitTimesPosPrinterDBTest {
 
   private EventWithIndividualClassTestDataProvider event;

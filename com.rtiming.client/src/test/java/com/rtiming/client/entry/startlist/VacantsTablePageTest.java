@@ -19,7 +19,7 @@ import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.entry.EntryForm;
 import com.rtiming.client.entry.startlist.StartlistSettingsTablePage.Table.CreateStartlistMenu;
 import com.rtiming.client.entry.startlist.VacantsTablePage.Table.NewEntryMenu;
@@ -33,7 +33,7 @@ import com.rtiming.client.test.data.EventWithIndividualClassTestDataProvider;
 import com.rtiming.client.test.data.RunnerTestDataProvider;
 import com.rtiming.client.test.field.FieldValue;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class VacantsTablePageTest extends AbstractTablePageTest<VacantsTablePage> {
 
   private EventTestDataProvider event;

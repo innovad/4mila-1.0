@@ -7,11 +7,11 @@ import org.eclipse.scout.rt.testing.platform.runner.RunWithSubject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(ClientSession.class)
+@RunWithClientSession(TestClientSession.class)
 public class PosPrinterTest {
 
   @Test(expected = ProcessingException.class)

@@ -15,7 +15,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.settings.addinfo.AdditionalInformationAdministrationForm.MainBox.EntityField;
 import com.rtiming.client.settings.addinfo.AdditionalInformationAdministrationForm.MainBox.MandatoryField;
 import com.rtiming.client.settings.addinfo.AdditionalInformationAdministrationForm.MainBox.MaximumField;
@@ -33,7 +33,7 @@ import com.rtiming.shared.settings.addinfo.AdditionalInformationTypeCodeType;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(ClientSession.class)
+@RunWithClientSession(TestClientSession.class)
 public class RegistrationsSearchFormTest {
 
   private AdditionalInformationAdministrationTestDataProvider admin;

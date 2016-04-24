@@ -9,10 +9,11 @@ import org.junit.Before;
 import org.junit.runner.RunWith;
 
 import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.test.AbstractTablePageTest;
 import com.rtiming.client.test.data.EventWithIndividualClassTestDataProvider;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class EntriesMissingTablePageTest extends AbstractTablePageTest<EntriesMissingTablePage> {
 
   private EventWithIndividualClassTestDataProvider event;

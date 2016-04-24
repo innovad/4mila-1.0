@@ -16,7 +16,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.settings.account.AccountForm;
 import com.rtiming.client.test.FormTestUtility;
 import com.rtiming.shared.Texts;
@@ -24,7 +24,7 @@ import com.rtiming.shared.test.helper.ITestingJPAService;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(ClientSession.class)
+@RunWithClientSession(TestClientSession.class)
 public class SetupWizardTest {
 
   @Test

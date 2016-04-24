@@ -18,7 +18,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.dataexchange.DataExchangeFinalizationForm;
 import com.rtiming.client.dataexchange.DataExchangePreviewForm;
 import com.rtiming.client.dataexchange.DataExchangeStartForm;
@@ -34,7 +34,7 @@ import com.rtiming.shared.test.helper.ITestingJPAService;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(ClientSession.class)
+@RunWithClientSession(TestClientSession.class)
 public class SwissPostCityInterfaceTest {
 
   @Before

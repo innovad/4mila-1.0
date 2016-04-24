@@ -15,7 +15,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.entry.EntryForm.MainBox.TabBox.FeesBox.FeesField;
 import com.rtiming.client.entry.payment.PaymentsTablePage;
 import com.rtiming.client.event.EventClassForm;
@@ -47,7 +47,7 @@ import com.rtiming.client.test.field.FieldValue;
 import com.rtiming.shared.common.EntityCodeType;
 import com.rtiming.shared.settings.addinfo.AdditionalInformationTypeCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class EntryFormCashPaymentTest {
 
   private AdditionalInformationAdministrationTestDataProvider addInfo;

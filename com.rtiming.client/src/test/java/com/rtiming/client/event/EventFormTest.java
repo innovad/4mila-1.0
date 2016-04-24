@@ -28,6 +28,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.event.EventForm.MainBox.FinishTimeField;
 import com.rtiming.client.event.EventForm.MainBox.ZeroTimeField;
 import com.rtiming.client.test.AbstractFormTest;
@@ -37,7 +38,7 @@ import com.rtiming.shared.event.IEventProcessService;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(ClientSession.class)
+@RunWithClientSession(TestClientSession.class)
 public class EventFormTest extends AbstractFormTest<EventForm> {
 
   @Override

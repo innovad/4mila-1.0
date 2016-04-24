@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.common.ui.fields.AbstractCodeBox.ShortcutField;
 import com.rtiming.client.entry.startblock.StartblockForm;
 import com.rtiming.client.entry.startblock.StartblockForm.MainBox.CodeBox;
@@ -23,7 +23,7 @@ import com.rtiming.shared.entry.startblock.StartblockFormData;
 import com.rtiming.shared.settings.CodeFormData;
 import com.rtiming.shared.settings.ICodeProcessService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class StartblockDataCacherTest {
 
   private EventTestDataProvider event;

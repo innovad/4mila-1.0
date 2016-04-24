@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.test.AbstractFormTest;
 import com.rtiming.client.test.FormTestUtility;
 import com.rtiming.shared.common.database.sql.BeanUtility;
@@ -20,7 +21,7 @@ import com.rtiming.shared.runner.RunnerFormData;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(ClientSession.class)
+@RunWithClientSession(TestClientSession.class)
 public class RunnerFormTest extends AbstractFormTest<RunnerForm> {
 
   @Override

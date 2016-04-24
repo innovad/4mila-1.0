@@ -10,12 +10,12 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.ecard.download.RaceControlsTableForm;
 import com.rtiming.client.test.FMilaClientTestUtility;
 import com.rtiming.client.test.data.EventWithIndividualValidatedRaceTestDataProvider;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class RaceControlsTableFormTest {
 
   private static EventWithIndividualValidatedRaceTestDataProvider event;

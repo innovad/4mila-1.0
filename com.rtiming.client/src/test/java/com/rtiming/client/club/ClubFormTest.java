@@ -15,7 +15,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.settings.addinfo.AbstractAdditionalInformationField;
 import com.rtiming.client.settings.addinfo.AdditionalInformationAdministrationForm.MainBox.DefaultValueTextField;
 import com.rtiming.client.settings.addinfo.AdditionalInformationAdministrationForm.MainBox.EntityField;
@@ -39,7 +39,7 @@ import com.rtiming.shared.settings.addinfo.IAdditionalInformationAdministrationP
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(ClientSession.class)
+@RunWithClientSession(TestClientSession.class)
 public class ClubFormTest extends AbstractFormTest<ClubForm> {
 
   private AdditionalInformationAdministrationTestDataProvider admin;

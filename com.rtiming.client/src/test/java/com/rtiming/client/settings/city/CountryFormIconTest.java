@@ -8,12 +8,12 @@ import org.eclipse.scout.testing.client.ScoutClientAssert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.test.data.CountryTestDataProvider;
 import com.rtiming.shared.settings.city.CountryFormData;
 import com.rtiming.shared.settings.city.ICountryProcessService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class CountryFormIconTest {
 
   @Test

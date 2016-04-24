@@ -17,6 +17,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.entry.startlist.StartlistSettingsTablePage.Table.DeleteMenu;
 import com.rtiming.client.test.data.EventWithIndividualClassTestDataProvider;
 import com.rtiming.shared.entry.startlist.IStartlistService;
@@ -24,7 +25,7 @@ import com.rtiming.shared.entry.startlist.StartlistSettingOptionCodeType;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(ClientSession.class)
+@RunWithClientSession(TestClientSession.class)
 public class StartlistSettingsTablePageDeletionTest {
 
   private EventWithIndividualClassTestDataProvider event;

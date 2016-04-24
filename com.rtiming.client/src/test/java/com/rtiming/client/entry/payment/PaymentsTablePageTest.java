@@ -12,7 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.entry.RegistrationOutline;
 import com.rtiming.client.entry.payment.PaymentsTablePage.Table.DeleteMenu;
 import com.rtiming.client.entry.payment.PaymentsTablePage.Table.EditMenu;
@@ -26,7 +26,7 @@ import com.rtiming.shared.entry.payment.IPaymentProcessService;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(ClientSession.class)
+@RunWithClientSession(TestClientSession.class)
 public class PaymentsTablePageTest extends AbstractTablePageTest<PaymentsTablePage> {
 
   private static CurrencyTestDataProvider currency;

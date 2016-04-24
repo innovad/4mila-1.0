@@ -20,7 +20,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.entry.EntryForm.MainBox.TabBox.RacesBox.RacesField.Table.AddRunnerMenu;
 import com.rtiming.client.entry.startlist.StartlistSettingForm;
 import com.rtiming.client.runner.RunnerForm.MainBox.BirthdateField;
@@ -44,7 +44,7 @@ import com.rtiming.shared.settings.currency.ICurrencyProcessService;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(ClientSession.class)
+@RunWithClientSession(TestClientSession.class)
 public class EntryFormDBTest {
 
   private EventWithIndividualClassTestDataProvider event;

@@ -9,7 +9,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.event.course.CoursesTablePage.Table.NewCoursesWithSelectedVariantsMenu;
 import com.rtiming.client.event.course.variant.CourseVariantsTablePage;
 import com.rtiming.client.test.AbstractTablePageTest;
@@ -22,7 +22,7 @@ import com.rtiming.shared.event.course.CourseFormData;
 import com.rtiming.shared.event.course.ICourseProcessService;
 import com.rtiming.shared.services.code.CourseForkTypeCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class CoursesTablePageTest extends AbstractTablePageTest<CoursesTablePage> {
 
   @Override

@@ -17,7 +17,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.test.data.EventWithIndividualClassTestDataProvider;
 import com.rtiming.shared.FMilaUtility;
 import com.rtiming.shared.entry.startlist.BibNoOrderCodeType;
@@ -27,7 +27,7 @@ import com.rtiming.shared.entry.startlist.StartlistTypeCodeType;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(ClientSession.class)
+@RunWithClientSession(TestClientSession.class)
 public class StartlistSettingFormTest {
 
   private EventWithIndividualClassTestDataProvider event;

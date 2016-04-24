@@ -11,14 +11,14 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.dataexchange.cache.DataExchangeFormUtility;
 import com.rtiming.shared.dataexchange.AbstractImportExportCode;
 import com.rtiming.shared.dataexchange.ImportExportFormatCodeType;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(ClientSession.class)
+@RunWithClientSession(TestClientSession.class)
 public class DataExchangeStartFormTest {
 
   @Before

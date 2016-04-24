@@ -12,7 +12,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.race.RaceForm.MainBox.TabBox.RaceStatusBox.ManualStatusField;
 import com.rtiming.client.race.RaceForm.MainBox.TabBox.RaceStatusBox.RaceStatusField;
 import com.rtiming.client.test.AbstractFormTest;
@@ -21,7 +21,7 @@ import com.rtiming.client.test.data.EventWithIndividualClassTestDataProvider;
 import com.rtiming.client.test.field.FieldValue;
 import com.rtiming.shared.race.RaceStatusCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class RaceFormTest extends AbstractFormTest<RaceForm> {
 
   private static EventWithIndividualClassTestDataProvider event;

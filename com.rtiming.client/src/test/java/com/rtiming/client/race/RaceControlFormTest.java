@@ -16,7 +16,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.ecard.download.PunchForm;
 import com.rtiming.client.race.RaceControlForm.MainBox.ManualStatusField;
 import com.rtiming.client.race.RaceControlForm.MainBox.ShiftTimeField;
@@ -41,7 +41,7 @@ import com.rtiming.shared.race.RaceStatusCodeType;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(ClientSession.class)
+@RunWithClientSession(TestClientSession.class)
 public class RaceControlFormTest extends AbstractFormTest<RaceControlForm> {
 
   private EventWithIndividualClassTestDataProvider eventForm;

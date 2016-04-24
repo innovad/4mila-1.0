@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.race.RaceForm;
 import com.rtiming.client.test.AbstractTablePageTest;
 import com.rtiming.client.test.data.ClubTestDataProvider;
@@ -20,7 +21,7 @@ import com.rtiming.client.test.data.EventWithIndividualValidatedRaceTestDataProv
 import com.rtiming.shared.race.RaceStatusCodeType;
 import com.rtiming.shared.settings.IDefaultProcessService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class ResultsTablePageTest extends AbstractTablePageTest<ResultsTablePage> {
 
   private static EventWithIndividualValidatedRaceTestDataProvider event;

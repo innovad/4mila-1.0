@@ -16,7 +16,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.race.RaceControlsTablePage;
 import com.rtiming.client.test.data.ControlTestData;
 import com.rtiming.client.test.data.EventWithIndividualValidatedRaceTestDataProvider;
@@ -24,7 +24,7 @@ import com.rtiming.shared.event.course.ControlStatusCodeType;
 import com.rtiming.shared.services.code.CourseForkTypeCodeType;
 import com.rtiming.shared.services.code.CourseGenerationCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class CourseLoopCalculatorClientTest {
 
   private EventWithIndividualValidatedRaceTestDataProvider event;

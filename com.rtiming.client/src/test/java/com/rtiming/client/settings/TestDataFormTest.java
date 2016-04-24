@@ -12,7 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.runner.RunnerForm.MainBox.ClubField;
 import com.rtiming.client.runner.RunnerForm.MainBox.ECardField;
 import com.rtiming.client.runner.RunnerForm.MainBox.SexField;
@@ -25,7 +25,7 @@ import com.rtiming.client.test.data.RunnerTestDataProvider;
 import com.rtiming.client.test.field.FieldValue;
 import com.rtiming.shared.runner.SexCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class TestDataFormTest {
 
   private EventWithIndividualClassTestDataProvider event;

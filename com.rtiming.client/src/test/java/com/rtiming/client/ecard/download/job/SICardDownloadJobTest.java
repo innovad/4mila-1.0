@@ -16,6 +16,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.ecard.download.FMilaSerialTestPort;
 import com.rtiming.client.ecard.download.processor.TestSICardProcessor;
 import com.rtiming.client.entry.EntryForm;
@@ -39,7 +40,7 @@ import com.rtiming.shared.settings.IDefaultProcessService;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(ClientSession.class)
+@RunWithClientSession(TestClientSession.class)
 public class SICardDownloadJobTest {
 
   private ECardStationTestDataProvider station;

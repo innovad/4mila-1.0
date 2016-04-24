@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.ranking.RankingEventForm.MainBox.EventField;
 import com.rtiming.client.ranking.RankingEventForm.MainBox.SortCodeField;
 import com.rtiming.client.test.FormTestUtility;
@@ -23,7 +24,7 @@ import com.rtiming.shared.race.TimePrecisionCodeType;
 import com.rtiming.shared.ranking.RankingFormatCodeType;
 import com.rtiming.shared.ranking.RankingFormulaTypeCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class RankingEventFormValidationTest {
 
   private RankingTestDataProvider ranking;

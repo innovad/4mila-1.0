@@ -14,6 +14,7 @@ import org.junit.runner.RunWith;
 
 import com.rtiming.client.ClientSession;
 import com.rtiming.client.FMilaClientSyncJob;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.race.RaceForm;
 import com.rtiming.client.test.FMilaClientTestUtility;
 import com.rtiming.client.test.TestingRunnable;
@@ -25,7 +26,7 @@ import com.rtiming.shared.settings.IDefaultProcessService;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(ClientSession.class)
+@RunWithClientSession(TestClientSession.class)
 public class EntriesTablePageMissingTest {
 
   private EventWithIndividualClassTestDataProvider event;

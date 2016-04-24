@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.common.report.ReportType;
 import com.rtiming.client.event.EventsTablePage;
 import com.rtiming.shared.services.code.ReportTypeCodeType;
@@ -19,7 +20,7 @@ import com.rtiming.shared.services.code.ReportTypeCodeType;
 /**
  * @author amo
  */
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class FMilaGenericTableReportTest {
 
   @Test(expected = IllegalArgumentException.class)

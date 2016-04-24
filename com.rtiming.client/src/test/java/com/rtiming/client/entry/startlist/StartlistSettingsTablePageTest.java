@@ -19,6 +19,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.entry.EntriesSearchForm;
 import com.rtiming.client.entry.EntriesTablePage;
 import com.rtiming.client.entry.startlist.StartlistSettingsTablePage.Table.ApplySameStartlistSettingMenu;
@@ -43,7 +44,7 @@ import com.rtiming.shared.settings.IDefaultProcessService;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(ClientSession.class)
+@RunWithClientSession(TestClientSession.class)
 public class StartlistSettingsTablePageTest extends AbstractTablePageTest<StartlistSettingsTablePage> {
 
   private EventWithIndividualClassTestDataProvider event;

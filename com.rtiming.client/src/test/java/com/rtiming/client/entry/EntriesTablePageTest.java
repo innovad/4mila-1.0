@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.entry.startlist.StartListNodePage;
 import com.rtiming.client.event.EventNodePage;
 import com.rtiming.client.event.EventsOutline;
@@ -22,7 +23,7 @@ import com.rtiming.client.test.data.EventWithIndividualClassTestDataProvider;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(ClientSession.class)
+@RunWithClientSession(TestClientSession.class)
 public class EntriesTablePageTest extends AbstractTablePageTest<EntriesTablePage> {
 
   private EventWithIndividualClassTestDataProvider event;

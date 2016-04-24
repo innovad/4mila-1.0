@@ -17,7 +17,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.settings.addinfo.AdditionalInformationAdministrationForm.MainBox.EntityField;
 import com.rtiming.client.settings.addinfo.AdditionalInformationAdministrationForm.MainBox.MandatoryField;
 import com.rtiming.client.settings.addinfo.AdditionalInformationAdministrationForm.MainBox.MaximumField;
@@ -33,7 +33,7 @@ import com.rtiming.shared.settings.addinfo.AdditionalInformationAdministrationFo
 import com.rtiming.shared.settings.addinfo.AdditionalInformationTypeCodeType;
 import com.rtiming.shared.settings.addinfo.IAdditionalInformationAdministrationProcessService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class AdditionalInformationAdministrationFormTest extends AbstractFormTest<AdditionalInformationAdministrationForm> {
 
   private RunnerTestDataProvider runner;

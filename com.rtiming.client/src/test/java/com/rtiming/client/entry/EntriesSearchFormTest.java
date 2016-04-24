@@ -17,6 +17,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.settings.addinfo.AdditionalInformationAdministrationForm;
 import com.rtiming.client.settings.addinfo.AdditionalInformationAdministrationForm.MainBox.EntityField;
 import com.rtiming.client.settings.addinfo.AdditionalInformationAdministrationForm.MainBox.MandatoryField;
@@ -35,7 +36,7 @@ import com.rtiming.shared.entry.SharedCache;
 import com.rtiming.shared.settings.addinfo.AdditionalInformationCodeType;
 import com.rtiming.shared.settings.addinfo.AdditionalInformationTypeCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class EntriesSearchFormTest {
 
   private AdditionalInformationAdministrationTestDataProvider admin;

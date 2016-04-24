@@ -7,7 +7,7 @@ import org.eclipse.scout.rt.testing.client.runner.RunWithClientSession;
 import org.eclipse.scout.rt.testing.platform.runner.RunWithSubject;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.settings.CodeForm;
 import com.rtiming.client.test.AbstractFormTest;
 import com.rtiming.client.test.FormTestUtility;
@@ -17,7 +17,7 @@ import com.rtiming.shared.settings.CodeFormData;
 import com.rtiming.shared.settings.ICodeProcessService;
 import com.rtiming.shared.settings.clazz.IAgeProcessService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class AgeFormTest extends AbstractFormTest<AgeForm> {
 
   private CodeForm clazz;

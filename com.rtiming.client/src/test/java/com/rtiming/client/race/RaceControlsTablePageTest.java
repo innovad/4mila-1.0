@@ -19,6 +19,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.event.course.ReplacementControlForm;
 import com.rtiming.client.test.AbstractTablePageTest;
 import com.rtiming.client.test.data.ControlTestData;
@@ -33,7 +34,7 @@ import com.rtiming.shared.race.IRaceService;
 import com.rtiming.shared.race.RaceStatusCodeType;
 import com.rtiming.shared.services.code.CourseGenerationCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class RaceControlsTablePageTest extends AbstractTablePageTest<RaceControlsTablePage> {
 
   private EventWithIndividualValidatedRaceTestDataProvider event;

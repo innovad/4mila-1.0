@@ -9,7 +9,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.test.AbstractFormTest;
 import com.rtiming.client.test.FormTestUtility;
 import com.rtiming.client.test.data.ECardStationTestDataProvider;
@@ -18,7 +18,7 @@ import com.rtiming.client.test.data.EventTestDataProvider;
 import com.rtiming.shared.ecard.download.DownloadedECardFormData;
 import com.rtiming.shared.ecard.download.IDownloadedECardProcessService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class PunchFormTest extends AbstractFormTest<PunchForm> {
 
   private DownloadedECardForm punchSession;

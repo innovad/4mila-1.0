@@ -14,7 +14,7 @@ import org.eclipse.scout.testing.client.ScoutClientAssert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.settings.account.AccountForm.MainBox.AccountBox.EMailField;
 import com.rtiming.client.settings.account.AccountForm.MainBox.AccountBox.PasswordField;
 import com.rtiming.client.settings.account.AccountForm.MainBox.AccountBox.RepeatPasswordField;
@@ -24,7 +24,7 @@ import com.rtiming.client.test.FormTestUtility;
 import com.rtiming.client.test.field.FieldValue;
 import com.rtiming.shared.test.helper.ITestingJPAService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class AccountFormTest extends AbstractFormTest<AccountForm> {
 
   @Override

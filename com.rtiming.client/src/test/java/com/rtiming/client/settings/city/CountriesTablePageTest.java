@@ -11,7 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.settings.city.CountriesTablePage.Table.CountryUidColumn;
 import com.rtiming.client.settings.city.CountriesTablePage.Table.DeleteMenu;
 import com.rtiming.client.settings.city.CountriesTablePage.Table.EditMenu;
@@ -19,7 +19,7 @@ import com.rtiming.client.settings.city.CountriesTablePage.Table.NewMenu;
 import com.rtiming.client.test.AbstractEntityTablePageTest;
 import com.rtiming.client.test.data.CountryTestDataProvider;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class CountriesTablePageTest extends AbstractEntityTablePageTest<CountriesTablePage, Long> {
 
   private CountryTestDataProvider country;

@@ -17,7 +17,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.test.FMilaClientTestUtility;
 import com.rtiming.client.test.data.CountryTestDataProvider;
 import com.rtiming.client.test.data.CurrencyTestDataProvider;
@@ -30,7 +30,7 @@ import com.rtiming.shared.settings.user.UserFormData;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(ClientSession.class)
+@RunWithClientSession(TestClientSession.class)
 public class SetupFormTest {
 
   private Long defaultCountryUid;

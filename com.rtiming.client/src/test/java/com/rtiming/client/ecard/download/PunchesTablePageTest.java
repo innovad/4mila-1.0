@@ -14,13 +14,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.ecard.download.PunchesTablePage.Table.DeleteMenu;
 import com.rtiming.client.test.AbstractTablePageTest;
 import com.rtiming.client.test.data.EventWithIndividualValidatedRaceTestDataProvider;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(ClientSession.class)
+@RunWithClientSession(TestClientSession.class)
 public class PunchesTablePageTest extends AbstractTablePageTest<PunchesTablePage> {
 
   private EventWithIndividualValidatedRaceTestDataProvider event;

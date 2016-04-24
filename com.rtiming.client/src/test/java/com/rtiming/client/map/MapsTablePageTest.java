@@ -11,7 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.map.MapsTablePage.Table.DeleteMenu;
 import com.rtiming.client.map.MapsTablePage.Table.EditMenu;
 import com.rtiming.client.map.MapsTablePage.Table.MapNrColumn;
@@ -19,7 +19,7 @@ import com.rtiming.client.map.MapsTablePage.Table.NewMenu;
 import com.rtiming.client.test.AbstractEntityTablePageTest;
 import com.rtiming.client.test.data.MapTestDataProvider;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class MapsTablePageTest extends AbstractEntityTablePageTest<MapsTablePage, Long> {
 
   private MapTestDataProvider map;

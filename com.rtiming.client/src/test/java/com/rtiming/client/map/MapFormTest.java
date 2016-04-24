@@ -22,6 +22,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.test.AbstractFormTest;
 import com.rtiming.client.test.data.MapTestDataProvider;
 import com.rtiming.shared.FMilaUtility;
@@ -32,7 +33,7 @@ import com.rtiming.shared.map.MapFormData;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(ClientSession.class)
+@RunWithClientSession(TestClientSession.class)
 public class MapFormTest extends AbstractFormTest<MapForm> {
 
   @Override

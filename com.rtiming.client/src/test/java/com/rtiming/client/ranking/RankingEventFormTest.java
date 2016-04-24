@@ -10,6 +10,7 @@ import org.eclipse.scout.rt.testing.platform.runner.RunWithSubject;
 import org.junit.runner.RunWith;
 
 import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.ranking.AbstractRankingBox.FormulaBox.FormulaTypeField;
 import com.rtiming.client.ranking.RankingEventForm.MainBox.EventField;
 import com.rtiming.client.test.AbstractFormTest;
@@ -19,7 +20,7 @@ import com.rtiming.client.test.field.FieldValue;
 import com.rtiming.shared.dao.RtRankingEventKey;
 import com.rtiming.shared.ranking.RankingFormulaTypeCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class RankingEventFormTest extends AbstractFormTest<RankingEventForm> {
 
   private RankingTestDataProvider ranking;

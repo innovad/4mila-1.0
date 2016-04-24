@@ -10,7 +10,7 @@ import org.eclipse.scout.rt.testing.client.runner.RunWithClientSession;
 import org.eclipse.scout.rt.testing.platform.runner.RunWithSubject;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.settings.addinfo.AdditionalInformationAdministrationForm.MainBox.EntityField;
 import com.rtiming.client.test.AbstractDefaultLookupCallTest;
 import com.rtiming.client.test.data.AdditionalInformationAdministrationTestDataProvider;
@@ -18,7 +18,7 @@ import com.rtiming.client.test.field.FieldValue;
 import com.rtiming.shared.common.EntityCodeType;
 import com.rtiming.shared.settings.addinfo.AdditionalInformationLookupCall;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class AdditionalInformationLookupCallTest extends AbstractDefaultLookupCallTest {
 
   private AdditionalInformationAdministrationTestDataProvider addInfo;

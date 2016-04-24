@@ -13,7 +13,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.map.EventMapForm;
 import com.rtiming.client.test.AbstractTablePageTest;
 import com.rtiming.client.test.data.EventWithIndividualValidatedRaceTestDataProvider;
@@ -25,7 +25,7 @@ import com.rtiming.shared.map.IGoogleEarthService;
 import com.rtiming.shared.map.IMapProcessService;
 import com.rtiming.shared.map.MapFormData;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class ControlsTablePageTest extends AbstractTablePageTest<ControlsTablePage> {
 
   private EventWithIndividualValidatedRaceTestDataProvider event;

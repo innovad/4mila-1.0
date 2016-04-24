@@ -14,6 +14,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.ecard.download.PunchForm;
 import com.rtiming.client.result.ResultsClassesTablePage;
 import com.rtiming.client.result.ResultsClubsTablePage;
@@ -28,7 +29,7 @@ import com.rtiming.client.test.data.EventWithIndividualClassTestDataProvider;
 import com.rtiming.shared.event.course.ControlTypeCodeType;
 import com.rtiming.shared.race.IRaceService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class ResultReportTest {
 
   private EventWithIndividualClassTestDataProvider event;

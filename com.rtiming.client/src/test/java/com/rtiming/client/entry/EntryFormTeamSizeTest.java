@@ -12,14 +12,14 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.entry.EntryForm.MainBox.TabBox.RacesBox.RacesField.Table.AddRunnerMenu;
 import com.rtiming.client.test.FMilaClientTestUtility;
 import com.rtiming.client.test.data.CurrencyTestDataProvider;
 import com.rtiming.client.test.data.EventWithTeamCombinedCourseClassTestDataProvider;
 import com.rtiming.client.test.data.RunnerTestDataProvider;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class EntryFormTeamSizeTest {
 
   private static CurrencyTestDataProvider currency;

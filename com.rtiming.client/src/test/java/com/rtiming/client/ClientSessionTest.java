@@ -16,7 +16,7 @@ import com.rtiming.client.event.EventsOutline;
 import com.rtiming.client.result.ResultsOutline;
 import com.rtiming.client.settings.SettingsOutline;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class ClientSessionTest {
   private ClientSession m_clientSession;
 

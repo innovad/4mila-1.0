@@ -23,7 +23,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.rtiming.client.AbstractDoubleField;
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.entry.EntryForm;
 import com.rtiming.client.event.EventClassForm;
 import com.rtiming.client.runner.RunnerForm;
@@ -56,7 +56,7 @@ import com.rtiming.shared.settings.fee.IFeeGroupProcessService;
 
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(ClientSession.class)
+@RunWithClientSession(TestClientSession.class)
 public class FeeFormTest extends AbstractFormTest<FeeForm> {
 
   private FeeGroupForm feeGroup;

@@ -11,13 +11,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.race.RaceForm;
 import com.rtiming.client.test.AbstractTablePageTest;
 import com.rtiming.client.test.data.EntryTestDataProvider;
 import com.rtiming.client.test.data.EventWithIndividualClassTestDataProvider;
 import com.rtiming.shared.race.RaceStatusCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class EntriesManualRaceStatusTablePageTest extends AbstractTablePageTest<EntriesManualRaceStatusTablePage> {
 
   private EventWithIndividualClassTestDataProvider event;

@@ -16,7 +16,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.common.report.template.ReportTemplateForm;
 import com.rtiming.client.common.report.template.ReportTemplateForm.MainBox.HelpLink;
 import com.rtiming.client.common.report.template.TemplateBox;
@@ -29,7 +29,7 @@ import com.rtiming.shared.services.code.ReportTypeCodeType;
  */
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(ClientSession.class)
+@RunWithClientSession(TestClientSession.class)
 public class ReportTemplateFormTest extends AbstractFormTest<ReportTemplateForm> {
 
   @Override

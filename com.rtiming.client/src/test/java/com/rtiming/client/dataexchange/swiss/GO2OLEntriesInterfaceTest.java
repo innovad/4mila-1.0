@@ -13,6 +13,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.entry.EntriesSearchForm;
 import com.rtiming.client.entry.EntriesTablePage;
 import com.rtiming.client.entry.EntryForm;
@@ -34,7 +35,7 @@ import com.rtiming.shared.settings.currency.CurrencyFormData;
 import com.rtiming.shared.settings.currency.ICurrencyProcessService;
 import com.rtiming.shared.test.helper.ITestingJPAService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class GO2OLEntriesInterfaceTest {
 
   private EventTestDataProvider event;

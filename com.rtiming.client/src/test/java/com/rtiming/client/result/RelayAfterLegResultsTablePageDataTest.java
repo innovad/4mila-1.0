@@ -12,12 +12,12 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.event.course.EventClassesTablePage;
 import com.rtiming.client.result.RelayTableCustomizer.RelayTimeColumn;
 import com.rtiming.client.test.data.EventWithRelayValidatedRaceTestDataProvider;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class RelayAfterLegResultsTablePageDataTest {
 
   private static EventWithRelayValidatedRaceTestDataProvider relay;

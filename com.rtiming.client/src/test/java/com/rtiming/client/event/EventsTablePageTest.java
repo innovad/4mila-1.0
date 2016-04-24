@@ -15,6 +15,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.event.EventsTablePage.Table.DeleteMenu;
 import com.rtiming.client.event.EventsTablePage.Table.EditMenu;
 import com.rtiming.client.event.EventsTablePage.Table.EventNrColumn;
@@ -24,7 +25,7 @@ import com.rtiming.client.test.data.EventTestDataProvider;
 import com.rtiming.shared.common.database.sql.EventBean;
 import com.rtiming.shared.event.IEventProcessService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class EventsTablePageTest extends AbstractEntityTablePageTest<EventsTablePage, Long> {
 
   private EventTestDataProvider event;

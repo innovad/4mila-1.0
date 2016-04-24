@@ -13,6 +13,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.runner.AbstractAddressBox.CityField;
 import com.rtiming.client.runner.AbstractAddressBox.FaxField;
 import com.rtiming.client.runner.AbstractAddressBox.MobileField;
@@ -25,7 +26,7 @@ import com.rtiming.client.test.data.RunnerTestDataProvider;
 import com.rtiming.client.test.field.FieldValue;
 import com.rtiming.shared.common.database.sql.RunnerBean;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class EntryFormAddressTest {
 
   private RunnerTestDataProvider runner;

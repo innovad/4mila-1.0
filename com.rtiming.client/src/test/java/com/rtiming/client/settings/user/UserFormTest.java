@@ -17,7 +17,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.settings.user.UserForm.MainBox.PasswordField;
 import com.rtiming.client.settings.user.UserForm.MainBox.RepeatPasswordField;
 import com.rtiming.client.settings.user.UserForm.MainBox.UsernameField;
@@ -28,7 +28,7 @@ import com.rtiming.shared.dao.RtUserKey;
 import com.rtiming.shared.settings.user.IUserProcessService;
 import com.rtiming.shared.settings.user.LanguageCodeType;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class UserFormTest extends AbstractFormTest<UserForm> {
 
   @Override

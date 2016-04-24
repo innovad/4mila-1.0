@@ -11,7 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.runner.RunnersTablePage.Table.DeleteMenu;
 import com.rtiming.client.runner.RunnersTablePage.Table.EditMenu;
 import com.rtiming.client.runner.RunnersTablePage.Table.NewMenu;
@@ -19,7 +19,7 @@ import com.rtiming.client.runner.RunnersTablePage.Table.RunnerNrColumn;
 import com.rtiming.client.test.AbstractEntityTablePageTest;
 import com.rtiming.client.test.data.RunnerTestDataProvider;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class RunnersTablePageTest extends AbstractEntityTablePageTest<RunnersTablePage, Long> {
 
   private RunnerTestDataProvider runner;

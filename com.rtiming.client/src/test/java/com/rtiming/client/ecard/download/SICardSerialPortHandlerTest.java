@@ -15,6 +15,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.ecard.download.processor.SICardV5Processor;
 import com.rtiming.client.ecard.download.processor.SICardV6Processor;
 import com.rtiming.client.test.data.ECardStationTestDataProvider;
@@ -25,7 +26,7 @@ import com.rtiming.shared.ecard.download.IDownloadedECardProcessService;
 import com.rtiming.shared.event.IEventProcessService;
 import com.rtiming.shared.test.helper.ITestingJPAService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class SICardSerialPortHandlerTest {
 
   private EventTestDataProvider event;

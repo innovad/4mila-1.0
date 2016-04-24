@@ -27,6 +27,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 
 import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.entry.EntryForm.MainBox.TabBox.EventsBox.EventsField;
 import com.rtiming.client.entry.EntryForm.MainBox.TabBox.RacesBox.RacesField.Table;
 import com.rtiming.client.entry.EntryForm.MainBox.TabBox.RacesBox.RacesField.Table.EditMenu;
@@ -61,7 +62,7 @@ import com.rtiming.shared.settings.fee.IFeeProcessService;
  */
 @RunWith(ClientTestRunner.class)
 @RunWithSubject("admin")
-@RunWithClientSession(ClientSession.class)
+@RunWithClientSession(TestClientSession.class)
 public class EntryFormTest {
 
   @SuppressWarnings("rawtypes")

@@ -16,6 +16,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.ecard.download.FMilaSerialTestPort;
 import com.rtiming.client.ecard.download.util.ByteUtility;
 import com.rtiming.client.test.data.ECardStationTestDataProvider;
@@ -25,7 +26,7 @@ import com.rtiming.shared.FMilaUtility;
 import com.rtiming.shared.common.database.sql.EventBean;
 import com.rtiming.shared.event.IEventProcessService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class SICardV8FamilyProcessorTest {
 
   private EventWithIndividualClassTestDataProvider event;

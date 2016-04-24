@@ -13,7 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.rtiming.client.ClientSession;
+import com.rtiming.client.TestClientSession;
 import com.rtiming.client.ecard.download.PunchForm;
 import com.rtiming.client.entry.EntriesClassesTablePage;
 import com.rtiming.client.entry.EntriesClubsTablePage;
@@ -31,7 +31,7 @@ import com.rtiming.shared.race.IRaceProcessService;
 import com.rtiming.shared.race.IRaceService;
 import com.rtiming.shared.settings.IDefaultProcessService;
 
-@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(ClientSession.class)
+@RunWith(ClientTestRunner.class) @RunWithSubject("admin") @RunWithClientSession(TestClientSession.class)
 public class StartListReportTest {
 
   private EventWithIndividualClassTestDataProvider event;
