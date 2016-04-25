@@ -9,9 +9,9 @@
  ******************************************************************************/
 package com.rtiming.client.test.field;
 
-import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Arrays;
 import java.util.Date;
 
 import org.eclipse.scout.rt.client.ui.form.fields.bigdecimalfield.IBigDecimalField;
@@ -144,7 +144,7 @@ public class MinFormFieldValueProvider extends AbstractFormFieldValueProvider {
     if (maxResult == null || maxResult.length <= 1) {
       return maxResult;
     }
-    Object[] minResult = (Object[]) Array.newInstance(fieldHolderType.getComponentType(), 1);
+    Object[] minResult = Arrays.copyOf(maxResult, 1);
     minResult[0] = maxResult[0];
     return minResult;
   }

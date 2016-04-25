@@ -329,7 +329,7 @@ public abstract class AbstractFormFieldValueProvider implements IFormFieldValueP
         enabledRows.add(row);
       }
     }
-    return keyColumn.getValues(enabledRows).toArray();
+    return keyColumn.getValues(enabledRows).toArray(new Long[0]);
   }
 
   protected Object[] getDefaultTreeBoxValue(ITreeBox<?> field) {
