@@ -3,6 +3,7 @@ package com.rtiming.server.common.database.jpa;
 import java.sql.Connection;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -14,16 +15,7 @@ import org.hibernate.internal.SessionImpl;
 
 public class JPA {
 
-  // private static IHibernateWithOsgiFactory<EntityManagerFactory> sessionFactoryBuilder;
-
-//  private static IHibernateWithOsgiFactory<EntityManagerFactory> getSessionFactoryBuilder() {
-//    if (sessionFactoryBuilder == null) {
-//      JPASetup setup = JPASetup.get();
-//      setup.initDatabase();
-//      sessionFactoryBuilder = setup.createSessionFactoryBuilder();
-//    }
-//    return sessionFactoryBuilder;
-//  }
+  private static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("4mila");
 
   /**
    * @return the JPA {@link EntityManager} session
@@ -36,7 +28,7 @@ public class JPA {
     JPAScoutTransactionMember m = (JPAScoutTransactionMember) t.getMember(JPAScoutTransactionMember.TRANSACTION_MEMBER_ID);
     if (m == null) {
       try {
-        EntityManager entityManager = Persistence.createEntityManagerFactory("4mila").createEntityManager();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
         m = new JPAScoutTransactionMember(entityManager);
         t.registerMember(m);
         entityManager.getTransaction().begin();
