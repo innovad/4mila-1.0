@@ -43,6 +43,7 @@ import org.eclipse.scout.rt.platform.util.TypeCastUtility;
 import org.eclipse.scout.rt.platform.util.date.DateUtility;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupRow;
 
+import com.rtiming.client.common.ui.fields.AbstractEmailField;
 import com.rtiming.client.test.ClientTestingUtility;
 
 public abstract class AbstractFormFieldValueProvider implements IFormFieldValueProvider {
@@ -74,6 +75,9 @@ public abstract class AbstractFormFieldValueProvider implements IFormFieldValueP
       }
       else if (field instanceof IBigIntegerField) {
         fillBigIntegerField((IBigIntegerField) field, value);
+      }
+      else if (field instanceof AbstractEmailField) {
+        fillEmailField((AbstractEmailField) field, value);
       }
       else if (field instanceof IStringField) {
         fillStringField((IStringField) field, value);
@@ -207,6 +211,20 @@ public abstract class AbstractFormFieldValueProvider implements IFormFieldValueP
     field.setValue(stringValue);
   }
 
+  private void fillEmailField(AbstractEmailField field, Object value) {
+    String stringValue = null;
+    try {
+      stringValue = TypeCastUtility.castValue(value, String.class);
+    }
+    catch (RuntimeException e) {
+      // nop
+    }
+    if (stringValue == null) {
+      stringValue = getDefaultEmailValue(field);
+    }
+    field.setValue(stringValue);
+  }
+
   private <T> void fillRadioButtonGroup(IRadioButtonGroup<T> field, Object value) {
     Object radioButtonValue = value;
     if (radioButtonValue == null) {
@@ -288,6 +306,8 @@ public abstract class AbstractFormFieldValueProvider implements IFormFieldValueP
   protected abstract BigInteger getDefaultBigIntegerValue(IBigIntegerField field);
 
   protected abstract String getDefaultStringValue(IStringField field);
+
+  protected abstract String getDefaultEmailValue(AbstractEmailField field);
 
   protected Object getDefaultRadioButtonValue(IRadioButtonGroup<?> field) {
     List<? extends IRadioButton<?>> buttons = field.getButtons();

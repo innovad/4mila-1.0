@@ -36,6 +36,8 @@ import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.platform.util.date.DateUtility;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupRow;
 
+import com.rtiming.client.common.ui.fields.AbstractEmailField;
+
 /**
  * Inserts a given value into a given ValueField. If the value is null: a random value is inserted.
  * <p>
@@ -92,6 +94,16 @@ public class RandFormFieldValueProvider extends AbstractFormFieldValueProvider {
       maxLength = 4000;
     }
     return StringUtility.rpad("TestString", "abcdefghijklmnopqrstuvwxyz0123456789", gen.nextInt(maxLength));
+  }
+
+  @Override
+  protected String getDefaultEmailValue(AbstractEmailField field) {
+    int maxLength = field.getMaxLength();
+    // limit max length for performance reasons
+    if (maxLength > 4000) {
+      maxLength = 4000;
+    }
+    return StringUtility.rpad("TestString", "abcdefghijklmnopqrstuvwxyz0123456789", gen.nextInt((maxLength / 2) - 1)) + "@" + StringUtility.rpad("TestString", "abcdefghijklmnopqrstuvwxyz0123456789", gen.nextInt(maxLength / 2));
   }
 
   /*

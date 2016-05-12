@@ -24,6 +24,8 @@ import org.eclipse.scout.rt.client.ui.form.fields.numberfield.INumberField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.IStringField;
 import org.eclipse.scout.rt.platform.util.StringUtility;
 
+import com.rtiming.client.common.ui.fields.AbstractEmailField;
+
 /**
  * Inserts a given value into a given {@link ValueField}. If the value is <code>null</code>: inserts a biggest value of
  * the
@@ -101,6 +103,17 @@ public class MaxFormFieldValueProvider extends AbstractFormFieldValueProvider {
       maxLength = 4000;
     }
     return StringUtility.rpad("TestString", "abcdefghijklmnopqrstuvwxyz0123456789", maxLength);
+  }
+
+  @Override
+  protected String getDefaultEmailValue(AbstractEmailField field) {
+    int maxLength = field.getMaxLength();
+    // limit max length for performance reasons
+    if (maxLength > 4000) {
+      maxLength = 4000;
+    }
+    return StringUtility.rpad("TestString", "abcdefghijklmnopqrstuvwxyz0123456789", (maxLength / 2) - 1) + "@" + StringUtility.rpad("TestString", "abcdefghijklmnopqrstuvwxyz0123456789", maxLength / 2);
+
   }
 
 }

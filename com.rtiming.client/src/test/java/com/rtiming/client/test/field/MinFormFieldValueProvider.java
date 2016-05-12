@@ -27,6 +27,8 @@ import org.eclipse.scout.rt.client.ui.form.fields.smartfield.ISmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.IStringField;
 import org.eclipse.scout.rt.client.ui.form.fields.treebox.ITreeBox;
 
+import com.rtiming.client.common.ui.fields.AbstractEmailField;
+
 /**
  * Inserts a given value into a given ValueField. If the value is null: inserts the smallest possible value of the given
  * ValueField. If the field does not have a smallest value, a default value is inserted.
@@ -94,6 +96,14 @@ public class MinFormFieldValueProvider extends AbstractFormFieldValueProvider {
   protected String getDefaultStringValue(IStringField field) {
     if (field.isMandatory()) {
       return "s";
+    }
+    return null;
+  }
+
+  @Override
+  protected String getDefaultEmailValue(AbstractEmailField field) {
+    if (field.isMandatory()) {
+      return "s@s";
     }
     return null;
   }
