@@ -1,7 +1,7 @@
 # 4mila
 4mila orienteering management software for SportIdent.
 
-This is the development repository for 4mila 2.0, it is work in progress.
+This is the code repository for the classic 4mila 1.0.x series, which is no longer maintained. Parts of the code will be taken over to 4mila 2.0.
 
 ## Build
 Build is hosted on http://travis-ci.org.
